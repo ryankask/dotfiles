@@ -78,7 +78,7 @@
   '(ac-nrepl ace-jump-mode auto-complete browse-kill-ring clojure-mode
              column-marker csharp-mode crosshairs flymake-cursor go-mode
              hl-line+ lua-mode markdown-mode nrepl org popup python
-             rainbow-mode smex solarized-theme yasnippet)
+             rainbow-mode scss-mode smex solarized-theme yasnippet)
   "A list of packages that must be installed.")
 
 (defun my-packages-installed-p ()
@@ -314,6 +314,13 @@
 (add-hook 'nrepl-mode-hook 'ac-nrepl-setup)
 (add-hook 'nrepl-interaction-mode-hook 'ac-nrepl-setup)
 (eval-after-load "auto-complete" '(add-to-list 'ac-modes 'nrepl-mode))
+
+
+;; SCSS
+(autoload 'scss-mode "scss-mode")
+(add-to-list 'auto-mode-alist '("\\.scss\\'" . scss-mode))
+(setq scss-compile-at-save nil)
+(setq css-indent-offset 2)
 
 
 ;; Set color theme
