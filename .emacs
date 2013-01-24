@@ -75,10 +75,11 @@
 (setq url-http-attempt-keepalives nil)
 
 (defvar my-packages
-  '(ac-nrepl ace-jump-mode auto-complete browse-kill-ring clojure-mode
-             column-marker csharp-mode crosshairs flymake-cursor go-mode
-             hl-line+ lua-mode markdown-mode nrepl org popup python
-             rainbow-mode scss-mode smex solarized-theme yasnippet)
+  '(ac-nrepl ace-jump-mode auto-complete browse-kill-ring
+             clojure-mode col-highlight column-marker csharp-mode
+             crosshairs flymake-cursor go-mode hl-line+ lua-mode
+             markdown-mode nrepl org popup python rainbow-mode
+             scss-mode smex solarized-theme vline yasnippet)
   "A list of packages that must be installed.")
 
 (defun my-packages-installed-p ()
