@@ -283,7 +283,9 @@
 
 ;; SLIME - used via Quicklisp
 (setq inferior-lisp-program "/usr/bin/sbcl")
-(load (expand-file-name "~/.quicklisp/slime-helper.el"))
+(let ((quicklisp-helper "~/.quicklisp/slime-helper.el"))
+  (if (file-exists-p quicklisp-helper)
+      (load quicklisp-helper)))
 
 
 ;; Markdown support - http://jblevins.org/projects/markdown-mode/
