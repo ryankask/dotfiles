@@ -264,6 +264,5 @@ eval "$(rbenv init -)"
 export GOROOT=${HOME}/opt/go
 export GOARCH=amd64
 export GOOS=linux
-export JDK_HOME=${HOME}/opt/java/jdk1.7.0_05
 
 [ -s "${HOME}/.scm_breeze/scm_breeze.sh" ] && source "${HOME}/.scm_breeze/scm_breeze.sh"
