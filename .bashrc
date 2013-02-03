@@ -241,7 +241,6 @@ alias lsa="ls -Al --color=auto"
 alias lsl="ls -l --color=auto"
 alias duh="du -h --max-depth=1"
 alias woll='workon ${LL_VIRTUALENV:-"haystack"}'
-alias woll7="workon languagelab-py2.7.2"
 
 # Load virtualenvwrapper extensions
 if [ $USER == ryan ]; then
