@@ -49,20 +49,19 @@
 
 
 ;; My keyboard customizations -- set up the minor mode's key map
-(defvar my-keybindings-minor-mode-map (make-keymap) "My custom keybindings.")
+(defvar my-kbs-map (make-keymap) "My custom keybindings.")
 
 
 ;; C-h behaves like C-h in readline
-(define-key my-keybindings-minor-mode-map (kbd "C-h") 'delete-backward-char)
-(define-key my-keybindings-minor-mode-map (kbd "s-h") 'help-command)
+(define-key my-kbs-map (kbd "C-h") 'delete-backward-char)
+(define-key my-kbs-map (kbd "s-h") 'help-command)
 
 
 ;; recentf - a list of recent files
 (require 'recentf)
 (recentf-mode 1)
 (setq recentf-max-menu-items 25)
-(define-key my-keybindings-minor-mode-map
-  (kbd "C-x C-r") 'recentf-open-files)
+(define-key my-kbs-map (kbd "C-x C-r") 'recentf-open-files)
 
 
 ;; Packages
@@ -162,8 +161,7 @@
   (interactive)
   (insert "import ipdb; ipdb.set_trace()"))
 
-(define-key my-keybindings-minor-mode-map
-  (kbd "C-c /") 'python-debug-insert-ipdb-set-trace)
+(define-key my-kbs-map (kbd "C-c /") 'python-debug-insert-ipdb-set-trace)
 
 ;; PyFlakes
 ;; see http://www.emacswiki.org/emacs/PythonProgrammingInEmacs#toc7
@@ -207,9 +205,9 @@
 (add-hook 'rst-mode-hook (lambda () (set-fill-column 80)))
 
 ;; org-mode
-(define-key my-keybindings-minor-mode-map (kbd "C-c l") 'org-store-link)
-(define-key my-keybindings-minor-mode-map (kbd "C-c a") 'org-agenda)
-(define-key my-keybindings-minor-mode-map (kbd "C-c M-d") 'org-date-from-calendar)
+(define-key my-kbs-map (kbd "C-c l") 'org-store-link)
+(define-key my-kbs-map (kbd "C-c a") 'org-agenda)
+(define-key my-kbs-map (kbd "C-c M-d") 'org-date-from-calendar)
 (setq org-log-done t)
 (setq org-completion-use-ido t)
 (defun org-summary-todo (n-done n-not-don)
@@ -225,7 +223,7 @@
 (setq org-directory "~/org")
 ;; Capture
 (setq org-default-notes-file (concat org-directory "/notes.org"))
-(define-key my-keybindings-minor-mode-map (kbd "C-c c") 'org-capture)
+(define-key my-kbs-map (kbd "C-c c") 'org-capture)
 ;; Archive
 (setq org-archive-location (concat org-directory "/archive/%s_archive::"))
 
@@ -234,7 +232,7 @@
 ;; http://taiyaki.org/elisp/word-count/src/word-count.el
 (autoload 'word-count-mode "word-count"
   "Minor mode to count words." t nil)
-(define-key my-keybindings-minor-mode-map (kbd "M-+") 'word-count-mode)
+(define-key my-kbs-map (kbd "M-+") 'word-count-mode)
 
 
 ;; Interactively Do Things instead...
@@ -246,10 +244,9 @@
 ;; Smex
 (require 'smex)
 (smex-initialize)
-(define-key my-keybindings-minor-mode-map (kbd "M-x") 'smex)
-(define-key my-keybindings-minor-mode-map (kbd "M-X") 'smex-major-mode-commands)
-(define-key my-keybindings-minor-mode-map
-  (kbd "C-c M-x") 'execute-extended-command) ;; old M-x
+(define-key my-kbs-map (kbd "M-x") 'smex)
+(define-key my-kbs-map (kbd "M-X") 'smex-major-mode-commands)
+(define-key my-kbs-map (kbd "C-c M-x") 'execute-extended-command) ;; old M-x
 
 
 ;; Django stuff - http://garage.pimentech.net/libcommonDjango_django_emacs/
@@ -262,7 +259,7 @@
 
 ;; Browse kill-ring - from http://www.elliotglaysher.org/emacs/
 (autoload 'browse-kill-ring "browse-kill-ring" "Browse the kill ring." t)
-(define-key my-keybindings-minor-mode-map (kbd "C-c k") 'browse-kill-ring)
+(define-key my-kbs-map (kbd "C-c k") 'browse-kill-ring)
 (eval-after-load "browse-kill-ring"
   '(progn
      (setq browse-kill-ring-quit-action 'save-and-restore)))
@@ -294,8 +291,8 @@
 
 ;; Ace jump mode - http://www.emacswiki.org/emacs-en/AceJump
 (require 'ace-jump-mode)
-(define-key my-keybindings-minor-mode-map (kbd "H-a") 'ace-jump-mode)
-(define-key my-keybindings-minor-mode-map (kbd "H-s") 'ace-jump-line-mode)
+(define-key my-kbs-map (kbd "H-a") 'ace-jump-mode)
+(define-key my-kbs-map (kbd "H-s") 'ace-jump-line-mode)
 
 
 ;; crosshairs.el - http://www.emacswiki.org/emacs/CrosshairHighlighting
@@ -344,19 +341,15 @@
   (if (eql (position 'solarized-dark custom-enabled-themes) 0)
     (load-theme 'solarized-light t)
   (load-theme 'solarized-dark t)))
-(define-key my-keybindings-minor-mode-map (kbd "H-q") 'solarized-theme-swap)
+(define-key my-kbs-map (kbd "H-q") 'solarized-theme-swap)
 
 
 ;; Define the minor mode for my keybindings and activate it
-(define-minor-mode my-keybindings-minor-mode
+(define-minor-mode my-kbs-minor-mode
   "A minor mode for my custom keybindings."
-  t                 ;; Enable by default
-  " my-keybindings" ;; name in mode line
-  'my-keybindings-minor-mode-map)
+  t           ;; Enable by default
+  " my-kbs"   ;; name in mode line
+  my-kbs-map)
 
 ;; Turn off in the minibuffer
-(defun my-keybindings-minibuffer-setup-hook ()
-  (my-keybindings-minor-mode 0))
-(add-hook 'minibuffer-setup-hook 'my-keybindings-minibuffer-setup-hook)
-
-(my-keybindings-minor-mode 1)
+(add-hook 'minibuffer-setup-hook (lambda () (my-kbs-minor-mode 0)))
