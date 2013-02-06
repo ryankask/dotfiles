@@ -57,13 +57,6 @@
 (define-key my-kbs-map (kbd "s-h") 'help-command)
 
 
-;; recentf - a list of recent files
-(require 'recentf)
-(recentf-mode 1)
-(setq recentf-max-menu-items 25)
-(define-key my-kbs-map (kbd "C-x C-r") 'recentf-open-files)
-
-
 ;; Packages
 (package-initialize)
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
