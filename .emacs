@@ -291,8 +291,8 @@
 
 ;; Ace jump mode - http://www.emacswiki.org/emacs-en/AceJump
 (require 'ace-jump-mode)
-(define-key my-kbs-map (kbd "H-a") 'ace-jump-mode)
-(define-key my-kbs-map (kbd "H-s") 'ace-jump-line-mode)
+(define-key my-kbs-map (kbd "C-c j c") 'ace-jump-mode)
+(define-key my-kbs-map (kbd "C-c j l") 'ace-jump-line-mode)
 
 
 ;; crosshairs.el - http://www.emacswiki.org/emacs/CrosshairHighlighting
@@ -341,7 +341,7 @@
   (if (eql (position 'solarized-dark custom-enabled-themes) 0)
     (load-theme 'solarized-light t)
   (load-theme 'solarized-dark t)))
-(define-key my-kbs-map (kbd "H-q") 'solarized-theme-swap)
+(define-key my-kbs-map (kbd "C-c w") 'solarized-theme-swap)
 
 
 ;; Define the minor mode for my keybindings and activate it
