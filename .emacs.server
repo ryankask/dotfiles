@@ -19,12 +19,19 @@
  '(text-mode-hook (quote (turn-on-auto-fill text-mode-hook-identify)))
  '(utf-translate-cjk-mode nil))
 
+(menu-bar-mode 0)
+(when (fboundp 'tool-bar-mode)
+  (tool-bar-mode 0)
+  (scroll-bar-mode -1))
+
 ;; Alias "utf-8" as "UTF-8"
 (define-coding-system-alias 'UTF-8 'utf-8)
 
 ;; My keyboard customizations -- set up the minor mode's key map
-(defvar my-keybindings-minor-mode-map (make-keymap) "My custom keybindings.")
+(defvar my-kbs-map (make-keymap) "My custom keybindings.")
 
+;; no graphic dialogs
+(setq use-dialog-box nil)
 ;; Don't insert instructions in the *scratch* buffer
 (setq initial-scratch-message nil)
 
@@ -81,23 +88,18 @@
 ;; Smex
 (require 'smex)
 (smex-initialize)
-(define-key my-keybindings-minor-mode-map (kbd "M-x") 'smex)
-(define-key my-keybindings-minor-mode-map (kbd "M-X") 'smex-major-mode-commands)
-(define-key my-keybindings-minor-mode-map
-  (kbd "C-c M-x") 'execute-extended-command) ;; old M-x
+(define-key my-kbs-map (kbd "M-x") 'smex)
+(define-key my-kbs-map (kbd "M-X") 'smex-major-mode-commands)
+(define-key my-kbs-map (kbd "C-c M-x") 'execute-extended-command) ;; old M-x
 
 (load-theme 'wheatgrass t)
 
 ;; Define the minor mode for my keybindings and activate it
-(define-minor-mode my-keybindings-minor-mode
+(define-minor-mode my-kbs-minor-mode
   "A minor mode for my custom keybindings."
-  t                 ;; Enable by default
-  " my-keybindings" ;; name in mode line
-  'my-keybindings-minor-mode-map)
+  t           ;; Enable by default
+  " my-kbs"   ;; name in mode line
+  my-kbs-map)
 
 ;; Turn off in the minibuffer
-(defun my-keybindings-minibuffer-setup-hook ()
-  (my-keybindings-minor-mode 0))
-(add-hook 'minibuffer-setup-hook 'my-keybindings-minibuffer-setup-hook)
-
-(my-keybindings-minor-mode 1)
+(add-hook 'minibuffer-setup-hook (lambda () (my-kbs-minor-mode 0)))
