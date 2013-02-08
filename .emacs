@@ -74,19 +74,9 @@
              scss-mode smex solarized-theme vline yasnippet)
   "A list of packages that must be installed.")
 
-(defun my-packages-installed-p ()
-  (loop for my-package in my-packages
-        when (not (package-installed-p my-package)) do (return nil)
-        finally (return t)))
-
-(require 'cl)
-(unless (my-packages-installed-p)
-  (message "%s" "Refreshing package list...")
-  (package-refresh-contents)
-  (message "%s" " done.")
-  (dolist (my-package my-packages)
-    (when (not (package-installed-p my-package))
-      (package-install my-package))))
+(dolist (my-package my-packages)
+  (when (not (package-installed-p my-package))
+    (package-install my-package)))
 
 
 ;; Random customizations

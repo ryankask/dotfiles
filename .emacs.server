@@ -68,17 +68,9 @@
   '(smex)
   "A list of packages to ensure are installed at launch.")
 
-(defun my-packages-installed-p ()
-  (loop for p in my-packages
-        when (not (package-installed-p p)) do (return nil)
-        finally (return t)))
-
-(require 'cl)
-(unless (my-packages-installed-p)
-  (package-refresh-contents)
-  (dolist (p my-packages)
-    (when (not (package-installed-p p))
-      (package-install p))))
+(dolist (my-package my-packages)
+  (when (not (package-installed-p my-package))
+    (package-install my-package)))
 
 ;; Interactively Do Things instead...
 (require 'ido)
