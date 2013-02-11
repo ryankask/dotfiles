@@ -143,8 +143,8 @@ export EDITOR=/usr/bin/emacsclient
 
 # Personal Aliases
 alias ls="ls -hF --color=auto"
-alias la="ls -Al --color=auto"
-alias ll="ls -l --color=auto"
+alias la="ls -Al"
+alias ll="ls -l"
 alias lr="ls -R"
 alias lx="ll -BX" # sort by extension
 alias lz="ll -rS" # sort by size
