@@ -177,3 +177,13 @@ export GOARCH=amd64
 export GOOS=linux
 
 [ -s "${HOME}/.scm_breeze/scm_breeze.sh" ] && source "${HOME}/.scm_breeze/scm_breeze.sh"
+
+remtrail() {
+  if [[ -z $1 ]]
+  then
+      echo "You must supply an extension."
+      return 1
+  fi
+
+  find . -name "*.$1" -type f -exec sed -i 's/ *$//' '{}' ';'
+}
