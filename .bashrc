@@ -24,25 +24,13 @@ fi
 # Utility Functions for Prompt:
 source "$HOME/.bash_palette"
 
-GIT_PROMPT="$HOME/bin/git-prompt.sh"
-if [[ -f "$GIT_PROMPT" ]]
-then
-    source $GIT_PROMPT
-    git_prompt=true
-fi
-
 display_project_env() {
     # Displays virtualenv information and VCS branch.
     local open_parens="${WHITE}("
     local close_parens="${WHITE})"
     local sep="${WHITE}//"
 
-    if [[ "$git_prompt" ]]; then
-        local git_branch=$(__git_ps1 | sed -e 's/[ ()]//g')
-    else
-        local git_branch="missing git-prompt.sh"
-    fi
-
+    local git_branch=$(__git_ps1 | sed -e 's/[ ()]//g')
     local git_branch_display="${BOLD_GREEN}${git_branch}${close_parens}"
     local virtualenv=$([[ -z "$VIRTUAL_ENV" ]] && echo '' || echo $(basename $VIRTUAL_ENV))
     local virtualenv_display="${open_parens}${BOLD_CYAN}${virtualenv}"
