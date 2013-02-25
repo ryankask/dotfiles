@@ -88,26 +88,12 @@ main_prompt() {
     fi
 }
 
-update_titlebar() {
-    # Updates the titlebar for suitable terminals.
-    case $TERM in
-        xterm*|rxvt*|screen*)
-            local TITLEBAR='\[\033]0;\u@\h:\w\007\]'
-            echo $TITLEBAR
-            ;;
-        *)
-            local TITLEBAR=""
-            echo $TITLEBAR
-            ;;
-    esac
-}
-
 hist_num="${YELLOW}[${BOLD_GREEN}\!${YELLOW}]"
 user_sys_info="${BOLD_BLUE}\u${YELLOW}@${BOLD_BLUE}\h"
 time_stamp="${YELLOW}[${RED}\t${YELLOW}]"
 cwd_path="${YELLOW}[ ${BOLD_BLUE}\w${YELLOW} ]"
 PROMPT_COMMAND='status=$(cache_exit_status);
-PS1="$(update_titlebar)\n${hist_num} ${user_sys_info} ${time_stamp} $(display_project_env)
+PS1="\n${hist_num} ${user_sys_info} ${time_stamp} $(display_project_env)
 ${cwd_path} $(jobs_count)
 $(main_prompt $status)${RESET} "'
 
