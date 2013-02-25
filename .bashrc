@@ -54,16 +54,6 @@ jobs_count() {
         echo " ${YELLOW}[${PURPLE}jobs: \j${YELLOW}]";
     fi
 }
-cache_exit_status() {
-    # Stores the exit status of the previously executed command: /this/ is the
-    # value we're interested in if we want to indicate the previous command's
-    # success/failure status via our prompt.
-    # If we don't use this cached value, it will instead use the
-    # exit status of the last run utility function, and will therefore always
-    # display as a success.
-    exit_status="$?"
-    echo $exit_status
-}
 
 main_prompt() {
     # Takes the cached exit status as its only argument; returns an
@@ -80,10 +70,10 @@ hist_num="${YELLOW}[${BOLD_GREEN}\!${YELLOW}]"
 user_sys_info="${BOLD_BLUE}\u${YELLOW}@${BOLD_BLUE}\h"
 time_stamp="${YELLOW}[${RED}\t${YELLOW}]"
 cwd_path="${YELLOW}[ ${BOLD_BLUE}\w${YELLOW} ]"
-PROMPT_COMMAND='status=$(cache_exit_status);
+PROMPT_COMMAND='__exit_status=$?;
 PS1="\n${hist_num} ${user_sys_info} ${time_stamp} $(display_project_env)
 ${cwd_path} $(jobs_count)
-$(main_prompt $status)${RESET} "'
+$(main_prompt $__exit_status)${RESET} "'
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
