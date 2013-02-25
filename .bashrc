@@ -33,38 +33,28 @@ fi
 
 display_project_env() {
     # Displays virtualenv information and VCS branch.
-    if [[ -n "$git_prompt" ]]
-    then
+    local open_parens="${WHITE}("
+    local close_parens="${WHITE})"
+    local sep="${WHITE}//"
+
+    if [[ "$git_prompt" ]]; then
         local git_branch=$(__git_ps1 | sed -e 's/[ ()]//g')
     else
         local git_branch="missing git-prompt.sh"
     fi
 
+    local git_branch_display="${BOLD_GREEN}${git_branch}${close_parens}"
     local virtualenv=$([[ -z "$VIRTUAL_ENV" ]] && echo '' || echo $(basename $VIRTUAL_ENV))
-    local gemset= # $(rvm-prompt g | sed s/@//)
+    local virtualenv_display="${open_parens}${BOLD_CYAN}${virtualenv}"
 
-    # Flag to determine whether or not to add a closing parenthesis
-    local close_env=true
-
-    if [[ -n "$virtualenv" ]] && [[ -z "$gemset" ]]; then
-        project_env="${WHITE}(${BOLD_CYAN}${virtualenv}${WHITE}"
-    elif [[ -n "$gemset" ]] && [[ -z "$virtualenv" ]]; then
-        project_env="${WHITE}(${BOLD_RED}${gemset}${WHITE}"
-    elif [[ -n "$gemset" ]] && [[ -n "$virtualenv" ]]; then
-        project_env="${WHITE}(${BOLD_CYAN}${virtualenv}${WHITE}|${BOLD_RED}${gemset}${WHITE}"
+    if [[ "$virtualenv" && "$git_branch" ]]; then
+        project_env="${virtualenv_display}${sep}${git_branch_display}"
+    elif [[ "$virtualenv" && -z "$git_branch" ]]; then
+        project_env="${virtualenv_display}${close_parens}"
+    elif [[ -z "$virtualenv" && "$git_branch" ]]; then
+        project_env="${open_parens}${git_branch_display}";
     else
-        close_env=false
-        project_env=""
-    fi
-
-    local git_branch_display="${BOLD_GREEN}${git_branch}${WHITE})"
-
-    if [[ -n "$git_branch" ]] && $close_env; then
-        project_env="${project_env}${WHITE}//${git_branch_display}"
-    elif [[ -n "$git_branch" ]] && ! $close_env; then
-        project_env="${WHITE}(${git_branch_display}"
-    elif [[ -z "$git_branch" ]] && $close_env; then
-        project_env="${project_env})"
+        project_inv=
     fi
 
     echo $project_env
