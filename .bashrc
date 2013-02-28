@@ -103,7 +103,10 @@ alias lr="ls -R"
 alias lx="ll -BX" # sort by extension
 alias lz="ll -rS" # sort by size
 alias lt="ll -rt" # sort by date
+alias tree="tree -Csuh"
 alias duh="du -h --max-depth=1"
+alias rm="rm -I --preserve-root"
+alias meminfo="free -mlt"
 alias woll='workon ${LL_VIRTUALENV:-"haystack"}'
 
 # Load virtualenvwrapper extensions
