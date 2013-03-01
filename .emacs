@@ -209,7 +209,11 @@
 (define-key my-kbs-map (kbd "C-c c") 'org-capture)
 ;; Archive
 (setq org-archive-location (concat org-directory "/archive/%s_archive::"))
-
+;; Babel - languages
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ (mapcar (lambda (lang) (cons lang t))
+         '(clojure css emacs-lisp js python sass sql sh)))
 
 ;; Word count minor mode
 ;; http://taiyaki.org/elisp/word-count/src/word-count.el
