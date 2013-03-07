@@ -107,7 +107,11 @@ alias tree="tree -Csuh"
 alias duh="du -h --max-depth=1"
 alias rm="rm -I --preserve-root"
 alias meminfo="free -mlt"
+alias top="htop"
 alias woll='workon ${LL_VIRTUALENV:-"haystack"}'
+
+function psgrep() { ps axuf | grep -v grep | grep "$@" -i --color=auto; }
+function fname() { find . -iname "*$@*"; }
 
 # Load virtualenvwrapper extensions
 export VIRTUAL_ENV_DISABLE_PROMPT=1
