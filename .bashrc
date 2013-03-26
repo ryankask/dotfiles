@@ -147,4 +147,4 @@ remtrail() {
   find . -name "*.$1" -type f -exec sed -i 's/ *$//' '{}' ';'
 }
 
-[ -s "${HOME}/.scm_breeze/scm_breeze.sh" ] && source "${HOME}/.scm_breeze/scm_breeze.sh"
+# [ -s "${HOME}/.scm_breeze/scm_breeze.sh" ] && source "${HOME}/.scm_breeze/scm_breeze.sh"
