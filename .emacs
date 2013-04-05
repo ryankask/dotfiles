@@ -92,6 +92,11 @@
             (unless (eq major-mode 'org-mode)
               (delete-trailing-whitespace))))
 
+(defun quit-other-window ()
+  "Quits the other window. Equivalent of C-x o q"
+  (interactive)
+  (quit-window (other-window 1)))
+(define-key my-kbs-map (kbd "C-x 4 q") 'quit-other-window)
 
 ;; Save history and put backups in ~/.emacs_backups
 (require 'savehist)
