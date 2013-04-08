@@ -128,7 +128,7 @@ _pip_completion()
 }
 complete -o default -F _pip_completion pip
 
-export PATH=${HOME}/opt/go/bin:${HOME}/opt/texlive/2011/bin/x86_64-linux:${HOME}/.rbenv/bin:$PATH
+export PATH=${HOME}/opt/go/bin:${HOME}/.rbenv/bin:$PATH
 
 # rbenv completion
 eval "$(rbenv init -)"
