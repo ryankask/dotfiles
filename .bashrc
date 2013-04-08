@@ -113,12 +113,12 @@ alias woll='workon ${LL_VIRTUALENV:-"haystack"}'
 function psgrep() { ps axuf | grep -v grep | grep "$@" -i --color=auto; }
 function fname() { find . -iname "*$@*"; }
 
+export PATH=${HOME}/opt/go/bin:${HOME}/.rbenv/bin:$PATH
+
 # Load virtualenvwrapper extensions
 export VIRTUAL_ENV_DISABLE_PROMPT=1
-if [ $USER == ryan ]; then
-   export WORKON_HOME=$HOME/.virtualenvs
-   source /usr/local/bin/virtualenvwrapper.sh
-fi
+export WORKON_HOME=$HOME/.virtualenvs
+source /usr/local/bin/virtualenvwrapper.sh
 
 _pip_completion()
 {
@@ -127,8 +127,6 @@ _pip_completion()
                    PIP_AUTO_COMPLETE=1 $1 ) )
 }
 complete -o default -F _pip_completion pip
-
-export PATH=${HOME}/opt/go/bin:${HOME}/.rbenv/bin:$PATH
 
 # rbenv completion
 eval "$(rbenv init -)"
