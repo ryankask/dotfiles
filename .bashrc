@@ -48,32 +48,31 @@ display_project_env() {
     echo $project_env
 }
 
-jobs_count() {
-    # Formats and returns the jobs count, in the format 'jobs: NUM'.
+function prompt_command() {
+    __exit_status = $?
+    local hist_num user_sys_info time_stamp cwd_path main_prompt jobs_count
+
+    hist_num="${YELLOW}[${BOLD_GREEN}\!${YELLOW}]"
+    user_sys_info="${BOLD_BLUE}\u${YELLOW}@${BOLD_BLUE}\h"
+    time_stamp="${YELLOW}[${RED}\t${YELLOW}]"
+    cwd_path="${YELLOW}[ ${BOLD_BLUE}\w${YELLOW} ]"
+
     if [[ $(jobs | wc -l | tr -d " ") -gt 0 ]]; then
-        echo " ${YELLOW}[${PURPLE}jobs: \j${YELLOW}]";
+        jobs_count=" ${YELLOW}[${PURPLE}jobs: \j${YELLOW}]";
     fi
-}
 
-main_prompt() {
-    # Takes the cached exit status as its only argument; returns an
-    # appropriately coloured prompt, using the appropriate symbol ($ for
-    # standard user, # for root user).
-    if [[ $1 = 0 ]]; then
-        echo "${BOLD_GREEN}\$"
+    if [[ $__exit_status = 0 ]]; then
+        main_prompt="${BOLD_GREEN}\$"
     else
-        echo "${BOLD_RED}\$"
+        main_prompt="${BOLD_RED}\$"
     fi
+
+    PS1="\n${hist_num} ${user_sys_info} ${time_stamp} $(display_project_env)
+${cwd_path} ${jobs_count}
+${main_prompt}${RESET} "
 }
 
-hist_num="${YELLOW}[${BOLD_GREEN}\!${YELLOW}]"
-user_sys_info="${BOLD_BLUE}\u${YELLOW}@${BOLD_BLUE}\h"
-time_stamp="${YELLOW}[${RED}\t${YELLOW}]"
-cwd_path="${YELLOW}[ ${BOLD_BLUE}\w${YELLOW} ]"
-PROMPT_COMMAND='__exit_status=$?;
-PS1="\n${hist_num} ${user_sys_info} ${time_stamp} $(display_project_env)
-${cwd_path} $(jobs_count)
-$(main_prompt $__exit_status)${RESET} "'
+PROMPT_COMMAND=prompt_command
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
