@@ -49,7 +49,7 @@ display_project_env() {
 }
 
 function prompt_command() {
-    __exit_status = $?
+    __exit_status=$?
     local hist_num user_sys_info time_stamp cwd_path main_prompt jobs_count
 
     hist_num="${YELLOW}[${BOLD_GREEN}\!${YELLOW}]"
