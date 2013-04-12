@@ -103,7 +103,8 @@ alias duh="du -h --max-depth=1"
 alias rm="rm -I --preserve-root"
 alias meminfo="free -mlt"
 alias top="htop"
-alias woll='workon ${LL_VIRTUALENV:-"haystack"}'
+alias woll="workon ${LL_VIRTUALENV:-\"haystack\"}"
+alias cleanpyc="find . -name \"*.pyc\" -exec rm -rf {} \;"
 
 function psgrep() { ps axuf | grep -v grep | grep "$@" -i --color=auto; }
 function fname() { find . -iname "*$@*"; }
