@@ -87,8 +87,8 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
 fi
 
 # Personl settings
-export PAGER=/usr/bin/less
-export EDITOR=/usr/bin/emacsclient
+export PAGER="/usr/bin/less"
+export EDITOR="/usr/bin/emacsclient -a gedit"
 
 # Personal Aliases
 alias ls="ls -hF --color=auto"
