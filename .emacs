@@ -214,11 +214,6 @@
 (define-key my-kbs-map (kbd "C-c c") 'org-capture)
 ;; Archive
 (setq org-archive-location (concat org-directory "/archive/%s_archive::"))
-;; Babel - languages
-(org-babel-do-load-languages
- 'org-babel-load-languages
- (mapcar (lambda (lang) (cons lang t))
-         '(clojure css emacs-lisp js python sass sql sh)))
 
 ;; Word count minor mode
 ;; http://taiyaki.org/elisp/word-count/src/word-count.el
@@ -228,14 +223,11 @@
 
 
 ;; Interactively Do Things instead...
-(require 'ido)
 (ido-mode t)
 (setq ido-enable-flex-matching t) ;; fuzzy completion
 
 
 ;; Smex
-(require 'smex)
-(smex-initialize)
 (define-key my-kbs-map (kbd "M-x") 'smex)
 (define-key my-kbs-map (kbd "M-X") 'smex-major-mode-commands)
 (define-key my-kbs-map (kbd "C-c M-x") 'execute-extended-command) ;; old M-x
@@ -258,7 +250,7 @@
 
 
 ;; C# Mode
-(require 'csharp-mode)
+(autoload 'csharp-mode "csharp-mode" "Major mode for editing C# code." t)
 (setq auto-mode-alist (append '(("\\.cs$" . csharp-mode)) auto-mode-alist))
 
 
@@ -267,13 +259,14 @@
 
 
 ;; Rainbow Mode - http://julien.danjou.info/rainbow-mode.html
-(require 'rainbow-mode)
-
+(autoload 'rainbow-mode "rainbow-mode"
+  "Colorize strings that represent colors." t)
 
 ;; SLIME - used via Quicklisp
 (setq inferior-lisp-program "/usr/bin/sbcl")
+(setq quicklisp-helper-on nil)
 (let ((quicklisp-helper "~/.quicklisp/slime-helper.el"))
-  (if (file-exists-p quicklisp-helper)
+  (if (and quicklisp-helper-on (file-exists-p quicklisp-helper))
       (load quicklisp-helper)))
 
 
@@ -282,7 +275,7 @@
 
 
 ;; Ace jump mode - http://www.emacswiki.org/emacs-en/AceJump
-(require 'ace-jump-mode)
+(autoload 'ace-jump-mode "ace-jump-mode" "Emacs quick move minor mode" t)
 (define-key my-kbs-map (kbd "C-c j c") 'ace-jump-mode)
 (define-key my-kbs-map (kbd "C-c j l") 'ace-jump-line-mode)
 
