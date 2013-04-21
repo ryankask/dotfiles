@@ -1,8 +1,9 @@
 $include /etc/inputrc
 
-"\e[A": history-search-backward
-"\e[B": history-search-forward
-set completion-prefix-display-length 2
+# "\e[A": history-search-backward
+# "\e[B": history-search-forward
+# set completion-prefix-display-length 2
+
 set show-all-if-ambiguous on
 set show-all-if-unmodified on
 set completion-query-items 10000
