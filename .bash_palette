@@ -1,27 +1,28 @@
 #!/usr/bin/env bash
 
-# Color Palette:
-# See <url:http://www.ibm.com/developerworks/linux/library/l-tip-prompt/>
-# Color chart for full selection
-export black=$'\e[00;30m'
-export dark_grey=$'\e[01;30m'
-export red=$'\e[00;31m'
-export bold_red=$'\e[01;31m'
-export green=$'\e[00;32m'
-export bold_green=$'\e[01;32m'
-export brown=$'\e[00;33m'
-export yellow=$'\e[01;33m'
-export blue=$'\e[00;34m'
-export bold_blue=$'\e[01;34m'
-export purple=$'\e[00;35m'
-export bold_purple=$'\e[01;35m'
-export cyan=$'\e[00;36m'
-export bold_cyan=$'\e[01;36m'
-export bold_grey=$'\e[00;37m'
-export white=$'\e[01;37m'
-export reset=$'\e[0m'
+__load_palette() {
+    # Color Palette:
+    # See <url:http://www.ibm.com/developerworks/linux/library/l-tip-prompt/>
+    # Color chart for full selection
+    local black=$'\e[00;30m'
+    local dark_grey=$'\e[01;30m'
+    local red=$'\e[00;31m'
+    local bold_red=$'\e[01;31m'
+    local green=$'\e[00;32m'
+    local bold_green=$'\e[01;32m'
+    local brown=$'\e[00;33m'
+    local yellow=$'\e[01;33m'
+    local blue=$'\e[00;34m'
+    local bold_blue=$'\e[01;34m'
+    local purple=$'\e[00;35m'
+    local bold_purple=$'\e[01;35m'
+    local cyan=$'\e[00;36m'
+    local bold_cyan=$'\e[01;36m'
+    local bold_grey=$'\e[00;37m'
+    local white=$'\e[01;37m'
+    local reset=$'\e[0m'
 
-export COLOR_PALETTE="
+    COLOR_PALETTE="
 ${dark_grey}dark_grey
 ${blue}blue
 ${bold_blue}bold_blue
@@ -39,36 +40,38 @@ ${bold_grey}bold_grey
 ${white}white
 ${reset}reset
 "
+    # We need to surround all non-printing characters with special bash escape
+    # sequences, "\[" and "\]". These sequences will tell bash that the enclosed
+    # characters don't take up any space on the line, which will allow
+    # word-wrapping to continue to work properly. Without them, you'll end up with
+    # a nice-looking prompt that will mess up the screen if you happen to type in a
+    # command that approaches the extreme right of the terminal.
+    # Source: <url:http://www.ibm.com/developerworks/linux/library/l-tip-prompt/>
+    if [[ -z $BASH_VERSION ]]; then
+        local escape_on='%{'
+        local escape_off='%}'
+    else
+        local escape_on='\['
+        local escape_off='\]'
+    fi
 
-# We need to surround all non-printing characters with special bash escape
-# sequences, "\[" and "\]". These sequences will tell bash that the enclosed
-# characters don't take up any space on the line, which will allow
-# word-wrapping to continue to work properly. Without them, you'll end up with
-# a nice-looking prompt that will mess up the screen if you happen to type in a
-# command that approaches the extreme right of the terminal.
-# Source: <url:http://www.ibm.com/developerworks/linux/library/l-tip-prompt/>
-if [[ -z $BASH_VERSION ]]; then
-    escape_on='%{'
-    escape_off='%}'
-else
-    escape_on='\['
-    escape_off='\]'
-fi
+    BLACK="${escape_on}${black}${escape_off}"
+    DARK_GREY="${escape_on}${dark_grey}${escape_off}"
+    RED="${escape_on}${red}${escape_off}"
+    BOLD_RED="${escape_on}${bold_red}${escape_off}"
+    GREEN="${escape_on}${green}${escape_off}"
+    BOLD_GREEN="${escape_on}${bold_green}${escape_off}"
+    BROWN="${escape_on}${brown}${escape_off}"
+    YELLOW="${escape_on}${yellow}${escape_off}"
+    BLUE="${escape_on}${blue}${escape_off}"
+    BOLD_BLUE="${escape_on}${bold_blue}${escape_off}"
+    PURPLE="${escape_on}${purple}${escape_off}"
+    BOLD_PURPLE="${escape_on}${bold_purple}${escape_off}"
+    CYAN="${escape_on}${cyan}${escape_off}"
+    BOLD_CYAN="${escape_on}${bold_cyan}${escape_off}"
+    BOLD_GREY="${escape_on}${bold_grey}${escape_off}"
+    WHITE="${escape_on}${white}${escape_off}"
+    RESET="${escape_on}${reset}${escape_off}"
+}
 
-BLACK="${escape_on}${black}${escape_off}"
-DARK_GREY="${escape_on}${dark_grey}${escape_off}"
-RED="${escape_on}${red}${escape_off}"
-BOLD_RED="${escape_on}${bold_red}${escape_off}"
-GREEN="${escape_on}${green}${escape_off}"
-BOLD_GREEN="${escape_on}${bold_green}${escape_off}"
-BROWN="${escape_on}${brown}${escape_off}"
-YELLOW="${escape_on}${yellow}${escape_off}"
-BLUE="${escape_on}${blue}${escape_off}"
-BOLD_BLUE="${escape_on}${bold_blue}${escape_off}"
-PURPLE="${escape_on}${purple}${escape_off}"
-BOLD_PURPLE="${escape_on}${bold_purple}${escape_off}"
-CYAN="${escape_on}${cyan}${escape_off}"
-BOLD_CYAN="${escape_on}${bold_cyan}${escape_off}"
-BOLD_GREY="${escape_on}${bold_grey}${escape_off}"
-WHITE="${escape_on}${white}${escape_off}"
-RESET="${escape_on}${reset}${escape_off}"
+__load_palette
