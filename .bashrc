@@ -48,7 +48,7 @@ display_project_env() {
     echo $project_env
 }
 
-function prompt_command() {
+prompt_command() {
     __exit_status=$?
     local hist_num user_sys_info time_stamp cwd_path main_prompt jobs_count
 
@@ -106,8 +106,17 @@ alias top="htop"
 alias woll="workon ${LL_VIRTUALENV:-\"haystack\"}"
 alias cleanpyc="find . -name \"*.pyc\" -delete"
 
-function psgrep() { ps axuf | grep -v grep | grep "$@" -i --color=auto; }
-function fname() { find . -iname "*$@*"; }
+psgrep() { ps axuf | grep -v grep | grep "$@" -i --color=auto; }
+fname() { find . -iname "*$@*"; }
+remtrail() {
+  if [[ -z $1 ]]
+  then
+      echo "You must supply an extension."
+      return 1
+  fi
+
+  find . -name "*.$1" -type f -exec sed -i 's/ *$//' '{}' ';'
+}
 
 export PATH=${HOME}/opt/go/bin:${HOME}/.rbenv/bin:$PATH
 
@@ -116,8 +125,7 @@ export VIRTUAL_ENV_DISABLE_PROMPT=1
 export WORKON_HOME=$HOME/.virtualenvs
 source /usr/local/bin/virtualenvwrapper.sh
 
-_pip_completion()
-{
+_pip_completion() {
     COMPREPLY=( $( COMP_WORDS="${COMP_WORDS[*]}" \
                    COMP_CWORD=$COMP_CWORD \
                    PIP_AUTO_COMPLETE=1 $1 ) )
@@ -130,13 +138,3 @@ eval "$(rbenv init -)"
 export GOROOT=${HOME}/opt/go
 export GOARCH=amd64
 export GOOS=linux
-
-remtrail() {
-  if [[ -z $1 ]]
-  then
-      echo "You must supply an extension."
-      return 1
-  fi
-
-  find . -name "*.$1" -type f -exec sed -i 's/ *$//' '{}' ';'
-}
