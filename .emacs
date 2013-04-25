@@ -175,7 +175,7 @@
 (defun org-summary-todo (n-done n-not-don)
   "Switch entry to DONE when all subentries are done, to TODO otherwise."
   (let (org-log-done org-log-states) ; turn off logging
-    (org-todo (if (= n not-done 0) "DONE" "TODO"))))
+    (org-todo (if (= n-not-done 0) "DONE" "TODO"))))
 (add-hook 'org-after-todo-statistics-hook 'org-summary-todo)
 ;; Set alternative "TODO" states
 (setq org-todo-keywords
