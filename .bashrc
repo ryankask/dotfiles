@@ -105,6 +105,7 @@ alias meminfo="free -mlt"
 alias top="htop"
 alias woll="workon ${LL_VIRTUALENV:-\"haystack\"}"
 alias cleanpyc="find . -name \"*.pyc\" -delete"
+alias gcm="git checkout master"
 
 psgrep() { ps axuf | grep -v grep | grep "$@" -i --color=auto; }
 fname() { find . -iname "*$@*"; }
