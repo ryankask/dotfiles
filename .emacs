@@ -58,9 +58,10 @@
 
 
 ;; Packages
-(package-initialize)
-(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
+(require 'package)
 (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
+(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
+(package-initialize)
 
 
 ;; The auto installation from emacs prelude. See http://stackoverflow.com/a/10102154
@@ -69,7 +70,7 @@
 (defvar my-packages
   '(ac-nrepl ace-jump-mode auto-complete browse-kill-ring
              clojure-mode col-highlight column-marker csharp-mode
-             crosshairs flymake-cursor go-mode hl-line+ lua-mode
+             crosshairs flycheck go-mode hl-line+ lua-mode
              markdown-mode nrepl org popup python rainbow-mode
              scss-mode smex solarized-theme vline yasnippet)
   "A list of packages that must be installed.")
@@ -98,13 +99,12 @@
   (quit-window (other-window 1)))
 (define-key my-kbs-map (kbd "C-x 4 q") 'quit-other-window)
 
-;; Save history and put backups in ~/.emacs_backups
-(require 'savehist)
-(savehist-load)
+;; Save history
+(savehist-mode 1)
 (setq
    backup-by-copying t
    backup-directory-alist
-    '(("." . "~/.emacs_backups"))
+    '(("." . "~/.emacs.d/backups"))
    delete-old-versions t
    kept-new-versions 6
    kept-old-versions 2
@@ -143,38 +143,12 @@
 (add-hook 'python-mode-hook
           (lambda () (define-key python-mode-map "\C-m" 'newline-and-indent)))
 
-
 (defun python-debug-insert-ipdb-set-trace ()
   "Insert ipdb trace call into buffer."
   (interactive)
   (insert "import ipdb; ipdb.set_trace()"))
 
 (define-key my-kbs-map (kbd "C-c /") 'python-debug-insert-ipdb-set-trace)
-
-;; PyFlakes
-;; see http://www.emacswiki.org/emacs/PythonProgrammingInEmacs#toc7
-
-(defun flymake-create-temp-in-system-tempdir (filename prefix)
-  (make-temp-file (or prefix "flymake")))
-
-(when (load "flymake" t)
-  (defun flymake-pyflakes-init ()
-     ; Make sure it's not a remote buffer or flymake would not work
-     (when (if (fboundp 'tramp-list-remote-buffers)
-               (not (subsetp (list (current-buffer)) (tramp-list-remote-buffers)))
-             t)
-       (let* ((temp-file (flymake-init-create-temp-buffer-copy
-                          'flymake-create-temp-in-system-tempdir)))
-         (list "~/bin/my_pyflakes.py" (list temp-file)))))
-  (add-to-list 'flymake-allowed-file-name-masks
-               '("\\.py\\'" flymake-pyflakes-init)))
-(add-hook 'python-mode-hook 'flymake-mode)
-
-;; End Python Settings
-
-
-;; Show flymake errors in the minibuffer
-(load-library "flymake-cursor")
 
 
 ;; Don't use auto-fill-mode in html-mode
@@ -316,6 +290,12 @@
 (add-to-list 'auto-mode-alist '("\\.scss\\'" . scss-mode))
 (setq scss-compile-at-save nil)
 (setq css-indent-offset 2)
+
+
+;; Flycheck
+(add-hook 'after-init-hook #'global-flycheck-mode)
+(define-key my-kbs-map (kbd "C-c e n") 'flycheck-next-error)
+(define-key my-kbs-map (kbd "C-c e p") 'flycheck-previous-error)
 
 
 ;; Set color theme
