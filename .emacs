@@ -1,5 +1,4 @@
-;; Ryan Kaskel's .emacs custom configuration
-
+;;; .emacs --- Ryan Kaskel's emacs configuration
 
 ;; User info
 (setq user-full-name "Ryan Kaskel")
