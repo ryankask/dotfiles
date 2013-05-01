@@ -30,8 +30,6 @@
 ;; My keyboard customizations -- set up the minor mode's key map
 (defvar my-kbs-map (make-keymap) "My custom keybindings.")
 
-;; no graphic dialogs
-(setq use-dialog-box nil)
 ;; Don't insert instructions in the *scratch* buffer
 (setq initial-scratch-message nil)
 
@@ -47,12 +45,12 @@
             (unless (eq major-mode 'org-mode)
               (delete-trailing-whitespace))))
 
-(require 'savehist)
-(savehist-load)
+;; Save history
+(savehist-mode 1)
 (setq
    backup-by-copying t
    backup-directory-alist
-    '(("." . "~/.emacs-backups"))
+    '(("." . "~/.emacs.d/backups"))
    delete-old-versions t
    kept-new-versions 6
    kept-old-versions 2
