@@ -70,7 +70,7 @@
   '(ac-nrepl ace-jump-mode auto-complete browse-kill-ring
              clojure-mode col-highlight column-marker csharp-mode
              crosshairs flycheck go-mode hl-line+ lua-mode
-             markdown-mode nrepl org popup python rainbow-mode
+             markdown-mode nrepl org paredit popup python rainbow-mode
              scss-mode smex solarized-theme vline yasnippet)
   "A list of packages that must be installed.")
 
@@ -267,6 +267,7 @@
 
 
 ;; Clojure
+(add-hook 'clojure-mode-hook 'paredit-mode)
 (require 'ac-nrepl)
 (add-hook 'nrepl-mode-hook 'ac-nrepl-setup)
 (add-hook 'nrepl-interaction-mode-hook 'ac-nrepl-setup)
