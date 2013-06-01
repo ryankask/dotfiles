@@ -2,43 +2,75 @@
 
 __load_palette() {
     # Color Palette:
-    # See <url:http://www.ibm.com/developerworks/linux/library/l-tip-prompt/>
-    # Color chart for full selection
-    local black=$'\e[00;30m'
-    local dark_grey=$'\e[01;30m'
-    local red=$'\e[00;31m'
-    local bold_red=$'\e[01;31m'
-    local green=$'\e[00;32m'
-    local bold_green=$'\e[01;32m'
-    local brown=$'\e[00;33m'
-    local yellow=$'\e[01;33m'
-    local blue=$'\e[00;34m'
-    local bold_blue=$'\e[01;34m'
-    local purple=$'\e[00;35m'
-    local bold_purple=$'\e[01;35m'
-    local cyan=$'\e[00;36m'
-    local bold_cyan=$'\e[01;36m'
-    local bold_grey=$'\e[00;37m'
-    local white=$'\e[01;37m'
+    # See https://wiki.archlinux.org/index.php/Color_Bash_Prompt and
+    # http://en.wikipedia.org/wiki/ANSI_escape_code for details
+    local black=$'\e[0;30m'
+    local bold_black=$'\e[1;30m'
+    local und_black=$'\e[4;30m'
+    local bold_und_black=$'\e[1;4;30m'
+    local red=$'\e[0;31m'
+    local bold_red=$'\e[1;31m'
+    local und_red=$'\e[4;31m'
+    local bold_und_red=$'\e[1;4;31m'
+    local green=$'\e[0;32m'
+    local bold_green=$'\e[1;32m'
+    local und_green=$'\e[4;32m'
+    local bold_und_green=$'\e[1;4;32m'
+    local yellow=$'\e[0;33m'
+    local bold_yellow=$'\e[1;33m'
+    local und_yellow=$'\e[4;33m'
+    local bold_und_yellow=$'\e[1;4;33m'
+    local blue=$'\e[0;34m'
+    local bold_blue=$'\e[1;34m'
+    local und_blue=$'\e[4;34m'
+    local bold_und_blue=$'\e[1;4;34m'
+    local purple=$'\e[0;35m'
+    local bold_purple=$'\e[1;35m'
+    local und_purple=$'\e[4;35m'
+    local bold_und_purple=$'\e[1;4;35m'
+    local cyan=$'\e[0;36m'
+    local bold_cyan=$'\e[1;36m'
+    local und_cyan=$'\e[4;36m'
+    local bold_und_cyan=$'\e[1;4;36m'
+    local white=$'\e[0;37m'
+    local bold_white=$'\e[1;37m'
+    local und_white=$'\e[4;37m'
+    local bold_und_white=$'\e[1;4;37m'
     local reset=$'\e[0m'
 
     COLOR_PALETTE="
-${dark_grey}dark_grey
-${blue}blue
-${bold_blue}bold_blue
-${green}green
-${bold_green}bold_green
-${cyan}cyan
-${bold_cyan}bold_cyan
-${red}red
-${bold_red}bold_red
-${purple}purple
-${bold_purple}bold_purple
-${brown}brown
-${yellow}yellow
-${bold_grey}bold_grey
-${white}white
-${reset}reset
+${black}black${reset}
+${bold_black}bold_black${reset}
+${und_black}und_black${reset}
+${bold_und_black}bold_und_black${reset}
+${blue}blue${reset}
+${bold_blue}bold_blue${reset}
+${und_blue}und_blue${reset}
+${bold_und_blue}bold_und_blue${reset}
+${green}green${reset}
+${bold_green}bold_green${reset}
+${und_green}und_green${reset}
+${bold_und_green}bold_und_green${reset}
+${cyan}cyan${reset}
+${bold_cyan}bold_cyan${reset}
+${und_cyan}und_cyan${reset}
+${bold_und_cyan}bold_und_cyan${reset}
+${red}red${reset}
+${bold_red}bold_red${reset}
+${und_red}und_red${reset}
+${bold_und_red}bold_und_red${reset}
+${purple}purple${reset}
+${bold_purple}bold_purple${reset}
+${und_purple}und_purple${reset}
+${bold_und_purple}bold_und_purple${reset}
+${yellow}yellow${reset}
+${bold_yellow}bold_yellow${reset}
+${und_yellow}und_yellow${reset}
+${bold_und_yellow}bold_und_yellow${reset}
+${white}white${reset}
+${bold_white}bold_white${reset}
+${und_white}und_white${reset}
+${bold_und_white}bold_und_white${reset}
 "
     # We need to surround all non-printing characters with special bash escape
     # sequences, "\[" and "\]". These sequences will tell bash that the enclosed
@@ -56,21 +88,37 @@ ${reset}reset
     fi
 
     BLACK="${escape_on}${black}${escape_off}"
-    DARK_GREY="${escape_on}${dark_grey}${escape_off}"
+    BOLD_BLACK="${escape_on}${bold_black}${escape_off}"
+    UND_BLACK="${escape_on}${und_black}${escape_off}"
+    BOLD_UND_BLACK="${escape_on}${bold_und_black}${escape_off}"
     RED="${escape_on}${red}${escape_off}"
     BOLD_RED="${escape_on}${bold_red}${escape_off}"
+    UND_RED="${escape_on}${und_red}${escape_off}"
+    BOLD_UND_RED="${escape_on}${bold_und_red}${escape_off}"
     GREEN="${escape_on}${green}${escape_off}"
     BOLD_GREEN="${escape_on}${bold_green}${escape_off}"
-    BROWN="${escape_on}${brown}${escape_off}"
+    UND_GREEN="${escape_on}${und_green}${escape_off}"
+    BOLD_UND_GREEN="${escape_on}${bold_und_green}${escape_off}"
     YELLOW="${escape_on}${yellow}${escape_off}"
+    BOLD_YELLOW="${escape_on}${bold_yellow}${escape_off}"
+    UND_YELLOW="${escape_on}${und_yellow}${escape_off}"
+    BOLD_UND_YELLOW="${escape_on}${bold_und_yellow}${escape_off}"
     BLUE="${escape_on}${blue}${escape_off}"
     BOLD_BLUE="${escape_on}${bold_blue}${escape_off}"
+    UND_BLUE="${escape_on}${und_blue}${escape_off}"
+    BOLD_UND_BLUE="${escape_on}${bold_und_blue}${escape_off}"
     PURPLE="${escape_on}${purple}${escape_off}"
     BOLD_PURPLE="${escape_on}${bold_purple}${escape_off}"
+    UND_PURPLE="${escape_on}${und_purple}${escape_off}"
+    BOLD_UND_PURPLE="${escape_on}${bold_und_purple}${escape_off}"
     CYAN="${escape_on}${cyan}${escape_off}"
     BOLD_CYAN="${escape_on}${bold_cyan}${escape_off}"
-    BOLD_GREY="${escape_on}${bold_grey}${escape_off}"
+    UND_CYAN="${escape_on}${und_cyan}${escape_off}"
+    BOLD_UND_CYAN="${escape_on}${bold_und_cyan}${escape_off}"
     WHITE="${escape_on}${white}${escape_off}"
+    BOLD_WHITE="${escape_on}${bold_white}${escape_off}"
+    UND_WHITE="${escape_on}${und_white}${escape_off}"
+    BOLD_UND_WHITE="${escape_on}${bold_und_white}${escape_off}"
     RESET="${escape_on}${reset}${escape_off}"
 }
 

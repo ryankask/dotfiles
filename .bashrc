@@ -52,13 +52,13 @@ prompt_command() {
     __exit_status=$?
     local hist_num user_sys_info time_stamp cwd_path main_prompt jobs_count
 
-    hist_num="${YELLOW}[${BOLD_GREEN}\!${YELLOW}]"
-    user_sys_info="${BOLD_BLUE}\u${YELLOW}@${BOLD_BLUE}\h"
-    time_stamp="${YELLOW}[${RED}\t${YELLOW}]"
-    cwd_path="${YELLOW}[ ${BOLD_BLUE}\w${YELLOW} ]"
+    hist_num="${BOLD_YELLOW}[${BOLD_GREEN}\!${BOLD_YELLOW}]"
+    user_sys_info="${BOLD_BLUE}\u${BOLD_YELLOW}@${BOLD_BLUE}\h"
+    time_stamp="${BOLD_YELLOW}[${RED}\t${BOLD_YELLOW}]"
+    cwd_path="${BOLD_YELLOW}[ ${BOLD_BLUE}\w${BOLD_YELLOW} ]"
 
     if [[ $(jobs | wc -l | tr -d " ") -gt 0 ]]; then
-        jobs_count=" ${YELLOW}[${PURPLE}jobs: \j${YELLOW}]";
+        jobs_count=" ${BOLD_YELLOW}[${PURPLE}jobs: \j${BOLD_YELLOW}]";
     fi
 
     if [[ $__exit_status = 0 ]]; then
