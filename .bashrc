@@ -142,7 +142,3 @@ complete -o default -F _pip_completion pip
 
 # rbenv completion
 eval "$(rbenv init -)"
-
-export GOROOT=${HOME}/opt/go
-export GOARCH=amd64
-export GOOS=linux
