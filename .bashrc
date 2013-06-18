@@ -126,7 +126,8 @@ remtrail() {
   find . -name "*.$1" -type f -exec sed -i 's/ *$//' '{}' ';'
 }
 
-export PATH=${HOME}/opt/go/bin:${HOME}/.rbenv/bin:$PATH
+export GOROOT=$HOME/opt/go
+export PATH=$GOROOT/bin:$HOME/.rbenv/bin:$PATH
 
 # Load virtualenvwrapper extensions
 export VIRTUAL_ENV_DISABLE_PROMPT=1
