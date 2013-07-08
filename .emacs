@@ -105,8 +105,8 @@
    backup-directory-alist
     '(("." . "~/.emacs.d/backups"))
    delete-old-versions t
-   kept-new-versions 6
-   kept-old-versions 2
+   kept-new-versions 10
+   kept-old-versions 4
    version-control t)
 
 ;; dired
