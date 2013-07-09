@@ -16,6 +16,7 @@
  '(locale-coding-system (quote utf-8) t)
  '(org-agenda-files (quote ("~/org/todo.org")))
  '(prefer-coding-system (quote utf-8))
+ '(safe-local-variable-values (quote ((do-delete-trailing-whitespace))))
  '(set-default-coding-system (quote utf-8))
  '(set-keyboard-coding-system (quote utf-8))
  '(set-language-environment (quote utf-8))
@@ -87,9 +88,10 @@
 ;; will make the last line end in a carriage return.
 (setq require-final-newline t)
 ;; get rid of trailing whitespace
+(defvar do-delete-trailing-whitespace t)
 (add-hook 'before-save-hook
           (lambda()
-            (unless (eq major-mode 'org-mode)
+            (unless (or (eq major-mode 'org-mode) (not do-delete-trailing-whitespace))
               (delete-trailing-whitespace))))
 
 (defun quit-other-window ()
