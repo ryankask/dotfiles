@@ -1,0 +1,11 @@
+# -*- mode: javascript -*-
+{
+  "browser": true,
+  "node": true,
+  "jquery": true,
+  "debug": false,
+  "devel": true,
+  "es5": true,
+  "strict": false,
+  "globalstrict": true,
+}
