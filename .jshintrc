@@ -1,4 +1,4 @@
-# -*- mode: javascript -*-
+// # -*- mode: javascript -*-
 {
   "browser": true,
   "node": true,
@@ -7,5 +7,5 @@
   "devel": true,
   "es5": true,
   "strict": false,
-  "globalstrict": true,
+  "globalstrict": true
 }
