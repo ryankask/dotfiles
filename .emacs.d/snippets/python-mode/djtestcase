@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: Create a new Django test case
+# key: djtestcase
+# --
+class ${1:classname}(TestCase):
+    def setUp(self):
+        super($1, self).setUp()
+        $0

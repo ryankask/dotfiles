@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: Import Django's reverse function
+# key: imprev
+# --
+from django.core.urlresolvers import reverse

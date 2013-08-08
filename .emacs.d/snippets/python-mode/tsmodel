@@ -1,0 +1,15 @@
+# -*- mode: snippet -*-
+# name: Create a TimeStampedModel skeleton
+# key: tsmodel
+# --
+from model_utils.models import TimeStampedModel
+
+
+class ${1:modelname}(TimeStampedModel):
+    $0
+
+    class Meta:
+        get_latest_by = 'created'
+
+    def __str__(self):
+        pass
