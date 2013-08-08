@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: Import Django's timezone utility
+# key: imptz
+# --
+from django.utils import timezone

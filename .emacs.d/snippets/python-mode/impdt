@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: Import the datetime modules classes
+# key: impdt
+# --
+from datetime import datetime, timedelta
