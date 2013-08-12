@@ -29,9 +29,15 @@
  '(utf-translate-cjk-mode nil))
 
 
-;; Start emacs with 86x40 default size
-(add-to-list 'default-frame-alist '(height . 40))
-(add-to-list 'default-frame-alist '(width . 86))
+(defun get-height-for-display ()
+  "Calculate a height a bit smaller than the height of the maximum height of the display. TODO: Make this work with emacsclient."
+  (if (display-graphic-p)
+      (/ (- (x-display-pixel-height) 100)
+         (frame-char-height))
+    50))
+
+(add-to-list 'default-frame-alist (cons 'height  (get-height-for-display)))
+(add-to-list 'default-frame-alist (cons 'width 90))
 
 (menu-bar-mode 0)
 (when (fboundp 'tool-bar-mode)
