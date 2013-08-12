@@ -139,8 +139,12 @@
 
 ;; Column marker - http://www.emacswiki.org/emacs/ColumnMarker
 (require 'column-marker)
-;; Highlight the 80th column in python-mode
-(add-hook 'python-mode-hook (lambda () (interactive) (column-marker-1 80)))
+;; Highlight the 79th and 99th columns in python-mode
+(add-hook 'python-mode-hook
+          (lambda ()
+            (interactive)
+            (column-marker-1 79)
+            (column-marker-2 99)))
 
 
 ;; Python Settings
