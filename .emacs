@@ -77,7 +77,7 @@
              clojure-mode col-highlight column-marker csharp-mode
              crosshairs flycheck go-mode hl-line+ lua-mode
              markdown-mode nrepl org popup python rainbow-mode
-             scss-mode smex solarized-theme vline yasnippet)
+             scss-mode smartparens smex solarized-theme vline yasnippet)
   "A list of packages that must be installed.")
 
 (dolist (my-package my-packages)
@@ -293,6 +293,12 @@
   (context 2))
 ;; Clojurescript
 (add-to-list 'auto-mode-alist '("\.cljs$" . clojure-mode))
+
+
+;; Smartparens
+(smartparens-global-mode t)
+(show-smartparens-global-mode t)
+(sp-use-smartparens-bindings)
 
 
 ;; SCSS
