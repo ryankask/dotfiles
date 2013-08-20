@@ -2,4 +2,4 @@
 # name: Import Django's timezone utility
 # key: imptz
 # --
-from django.utils import timezone
+from django.utils import timezone$0
