@@ -68,8 +68,6 @@
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (package-initialize)
 
-
-;; The auto installation from emacs prelude. See http://stackoverflow.com/a/10102154
 (setq url-http-attempt-keepalives nil)
 
 (defvar my-packages
@@ -80,10 +78,17 @@
              scss-mode smartparens smex solarized-theme vline yasnippet)
   "A list of packages that must be installed.")
 
-(dolist (my-package my-packages)
-  (when (not (package-installed-p my-package))
-    (package-install my-package)))
+(defun install-my-packages ()
+  "Install each package in ``my-packages`` if it isn't installed."
+  (let ((package-contents-refreshed nil))
+    (dolist (my-package my-packages)
+      (unless (package-installed-p my-package)
+        (unless package-contents-refreshed
+          (package-refresh-contents)
+          (setq package-contents-refreshed t))
+        (package-install my-package)))))
 
+(install-my-packages)
 
 ;; Random customizations
 ;; Use "y or n" answers instead of full words "yes or no"
