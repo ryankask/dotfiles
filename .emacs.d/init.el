@@ -1,4 +1,4 @@
-;;; .emacs --- Ryan Kaskel's emacs configuration
+;;; Ryan Kaskel's emacs configuration
 
 ;; User info
 (setq user-full-name "Ryan Kaskel")
@@ -26,7 +26,14 @@
  '(tab-stop-list (quote (4 8 12 16 20 24 28 32 36 40 44 48 52 56 60)))
  '(tab-width 4)
  '(text-mode-hook (quote (turn-on-auto-fill text-mode-hook-identify)))
- '(utf-translate-cjk-mode nil))
+ '(utf-translate-cjk-mode nil)
+ '(gc-cons-threshold 50000000))
+
+
+;; Set up paths
+(defvar dotemacs-dir (file-name-directory load-file-name))
+(defvar elisp-dir (expand-file-name "elisp" dotemacs-dir))
+(add-to-list 'load-path elisp-dir)
 
 
 (defun get-height-for-display ()
@@ -301,10 +308,7 @@
 
 
 ;; Smartparens
-(smartparens-global-mode t)
-(show-smartparens-global-mode t)
-(sp-use-smartparens-bindings)
-
+(require 'init-smartparens)
 
 ;; SCSS
 (autoload 'scss-mode "scss-mode")
