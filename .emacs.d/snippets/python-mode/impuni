@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: Import unicode_literals
+# key: impuni
+# --
+from __future__ import unicode_literals$0
