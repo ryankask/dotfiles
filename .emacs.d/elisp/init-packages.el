@@ -8,8 +8,8 @@
   '(ac-nrepl ace-jump-mode auto-complete browse-kill-ring
              clojure-mode col-highlight column-marker csharp-mode
              crosshairs flycheck go-mode hl-line+ lua-mode
-             markdown-mode nrepl org popup python rainbow-mode
-             scss-mode smartparens smex solarized-theme vline yasnippet)
+             markdown-mode nrepl org popup rainbow-mode scss-mode
+	     smartparens smex solarized-theme vline yasnippet)
   "A list of packages that must be installed.")
 
 (defun install-my-packages ()
