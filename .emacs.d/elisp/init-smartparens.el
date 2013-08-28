@@ -3,6 +3,7 @@
 (smartparens-global-mode t)
 (show-smartparens-global-mode t)
 (sp-use-smartparens-bindings)
+(setq-default sp-autoescape-string-quote nil)
 
 (sp-pair "'" nil :unless '(sp-point-after-word-p))
 
