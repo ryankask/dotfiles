@@ -21,6 +21,7 @@
 ;; html modes
 (sp-with-modes '(sgml-mode html-mode)
   (sp-local-pair "<" ">")
+  (sp-local-pair "{%" "%}")
   (sp-local-tag  "<" "<_>" "</_>" :transform 'sp-match-sgml-tags))
 
 (provide 'init-smartparens)
