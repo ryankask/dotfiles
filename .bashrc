@@ -53,11 +53,12 @@ display_project_env() {
 
 prompt_command() {
     __exit_status=$?
-    local hist_num user_sys_info time_stamp cwd_path main_prompt jobs_count
+    local hist_num user_sys_info time_stamp cwd_path main_prompt jobs_count project_info
 
     hist_num="${BOLD_YELLOW}[${BOLD_GREEN}\!${BOLD_YELLOW}]"
     user_sys_info="${BOLD_BLUE}\u${BOLD_YELLOW}@${BOLD_BLUE}\h"
     time_stamp="${BOLD_YELLOW}[${RED}\t${BOLD_YELLOW}]"
+    project_info="$(type -t __git_ps1 > /dev/null 2>&1 && display_project_env)"
     cwd_path="${BOLD_YELLOW}[ ${BOLD_BLUE}\w${BOLD_YELLOW} ]"
 
     if [[ $(jobs | wc -l | tr -d " ") -gt 0 ]]; then
@@ -70,7 +71,7 @@ prompt_command() {
         main_prompt="${BOLD_RED}\$"
     fi
 
-    PS1="\n${hist_num} ${user_sys_info} ${time_stamp} $(display_project_env)
+    PS1="\n${hist_num} ${user_sys_info} ${time_stamp} ${project_info}
 ${cwd_path} ${jobs_count}
 ${main_prompt}${RESET} "
 }
@@ -132,7 +133,7 @@ export PATH=$GOROOT/bin:$HOME/.rbenv/bin:$PATH
 # Load virtualenvwrapper extensions
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 export WORKON_HOME=$HOME/.virtualenvs
-source /usr/local/bin/virtualenvwrapper.sh
+[[ -e "/usr/local/bin/virtualenvwrapper.sh" ]] && source "/usr/local/bin/virtualenvwrapper.sh"
 
 _pip_completion() {
     COMPREPLY=( $( COMP_WORDS="${COMP_WORDS[*]}" \
@@ -142,4 +143,4 @@ _pip_completion() {
 complete -o default -F _pip_completion pip
 
 # rbenv completion
-eval "$(rbenv init -)"
+[[ -e "~/.rbenv" ]] && eval "$(rbenv init -)"
