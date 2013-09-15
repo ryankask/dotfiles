@@ -142,5 +142,4 @@ _pip_completion() {
 }
 complete -o default -F _pip_completion pip
 
-# rbenv completion
-[[ -e "~/.rbenv" ]] && eval "$(rbenv init -)"
+[[ -e "$HOME/.rbenv" ]] && eval "$(rbenv init -)"
