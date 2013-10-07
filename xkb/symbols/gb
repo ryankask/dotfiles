@@ -16,4 +16,5 @@ xkb_symbols "colemak_pl" {
     key <AB03> { [            c,            C,          cacute,           Cacute ] };
 
     include "level3(ralt_switch)"
+    include "ctrl(swapcaps)"
 };
