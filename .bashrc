@@ -101,6 +101,7 @@ export EDITOR="/usr/bin/emacsclient -a gedit"
 # Personal Aliases
 alias ls="ls -hF --color=auto"
 alias la="ls -Al"
+alias lh="ls -Ahl"
 alias ll="ls -l"
 alias lr="ls -R"
 alias lx="ll -BX" # sort by extension
