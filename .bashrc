@@ -132,9 +132,15 @@ export GOROOT=$HOME/opt/go
 export PATH=$GOROOT/bin:$HOME/.rbenv/bin:$PATH
 
 # Load virtualenvwrapper extensions
-export VIRTUAL_ENV_DISABLE_PROMPT=1
-export WORKON_HOME=$HOME/.virtualenvs
-[[ -e "/usr/local/bin/virtualenvwrapper.sh" ]] && source "/usr/local/bin/virtualenvwrapper.sh"
+if [[ "$(id -u )" != "0" ]]
+then
+    export VIRTUAL_ENV_DISABLE_PROMPT=1
+    export WORKON_HOME=$HOME/.virtualenvs
+    export PIP_VIRTUALENV_BASE=$WORKON_HOME
+    export PIP_REQUIRE_VIRTUALENV=true
+    export PIP_RESPECT_VIRTUALENV=true
+    [[ -e "/usr/local/bin/virtualenvwrapper.sh" ]] && source "/usr/local/bin/virtualenvwrapper.sh"
+fi
 
 _pip_completion() {
     COMPREPLY=( $( COMP_WORDS="${COMP_WORDS[*]}" \
