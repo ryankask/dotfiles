@@ -6,9 +6,6 @@ case $- in
       *) return;;
 esac
 
-# Load any local settings
-[[ -s "$HOME/.bashrc.local" ]] && source "$HOME/.bashrc.local"
-
 HISTCONTROL=$HISTCONTROL${HISTCONTROL+,}ignoredups
 HISTCONTROL=ignoreboth
 
@@ -18,10 +15,10 @@ shopt -s histappend
 shopt -s checkwinsize
 
 # make less more friendly for non-text input files, see lesspipe(1)
-[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+[[ -x "/usr/bin/lesspipe" ]] && eval "$(SHELL=/bin/sh lesspipe)"
 
-if [ "$COLORTERM" == "gnome-terminal" ] && [ -z "$TMUX" ]; then
-    export TERM=xterm-256color
+if [[ $COLORTERM == "gnome-terminal" ]] && [[ -z "$TMUX" ]]; then
+    export TERM="xterm-256color"
 fi
 
 # Utility Functions for Prompt:
@@ -33,9 +30,9 @@ display_project_env() {
     local close_parens="${WHITE})"
     local sep="${WHITE}//"
 
-    local git_branch=$(__git_ps1 | sed -e 's/[ ()]//g')
+    local git_branch="$(__git_ps1 | sed -e 's/[ ()]//g')"
     local git_branch_display="${BOLD_GREEN}${git_branch}${close_parens}"
-    local virtualenv=$([[ -z "$VIRTUAL_ENV" ]] && echo '' || echo $(basename $VIRTUAL_ENV))
+    local virtualenv="$([[ -z "$VIRTUAL_ENV" ]] && echo '' || echo $(basename $VIRTUAL_ENV))"
     local virtualenv_display="${open_parens}${BOLD_CYAN}${virtualenv}"
 
     if [[ "$virtualenv" && "$git_branch" ]]; then
@@ -65,7 +62,7 @@ prompt_command() {
         jobs_count=" ${BOLD_YELLOW}[${PURPLE}jobs: \j${BOLD_YELLOW}]";
     fi
 
-    if [[ $__exit_status = 0 ]]; then
+    if [[ $__exit_status == 0 ]]; then
         main_prompt="${BOLD_GREEN}\$"
     else
         main_prompt="${BOLD_RED}\$"
@@ -79,17 +76,17 @@ ${main_prompt}${RESET} "
 PROMPT_COMMAND=prompt_command
 
 # enable color support of ls and also add handy aliases
-if [ -x /usr/bin/dircolors ]; then
+if [[ -x "/usr/bin/dircolors" ]]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
+    alias grep="grep --color=auto"
+    alias fgrep="fgrep --color=auto"
+    alias egrep="egrep --color=auto"
 fi
 
 if ! shopt -oq posix; then
-  if [ -f /usr/share/bash-completion/bash_completion ]; then
+  if [[ -f "/usr/share/bash-completion/bash_completion" ]]; then
     . /usr/share/bash-completion/bash_completion
-  elif [ -f /etc/bash_completion ]; then
+  elif [[ -f "/etc/bash_completion" ]]; then
     . /etc/bash_completion
   fi
 fi
@@ -97,6 +94,8 @@ fi
 # Personl settings
 export PAGER="/usr/bin/less"
 export EDITOR="/usr/bin/emacsclient -a gedit"
+export GOROOT="$HOME/opt/go"
+export PATH="$GOROOT/bin:$HOME/.rbenv/bin:$PATH"
 
 # Personal Aliases
 alias ls="ls -hF --color=auto"
@@ -119,8 +118,7 @@ alias gcm="git checkout master"
 psgrep() { ps axuf | grep -v grep | grep "$@" -i --color=auto; }
 fname() { find . -iname "*$@*"; }
 remtrail() {
-  if [[ -z $1 ]]
-  then
+  if [[ -z "$1" ]]; then
       echo "You must supply an extension."
       return 1
   fi
@@ -128,12 +126,8 @@ remtrail() {
   find . -name "*.$1" -type f -exec sed -i 's/ *$//' '{}' ';'
 }
 
-export GOROOT=$HOME/opt/go
-export PATH=$GOROOT/bin:$HOME/.rbenv/bin:$PATH
-
 # Load virtualenvwrapper extensions
-if [[ "$(id -u )" != "0" ]]
-then
+if [[ $(id -u ) != 0 ]]; then
     export VIRTUAL_ENV_DISABLE_PROMPT=1
     export WORKON_HOME=$HOME/.virtualenvs
     export PIP_VIRTUALENV_BASE=$WORKON_HOME
@@ -150,3 +144,6 @@ _pip_completion() {
 complete -o default -F _pip_completion pip
 
 [[ -e "$HOME/.rbenv" ]] && eval "$(rbenv init -)"
+
+# Load any local settings
+[[ -s "$HOME/.bashrc.local" ]] && source "$HOME/.bashrc.local"
