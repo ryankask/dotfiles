@@ -27,3 +27,4 @@ brew cask install java
 brew install leiningen
 brew install postgres
 brew install tree
+brew cask install gpgtools
