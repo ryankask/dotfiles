@@ -41,7 +41,7 @@ defaults write com.googlecode.iterm2 PromptOnQuit -bool false
 #-------
 
 # Save screenshots somewhere else
-defaults write com.apple.screencapture location -string ~/Pictures/screenshots
+defaults write com.apple.screencapture location -string "${HOME}/Pictures/Screenshots"
 
 # Save screenshots in PNG format (other options: BMP, GIF, JPG, PDF, TIFF)
-defaults write com.apple.screencapture type -string jpg
+defaults write com.apple.screencapture type -string "jpg"
