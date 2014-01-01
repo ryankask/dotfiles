@@ -1,0 +1,27 @@
+/* ~/Library/KeyBindings/DefaultKeyBinding.dict */
+
+{
+    /* Additional Emacs bindings */
+    "~f"    = "moveWordForward:";           /* M-f */
+    "~b"    = "moveWordBackward:";          /* M-b */
+    "~<"    = "moveToBeginningOfDocument:"; /* M-< */
+    "~>"    = "moveToEndOfDocument:";       /* M-> */
+    "~v"    = "pageUp:";                    /* M-v */
+    "^v"    = "pageDown:";                  /* C-v */
+    "~d"    = "deleteWordForward:";         /* M-d */
+    "~^h"   = "deleteWordBackward:";        /* M-C-h */
+    "~\010" = "deleteWordBackward:";        /* M-backspace */
+    "~\177" = "deleteWordBackward:";        /* M-delete */
+    "^/"    = "undo:";                      /* C-/ */
+    "^?"    = "redo:";                      /* C-? */
+    "~u"    = "uppercaseWord:";             /* M-u */
+    "^t"    = "transpose:";                 /* C-t */
+    "~t"    = "transposeWords:";            /* M-t */
+    "~/"    = "complete:";                  /* M-/ */
+    "^g"    = "_cancelKey:";                /* C-g */
+    "^a"    = "moveToBeginningOfLine:";     /* C-a */
+    "^e"    = "moveToEndOfLine:";           /* C-e */
+    "~w"    = "copy:";                      /* M-w */
+    "^w"    = "cut:";                       /* C-w */
+    "^y"    = "paste:";                     /* C-y */
+}
