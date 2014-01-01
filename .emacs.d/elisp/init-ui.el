@@ -5,18 +5,21 @@
          (frame-char-height))
     50))
 
-(add-to-list 'default-frame-alist (cons 'height  (get-height-for-display)))
-(add-to-list 'default-frame-alist (cons 'width 90))
+;; (add-to-list 'default-frame-alist (cons 'height  (get-height-for-display)))
+;; (add-to-list 'default-frame-alist (cons 'width 90))
 
-(menu-bar-mode 0)
-(when (fboundp 'tool-bar-mode)
-  (tool-bar-mode 0)
+(when window-system
+  (tool-bar-mode -1)
+  (menu-bar-mode -1)
   (scroll-bar-mode -1))
 
 ;; no graphic dialogs
 (setq use-dialog-box nil)
 ;; Don't insert instructions in the *scratch* buffer
 (setq initial-scratch-message nil)
+;; No beep in OS X
+(if (eq system-type 'darwin)
+    (setq ring-bell-function 'ignore))
 
 ;; Set color theme
 (load-theme 'solarized-dark t) ;; This theme doesn't work with emacsclient

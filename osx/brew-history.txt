@@ -1,0 +1,28 @@
+ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)”
+brew tap phinze/cask
+brew install brew-cask
+brew doctor
+brew cask install google-chrome
+brew install git
+brew cask install ukelele
+brew install emacs --cocoa --srgb
+brew doctor
+brew install coreutils findutils gnu-tar gnu-sed gawk gnutls gnu-indent gnu-getopt
+brew install bash
+brew install tmux
+brew install ack
+brew install python --with-brewed-openssl
+brew install python3 --with-brewed-openssl
+brew install bash-completion
+brew install node
+brew install chruby
+brew install ruby-install
+brew cask install dropbox
+brew cask install firefox
+brew cask install virtualbox
+brew cask install intellij-idea-community
+brew cask install vagrant
+brew cask install java
+brew install leiningen
+brew install postgres
+brew install tree

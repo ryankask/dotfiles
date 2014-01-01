@@ -17,7 +17,7 @@ shopt -s checkwinsize
 # make less more friendly for non-text input files, see lesspipe(1)
 [[ -x "/usr/bin/lesspipe" ]] && eval "$(SHELL=/bin/sh lesspipe)"
 
-if [[ $COLORTERM == "gnome-terminal" ]] && [[ -z "$TMUX" ]]; then
+if [[ $COLORTERM == "gnome-terminal" ]] || [[ -n "$TERM_PROGRAM" ]] && [[ -z "$TMUX" ]]; then
     export TERM="xterm-256color"
 fi
 
@@ -75,27 +75,59 @@ ${main_prompt}${RESET} "
 
 PROMPT_COMMAND=prompt_command
 
-# enable color support of ls and also add handy aliases
-if [[ -x "/usr/bin/dircolors" ]]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias grep="grep --color=auto"
-    alias fgrep="fgrep --color=auto"
-    alias egrep="egrep --color=auto"
-fi
+# OS specific settings
 
-if ! shopt -oq posix; then
-  if [[ -f "/usr/share/bash-completion/bash_completion" ]]; then
-    . /usr/share/bash-completion/bash_completion
-  elif [[ -f "/etc/bash_completion" ]]; then
-    . /etc/bash_completion
-  fi
-fi
+case "$OSTYPE" in
+    darwin*)
+        BREW_PREFIX="$(brew --prefix)"
 
-# Personl settings
-export PAGER="/usr/bin/less"
-export EDITOR="/usr/bin/emacsclient -a gedit"
-export GOROOT="$HOME/opt/go"
-export PATH="$GOROOT/bin:$HOME/.rbenv/bin:$PATH"
+        if ! shopt -oq posix && [[ -f "$BREW_PREFIX/etc/bash_completion" ]]; then
+            . $BREW_PREFIX/etc/bash_completion
+        fi
+
+        export PATH="$BREW_PREFIX/opt/coreutils/libexec/gnubin:/usr/local/bin:$PATH"
+        export MANPATH="$BREW_PREFIX/opt/coreutils/libexec/gnuman:$MANPATH"
+
+        source $BREW_PREFIX/opt/chruby/share/chruby/chruby.sh
+
+        # OS X-specific aliases
+        alias find="$BREW_PREFIX/bin/gfind"
+        alias xargs="$BREW_PREFIX/bin/gxargs"
+
+        PG_DIR="$BREW_PREFIX/var/postgres"
+        alias pg_start="pg_ctl -D $PG_DIR -l $PG_DIR/server.log start"
+        alias pg_stop="pg_ctl -D $PG_DIR stop -s -m fast"
+        ;;
+    linux-gnu)
+        # enable color support of ls and also add handy aliases
+
+        if ! shopt -oq posix; then
+            if [[ -f "/usr/share/bash-completion/bash_completion" ]]; then
+                . /usr/share/bash-completion/bash_completion
+            elif [[ -f "/etc/bash_completion" ]]; then
+                . /etc/bash_completion
+            fi
+        fi
+
+        if [[ -x "/usr/bin/dircolors" ]]; then
+            test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+            alias grep="grep --color=auto"
+            alias fgrep="fgrep --color=auto"
+            alias egrep="egrep --color=auto"
+        fi
+
+        export PAGER="/usr/bin/less"
+        export EDITOR="/usr/bin/emacsclient -a gedit"
+        export GOROOT="$HOME/opt/go"
+        export PATH="$GOROOT/bin:$HOME/.rbenv/bin:$PATH"
+
+        # Linux-specific aliases
+        alias meminfo="free -mlt"
+
+        # Linux-specific commands
+        psgrep() { ps axuf | grep -v grep | grep "$@" -i --color=auto; }
+        ;;
+esac
 
 # Personal Aliases
 alias ls="ls -hF --color=auto"
@@ -109,13 +141,10 @@ alias lt="ll -rt" # sort by date
 alias tree="tree -Csuh"
 alias duh="du -h --max-depth=1"
 alias rm="rm -I --preserve-root"
-alias meminfo="free -mlt"
 alias top="htop"
-alias woll="workon ${LL_VIRTUALENV:-\"haystack\"}"
 alias cleanpyc="find . -name \"*.pyc\" -delete"
 alias gcm="git checkout master"
 
-psgrep() { ps axuf | grep -v grep | grep "$@" -i --color=auto; }
 fname() { find . -iname "*$@*"; }
 remtrail() {
   if [[ -z "$1" ]]; then
@@ -142,8 +171,6 @@ _pip_completion() {
                    PIP_AUTO_COMPLETE=1 $1 ) )
 }
 complete -o default -F _pip_completion pip
-
-[[ -e "$HOME/.rbenv" ]] && eval "$(rbenv init -)"
 
 # Load any local settings
 [[ -s "$HOME/.bashrc.local" ]] && source "$HOME/.bashrc.local"

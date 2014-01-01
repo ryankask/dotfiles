@@ -27,3 +27,10 @@ pip-log.txt
 .tox
 nosetests.xml
 *.mo
+
+# OS X
+
+.DS_Store
+Thumbs.db
+.Spotlight-V100
+.Trashes
