@@ -28,3 +28,9 @@ brew install leiningen
 brew install postgres
 brew install tree
 brew cask install gpgtools
+brew cask install skype
+brew install pypy
+brew insatll redis
+brew cask install gitx-l
+brew cask install light-table
+brew install aspell --with-lang-en --with-lang-pl
