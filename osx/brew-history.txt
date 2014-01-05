@@ -34,3 +34,5 @@ brew insatll redis
 brew cask install gitx-l
 brew cask install light-table
 brew install aspell --with-lang-en --with-lang-pl
+brew cask install the-unarchiver
+brew install lua
