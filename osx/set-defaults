@@ -3,6 +3,13 @@
 # Ask for the administrator password upfront
 sudo -v
 
+#--------------
+# General UI/UX
+#--------------
+
+# Disable Notification Center and remove the menu bar icon
+sudo defaults write /System/Library/LaunchAgents/com.apple.notificationcenterui KeepAlive -bool False
+
 #-------
 # Inputs
 #-------
@@ -70,3 +77,10 @@ defaults write com.apple.screencapture location -string "${HOME}/Pictures/Screen
 
 # Save screenshots in PNG format (other options: BMP, GIF, JPG, PDF, TIFF)
 defaults write com.apple.screencapture type -string "jpg"
+
+#----------
+# Spotlight
+#----------
+
+# Remove the Spotlight icon
+sudo chmod 600 /System/Library/CoreServices/Search.bundle/Contents/MacOS/Search
