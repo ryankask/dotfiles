@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AppleCurrentKeyboardLayoutInputSourceID</key>
+	<string>org.unknown.keylayout.GBPLColemak</string>
+	<key>AppleDefaultAsciiInputSource</key>
+	<dict>
+		<key>InputSourceKind</key>
+		<string>Keyboard Layout</string>
+		<key>KeyboardLayout ID</key>
+		<integer>16000</integer>
+		<key>KeyboardLayout Name</key>
+		<string>GB PL Colemak</string>
+	</dict>
+	<key>AppleEnabledInputSources</key>
+	<array>
+		<dict>
+			<key>InputSourceKind</key>
+			<string>Keyboard Layout</string>
+			<key>KeyboardLayout ID</key>
+			<integer>16000</integer>
+			<key>KeyboardLayout Name</key>
+			<string>GB PL Colemak</string>
+		</dict>
+	</array>
+	<key>AppleInputSourceHistory</key>
+	<array>
+		<dict>
+			<key>InputSourceKind</key>
+			<string>Keyboard Layout</string>
+			<key>KeyboardLayout ID</key>
+			<integer>16000</integer>
+			<key>KeyboardLayout Name</key>
+			<string>GB PL Colemak</string>
+		</dict>
+	</array>
+	<key>AppleSelectedInputSources</key>
+	<array>
+		<dict>
+			<key>InputSourceKind</key>
+			<string>Keyboard Layout</string>
+			<key>KeyboardLayout ID</key>
+			<integer>16000</integer>
+			<key>KeyboardLayout Name</key>
+			<string>GB PL Colemak</string>
+		</dict>
+	</array>
+</dict>
+</plist>
