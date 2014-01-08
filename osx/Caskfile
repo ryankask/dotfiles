@@ -1,0 +1,18 @@
+tap phinze/homebrew-cask
+install brew-cask
+
+cask install google-chrome
+cask install ukelele
+cask install dropbox
+cask install firefox
+cask install virtualbox
+cask install intellij-idea-community
+cask install vagrant
+cask install java
+cask install gpgtools
+cask install skype
+cask install gitx-l
+cask install light-table
+cask install the-unarchiver
+cask install alfred
+cask alfred link

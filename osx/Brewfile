@@ -1,0 +1,26 @@
+update
+upgrade
+
+install git
+install emacs --cocoa --srgb
+install coreutils
+install findutils
+install bash
+install tmux
+install ack
+install python --with-brewed-openssl
+install python3 --with-brewed-openssl
+install bash-completion
+install node
+install chruby
+install ruby-install
+install leiningen
+install postgres
+install tree
+install pypy
+insatll redis
+install aspell --with-lang-en --with-lang-pl
+install lua
+install couchdb
+
+cleanup
