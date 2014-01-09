@@ -6,7 +6,7 @@ cask install ukelele
 cask install dropbox
 cask install firefox
 cask install virtualbox
-cask install intellij-idea-community
+cask install intellij-idea-ultimate
 cask install vagrant
 cask install java
 cask install gpgtools
