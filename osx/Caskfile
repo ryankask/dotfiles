@@ -14,5 +14,6 @@ cask install skype
 cask install gitx-l
 cask install light-table
 cask install the-unarchiver
+cask install mou
 cask install alfred
 cask alfred link
