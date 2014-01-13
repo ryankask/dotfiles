@@ -22,5 +22,6 @@ insatll redis
 install aspell --with-lang-en --with-lang-pl
 install lua
 install couchdb
+install htop-osx
 
 cleanup

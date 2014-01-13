@@ -17,3 +17,4 @@ cask install the-unarchiver
 cask install mou
 cask install alfred
 cask alfred link
+cask install limechat
