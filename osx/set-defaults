@@ -8,7 +8,7 @@ sudo -v
 #--------------
 
 # Disable Notification Center and remove the menu bar icon
-sudo defaults write /System/Library/LaunchAgents/com.apple.notificationcenterui KeepAlive -bool False
+# sudo defaults write /System/Library/LaunchAgents/com.apple.notificationcenterui KeepAlive -bool False
 
 #-------
 # Inputs
