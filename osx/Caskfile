@@ -19,3 +19,4 @@ cask install alfred
 cask alfred link
 cask install limechat
 cask install dukto
+cask install google-hangouts
