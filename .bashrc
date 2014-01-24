@@ -87,6 +87,7 @@ case "$OSTYPE" in
 
         export PATH="$BREW_PREFIX/opt/coreutils/libexec/gnubin:/usr/local/bin:$PATH"
         export MANPATH="$BREW_PREFIX/opt/coreutils/libexec/gnuman:$MANPATH"
+        export EDITOR="emacs"
 
         source $BREW_PREFIX/opt/chruby/share/chruby/chruby.sh
 
