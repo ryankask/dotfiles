@@ -18,8 +18,10 @@
 ;; Don't insert instructions in the *scratch* buffer
 (setq initial-scratch-message nil)
 ;; No beep in OS X
-(if (eq system-type 'darwin)
-    (setq ring-bell-function 'ignore))
+(when (eq system-type 'darwin)
+  (setq ring-bell-function 'ignore)
+  (when (memq window-system '(mac ns))
+    (exec-path-from-shell-initialize)))
 
 ;; Set color theme
 (load-theme 'solarized-dark t) ;; This theme doesn't work with emacsclient
