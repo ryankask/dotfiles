@@ -30,7 +30,11 @@
 
 ;; ido
 (ido-mode t)
-(setq ido-enable-flex-matching t) ;; fuzzy completion
+(setq ido-enable-flex-matching t
+      ido-create-new-buffer 'always
+      ido-use-filename-at-point 'guess
+      ido-default-file-method 'selected-window)
+
 
 ;; Smex
 (define-key my-kbs-map (kbd "M-x") 'smex)
