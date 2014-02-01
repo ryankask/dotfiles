@@ -24,11 +24,4 @@
             (column-marker-1 79)
             (column-marker-2 99)))
 
-;; Django stuff - http://garage.pimentech.net/libcommonDjango_django_emacs/
-;; and http://metapundit.net/tech_blog/emacs_and_django
-(require 'uniquify)
-(setq uniquify-buffer-name-style 'forward)
-(setq uniquify-after-kill-buffer-p t)
-(setq uniquify-ignore-buffers-re "^\\*")
-
 (provide 'init-python)

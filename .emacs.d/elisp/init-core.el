@@ -2,16 +2,10 @@
 
 (setq user-full-name "Ryan Kaskel"
       user-mail-address "dev@ryankaskel.com"
-      column-number-mode t
-      show-paren-mode t
       tab-stop-list '(4 8 12 16 20 24 28 32 36 40 44 48 52 56 60)
       text-mode-hook '(turn-on-auto-fill text-mode-hook-identify)
       gc-cons-threshold 50000000
-      inhibit-startup-message t
       require-final-newline t)
-
-(setq-default indent-tabs-mode nil
-              tab-width 4)
 
 ;; Text encoding
 (define-coding-system-alias 'UTF-8 'utf-8)
@@ -26,22 +20,12 @@
 
 
 ;; Misc
-(global-linum-mode nil)
 (setq safe-local-variable-values '((do-delete-trailing-whitespace)))
-(fset 'yes-or-no-p 'y-or-n-p)
 
 
 ;; C-h behaves like C-h in readline
 (define-key my-kbs-map (kbd "C-h") 'delete-backward-char)
 (define-key my-kbs-map (kbd "s-h") 'help-command)
-
-
-;; get rid of trailing whitespace
-(defvar do-delete-trailing-whitespace t)
-(add-hook 'before-save-hook
-          (lambda()
-            (unless (or (eq major-mode 'org-mode) (not do-delete-trailing-whitespace))
-              (delete-trailing-whitespace))))
 
 
 (defun quit-other-window ()

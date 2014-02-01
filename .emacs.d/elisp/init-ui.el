@@ -11,8 +11,19 @@
 (when window-system
   (tool-bar-mode -1)
   (menu-bar-mode -1)
-  (scroll-bar-mode -1))
+  (scroll-bar-mode -1)
+  (global-linum-mode 1))
 
+(setq show-paren-mode t)
+
+;; mode line settings
+(line-number-mode t)
+(column-number-mode t)
+(size-indication-mode t)
+
+(fset 'yes-or-no-p 'y-or-n-p)
+;; Don't show the start up screen
+(setq inhibit-startup-message t)
 ;; no graphic dialogs
 (setq use-dialog-box nil)
 ;; Don't insert instructions in the *scratch* buffer

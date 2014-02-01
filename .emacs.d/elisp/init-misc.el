@@ -37,13 +37,6 @@
 (define-key my-kbs-map (kbd "M-X") 'smex-major-mode-commands)
 (define-key my-kbs-map (kbd "C-c M-x") 'execute-extended-command) ;; old M-x
 
-;; Browse kill-ring - from http://www.elliotglaysher.org/emacs/
-(autoload 'browse-kill-ring "browse-kill-ring" "Browse the kill ring." t)
-(define-key my-kbs-map (kbd "C-c k") 'browse-kill-ring)
-(eval-after-load "browse-kill-ring"
-  '(progn
-     (setq browse-kill-ring-quit-action 'save-and-restore)))
-
 ;; C# Mode
 (autoload 'csharp-mode "csharp-mode" "Major mode for editing C# code." t)
 (setq auto-mode-alist (append '(("\\.cs$" . csharp-mode)) auto-mode-alist))

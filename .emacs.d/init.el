@@ -8,6 +8,7 @@
 (require 'init-keymap)
 (require 'init-core)
 (require 'init-packages)
+(require 'init-editor)
 (require 'init-ui)
 (require 'init-smartparens)
 (require 'init-python)
