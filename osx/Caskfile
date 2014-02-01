@@ -22,3 +22,4 @@ cask install dukto
 cask install google-hangouts
 cask install balsamiq-mockups
 cask install mplayerx
+cask install handbreak
