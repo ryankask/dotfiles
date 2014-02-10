@@ -6,6 +6,7 @@
 (smartparens-global-mode t)
 (show-smartparens-global-mode t)
 (sp-use-smartparens-bindings)
+(setq sp-autoescape-string-quote nil)
 
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'forward)
