@@ -1,6 +1,8 @@
 (global-auto-revert-mode t)
 
 (setq tab-always-indent 'complete)
+(setq-default indent-tabs-mode nil
+              tab-width 4)
 
 (require 'smartparens-config)
 (smartparens-global-mode t)
