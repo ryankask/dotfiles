@@ -10,7 +10,6 @@
 (require 'init-packages)
 (require 'init-editor)
 (require 'init-ui)
-(require 'init-smartparens)
 (require 'init-python)
 (require 'init-org)
 (require 'init-clojure)

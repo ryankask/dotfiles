@@ -51,6 +51,8 @@
 ;; Rainbow Mode - http://julien.danjou.info/rainbow-mode.html
 (autoload 'rainbow-mode "rainbow-mode"
   "Colorize strings that represent colors." t)
+(setq rainbow-html-colors-major-mode-list
+      '(html-mode css-mode php-mode nxml-mode xml-mode scss-mode))
 
 ;; SLIME - used via Quicklisp
 (setq inferior-lisp-program "/usr/bin/sbcl")
