@@ -23,3 +23,4 @@ cask install balsamiq-mockups
 cask install mplayerx
 cask install handbreak
 cask install keyremap4macbook
+cask install google-earth
