@@ -17,7 +17,6 @@ cask install mou
 cask install alfred
 cask alfred link
 cask install limechat
-cask install dukto
 cask install google-hangouts
 cask install balsamiq-mockups
 cask install mplayerx
