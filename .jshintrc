@@ -6,5 +6,6 @@
   "debug": false,
   "devel": true,
   "strict": false,
-  "globalstrict": true
+  "globalstrict": true,
+  "esnext": true
 }
