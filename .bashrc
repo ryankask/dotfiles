@@ -173,5 +173,7 @@ _pip_completion() {
 }
 complete -o default -F _pip_completion pip
 
+[[ -s $HOME/.nvm/nvm.sh ]] && . $HOME/.nvm/nvm.sh
+
 # Load any local settings
 [[ -s "$HOME/.bashrc.local" ]] && source "$HOME/.bashrc.local"
