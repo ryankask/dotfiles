@@ -23,5 +23,6 @@ install aspell --with-lang-en --with-lang-pl
 install lua
 install couchdb
 install htop-osx
+install hub
 
 cleanup
