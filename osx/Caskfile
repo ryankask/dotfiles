@@ -1,17 +1,18 @@
 tap phinze/homebrew-cask
 install brew-cask
 
+cask install iterm2
 cask install google-chrome
 cask install ukelele
 cask install dropbox
 cask install firefox
 cask install virtualbox
-cask install intellij-idea-ultimate
+cask install intellij-idea
 cask install vagrant
 cask install java
 cask install gpgtools
 cask install skype
-cask install light-table
+cask install lighttable
 cask install the-unarchiver
 cask install mou
 cask install alfred
@@ -20,6 +21,5 @@ cask install limechat
 cask install google-hangouts
 cask install balsamiq-mockups
 cask install mplayerx
-cask install handbreak
 cask install keyremap4macbook
 cask install racket
