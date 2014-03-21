@@ -32,9 +32,9 @@
 (ido-mode t)
 (setq ido-enable-flex-matching t
       ido-create-new-buffer 'always
-      ido-use-filename-at-point 'guess
-      ido-default-file-method 'selected-window)
-
+      ido-default-file-method 'selected-window
+      ido-use-virtual-buffers t
+      ido-everywhere t)
 
 ;; Smex
 (define-key my-kbs-map (kbd "M-x") 'smex)
