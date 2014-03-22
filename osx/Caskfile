@@ -23,3 +23,4 @@ cask install balsamiq-mockups
 cask install mplayerx
 cask install keyremap4macbook
 cask install racket
+cask install viscosity

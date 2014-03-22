@@ -24,5 +24,6 @@ install lua
 install couchdb
 install htop-osx
 install hub
+install tarsnap
 
 cleanup
