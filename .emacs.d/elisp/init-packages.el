@@ -9,7 +9,7 @@
              clojure-mode clojure-test-mode col-highlight column-marker
              crosshairs exec-path-from-shell flycheck go-mode hl-line+
              lua-mode markdown-mode cider org popup rainbow-mode scss-mode
-             smartparens smex solarized-theme vline yasnippet)
+             smartparens smex solarized-theme tuareg vline yasnippet)
   "A list of packages that must be installed.")
 
 (defun install-my-packages ()
