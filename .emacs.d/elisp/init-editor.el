@@ -3,7 +3,6 @@
 (setq tab-always-indent 'complete)
 (setq-default indent-tabs-mode nil
               tab-width 4)
-(electric-indent-mode t)
 
 (require 'smartparens-config)
 (smartparens-global-mode t)
