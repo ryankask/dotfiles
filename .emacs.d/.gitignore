@@ -1,9 +1,11 @@
 *~
 *.elc
-ac-comphist.dat
-abbrev_defs
+/ac-comphist.dat
+/abbrev_defs
+/history
+/ido.hist
+/smex.hist
 bookmarks
 elpa
-history
 session*
 url

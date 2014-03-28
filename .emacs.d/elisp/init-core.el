@@ -37,12 +37,16 @@
 
 ;; Save history
 (savehist-mode 1)
+(defvar my-backup-directory (expand-file-name "backups" dotemacs-dir))
+(defvar my-autosave-directory (expand-file-name "autosave" dotemacs-dir))
 (setq backup-by-copying t
-      backup-directory-alist '(("." . "~/.emacs.d/backups"))
+      backup-directory-alist `((".*" . ,my-backup-directory))
+      auto-save-file-name-transforms `((".*" ,my-autosave-directory t))
       delete-old-versions t
       kept-new-versions 10
       kept-old-versions 4
       version-control t)
+
 
 ;; dired
 (add-hook 'dired-load-hook (function (lambda () (load "dired-x"))))

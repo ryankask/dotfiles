@@ -29,14 +29,18 @@
 (define-key my-kbs-map (kbd "M-+") 'word-count-mode)
 
 ;; ido
-(ido-mode t)
 (setq ido-enable-flex-matching t
       ido-create-new-buffer 'always
       ido-default-file-method 'selected-window
+      ido-auto-merge-work-directories-length -1
       ido-use-virtual-buffers t
-      ido-everywhere t)
+      ido-save-directory-list-file (expand-file-name "ido.hist" dotemacs-dir))
+(ido-mode t)
+(ido-ubiquitous-mode t)
 
 ;; Smex
+(setq smex-save-file (expand-file-name "smex.hist" dotemacs-dir))
+(setq smex-history-length 50)
 (define-key my-kbs-map (kbd "M-x") 'smex)
 (define-key my-kbs-map (kbd "M-X") 'smex-major-mode-commands)
 (define-key my-kbs-map (kbd "C-c M-x") 'execute-extended-command) ;; old M-x

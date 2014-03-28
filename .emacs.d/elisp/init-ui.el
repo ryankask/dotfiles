@@ -1,12 +1,11 @@
 (defun get-height-for-display ()
-  "Calculate a height a bit smaller than the height of the maximum height of the display. TODO: Make this work with emacsclient."
   (if (display-graphic-p)
       (/ (- (x-display-pixel-height) 100)
          (frame-char-height))
     50))
 
-;; (add-to-list 'default-frame-alist (cons 'height  (get-height-for-display)))
-;; (add-to-list 'default-frame-alist (cons 'width 90))
+(add-to-list 'default-frame-alist (cons 'height  (get-height-for-display)))
+(add-to-list 'default-frame-alist (cons 'width 90))
 
 (when window-system
   (tool-bar-mode -1)
