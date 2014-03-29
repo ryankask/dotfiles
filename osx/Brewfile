@@ -25,6 +25,7 @@ install couchdb
 install htop-osx
 install hub
 install tarsnap
+install haskell-platform
 install objective-caml
 install opam
 

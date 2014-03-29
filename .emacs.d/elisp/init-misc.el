@@ -80,6 +80,10 @@
 (setq scss-compile-at-save nil)
 (setq css-indent-offset 2)
 
+;; Haskell
+(add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
+(add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
+
 ;; Flycheck
 (add-hook 'after-init-hook #'global-flycheck-mode)
 (define-key my-kbs-map (kbd "C-c e n") 'flycheck-next-error)
