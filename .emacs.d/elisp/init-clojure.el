@@ -15,7 +15,5 @@
   (ANY 2)
   (context 2))
 
-;; Clojurescript
-(add-to-list 'auto-mode-alist '("\.cljs$" . clojure-mode))
 
 (provide 'init-clojure)
