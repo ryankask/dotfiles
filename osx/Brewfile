@@ -8,8 +8,8 @@ install findutils
 install bash
 install tmux
 install ack
-install python --with-brewed-openssl
-install python3 --with-brewed-openssl
+install python
+install python3
 install bash-completion
 install node
 install chruby
