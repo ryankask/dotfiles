@@ -35,17 +35,23 @@
 (define-key my-kbs-map (kbd "C-x 4 q") 'quit-other-window)
 
 
-;; Save history
-(savehist-mode 1)
-(defvar my-backup-directory (expand-file-name "backups" dotemacs-dir))
-(defvar my-autosave-directory (expand-file-name "autosave" dotemacs-dir))
-(setq backup-by-copying t
+;; Backups
+(defvar my-backup-directory (expand-file-name "backups/" dotemacs-dir))
+(make-directory my-backup-directory t)
+(setq make-backup-files t
+      backup-by-copying t
       backup-directory-alist `((".*" . ,my-backup-directory))
-      auto-save-file-name-transforms `((".*" ,my-autosave-directory t))
       delete-old-versions t
-      kept-new-versions 10
-      kept-old-versions 4
+      kept-new-versions 14
+      kept-old-versions 10
       version-control t)
+
+
+;; Autosaves
+(defvar my-autosave-directory (expand-file-name "autosave/" dotemacs-dir))
+(make-directory my-autosave-directory t)
+(setq auto-save-file-name-transforms
+      `((".*" ,my-autosave-directory t)))
 
 
 ;; dired
