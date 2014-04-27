@@ -1,31 +1,30 @@
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(column-number-mode t)
- '(global-linum-mode 1)
- '(indent-tabs-mode nil)
- '(locale-coding-system (quote utf-8) t)
- '(prefer-coding-system (quote utf-8))
- '(set-default-coding-system (quote utf-8))
- '(set-keyboard-coding-system (quote utf-8))
- '(set-language-environment (quote utf-8))
- '(set-selection-coding-system (quote utf-8))
- '(set-terminal-coding-system (quote utf-8))
- '(show-paren-mode t)
- '(tab-stop-list (quote (4 8 12 16 20 24 28 32 36 40 44 48 52 56 60)))
- '(tab-width 4)
- '(text-mode-hook (quote (turn-on-auto-fill text-mode-hook-identify)))
- '(utf-translate-cjk-mode nil))
+(setq tab-stop-list '(4 8 12 16 20 24 28 32 36 40 44 48 52 56 60)
+      text-mode-hook '(turn-on-auto-fill text-mode-hook-identify)
+      require-final-newline t)
+
+;; Text encoding
+(define-coding-system-alias 'UTF-8 'utf-8)
+(setq locale-coding-system 'utf-8)
+(prefer-coding-system 'utf-8)
+(set-default-coding-systems 'utf-8)
+(set-keyboard-coding-system 'utf-8)
+(set-language-environment 'utf-8)
+(set-selection-coding-system 'utf-8)
+(set-terminal-coding-system 'utf-8)
+(setq utf-translate-cjk-mode nil)
+
+(setq tab-always-indent 'complete)
+(setq-default indent-tabs-mode nil
+              tab-width 4)
+
+(line-number-mode t)
+(column-number-mode t)
+(size-indication-mode t)
 
 (menu-bar-mode 0)
 (when (fboundp 'tool-bar-mode)
   (tool-bar-mode 0)
   (scroll-bar-mode -1))
-
-;; Alias "utf-8" as "UTF-8"
-(define-coding-system-alias 'UTF-8 'utf-8)
 
 ;; My keyboard customizations -- set up the minor mode's key map
 (defvar my-kbs-map (make-keymap) "My custom keybindings.")
@@ -39,11 +38,6 @@
 (setq inhibit-startup-message t)
 ;; will make the last line end in a carriage return.
 (setq require-final-newline t)
-;; get rid of trailing whitespace
-(add-hook 'before-save-hook
-          (lambda()
-            (unless (eq major-mode 'org-mode)
-              (delete-trailing-whitespace))))
 
 ;; Save history
 (savehist-mode 1)
