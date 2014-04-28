@@ -1,0 +1,3 @@
+[submodule ".emacs.d/snippets/shnippet"]
+	path = .emacs.d/snippets/shnippet
+	url = https://github.com/LukeHoersten/shnippet
