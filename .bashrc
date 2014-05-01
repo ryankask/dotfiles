@@ -6,18 +6,18 @@ case $- in
       *) return;;
 esac
 
-HISTCONTROL=$HISTCONTROL${HISTCONTROL+,}ignoredups
-HISTCONTROL=ignoreboth
-
-export HISTSIZE=1500
-export HISTFILESIZE=2000
+HISTCONTROL="ignoreboth"
+HISTSIZE=10000
+HISTFILESIZE=1000000
+HISTIGNORE="&:ls:cd ~:cd ..:[bf]g:exit:history"
+HISTTIMEFORMAT="%F %T "
 shopt -s histappend
 shopt -s checkwinsize
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [[ -x "/usr/bin/lesspipe" ]] && eval "$(SHELL=/bin/sh lesspipe)"
 
-if [[ $COLORTERM == "gnome-terminal" ]] || [[ -n "$TERM_PROGRAM" ]] && [[ -z "$TMUX" ]]; then
+if [[ -n "$TERM_PROGRAM" ]] && [[ -z "$TMUX" ]] || [[ $COLORTERM == "gnome-terminal" ]]; then
     export TERM="xterm-256color"
 fi
 
@@ -71,6 +71,8 @@ prompt_command() {
     PS1="\n${hist_num} ${user_sys_info} ${time_stamp} ${project_info}
 ${cwd_path} ${jobs_count}
 ${main_prompt}${RESET} "
+
+    history -a
 }
 
 PROMPT_COMMAND=prompt_command
