@@ -34,6 +34,7 @@
     (exec-path-from-shell-initialize)))
 
 ;; Set color theme
+(setq solarized-use-variable-pitch nil)
 (load-theme 'solarized-dark t) ;; This theme doesn't work with emacsclient
 
 (defun solarized-theme-swap ()
