@@ -62,6 +62,8 @@
               (seq bol "svn" eol)           ;; svn dirs
               (seq ".pyc" eol))))
 (setq dired-omit-files-p t)
+(setq dired-recursive-deletes 'always)
+(setq dired-recursive-copies 'always)
 
 
 ;; Use Google Chrome to open links

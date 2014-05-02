@@ -16,9 +16,6 @@
 (setq uniquify-ignore-buffers-re "^\\*")
 (setq uniquify-ignore-buffers-re "^\\*")
 
-(setq dired-recursive-deletes 'always)
-(setq dired-recursive-copies 'always)
-
 (require 'midnight)
 
 (require 'browse-kill-ring)
