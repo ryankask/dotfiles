@@ -33,7 +33,7 @@
 
 ;; Smex
 (setq smex-save-file (expand-file-name "smex.hist" dotemacs-dir))
-(setq smex-history-length 50)
+(setq smex-history-length 250)
 (define-key my-kbs-map (kbd "M-x") 'smex)
 (define-key my-kbs-map (kbd "M-X") 'smex-major-mode-commands)
 (define-key my-kbs-map (kbd "C-c M-x") 'execute-extended-command) ;; old M-x
