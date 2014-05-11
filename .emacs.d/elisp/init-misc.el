@@ -53,13 +53,6 @@
 (setq scss-compile-at-save nil)
 (setq css-indent-offset 2)
 
-;; Haskell
-(add-hook 'haskell-mode-hook
-          (lambda ()
-            (subword-mode 1)
-            (turn-on-haskell-doc)
-            (turn-on-haskell-indentation)))
-
 ;; Flycheck
 (add-hook 'after-init-hook #'global-flycheck-mode)
 (define-key my-kbs-map (kbd "C-c e n") 'flycheck-next-error)

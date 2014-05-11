@@ -13,4 +13,5 @@
 (require 'init-python)
 (require 'init-org)
 (require 'init-clojure)
+(require 'init-haskell)
 (require 'init-misc)
