@@ -100,6 +100,8 @@ case "$OSTYPE" in
         PG_DIR="$BREW_PREFIX/var/postgres"
         alias pg_start="pg_ctl -D $PG_DIR -l $PG_DIR/server.log start"
         alias pg_stop="pg_ctl -D $PG_DIR stop -s -m fast"
+
+        [[ -s "$BREW_PREFIX/etc/autojump.sh" ]] && . $BREW_PREFIX/etc/autojump.sh
         ;;
     linux-gnu)
         # enable color support of ls and also add handy aliases
@@ -179,4 +181,4 @@ complete -o default -F _pip_completion pip
 [[ -r "$NVM_DIR/bash_completion" ]] && . $NVM_DIR/bash_completion
 
 # Load any local settings
-[[ -s "$HOME/.bashrc.local" ]] && source "$HOME/.bashrc.local"
+[[ -s "$HOME/.bashrc.local" ]] && . "$HOME/.bashrc.local"
