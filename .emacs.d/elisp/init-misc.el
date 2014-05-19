@@ -58,4 +58,7 @@
 (define-key my-kbs-map (kbd "C-c e n") 'flycheck-next-error)
 (define-key my-kbs-map (kbd "C-c e p") 'flycheck-previous-error)
 
+;; expand-region
+(define-key my-kbs-map (kbd "C-=") 'er/expand-region)
+
 (provide 'init-misc)
