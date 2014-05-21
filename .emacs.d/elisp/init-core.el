@@ -18,22 +18,18 @@
 (set-terminal-coding-system 'utf-8)
 (setq utf-translate-cjk-mode nil)
 
-
 ;; Misc
 (setq safe-local-variable-values '((do-delete-trailing-whitespace)))
-
 
 ;; C-h behaves like C-h in readline
 (define-key my-kbs-map (kbd "C-h") 'delete-backward-char)
 (define-key my-kbs-map (kbd "s-h") 'help-command)
-
 
 (defun quit-other-window ()
   "Quits the other window. Equivalent of C-x o q"
   (interactive)
   (quit-window (other-window 1)))
 (define-key my-kbs-map (kbd "C-x 4 q") 'quit-other-window)
-
 
 ;; Backups
 (defvar my-backup-directory (expand-file-name "backups/" dotemacs-dir))
@@ -46,13 +42,22 @@
       kept-old-versions 10
       version-control t)
 
-
 ;; Autosaves
 (defvar my-autosave-directory (expand-file-name "autosave/" dotemacs-dir))
 (make-directory my-autosave-directory t)
 (setq auto-save-file-name-transforms
       `((".*" ,my-autosave-directory t)))
 
+(require 'savehist)
+(setq savehist-additional-variables '(search ring regexp-search-ring)
+      savehist-autosave-interval 60
+      savehist-file (expand-file-name "savehist" dotemacs-dir))
+(savehist-mode 1)
+
+(require 'recentf)
+(setq recentf-save-file (expand-file-name "recentf" dotemacs-dir)
+      recentf-max-saved-items 500
+      recentf-max-menu-items 15)
 
 ;; dired
 (add-hook 'dired-load-hook (function (lambda () (load "dired-x"))))
@@ -64,7 +69,6 @@
 (setq dired-omit-files-p t)
 (setq dired-recursive-deletes 'always)
 (setq dired-recursive-copies 'always)
-
 
 ;; Use Google Chrome to open links
 (setq browse-url-browser-function 'browse-url-generic
