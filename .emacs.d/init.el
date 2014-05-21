@@ -15,3 +15,4 @@
 (require 'init-clojure)
 (require 'init-haskell)
 (require 'init-misc)
+(require 'init-diminish)

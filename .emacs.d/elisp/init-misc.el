@@ -1,9 +1,11 @@
 ;; Load miscellaneous packages
 
-(require 'auto-complete-config)
-(ac-config-default)
+(require 'company)
+(setq company-idle-delay 0.5)
+(setq company-tooltip-limit 10)
+(setq company-minimum-prefix-length 2)
+(global-company-mode 1)
 
-(require 'column-marker)
 (require 'go-mode-load)
 
 (require 'yasnippet)
@@ -46,8 +48,8 @@
       '(html-mode css-mode php-mode nxml-mode xml-mode scss-mode))
 
 ;; Ace jump mode - http://www.emacswiki.org/emacs-en/AceJump
-(define-key my-kbs-map (kbd "C-c j c") 'ace-jump-mode)
-(define-key my-kbs-map (kbd "C-c j l") 'ace-jump-line-mode)
+(define-key my-kbs-map (kbd "s-.") 'ace-jump-mode)
+(define-key my-kbs-map (kbd "s-/") 'ace-jump-line-mode)
 
 ;; SCSS
 (setq scss-compile-at-save nil)

@@ -57,7 +57,9 @@
 (require 'recentf)
 (setq recentf-save-file (expand-file-name "recentf" dotemacs-dir)
       recentf-max-saved-items 500
-      recentf-max-menu-items 15)
+      recentf-max-menu-items 15
+      recentf-auto-cleanup 'never)
+(recentf-mode 1)
 
 ;; dired
 (add-hook 'dired-load-hook (function (lambda () (load "dired-x"))))

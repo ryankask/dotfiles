@@ -1,9 +1,4 @@
-(require 'ac-nrepl)
-
-(add-hook 'cider-repl-mode-hook 'ac-nrepl-setup)
-(add-hook 'cider-mode-hook 'ac-nrepl-setup)
-
-(eval-after-load "auto-complete" '(add-to-list 'ac-modes 'cider-repl-mode))
+(require 'clojure-mode)
 
 (define-clojure-indent
   (defroutes 'defun)
@@ -14,6 +9,5 @@
   (HEAD 2)
   (ANY 2)
   (context 2))
-
 
 (provide 'init-clojure)
