@@ -87,7 +87,7 @@ case "$OSTYPE" in
             . $BREW_PREFIX/etc/bash_completion
         fi
 
-        export PATH="$BREW_PREFIX/opt/coreutils/libexec/gnubin:/usr/local/bin:$PATH"
+        export PATH="$BREW_PREFIX/opt/coreutils/libexec/gnubin:$HOME/.cabal/bin:/usr/local/bin:$PATH"
         export MANPATH="$BREW_PREFIX/opt/coreutils/libexec/gnuman:$MANPATH"
         export EDITOR="emacs"
 
