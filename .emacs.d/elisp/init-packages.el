@@ -6,7 +6,6 @@
 
 (defvar my-packages
   '(ace-jump-mode
-    ace-jump-buffer
     ace-window
     browse-kill-ring
     clojure-mode
@@ -21,6 +20,7 @@
     haskell-mode
     ido-ubiquitous
     lua-mode
+    magit
     markdown-mode
     cider
     org
