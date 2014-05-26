@@ -63,4 +63,7 @@
 ;; expand-region
 (define-key my-kbs-map (kbd "C-=") 'er/expand-region)
 
+;; magit
+(define-key my-kbs-map (kbd "C-c g") 'magit-status)
+
 (provide 'init-misc)
