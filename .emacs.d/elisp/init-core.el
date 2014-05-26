@@ -25,12 +25,6 @@
 (define-key my-kbs-map (kbd "C-h") 'delete-backward-char)
 (define-key my-kbs-map (kbd "s-h") 'help-command)
 
-(defun quit-other-window ()
-  "Quits the other window. Equivalent of C-x o q"
-  (interactive)
-  (quit-window (other-window 1)))
-(define-key my-kbs-map (kbd "C-x 4 q") 'quit-other-window)
-
 ;; Backups
 (defvar my-backup-directory (expand-file-name "backups/" dotemacs-dir))
 (make-directory my-backup-directory t)
