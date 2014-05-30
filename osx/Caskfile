@@ -1,4 +1,5 @@
-tap phinze/homebrew-cask
+tap caskroom/homebrew-cask
+tap caskroom/versions
 install brew-cask
 
 cask install iterm2
