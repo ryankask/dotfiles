@@ -27,3 +27,4 @@ cask install racket
 cask install viscosity
 cask install silverlight
 cask install adobe-reader
+cask install spectacle
