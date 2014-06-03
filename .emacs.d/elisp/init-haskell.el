@@ -19,6 +19,10 @@
      (define-key haskell-mode-map (kbd "C-c c") 'haskell-process-cabal)
      (define-key haskell-mode-map (kbd "SPC") 'haskell-mode-contextual-space)))
 
+(eval-after-load "haskell-interactive-mode"
+  '(progn
+     (add-to-list 'company-dabbrev-code-modes 'haskell-interactive-mode)))
+
 (eval-after-load "haskell-cabal-mode"
   '(propn
     (define-key haskell-cabal-mode-map (kbd "C-`") 'haskell-interactive-bring)
