@@ -6,7 +6,7 @@
 (define-minor-mode my-kbs-minor-mode
   "A minor mode for my custom keybindings."
   t           ;; Enable by default
-  " my-kbs"   ;; name in mode line
+  " K"        ;; name in mode line
   my-kbs-map)
 
 ;; Turn off in the minibuffer
