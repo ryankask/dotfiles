@@ -1,4 +1,7 @@
-(defvar my-kbs-map (make-keymap) "My custom keybindings.")
+(defvar my-kbs-map (make-sparse-keymap) "My custom keybindings.")
+
+(define-prefix-command 'my-ctl-o-map)
+(define-key my-kbs-map (kbd "C-o") 'my-ctl-o-map)
 
 (define-minor-mode my-kbs-minor-mode
   "A minor mode for my custom keybindings."

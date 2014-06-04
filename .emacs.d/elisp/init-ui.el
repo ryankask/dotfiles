@@ -33,7 +33,7 @@
   (when (memq window-system '(mac ns))
     (exec-path-from-shell-initialize)))
 
-(define-key my-kbs-map (kbd "C-o") 'ace-window)
+(define-key my-kbs-map (kbd "C-o o") 'ace-window)
 
 ;; Set color theme
 (setq solarized-use-variable-pitch nil)
