@@ -6,11 +6,6 @@
 
 (add-hook 'text-mode-hook 'abbrev-mode)
 
-(require 'whitespace)
-(setq whitespace-line-column 80)
-(setq whitespace-style '(face tabs empty trailing lines-tail))
-(global-whitespace-mode 1)
-
 (require 'smartparens-config)
 (smartparens-global-mode t)
 (show-smartparens-global-mode t)
