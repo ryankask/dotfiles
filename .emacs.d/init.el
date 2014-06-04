@@ -15,4 +15,6 @@
 (require 'init-clojure)
 (require 'init-haskell)
 (require 'init-misc)
+(when (eq system-type 'darwin)
+  (require 'init-osx))
 (require 'init-diminish)

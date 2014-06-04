@@ -27,11 +27,6 @@
 (setq use-dialog-box nil)
 ;; Don't insert instructions in the *scratch* buffer
 (setq initial-scratch-message nil)
-;; No beep in OS X
-(when (eq system-type 'darwin)
-  (setq ring-bell-function 'ignore)
-  (when (memq window-system '(mac ns))
-    (exec-path-from-shell-initialize)))
 
 (define-key my-kbs-map (kbd "C-o o") 'ace-window)
 
