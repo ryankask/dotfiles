@@ -25,7 +25,7 @@
 
 (require 'browse-kill-ring)
 (browse-kill-ring-default-keybindings)
-(global-set-key (kbd "s-y") 'browse-kill-ring)
+(define-key my-kbs-map (kbd "s-y") 'browse-kill-ring)
 
 ;; get rid of trailing whitespace
 (defvar do-delete-trailing-whitespace t)
