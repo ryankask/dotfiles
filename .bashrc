@@ -92,6 +92,7 @@ case "$OSTYPE" in
         export EDITOR="emacs"
 
         source $BREW_PREFIX/opt/chruby/share/chruby/chruby.sh
+        chruby 2.1
 
         # OS X-specific aliases
         alias find="$BREW_PREFIX/bin/gfind"
