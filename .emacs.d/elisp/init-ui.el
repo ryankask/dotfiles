@@ -28,7 +28,7 @@
 ;; Don't insert instructions in the *scratch* buffer
 (setq initial-scratch-message nil)
 
-(define-key my-kbs-map (kbd "C-o o") 'ace-window)
+(define-key my-kbs-map (kbd "C-o C-o") 'ace-window)
 
 ;; Set color theme
 (setq solarized-use-variable-pitch nil)

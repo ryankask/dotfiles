@@ -26,6 +26,7 @@
     cider
     org
     rainbow-mode
+    s
     scss-mode
     smartparens
     smex
