@@ -48,4 +48,22 @@
 
 (install-my-packages)
 
+(defun my-packages-print-upgradable-packages ()
+  "Print the names of packages that can be upgraded."
+  (interactive)
+  (unless (derived-mode-p 'package-menu-mode)
+    (error "The current buffer is not a Package menu"))
+  (let ((upgrades (package-menu--find-upgrades)))
+    (if (null upgrades)
+        (message "No packages to upgrade.")
+      (let ((package-names (mapcar
+                            (lambda (info) (symbol-name (elt info 0)))
+                            upgrades)))
+        (if package-names
+            (message "Upgradable packages: %s"
+                     (mapconcat 'identity package-names ", "))
+          (message "No packages to upgrade."))))))
+
+(define-key my-kbs-map (kbd "C-c u") 'my-packages-print-upgradable-packages)
+
 (provide 'init-packages)
