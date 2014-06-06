@@ -51,8 +51,14 @@
 (defun my-packages-print-upgradable-packages ()
   "Print the names of packages that can be upgraded."
   (interactive)
-  (unless (derived-mode-p 'package-menu-mode)
-    (error "The current buffer is not a Package menu"))
+  (let* ((package-buffer-name "*Packages*")
+         (package-buffer-exists
+          (member package-buffer-name
+                  (mapcar (lambda (buffer)
+                            (buffer-name buffer)) (buffer-list)))))
+    (if package-buffer-exists
+        (switch-to-buffer package-buffer-name)
+      (list-packages)))
   (let ((upgrades (package-menu--find-upgrades)))
     (if (null upgrades)
         (message "No packages to upgrade.")
