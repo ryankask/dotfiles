@@ -18,6 +18,11 @@
           (lambda ()
             (interactive)
             (column-marker-1 79)
-            (column-marker-2 99)))
+            (column-marker-2 99)
+            (my-python-mode-set-company-backends)))
+
+(defun my-python-mode-set-company-backends ()
+  (set (make-local-variable 'company-backends)
+       '(company-dabbrev-code)))
 
 (provide 'init-python)
