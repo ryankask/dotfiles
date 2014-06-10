@@ -150,6 +150,9 @@ alias rm="rm -I --preserve-root"
 alias top="htop"
 alias cleanpyc="find . -name \"*.pyc\" -delete"
 alias gcm="git checkout master"
+alias docker-cleancontainers="docker ps -a -notrunc| grep 'Exit' | awk '{print \$1}' | xargs -L 1 -r docker rm"
+alias docker-cleanimages="docker images -a -notrunc | grep none | awk '{print \$3}' | xargs -L 1 -r docker rmi"
+alias docker-clean="dockercleancontainers && dockercleanimages"
 
 fname() { find . -iname "*$@*"; }
 remtrail() {

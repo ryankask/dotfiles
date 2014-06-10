@@ -28,7 +28,6 @@ install tarsnap
 install haskell-platform
 install git-flow
 install curl-ca-bundle
-install boot2docker
 install autojump
 
 cleanup
