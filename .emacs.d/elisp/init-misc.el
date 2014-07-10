@@ -6,8 +6,6 @@
       company-minimum-prefix-length 2)
 (global-company-mode 1)
 
-(require 'go-mode-load)
-
 (require 'yasnippet)
 (add-to-list 'yas-snippet-dirs (expand-file-name "snippets/shnippet" dotemacs-dir))
 (yas-global-mode 1)
