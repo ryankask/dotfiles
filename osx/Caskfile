@@ -20,7 +20,6 @@ cask install alfred
 cask alfred link
 cask install limechat
 cask install google-hangouts
-cask install balsamiq-mockups
 cask install mplayerx
 cask install keyremap4macbook
 cask install racket
@@ -28,3 +27,4 @@ cask install viscosity
 cask install silverlight
 cask install adobe-reader
 cask install spectacle
+cask install handbrake
