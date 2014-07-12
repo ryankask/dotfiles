@@ -16,6 +16,6 @@
 (require 'init-haskell)
 (require 'init-go)
 (require 'init-misc)
-(when (eq system-type 'darwin)
+(when (memq window-system '(mac ns))
   (require 'init-osx))
 (require 'init-diminish)
