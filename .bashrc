@@ -88,9 +88,12 @@ case "$OSTYPE" in
         fi
 
         export GOPATH="$HOME/Projects/go"
-        export PATH="$BREW_PREFIX/opt/coreutils/libexec/gnubin:$HOME/.cabal/bin:$GOPATH/bin:/usr/local/bin:$PATH"
-        export MANPATH="$BREW_PREFIX/opt/coreutils/libexec/gnuman:$MANPATH"
         export EDITOR="emacs"
+
+        if [[ -z "$TMUX" ]]; then
+            export PATH="$BREW_PREFIX/opt/coreutils/libexec/gnubin:$HOME/.cabal/bin:$GOPATH/bin:/usr/local/bin:$PATH"
+            export MANPATH="$BREW_PREFIX/opt/coreutils/libexec/gnuman:$MANPATH"
+        fi
 
         source $BREW_PREFIX/opt/chruby/share/chruby/chruby.sh
         chruby 2.1
@@ -126,7 +129,10 @@ case "$OSTYPE" in
         export PAGER="/usr/bin/less"
         export EDITOR="/usr/bin/emacsclient -a gedit"
         export GOROOT="$HOME/opt/go"
-        export PATH="$GOROOT/bin:$HOME/.rbenv/bin:$PATH"
+
+        if [[ -z "$TMUX" ]]; then
+            export PATH="$GOROOT/bin:$HOME/.rbenv/bin:$PATH"
+        fi
 
         # Linux-specific aliases
         alias meminfo="free -mlt"
