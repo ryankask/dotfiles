@@ -14,6 +14,7 @@
 (require 'init-org)
 (require 'init-clojure)
 (require 'init-haskell)
+(require 'init-go)
 (require 'init-misc)
 (when (eq system-type 'darwin)
   (require 'init-osx))
