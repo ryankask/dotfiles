@@ -21,7 +21,7 @@ cask alfred link
 cask install limechat
 cask install google-hangouts
 cask install mplayerx
-cask install keyremap4macbook
+cask install karabiner
 cask install racket
 cask install viscosity
 cask install silverlight
