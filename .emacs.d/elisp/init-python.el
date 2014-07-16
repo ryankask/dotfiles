@@ -17,8 +17,8 @@
 (add-hook 'python-mode-hook
           (lambda ()
             (interactive)
-            (column-marker-1 79)
-            (column-marker-2 99)
+            (column-marker-1 80)
+            (column-marker-2 100)
             (my-python-mode-set-company-backends)))
 
 (defun my-python-mode-set-company-backends ()
