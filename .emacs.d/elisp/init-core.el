@@ -29,11 +29,12 @@
 (defvar my-backup-directory (expand-file-name "backups/" dotemacs-dir))
 (make-directory my-backup-directory t)
 (setq make-backup-files t
+      vc-make-backup-files t
       backup-by-copying t
       backup-directory-alist `((".*" . ,my-backup-directory))
       delete-old-versions t
-      kept-new-versions 14
-      kept-old-versions 10
+      kept-new-versions 10
+      kept-old-versions 8
       version-control t)
 
 ;; Autosaves
