@@ -9,7 +9,6 @@
     ace-window
     browse-kill-ring
     clojure-mode
-    clojure-test-mode
     column-marker
     company
     dash
