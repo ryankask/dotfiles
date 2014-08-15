@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# -*- mode: sh -*-
+
+if [[ -S "$SSH_AUTH_SOCK" ]]; then
+    ln -sf $SSH_AUTH_SOCK ~/.ssh/auth_sock
+fi
