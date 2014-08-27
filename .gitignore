@@ -9,7 +9,6 @@
 auto-save-list
 tramp
 
-
 # Python
 
 *.py[cod]
@@ -34,6 +33,3 @@ nosetests.xml
 Thumbs.db
 .Spotlight-V100
 .Trashes
-
-# Node
-node_modules
