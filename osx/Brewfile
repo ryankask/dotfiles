@@ -30,5 +30,6 @@ install git-flow
 install curl-ca-bundle
 install autojump
 install go
+install dnsmasq
 
 cleanup
