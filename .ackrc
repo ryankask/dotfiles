@@ -1,3 +1,4 @@
 --type-add=scss=.scss
 --type-add=sass=.sass
 --ignore-dir=.sass-cache
+--ignore-dir=.idea
