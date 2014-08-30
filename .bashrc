@@ -91,7 +91,7 @@ case "$OSTYPE" in
         export EDITOR="emacs"
 
         if [[ -z "$TMUX" ]]; then
-            export PATH="$BREW_PREFIX/opt/coreutils/libexec/gnubin:$HOME/.cabal/bin:$GOPATH/bin:/usr/local/bin:$PATH"
+            export PATH="$BREW_PREFIX/opt/coreutils/libexec/gnubin:$HOME/.cabal/bin:$GOPATH/bin:$BREW_PREFIX/bin:$BREW_PREFIX/sbin:$PATH"
             export MANPATH="$BREW_PREFIX/opt/coreutils/libexec/gnuman:$MANPATH"
         fi
 
