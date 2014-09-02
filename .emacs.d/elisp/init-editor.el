@@ -34,6 +34,7 @@
             (unless (or (eq major-mode 'org-mode) (not do-delete-trailing-whitespace))
               (delete-trailing-whitespace))))
 
+(define-key my-kbs-map (kbd "C-s-/") 'undo-tree-redo)
 (global-undo-tree-mode)
 
 (require 'volatile-highlights)
