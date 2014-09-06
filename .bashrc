@@ -187,7 +187,7 @@ _pip_completion() {
                    PIP_AUTO_COMPLETE=1 $1 ) )
 }
 complete -o default -F _pip_completion pip
-n
+
 [[ -s "$HOME/.nvm/nvm.sh" ]] && . $HOME/.nvm/nvm.sh
 [[ -r "$NVM_DIR/bash_completion" ]] && . $NVM_DIR/bash_completion
 
