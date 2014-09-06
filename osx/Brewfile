@@ -31,5 +31,6 @@ install curl-ca-bundle
 install autojump
 install go
 install dnsmasq
+install zsh
 
 cleanup

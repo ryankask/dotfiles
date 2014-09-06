@@ -64,4 +64,7 @@
 ;; magit
 (define-key my-kbs-map (kbd "C-c g") 'magit-status)
 
+;; zsh
+(add-to-list 'auto-mode-alist '("\\.zsh\\'" . sh-mode))
+
 (provide 'init-misc)
