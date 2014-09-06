@@ -28,9 +28,9 @@ install tarsnap
 install haskell-platform
 install git-flow
 install curl-ca-bundle
-install autojump
 install go
 install dnsmasq
 install zsh
+install reattach-to-user-namespace
 
 cleanup
