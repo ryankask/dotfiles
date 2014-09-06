@@ -64,6 +64,10 @@
 ;; magit
 (define-key my-kbs-map (kbd "C-c g") 'magit-status)
 
+;; Shell
+(setq sh-basic-offset 2
+      sh-indentation 2)
+
 ;; zsh
 (add-to-list 'auto-mode-alist '("\\.zsh\\'" . sh-mode))
 
