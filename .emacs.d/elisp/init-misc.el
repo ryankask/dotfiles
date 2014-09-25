@@ -25,6 +25,7 @@
       ido-default-file-method 'selected-window
       ido-auto-merge-work-directories-length -1
       ido-use-virtual-buffers t
+      ido-handle-duplicate-virtual-buffers 2
       ido-max-work-file-list 250
       ido-max-dir-file-cache 250
       ido-save-directory-list-file (expand-file-name "ido.hist" dotemacs-dir))
