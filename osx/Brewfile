@@ -17,7 +17,6 @@ install ruby-install
 install leiningen
 install postgres
 install tree
-install pypy
 install redis
 install aspell --with-lang-en --with-lang-pl
 install lua
@@ -32,5 +31,6 @@ install go
 install dnsmasq
 install zsh
 install reattach-to-user-namespace
+install libyaml
 
 cleanup
