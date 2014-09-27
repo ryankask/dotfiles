@@ -25,6 +25,7 @@
     cider
     org
     rainbow-mode
+    rust-mode
     s
     scss-mode
     smartparens
