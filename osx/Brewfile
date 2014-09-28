@@ -33,6 +33,5 @@ install zsh
 install reattach-to-user-namespace
 install libyaml
 install fasd
-install rust
 
 cleanup
