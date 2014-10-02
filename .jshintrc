@@ -7,5 +7,6 @@
   "devel": true,
   "strict": false,
   "globalstrict": true,
-  "esnext": true
+  "esnext": true,
+  "expr": true
 }
