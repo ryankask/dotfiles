@@ -1,6 +1,3 @@
-(add-hook 'python-mode-hook
-          (lambda () (define-key python-mode-map "\C-m" 'newline-and-indent)))
-
 (defun python-debug-insert-ipdb-set-trace ()
   "Insert ipdb trace call into buffer."
   (interactive)
@@ -11,18 +8,23 @@
   (interactive)
   (insert "import pudb; pu.db"))
 
-(define-key my-kbs-map (kbd "C-c /") 'python-debug-insert-ipdb-set-trace)
-(define-key my-kbs-map (kbd "C-c p") 'python-debug-insert-pudb-set-trace)
-
 (add-hook 'python-mode-hook
           (lambda ()
             (interactive)
             (column-marker-1 80)
             (column-marker-2 100)
-            (my-python-mode-set-company-backends)))
+            (anaconda-mode)
+            (my-python-mode-set-company-backends)
+            (define-key python-mode-map (kbd "C-m") 'newline-and-indent)
+            (define-key python-mode-map (kbd "C-c /") 'python-debug-insert-ipdb-set-trace)
+            (define-key python-mode-map (kbd "C-c p") 'python-debug-insert-pudb-set-trace)
+            (define-key anaconda-mode-map (kbd "s-.") 'anaconda-mode-goto-definitions)
+            (define-key anaconda-mode-map (kbd "s-*") 'anaconda-mode-nav-pop-marker)
+            (define-key anaconda-mode-map (kbd "s-?") 'anaconda-mode-view-doc)))
 
 (defun my-python-mode-set-company-backends ()
   (set (make-local-variable 'company-backends)
-       '(company-dabbrev-code)))
+       '(company-dabbrev-code
+         company-anaconda)))
 
 (provide 'init-python)

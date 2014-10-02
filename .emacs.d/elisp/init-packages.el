@@ -7,10 +7,13 @@
 (defvar my-packages
   '(ace-jump-mode
     ace-window
+    anaconda-mode
     browse-kill-ring
     clojure-mode
     column-marker
     company
+    company-anaconda
+    company-go
     dash
     diminish
     exec-path-from-shell
