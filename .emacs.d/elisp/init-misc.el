@@ -4,7 +4,7 @@
 (setq company-idle-delay 0.5
       company-tooltip-limit 10
       company-minimum-prefix-length 2)
-(global-company-mode 1)
+(add-hook 'after-init-hook 'global-company-mode)
 
 (require 'yasnippet)
 (add-to-list 'yas-snippet-dirs (expand-file-name "snippets/shnippet" dotemacs-dir))
