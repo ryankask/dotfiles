@@ -24,7 +24,8 @@
 
 (defun my-python-mode-set-company-backends ()
   (set (make-local-variable 'company-backends)
-       '(company-dabbrev-code
+       '(company-capf
+         company-dabbrev-code
          company-anaconda)))
 
 (provide 'init-python)

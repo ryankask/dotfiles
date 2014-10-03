@@ -12,4 +12,7 @@
 (eval-after-load "company"
   '(diminish 'company-mode))
 
+(eval-after-load "anaconda-mode"
+  '(diminish 'anaconda-mode))
+
 (provide 'init-diminish)
