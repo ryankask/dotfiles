@@ -23,7 +23,6 @@ install lua
 install htop-osx
 install hub
 install tarsnap
-install haskell-platform
 install git-flow
 install curl-ca-bundle
 install go
@@ -32,5 +31,6 @@ install zsh
 install reattach-to-user-namespace
 install libyaml
 install fasd
+install boot2docker
 
 cleanup
