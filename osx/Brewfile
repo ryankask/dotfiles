@@ -2,7 +2,7 @@ update
 upgrade
 
 install git
-install emacs --cocoa --srgb --with-gnutls
+install emacs --cocoa --with-gnutls
 install coreutils
 install findutils
 install bash
