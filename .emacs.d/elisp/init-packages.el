@@ -25,6 +25,7 @@
     lua-mode
     magit
     markdown-mode
+    nlinum
     cider
     org
     rainbow-mode
