@@ -32,5 +32,6 @@ install reattach-to-user-namespace
 install libyaml
 install fasd
 install boot2docker
+install gawk
 
 cleanup
