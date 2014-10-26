@@ -37,6 +37,7 @@
     solarized-theme
     undo-tree
     volatile-highlights
+    yaml-mode
     yasnippet)
   "A list of packages that must be installed.")
 
