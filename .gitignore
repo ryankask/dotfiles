@@ -9,24 +9,6 @@
 auto-save-list
 tramp
 
-# Python
-
-*.py[cod]
-*.so
-*.egg
-*.egg-info
-dist
-build
-eggs
-parts
-develop-eggs
-.installed.cfg
-pip-log.txt
-.coverage
-.tox
-nosetests.xml
-*.mo
-
 # OS X
 
 .DS_Store
