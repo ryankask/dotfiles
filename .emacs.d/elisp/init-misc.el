@@ -44,6 +44,9 @@
 (setq web-mode-markup-indent-offset 2
       web-mode-css-indent-offset 2
       web-mode-code-indent-offset 2)
+(eval-after-load "web-mode"
+  '(progn
+     (add-to-list 'company-dabbrev-code-modes 'web-mode)))
 
 ;; Javascript
 (setq js-indent-level 2)
