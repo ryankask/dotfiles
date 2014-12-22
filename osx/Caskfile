@@ -13,7 +13,6 @@ cask install vagrant
 cask install java
 cask install gpgtools
 cask install skype
-cask install lighttable
 cask install the-unarchiver
 cask install mou
 cask install alfred
@@ -21,4 +20,4 @@ cask alfred link
 cask install limechat
 cask install google-hangouts
 cask install viscosity
-cask install silverlight
+cask install dash
