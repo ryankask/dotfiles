@@ -7,6 +7,7 @@
 (defvar my-packages
   '(ace-jump-mode
     ace-window
+    alchemist
     anaconda-mode
     browse-kill-ring
     clojure-mode
@@ -16,6 +17,7 @@
     company-go
     dash
     diminish
+    elixir-mode
     exec-path-from-shell
     expand-region
     flycheck
@@ -29,6 +31,7 @@
     cider
     org
     rainbow-mode
+    ruby-end
     rust-mode
     s
     scss-mode
