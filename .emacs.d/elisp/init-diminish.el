@@ -15,4 +15,10 @@
 (eval-after-load "anaconda-mode"
   '(diminish 'anaconda-mode))
 
+(eval-after-load "ruby-end"
+  '(diminish 'ruby-end-mode))
+
+(eval-after-load "alchemist"
+  '(diminish 'alchemist-mode "alch"))
+
 (provide 'init-diminish)
