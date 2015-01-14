@@ -28,8 +28,8 @@
       ido-handle-duplicate-virtual-buffers 2
       ido-max-work-file-list 250
       ido-max-dir-file-cache 250
+      ido-ignore-extensions t
       ido-save-directory-list-file (expand-file-name "ido.hist" dotemacs-dir))
-(add-to-list 'ido-ignore-files "\\.DS_Store")
 (ido-mode t)
 (ido-ubiquitous-mode t)
 

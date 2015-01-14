@@ -3,6 +3,9 @@
 (setq tab-always-indent 'complete)
 (setq-default indent-tabs-mode nil
               tab-width 4)
+(setq completion-ignored-extensions
+      (append completion-ignored-extensions
+              '(".DS_Store")))
 
 (add-hook 'text-mode-hook 'abbrev-mode)
 
