@@ -20,18 +20,21 @@
             (define-key python-mode-map (kbd "C-c /") 'python-debug-insert-ipdb-set-trace)
             (define-key python-mode-map (kbd "C-c p") 'python-debug-insert-pudb-set-trace)
 
+            (my-python-mode-set-company-backends)
+
             (when my-python-enable-anaconda-mode
               (anaconda-mode)
               (define-key anaconda-mode-map (kbd "s-.") 'anaconda-mode-goto-definitions)
               (define-key anaconda-mode-map (kbd "s-*") 'anaconda-mode-nav-pop-marker)
               (define-key anaconda-mode-map (kbd "s-?") 'anaconda-mode-view-doc))))
 
-
 (defun my-python-mode-set-company-backends ()
-  (let ((my-company-backends) '(company-capf
-                                company-dabbrev-code))
-    (when my-python-enable-anaconda-mode
-      (append-to-list 'my-company-backends 'company-anaconda))
-    (set (make-local-variable 'company-backends) my-company-backends)))
+  (let ((my-python-company-backends '(company-dabbrev-code)))
+    (set (make-local-variable 'company-backends)
+         (if my-python-enable-anaconda-mode
+             (append my-python-company-backends
+                     '(company-capf
+                       company-anaconda))
+           my-python-company-backends))))
 
 (provide 'init-python)
