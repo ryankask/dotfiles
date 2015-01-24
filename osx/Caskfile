@@ -21,3 +21,4 @@ cask install limechat
 cask install google-hangouts
 cask install viscosity
 cask install dash
+cask install ngrok
