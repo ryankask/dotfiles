@@ -9,6 +9,11 @@
 auto-save-list
 tramp
 
+# JetBrains
+
+*.iml
+.idea/
+
 # OS X
 
 .DS_Store
