@@ -112,11 +112,11 @@
 	<key>NSWindow Frame Preferences</key>
 	<string>488 393 924 485 0 0 1440 878 </string>
 	<key>NSWindow Frame SUStatusFrame</key>
-	<string>526 561 384 129 0 0 1440 878 </string>
+	<string>526 561 384 129 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 158 570 706 0 0 1440 878 </string>
+	<string>0 1 843 876 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>371 128 570 706 0 0 1440 878 </string>
+	<string>705 171 570 706 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
 	<string>125 172 570 706 0 0 1440 878 </string>
 	<key>NSWindow Frame iTerm Window 3</key>
@@ -2990,7 +2990,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2014-11-22T17:40:14Z</date>
+	<date>2015-04-20T08:29:07Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>ShowBookmarkName</key>
@@ -3024,7 +3024,7 @@
 	<key>WebKitDefaultFontSize</key>
 	<integer>11</integer>
 	<key>WebKitStandardFont</key>
-	<string>.Lucida Grande UI</string>
+	<string>.Helvetica Neue DeskInterface</string>
 	<key>WindowNumber</key>
 	<true/>
 	<key>WindowStyle</key>
