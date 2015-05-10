@@ -8,12 +8,10 @@
   '(ace-jump-mode
     ace-window
     alchemist
-    anaconda-mode
     browse-kill-ring
     clojure-mode
     column-marker
     company
-    company-anaconda
     company-go
     dash
     diminish
@@ -32,7 +30,6 @@
     org
     rainbow-mode
     ruby-end
-    rust-mode
     s
     scss-mode
     smartparens
