@@ -16,6 +16,7 @@
 (require 'init-haskell)
 (require 'init-go)
 (require 'init-elixir)
+(require 'init-web)
 (require 'init-misc)
 (when (memq window-system '(mac ns))
   (require 'init-osx))

@@ -41,17 +41,6 @@
 (define-key my-kbs-map (kbd "M-X") 'smex-major-mode-commands)
 (define-key my-kbs-map (kbd "C-c M-x") 'execute-extended-command) ;; old M-x
 
-;; Web mode
-(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.eex\\'" . web-mode))
-(setq web-mode-markup-indent-offset 2
-      web-mode-css-indent-offset 2
-      web-mode-code-indent-offset 2)
-(eval-after-load "web-mode"
-  '(progn
-     (add-to-list 'company-dabbrev-code-modes 'web-mode)))
-(add-to-list 'sp-ignore-modes-list 'web-mode)
-
 ;; Javascript
 (setq js-indent-level 2)
 
