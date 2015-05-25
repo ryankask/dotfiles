@@ -5,9 +5,9 @@
 (setq url-http-attempt-keepalives nil)
 
 (defvar my-packages
-  '(ace-jump-mode
-    ace-window
+  '(ace-window
     alchemist
+    avy
     browse-kill-ring
     clojure-mode
     column-marker

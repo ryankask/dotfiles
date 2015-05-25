@@ -59,9 +59,10 @@
 (setq rainbow-html-colors-major-mode-list
       '(html-mode css-mode php-mode nxml-mode xml-mode scss-mode))
 
-;; Ace jump mode - http://www.emacswiki.org/emacs-en/AceJump
-(define-key my-kbs-map (kbd "s-.") 'ace-jump-mode)
-(define-key my-kbs-map (kbd "s-/") 'ace-jump-line-mode)
+;; Avy - https://github.com/abo-abo/avy
+(setq avy-keys '(?a ?r ?s ?t ?d ?h ?n ?e ?i ?o))
+(define-key my-kbs-map (kbd "s-.") 'avy-goto-word-1)
+(define-key my-kbs-map (kbd "s-/") 'avy-goto-line)
 
 ;; SCSS
 (setq scss-compile-at-save nil)
