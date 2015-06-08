@@ -23,3 +23,4 @@ cask install viscosity
 cask install dash
 cask install ngrok
 cask insatll imageoptim
+cask install cyberduck
