@@ -22,6 +22,7 @@
 
 ;; ido
 (setq ido-enable-flex-matching t
+      ido-enable-prefix nil
       ido-create-new-buffer 'always
       ido-default-file-method 'selected-window
       ido-auto-merge-work-directories-length -1
@@ -30,9 +31,11 @@
       ido-max-work-file-list 250
       ido-max-dir-file-cache 250
       ido-ignore-extensions t
+      ido-use-faces nil
       ido-save-directory-list-file (expand-file-name "ido.hist" dotemacs-dir))
 (ido-mode t)
 (ido-ubiquitous-mode t)
+(flx-ido-mode t)
 
 ;; Smex
 (setq smex-save-file (expand-file-name "smex.hist" dotemacs-dir))

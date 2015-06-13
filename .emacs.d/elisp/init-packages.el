@@ -21,6 +21,7 @@
     flycheck
     go-mode
     haskell-mode
+    flx-ido
     ido-ubiquitous
     lua-mode
     magit
