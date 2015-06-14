@@ -33,8 +33,6 @@
       ido-save-directory-list-file (expand-file-name "ido.hist" dotemacs-dir))
 (ido-mode t)
 (ido-ubiquitous-mode t)
-(setq flx-ido-use-faces nil)
-(flx-ido-mode t)
 
 ;; Smex
 (setq smex-save-file (expand-file-name "smex.hist" dotemacs-dir))
