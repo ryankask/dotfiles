@@ -79,7 +79,6 @@
 (setq ag-highlight-search t)
 
 ;; Projectile
-(setq projectile-cache-file (expand-file-name  "projectile.cache" dotemacs-dir))
 (projectile-global-mode t)
 
 (provide 'init-misc)
