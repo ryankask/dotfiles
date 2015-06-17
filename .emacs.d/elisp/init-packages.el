@@ -6,6 +6,7 @@
 
 (defvar my-packages
   '(ace-window
+    ag
     alchemist
     avy
     browse-kill-ring
@@ -28,6 +29,7 @@
     nlinum
     cider
     org
+    projectile
     rainbow-mode
     ruby-end
     s
