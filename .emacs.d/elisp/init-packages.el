@@ -22,7 +22,12 @@
     flycheck
     go-mode
     haskell-mode
+    helm
+    helm-ag
+    helm-descbinds
+    helm-projectile
     ido-ubiquitous
+    ido-vertical-mode
     lua-mode
     magit
     markdown-mode

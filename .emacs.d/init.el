@@ -18,6 +18,7 @@
 (require 'init-elixir)
 (require 'init-web)
 (require 'init-misc)
+(require 'init-ido)
 (when (memq window-system '(mac ns))
   (require 'init-osx))
 (require 'init-diminish)
