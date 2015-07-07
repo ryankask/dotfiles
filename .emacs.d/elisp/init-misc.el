@@ -59,5 +59,6 @@
 
 ;; Projectile
 (projectile-global-mode t)
+(setq projectile-keymap-prefix (kbd "C-c ;"))
 
 (provide 'init-misc)
