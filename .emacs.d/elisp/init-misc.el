@@ -45,7 +45,13 @@
 (define-key my-kbs-map (kbd "C-=") 'er/expand-region)
 
 ;; magit
-(define-key my-kbs-map (kbd "C-c g") 'magit-status)
+(define-key my-kbs-map (kbd "C-x g") 'magit-status)
+(define-key my-kbs-map (kbd "C-x M-g") 'magit-dispatch-popup)
+(define-key my-kbs-map (kbd "s-m m") 'magit-status)
+(define-key my-kbs-map (kbd "s-m l") 'magit-log)
+(define-key my-kbs-map (kbd "s-m f") 'magit-log-buffer-file)
+(define-key my-kbs-map (kbd "s-m b") 'magit-blame)
+(setq magit-completing-read-function 'magit-ido-completing-read)
 
 ;; Shell
 (setq sh-basic-offset 2
