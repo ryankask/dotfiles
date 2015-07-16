@@ -61,7 +61,8 @@
 (add-to-list 'auto-mode-alist '("\\.zsh\\'" . sh-mode))
 
 ;; ag.el
-(setq ag-highlight-search t)
+(setq ag-highlight-search t
+      ag-reuse-buffers t)
 
 ;; Projectile
 (setq projectile-keymap-prefix (kbd "C-c ;"))
