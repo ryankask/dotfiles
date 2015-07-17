@@ -5,7 +5,6 @@
 
 (add-hook 'python-mode-hook
           (lambda ()
-            (interactive)
             (column-marker-1 80)
             (column-marker-2 100)
             (define-key python-mode-map (kbd "C-m") 'newline-and-indent)
