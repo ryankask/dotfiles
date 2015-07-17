@@ -51,7 +51,8 @@
 (define-key my-kbs-map (kbd "s-m l") 'magit-log)
 (define-key my-kbs-map (kbd "s-m f") 'magit-log-buffer-file)
 (define-key my-kbs-map (kbd "s-m b") 'magit-blame)
-(setq magit-completing-read-function 'magit-ido-completing-read)
+(setq magit-completing-read-function 'magit-ido-completing-read
+      magit-branch-arguments (remove "--track" magit-branch-arguments))
 
 ;; Shell
 (setq sh-basic-offset 2
