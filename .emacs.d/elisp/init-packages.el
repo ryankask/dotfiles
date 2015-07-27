@@ -14,18 +14,20 @@
     column-marker
     company
     company-go
+    company-jedi
     dash
     diminish
     elixir-mode
     exec-path-from-shell
     expand-region
+    f
     flycheck
     go-mode
     haskell-mode
-    helm
-    helm-ag
-    helm-descbinds
-    helm-projectile
+    ;; helm
+    ;; helm-ag
+    ;; helm-descbinds
+    ;; helm-projectile
     ido-ubiquitous
     ido-vertical-mode
     lua-mode
@@ -43,6 +45,7 @@
     smex
     solarized-theme
     undo-tree
+    virtualenvwrapper
     volatile-highlights
     web-mode
     yaml-mode
