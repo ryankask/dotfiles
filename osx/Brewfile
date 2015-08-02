@@ -34,5 +34,6 @@ install libyaml
 install fasd
 install gawk
 install elixir
+install libffi
 
 cleanup
