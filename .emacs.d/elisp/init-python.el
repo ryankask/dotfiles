@@ -32,4 +32,9 @@
        '((company-dabbrev-code
           company-jedi))))
 
+(with-eval-after-load "company-jedi"
+  (defun company-jedi-annotation (candidate)
+    "Override annotating function"
+    nil))
+
 (provide 'init-python)
