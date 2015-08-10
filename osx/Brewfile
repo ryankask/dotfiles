@@ -29,7 +29,6 @@ install curl-ca-bundle
 install go
 install dnsmasq
 install zsh
-install reattach-to-user-namespace
 install libyaml
 install fasd
 install gawk
