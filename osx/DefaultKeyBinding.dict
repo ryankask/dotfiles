@@ -24,4 +24,6 @@
     "~w"    = "copy:";                      /* M-w */
     "^w"    = "cut:";                       /* C-w */
     "^y"    = "paste:";                     /* C-y */
+    "^ "    = "setMark:";                   /* C-Spc */
+    "^w"    = "deleteToMark:";              /* C-w */
 }
