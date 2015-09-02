@@ -13,7 +13,6 @@ cask install vagrant
 cask install java
 cask install gpgtools
 cask install skype
-cask install the-unarchiver
 cask install mou
 cask install alfred
 cask alfred link
