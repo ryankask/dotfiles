@@ -29,8 +29,9 @@
 
 ;; Avy - https://github.com/abo-abo/avy
 (setq avy-keys '(?a ?r ?s ?t ?d ?h ?n ?e ?i ?o))
-(define-key my-kbs-map (kbd "s-.") 'avy-goto-word-1)
-(define-key my-kbs-map (kbd "s-/") 'avy-goto-line)
+(define-key my-kbs-map (kbd "C-'") 'avy-goto-char-2)
+(define-key my-kbs-map (kbd "M-g g") 'avy-goto-line)
+(define-key my-kbs-map (kbd "M-g w") 'avy-goto-word-1)
 
 ;; SCSS
 (setq scss-compile-at-save nil)
