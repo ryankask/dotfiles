@@ -7,6 +7,9 @@
       (append completion-ignored-extensions
               '(".DS_Store")))
 
+(put 'upcase-region 'disabled nil)
+(put 'downcase-region 'disabled nil)
+
 (add-hook 'text-mode-hook 'abbrev-mode)
 
 (require 'smartparens-config)
@@ -17,8 +20,8 @@
 
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'forward)
+(setq uniquify-separator "/")
 (setq uniquify-after-kill-buffer-p t)
-(setq uniquify-ignore-buffers-re "^\\*")
 (setq uniquify-ignore-buffers-re "^\\*")
 
 (require 'midnight)
