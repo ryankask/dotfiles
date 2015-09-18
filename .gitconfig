@@ -4,11 +4,15 @@
 
 [alias]
     st = status
-    sts = status -s -b
-    ci = commit
+    sts = status -s
+    stb = status -s -b
+    cam = commit -am
+    fp = fetch -p
     br = branch
     co = checkout
     df = diff
+    rb = rebase
+    rbi = rebase -i
     lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
     last = cat-file commit HEAD
     gui = gitk --all
