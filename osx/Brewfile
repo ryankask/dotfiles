@@ -12,7 +12,6 @@ install the_silver_searcher
 install python
 install python3
 install pyenv
-install pyenv-virtualenv
 install bash-completion
 install node
 install chruby
