@@ -1,19 +1,8 @@
-(setq tab-stop-list '(4 8 12 16 20 24 28 32 36 40 44 48 52 56 60)
-      text-mode-hook '(turn-on-auto-fill text-mode-hook-identify)
-      require-final-newline t)
-
-;; Text encoding
-(define-coding-system-alias 'UTF-8 'utf-8)
-(setq locale-coding-system 'utf-8)
-(prefer-coding-system 'utf-8)
-(set-default-coding-systems 'utf-8)
-(set-keyboard-coding-system 'utf-8)
-(set-language-environment 'utf-8)
-(set-selection-coding-system 'utf-8)
-(set-terminal-coding-system 'utf-8)
-(setq utf-translate-cjk-mode nil)
-
-(setq tab-always-indent 'complete)
+(setq tab-always-indent 'complete
+      tab-stop-list (number-sequence 4 200 4)
+      require-final-newline t
+      text-mode-hook '(turn-on-auto-fill
+                       text-mode-hook-identify))
 (setq-default indent-tabs-mode nil
               tab-width 4)
 
@@ -41,17 +30,16 @@
 
 ;; Save history
 (savehist-mode 1)
-(setq
-   backup-by-copying t
-   backup-directory-alist
-    '(("." . "~/.emacs.d/backups"))
-   delete-old-versions t
-   kept-new-versions 6
-   kept-old-versions 2
-   version-control t)
+(setq make-backup-files t
+      vc-make-backup-files t
+      backup-by-copying t
+      backup-directory-alist '(("." . "~/.emacs.d/backups"))
+      delete-old-versions t
+      kept-new-versions 6
+      kept-old-versions 2
+      version-control t)
 
 ;; Package stuff
-
 (package-initialize)
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (setq url-http-attempt-keepalives nil)

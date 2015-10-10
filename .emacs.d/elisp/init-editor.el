@@ -1,6 +1,11 @@
 (global-auto-revert-mode t)
 
-(setq tab-always-indent 'complete)
+(setq tab-always-indent 'complete
+      tab-stop-list (number-sequence 4 200 4)
+      require-final-newline t
+      text-mode-hook '(turn-on-auto-fill
+                       text-mode-hook-identify
+                       abbrev-mode))
 (setq-default indent-tabs-mode nil
               tab-width 4)
 (setq completion-ignored-extensions
@@ -9,8 +14,6 @@
 
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
-
-(add-hook 'text-mode-hook 'abbrev-mode)
 
 (require 'smartparens-config)
 (smartparens-global-mode t)

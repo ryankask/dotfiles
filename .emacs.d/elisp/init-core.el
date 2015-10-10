@@ -2,21 +2,7 @@
 
 (setq user-full-name "Ryan Kaskel"
       user-mail-address "dev@ryankaskel.com"
-      tab-stop-list '(4 8 12 16 20 24 28 32 36 40 44 48 52 56 60)
-      text-mode-hook '(turn-on-auto-fill text-mode-hook-identify)
-      gc-cons-threshold 50000000
-      require-final-newline t)
-
-;; Text encoding
-(define-coding-system-alias 'UTF-8 'utf-8)
-(setq locale-coding-system 'utf-8)
-(prefer-coding-system 'utf-8)
-(set-default-coding-systems 'utf-8)
-(set-keyboard-coding-system 'utf-8)
-(set-language-environment 'utf-8)
-(set-selection-coding-system 'utf-8)
-(set-terminal-coding-system 'utf-8)
-(setq utf-translate-cjk-mode nil)
+      gc-cons-threshold 50000000)
 
 ;; Misc
 (setq safe-local-variable-values '((do-delete-trailing-whitespace)))
@@ -63,9 +49,9 @@
               (seq "~" eol)                 ;; backup-files
               (seq bol "svn" eol)           ;; svn dirs
               (seq ".pyc" eol))))
-(setq dired-omit-files-p t)
-(setq dired-recursive-deletes 'always)
-(setq dired-recursive-copies 'always)
+(setq dired-omit-files-p t
+      dired-recursive-deletes 'always
+      dired-recursive-copies 'always)
 
 ;; Use Google Chrome to open links
 (setq browse-url-browser-function 'browse-url-generic
