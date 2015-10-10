@@ -2,9 +2,13 @@
 (define-key my-kbs-map (kbd "C-c a") 'org-agenda)
 (define-key my-kbs-map (kbd "C-c M-d") 'org-date-from-calendar)
 
-(setq org-log-done t)
-(setq org-completion-use-ido t)
-(setq org-agenda-files '("~/org/todo.org"))
+(setq org-log-done t
+      org-completion-use-ido t
+      org-directory "~/Dropbox/org"
+      org-directory-as-directory (file-name-as-directory org-directory))
+
+(defun my-org-path (relpath)
+  (concat org-directory-as-directory relpath))
 
 (defun org-summary-todo (n-done n-not-don)
   "Switch entry to DONE when all subentries are done, to TODO otherwise."
@@ -18,13 +22,14 @@
         (sequence "REPORT(r)" "BUG(b)" "KNOWNCAUSE(k)" "REQUEST(q)" "|" "FIXED(f)" "DONE(d)")
         (sequence "|" "CANCELED(c)" "DUPLICATE(2)" "MOVED(m)")))
 
-(setq org-directory "~/org")
+;; Agenda
+(setq org-agenda-files `(,(my-org-path "agenda.org")))
 
 ;; Capture
-(setq org-default-notes-file (concat org-directory "/notes.org"))
+(setq org-default-notes-file (my-org-path "notes.org"))
 (define-key my-kbs-map (kbd "C-c c") 'org-capture)
 
 ;; Archive
-(setq org-archive-location (concat org-directory "/archive/%s_archive::"))
+(setq org-archive-location (my-org-path "archives/%s_archive::"))
 
 (provide 'init-org)
