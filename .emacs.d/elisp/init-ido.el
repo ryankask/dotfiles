@@ -11,6 +11,7 @@
 (ido-mode t)
 (ido-ubiquitous-mode t)
 (ido-vertical-mode 1)
+(setq ido-vertical-define-keys 'C-n-and-C-p-only)
 
 (setq smex-save-file (expand-file-name "smex.hist" dotemacs-dir))
 (setq smex-history-length 250)
