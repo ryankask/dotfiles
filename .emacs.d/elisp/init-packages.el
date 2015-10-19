@@ -1,5 +1,14 @@
 (require 'package)
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
+
+(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
+                         ("melpa" . "http://melpa.org/packages/")
+                         ("melpa-stable" . "http://stable.melpa.org/packages/")))
+
+(when (boundp 'package-pinned-packages)
+  (setq package-pinned-packages '((cider . "melpa-stable")
+                                  (clojure-mode . "melpa-stable")
+                                  (haskell-mode . "melpa-stable"))))
+
 (package-initialize)
 
 (setq url-http-attempt-keepalives nil)
