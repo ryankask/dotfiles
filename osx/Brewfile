@@ -25,7 +25,6 @@ install lua
 install htop-osx
 install hub
 install tarsnap
-install git-flow
 install curl-ca-bundle
 install go
 install dnsmasq
