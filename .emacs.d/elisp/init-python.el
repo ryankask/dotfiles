@@ -1,36 +1,41 @@
-(require 'f)
-
-(setq venv-location "~/.virtualenvs"
-      my-default-virtualenv-path (f-join venv-location "local")
-      my-default-virtualenv-bin (f-join my-default-virtualenv-path "bin")
-      python-shell-virtualenv-path my-default-virtualenv-path
-      jedi:environment-root my-default-virtualenv-path
-      flycheck-python-flake8-executable (f-join my-default-virtualenv-bin "flake8"))
-
-(add-hook 'python-mode-hook
-          (lambda ()
-            (column-marker-1 80)
-            (column-marker-2 100)
-            (define-key python-mode-map (kbd "C-m") 'newline-and-indent)
-            (define-key python-mode-map (kbd "C-c /") 'python-debug-insert-ipdb-set-trace)
-            (hack-local-variables)
-            (jedi:setup)
-            (my-python-mode-set-company-backends)))
-
-(defun python-debug-insert-ipdb-set-trace ()
+(defun my-python-debug-insert-ipdb-set-trace ()
   "Insert ipdb trace call into buffer."
   (interactive)
   (insert "import ipdb; ipdb.set_trace()"))
 
-;; If `project-venv-name` is a string, mark it as safe
-(put 'project-venv-name 'safe-local-variable #'stringp)
+(use-package python-environment
+  :ensure t
+  :init
+  (setq venv-location "~/.virtualenvs"
+        python-environment-directory venv-location
+        python-environment-default-root-name "local"))
+
+(use-package python
+  :init
+  (setq my-default-virtualenv-path (python-environment-root-path)
+        python-shell-virtualenv-path my-default-virtualenv-path
+        flycheck-python-flake8-executable (python-environment-bin "flake8" my-default-virtualenv-path))
+  (put 'project-venv-name 'safe-local-variable #'stringp)
+  (add-hook 'python-mode-hook
+            (lambda ()
+              (column-marker-1 80)
+              (column-marker-2 100)))
+  :config
+  (bind-key "C-c /" 'my-python-debug-insert-ipdb-set-trace python-mode-map))
 
 (defun my-python-mode-set-company-backends ()
   (set (make-local-variable 'company-backends)
        '((company-dabbrev-code
           company-jedi))))
 
-(with-eval-after-load "company-jedi"
+(use-package company-jedi
+  :ensure t
+  :init
+  (add-hook 'python-mode-hook
+            (lambda ()
+              (jedi:setup)
+              (my-python-mode-set-company-backends)))
+  :config
   (defun company-jedi-annotation (candidate)
     "Override annotating function"
     nil))

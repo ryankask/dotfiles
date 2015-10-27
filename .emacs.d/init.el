@@ -1,24 +1,61 @@
-;;; Ryan Kaskel's emacs configuration
+;;;; Ryan Kaskel's emacs configuration
 
-;; Set up paths
-(defvar dotemacs-dir (file-name-directory load-file-name))
-(defvar elisp-dir (expand-file-name "elisp" dotemacs-dir))
+;;; Paths
+
+(defconst dotemacs-dir (file-name-directory load-file-name))
+(defconst elisp-dir (expand-file-name "elisp" dotemacs-dir))
 (add-to-list 'load-path elisp-dir)
 
-(require 'init-keymap)
-(require 'init-core)
-(require 'init-packages)
-(require 'init-editor)
-(require 'init-ui)
-(require 'init-python)
-(require 'init-org)
-(require 'init-clojure)
-(require 'init-haskell)
-(require 'init-go)
-(require 'init-elixir)
-(require 'init-web)
-(require 'init-misc)
-(require 'init-ido)
-(when (memq window-system '(mac ns))
-  (require 'init-osx))
-(require 'init-diminish)
+;;; Packaging
+
+(require 'package)
+(setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
+                         ("melpa" . "https://melpa.org/packages/")
+                         ("melpa-stable" . "https://stable.melpa.org/packages/")))
+(package-initialize)
+
+(setq url-http-attempt-keepalives nil)
+
+(defconst my-packages
+  '(use-package
+    diminish)
+  "A list of packages that must be installed.")
+
+(defun install-my-packages ()
+  "Install each package in ``my-packages`` if it isn't installed."
+  (let ((package-contents-refreshed nil))
+    (dolist (my-package my-packages)
+      (unless (package-installed-p my-package)
+        (unless package-contents-refreshed
+          (package-refresh-contents)
+          (setq package-contents-refreshed t))
+        (package-install my-package)))))
+
+(install-my-packages)
+
+;;; Initialization
+
+;; Base packages
+
+(eval-when-compile
+  (require 'use-package))
+(require 'diminish)
+(require 'bind-key)
+
+;; Init packages
+
+(use-package init-core)
+(use-package init-editor)
+(use-package init-ui)
+(use-package init-osx
+  :if (eq system-type 'darwin))
+(use-package init-misc)
+(use-package init-ido)
+(use-package init-python)
+(use-package init-clojure
+  :disabled t)
+(use-package init-haskell
+  :disabled t)
+(use-package init-go)
+(use-package init-elixir)
+(use-package init-web)

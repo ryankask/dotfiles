@@ -15,27 +15,6 @@
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
 
-(require 'smartparens-config)
-(smartparens-global-mode t)
-(show-smartparens-global-mode t)
-(sp-use-smartparens-bindings)
-(setq sp-autoescape-string-quote nil)
-
-(require 'uniquify)
-(setq uniquify-buffer-name-style 'forward)
-(setq uniquify-separator "/")
-(setq uniquify-after-kill-buffer-p t)
-(setq uniquify-ignore-buffers-re "^\\*")
-
-(require 'midnight)
-
-(require 're-builder)
-(setq reb-re-syntax 'string)
-
-(require 'browse-kill-ring)
-(browse-kill-ring-default-keybindings)
-(define-key my-kbs-map (kbd "s-y") 'browse-kill-ring)
-
 ;; get rid of trailing whitespace
 (defvar do-delete-trailing-whitespace t)
 (add-hook 'before-save-hook
@@ -43,10 +22,46 @@
             (unless (or (eq major-mode 'org-mode) (not do-delete-trailing-whitespace))
               (delete-trailing-whitespace))))
 
-(define-key my-kbs-map (kbd "C-s-/") 'undo-tree-redo)
-(global-undo-tree-mode)
+(use-package smartparens
+  :ensure t
+  :diminish smartparens-mode
+  :config
+  (require 'smartparens-config)
+  (smartparens-global-mode t)
+  (show-smartparens-global-mode t)
+  (sp-use-smartparens-bindings)
+  (setq sp-autoescape-string-quote nil))
 
-(require 'volatile-highlights)
-(volatile-highlights-mode t)
+(use-package uniquify
+  :config
+  (setq uniquify-buffer-name-style 'forward
+        uniquify-separator "/"
+        uniquify-after-kill-buffer-p t
+        uniquify-ignore-buffers-re "^\\*"))
+
+(use-package midnight)
+
+(use-package re-builder
+  :init
+  (setq reb-re-syntax 'string))
+
+(use-package browse-kill-ring
+  :ensure t
+  :bind ("s-y" . browse-kill-ring)
+  :config
+  (browse-kill-ring-default-keybindings))
+
+(use-package undo-tree
+  :ensure
+  :diminish undo-tree-mode
+  :bind ("C-s-/" . undo-tree-redo)
+  :config
+  (global-undo-tree-mode))
+
+(use-package volatile-highlights
+  :ensure t
+  :diminish volatile-highlights-mode
+  :config
+  (volatile-highlights-mode t))
 
 (provide 'init-editor)
