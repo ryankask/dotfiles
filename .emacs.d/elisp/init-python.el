@@ -21,6 +21,7 @@
               (column-marker-1 80)
               (column-marker-2 100)))
   :config
+  (bind-key "C-m" 'newline-and-indent python-mode-map)
   (bind-key "C-c /" 'my-python-debug-insert-ipdb-set-trace python-mode-map))
 
 (defun my-python-mode-set-company-backends ()
