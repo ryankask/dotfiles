@@ -11,6 +11,7 @@
 (use-package avy
   :bind (("C-'" . avy-goto-char-2)
          ("M-g g" . avy-goto-line)
+         ("M-g e" . avy-goto-word-0)
          ("M-g w" . avy-goto-word-1))
   :init
   (setq avy-keys '(?a ?r ?s ?t ?d ?h ?n ?e ?i ?o)))
