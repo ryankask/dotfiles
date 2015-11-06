@@ -13,7 +13,6 @@ install python
 install python3
 install pyenv
 install bash-completion
-install node
 install chruby
 install ruby-install
 install leiningen
