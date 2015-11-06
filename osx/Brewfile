@@ -10,7 +10,6 @@ install tmux
 install ack
 install the_silver_searcher
 install python
-install python3
 install pyenv
 install bash-completion
 install chruby
