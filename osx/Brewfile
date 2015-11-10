@@ -32,5 +32,6 @@ install fasd
 install gawk
 install elixir
 install libffi
+install chicken
 
 cleanup
