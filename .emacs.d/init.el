@@ -15,7 +15,7 @@
 (package-initialize)
 
 (setq url-http-attempt-keepalives nil
-      gnutls-verify-error t)
+      gnutls-verify-error nil)
 
 (defconst my-packages
   '(use-package
