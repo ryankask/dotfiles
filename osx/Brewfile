@@ -19,7 +19,6 @@ install postgres
 install tree
 install redis
 install aspell --with-lang-en --with-lang-pl
-install lua
 install htop-osx
 install hub
 install tarsnap
