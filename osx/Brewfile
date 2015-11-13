@@ -20,7 +20,6 @@ install tree
 install redis
 install aspell --with-lang-en --with-lang-pl
 install htop-osx
-install hub
 install tarsnap
 install curl-ca-bundle
 install go

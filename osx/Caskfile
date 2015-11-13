@@ -15,7 +15,6 @@ cask install skype
 cask install mou
 cask install alfred
 cask alfred link
-cask install limechat
 cask install google-hangouts
 cask install viscosity
 cask install dash
