@@ -14,7 +14,8 @@
                          ("melpa-stable" . "https://stable.melpa.org/packages/")))
 (package-initialize)
 
-(setq url-http-attempt-keepalives nil)
+(setq url-http-attempt-keepalives nil
+      gnutls-verify-error t)
 
 (defconst my-packages
   '(use-package
