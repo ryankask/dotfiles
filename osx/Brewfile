@@ -21,7 +21,6 @@ install redis
 install aspell --with-lang-en --with-lang-pl
 install htop-osx
 install tarsnap
-install curl-ca-bundle
 install go
 install dnsmasq
 install zsh
