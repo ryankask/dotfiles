@@ -2,6 +2,7 @@ update
 upgrade
 
 install git
+install gnutls
 install emacs --cocoa --with-gnutls
 install coreutils
 install findutils
