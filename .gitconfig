@@ -28,6 +28,7 @@
     current = yellow bold
     local = yellow
     remote = green
+    upstream = cyan
 
 [color "diff"]
     meta = yellow bold
