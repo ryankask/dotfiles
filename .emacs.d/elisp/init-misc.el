@@ -50,8 +50,7 @@
          ("s-m f" . magit-log-buffer-file)
          ("s-m b" . magit-blame))
   :config
-  (setq magit-completing-read-function 'magit-ido-completing-read
-        magit-branch-arguments (remove "--track" magit-branch-arguments)))
+  (setq magit-completing-read-function 'magit-ido-completing-read))
 
 (use-package org
   :ensure t
