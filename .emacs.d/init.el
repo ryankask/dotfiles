@@ -50,15 +50,9 @@
 (use-package init-ui)
 (use-package init-osx
   :if (eq system-type 'darwin))
-(use-package init-ivy
-  :disabled t)
 (use-package init-misc)
 (use-package init-ido)
 (use-package init-python)
-(use-package init-clojure
-  :disabled t)
-(use-package init-haskell
-  :disabled t)
 (use-package init-go)
 (use-package init-elixir)
 (use-package init-web)
