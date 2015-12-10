@@ -1,5 +1,4 @@
-tap caskroom/homebrew-cask
-install brew-cask
+tap Caskroom/cask
 
 cask install iterm2
 cask install google-chrome
