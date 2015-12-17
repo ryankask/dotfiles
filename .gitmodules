@@ -1,6 +1,3 @@
-[submodule ".emacs.d/snippets/shnippet"]
-	path = .emacs.d/snippets/shnippet
-	url = https://github.com/LukeHoersten/shnippet
 [submodule "zsh/prezto"]
 	path = zsh/prezto
 	url = git@github.com:ryankask/prezto.git
