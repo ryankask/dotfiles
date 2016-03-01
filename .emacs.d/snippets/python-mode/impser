@@ -1,5 +1,5 @@
 # -*- mode: snippet; -*-
-# name: Import Django's reverse function
-# key: imprev
+# name: Import DRF's serializers module
+# key: impser
 # --
-from django.core.urlresolvers import reverse$0
+from rest_framework import serializers$0
