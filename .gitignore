@@ -2,12 +2,16 @@
 
 *~
 \#*\#
-.\#*
 /.emacs.desktop
 /.emacs.desktop.lock
-.elc
+*.elc
 auto-save-list
 tramp
+.\#*
+.org-id-locations
+*_archive
+*_flymake.*
+flycheck_*.el
 
 # JetBrains
 
