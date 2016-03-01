@@ -80,7 +80,9 @@
   (add-to-list 'yas-snippet-dirs (expand-file-name "snippets/shnippet" dotemacs-dir))
   (yas-global-mode 1)
   (setq-default yas-prompt-functions '(yas-ido-prompt yas-dropdown-prompt))
-  (add-hook 'snippet-mode-hook (lambda () (setq require-final-newline nil))))
+  (add-hook 'snippet-mode-hook
+            (lambda ()
+              (set (make-local-variable require-final-newline) nil))))
 
 ;;; Languages
 
