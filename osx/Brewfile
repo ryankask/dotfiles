@@ -30,5 +30,7 @@ install fasd
 install gawk
 install elixir
 install libffi
+install watchman
+install android-sdk
 
 cleanup
