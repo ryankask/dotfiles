@@ -1,6 +1,7 @@
 [user]
     name = Ryan Kaskel
     email = dev@ryankaskel.com
+    useconfigonly = true
 
 [alias]
     st = status
