@@ -15,8 +15,8 @@ flycheck_*.el
 
 # JetBrains
 
-*.iml
-.idea/
+/*.iml
+/.idea
 
 # OS X
 
