@@ -13,7 +13,6 @@ cask install gpgtools
 cask install skype
 cask install mou
 cask install alfred
-cask alfred link
 cask install google-hangouts
 cask install viscosity
 cask install dash
