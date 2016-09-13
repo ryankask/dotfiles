@@ -23,8 +23,8 @@
       backup-by-copying t
       backup-directory-alist `((".*" . ,my-backup-directory))
       delete-old-versions t
-      kept-new-versions 10
-      kept-old-versions 8
+      kept-new-versions 8
+      kept-old-versions 4
       version-control t)
 
 ;; Autosaves
