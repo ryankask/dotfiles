@@ -6,7 +6,7 @@
     },
     {
         "key": "ctrl+x ctrl+f",
-        "command": "workbench.action.files.openFile"
+        "command": "workbench.action.files.openFileFolder"
     },
     {
         "key": "ctrl+x ctrl+s",
