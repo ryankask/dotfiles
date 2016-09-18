@@ -12,6 +12,15 @@
 (setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
                          ("melpa" . "https://melpa.org/packages/")
                          ("melpa-stable" . "https://stable.melpa.org/packages/")))
+
+;; Redefine the function so no custom variables are set
+(defun package--save-selected-packages (&optional value)
+  "Set and save `package-selected-packages' to VALUE."
+  (when value
+    (setq package-selected-packages value))
+  (if after-init-time
+    (add-hook 'after-init-hook #'package--save-selected-packages)))
+
 (package-initialize)
 
 (setq url-http-attempt-keepalives nil
