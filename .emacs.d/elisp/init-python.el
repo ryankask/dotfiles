@@ -11,18 +11,18 @@
         python-environment-default-root-name "local"))
 
 (use-package python
+  :bind (:map python-mode-map
+              ("C-m" . newline-and-indent)
+              ("C-c /" . my-python-debug-insert-ipdb-set-trace))
   :init
   (setq my-default-virtualenv-path (python-environment-root-path)
-        python-shell-virtualenv-path my-default-virtualenv-path
+        python-shell-virtualenv-root my-default-virtualenv-path
         flycheck-python-flake8-executable (python-environment-bin "flake8" my-default-virtualenv-path))
-  (put 'project-venv-name 'safe-local-variable #'stringp)
+  (put 'python-shell-virtualenv-root 'safe-local-variable #'stringp)
   (add-hook 'python-mode-hook
             (lambda ()
               (column-marker-1 80)
-              (column-marker-2 100)))
-  :config
-  (bind-key "C-m" 'newline-and-indent python-mode-map)
-  (bind-key "C-c /" 'my-python-debug-insert-ipdb-set-trace python-mode-map))
+              (column-marker-2 100))))
 
 (defun my-python-mode-set-company-backends ()
   (set (make-local-variable 'company-backends)
