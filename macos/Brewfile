@@ -1,36 +1,57 @@
-update
-upgrade
+# -*- mode: ruby -*-
 
-install git
-install gnutls
-install emacs --with-cocoa --with-gnutls
-install coreutils
-install findutils
-install bash
-install tmux
-install ack
-install the_silver_searcher
-install python
-install pyenv
-install bash-completion
-install chruby
-install ruby-install
-install leiningen
-install postgres
-install tree
-install redis
-install aspell --with-lang-en --with-lang-pl
-install htop-osx
-install tarsnap
-install go
-install dnsmasq
-install zsh
-install libyaml
-install fasd
-install gawk
-install elixir
-install libffi
-install watchman
-install android-sdk
+tap 'caskroom/cask'
 
-cleanup
+brew 'git'
+brew 'gnutls'
+brew 'emacs', args: ['with-cocoa', 'with-gnutls']
+brew 'coreutils'
+brew 'findutils'
+brew 'bash'
+brew 'tmux'
+brew 'ack'
+brew 'the_silver_searcher'
+brew 'python'
+brew 'pyenv'
+brew 'bash-completion'
+brew 'chruby'
+brew 'ruby-install'
+brew 'leiningen'
+brew 'postgres'
+brew 'tree'
+brew 'redis'
+brew 'aspell', args: ['with-lang-en', 'with-lang-pl']
+brew 'htop-osx'
+brew 'tarsnap'
+brew 'go'
+brew 'dnsmasq'
+brew 'zsh'
+brew 'libyaml'
+brew 'fasd'
+brew 'gawk'
+brew 'elixir'
+brew 'libffi'
+brew 'watchman'
+brew 'android-sdk'
+brew 'ffmpeg'
+
+cask 'iterm2'
+cask 'google-chrome'
+cask 'ukelele'
+cask 'dropbox'
+cask 'firefox'
+cask 'virtualbox'
+cask 'intellij-idea'
+cask 'vagrant'
+cask 'java'
+cask 'gpgtools'
+cask 'skype'
+cask 'mou'
+cask 'alfred'
+cask 'google-hangouts'
+cask 'viscosity'
+cask 'dash'
+cask 'ngrok'
+cask 'imageoptim'
+cask 'appcleaner'
+cask 'textual'
