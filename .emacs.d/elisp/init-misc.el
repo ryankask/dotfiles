@@ -9,12 +9,13 @@
         ag-reuse-buffers t))
 
 (use-package avy
-  :bind (("C-'" . avy-goto-char-2)
+  :bind (("C-'" . avy-goto-char-timer)
          ("M-g g" . avy-goto-line)
          ("M-g e" . avy-goto-word-0)
          ("M-g w" . avy-goto-word-1))
   :init
-  (setq avy-keys '(?a ?r ?s ?t ?d ?h ?n ?e ?i ?o)))
+  (setq avy-keys '(?a ?r ?s ?t ?d ?h ?n ?e ?i ?o)
+        avy-timeout-seconds 0.3)
 
 (use-package ace-window
   :ensure t
