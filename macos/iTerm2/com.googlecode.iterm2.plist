@@ -133,11 +133,11 @@
 	<key>NSWindow Frame UKCrashReporter</key>
 	<string>99 293 592 584 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 0 976 877 0 0 1440 877 </string>
+	<string>0 170 570 707 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>655 170 570 707 0 0 1440 877 </string>
+	<string>37 170 570 707 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
-	<string>818 171 570 706 0 0 1440 877 </string>
+	<string>229 170 570 707 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 3</key>
 	<string>37 171 570 706 0 0 1440 877 </string>
 	<key>NeverWarnAboutShortLivedSessions_FC5C91F7-4D3C-4082-A876-47A0DAEF1989</key>
@@ -1615,6 +1615,8 @@
 	<true/>
 	<key>NoSyncHaveWarnedAboutIncompatibleSoftware</key>
 	<true/>
+	<key>NoSyncHaveWarnedAboutPasteConfirmationChange</key>
+	<true/>
 	<key>NoSyncInstallationId</key>
 	<string>358E9B1E-6067-4E32-B152-E6FC896C4137</string>
 	<key>NoSyncPermissionToShowTip</key>
@@ -1676,6 +1678,8 @@
 	</dict>
 	<key>PrefsCustomFolder</key>
 	<string>/Users/ryan/Projects/dotfiles/macos/iTerm2</string>
+	<key>Print In Black And White</key>
+	<true/>
 	<key>PromptOnClose</key>
 	<true/>
 	<key>PromptOnQuit</key>
@@ -1695,7 +1699,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2016-10-29T16:38:34Z</date>
+	<date>2016-11-16T13:46:32Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>ShowBookmarkName</key>
@@ -1743,6 +1747,6 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>3.0.10</string>
+	<string>3.0.12</string>
 </dict>
 </plist>
