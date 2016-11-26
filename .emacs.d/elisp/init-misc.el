@@ -15,7 +15,7 @@
          ("M-g w" . avy-goto-word-1))
   :init
   (setq avy-keys '(?a ?r ?s ?t ?d ?h ?n ?e ?i ?o)
-        avy-timeout-seconds 0.3)
+        avy-timeout-seconds 0.3))
 
 (use-package ace-window
   :ensure t
