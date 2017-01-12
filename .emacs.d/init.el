@@ -60,7 +60,7 @@
 (use-package init-osx
   :if (eq system-type 'darwin))
 (use-package init-misc)
-(use-package init-ido)
+(use-package init-ivy)
 (use-package init-python)
 (use-package init-go)
 (use-package init-elixir)

@@ -1,13 +1,27 @@
-(use-package swiper
+(use-package ivy
   :ensure t
   :diminish ivy-mode
-  :bind (("C-s" . swiper)
-         ("C-r" . swiper)
-         ("C-c C-r" . ivy-resume))
+  :bind (("C-c C-r" . ivy-resume)
+         :map ivy-minibuffer-map
+         ("C-j" . ivy-immediate-done)
+         ("RET" . ivy-alt-done))
   :init
-  (setq ivy-use-virtual-buffers t
-        ivy-display-style 'fancy)
+  (setq ivy-count-format "(%d/%d) "
+        ivy-extra-directories nil
+        ivy-use-virtual-buffers t)
+  :config
   (ivy-mode 1))
+
+(use-package swiper
+  :ensure t
+  :bind (("C-s" . swiper)
+         ("C-r" . swiper)))
+
+(use-package smex
+  :ensure t
+  :init
+  (setq smex-save-file (expand-file-name "smex.hist" dotemacs-dir)
+        smex-history-length 250))
 
 (use-package counsel
   :ensure t
