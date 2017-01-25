@@ -29,6 +29,9 @@
   :bind (("M-x" . counsel-M-x)
          ("C-x C-f" . counsel-find-file)
          ("C-c k" . counsel-ag)
-         ("C-x l" . counsel-locate)))
+         ("C-x l" . counsel-locate))
+  :init
+  (setq counsel-find-file-ignore-regexp "^.*\\.\\(?:pyc\\|elc\\)$"))
+
 
 (provide 'init-ivy)
