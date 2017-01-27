@@ -31,7 +31,7 @@
          ("C-c k" . counsel-ag)
          ("C-x l" . counsel-locate))
   :init
-  (setq counsel-find-file-ignore-regexp "^.*\\.\\(?:pyc\\|elc\\)$"))
+  (setq counsel-find-file-ignore-regexp "^\\(?:__pycache__\\)\\|\\(?:.*\\.\\(?:pyc\\|elc\\)\\)$"))
 
 
 (provide 'init-ivy)
