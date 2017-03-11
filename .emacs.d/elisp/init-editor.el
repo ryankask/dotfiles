@@ -15,8 +15,9 @@
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
 
-(global-set-key (kbd "s-=") 'text-scale-increase)
-(global-set-key (kbd "s--") 'text-scale-decrease)
+(bind-key "s-=" 'text-scale-increase)
+(bind-key "s--" 'text-scale-decrease)
+(bind-key "s-\\" "`")
 
 ;; get rid of trailing whitespace
 (defvar do-delete-trailing-whitespace t)
