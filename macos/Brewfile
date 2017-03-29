@@ -32,7 +32,6 @@ brew 'gawk'
 brew 'elixir'
 brew 'libffi'
 brew 'watchman'
-brew 'android-sdk'
 brew 'ffmpeg'
 brew 'reattach-to-user-namespace', args: ['with-wrap-pbcopy-and-pbpaste']
 
