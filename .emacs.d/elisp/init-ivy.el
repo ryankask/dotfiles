@@ -22,7 +22,7 @@
   :ensure t
   :init
   (setq smex-save-file (expand-file-name "smex.hist" dotemacs-dir)
-        smex-history-length 250))
+        smex-history-length 32))
 
 (use-package counsel
   :ensure t

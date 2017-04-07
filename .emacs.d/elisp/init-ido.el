@@ -31,6 +31,6 @@
          ("C-c M-x" . execute-extended-command))
   :init
   (setq smex-save-file (expand-file-name "smex.hist" dotemacs-dir)
-        smex-history-length 250))
+        smex-history-length 32))
 
 (provide 'init-ido)
