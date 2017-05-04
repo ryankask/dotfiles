@@ -1,0 +1,5 @@
+# -*- mode: snippet; -*-
+# name: Import the default cache
+# key: impcache
+# --
+from django.core.cache import cache
