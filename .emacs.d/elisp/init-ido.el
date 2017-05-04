@@ -11,6 +11,7 @@
         ido-ignore-extensions t
         ido-save-directory-list-file (expand-file-name "ido.hist" dotemacs-dir))
   :config
+  (setq ido-ignore-files (append ido-ignore-files '("\\`__pycache__/")))
   (ido-mode t))
 
 (use-package ido-ubiquitous
