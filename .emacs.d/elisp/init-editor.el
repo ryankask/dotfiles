@@ -1,16 +1,14 @@
 (global-auto-revert-mode t)
 
+(setq-default indent-tabs-mode nil
+              tab-width 4)
 (setq tab-always-indent 'complete
       tab-stop-list (number-sequence 4 200 4)
       require-final-newline t
-      text-mode-hook '(turn-on-auto-fill
-                       text-mode-hook-identify
-                       abbrev-mode))
-(setq-default indent-tabs-mode nil
-              tab-width 4)
-(setq completion-ignored-extensions
-      (append completion-ignored-extensions
-              '(".DS_Store")))
+      completion-ignored-extensions
+      (append completion-ignored-extensions '(".DS_Store")))
+
+(add-hook 'text-mode-hook 'abbrev-mode)
 
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
