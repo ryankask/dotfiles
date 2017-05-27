@@ -6,7 +6,8 @@
       (with-temp-buffer
         (insert-file-contents virtualenv-root-file)
         (let ((virtualenv-root (string-trim (thing-at-point 'line t))))
-          (if (not (string-empty-p virtualenv-root))
+          (if (and (not (string-empty-p virtualenv-root))
+                   (file-directory-p virtualenv-root))
               (setq python-shell-virtualenv-root virtualenv-root)))))))
 
 (defun my-python-debug-insert-ipdb-set-trace ()
