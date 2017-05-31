@@ -50,13 +50,22 @@
   :config
   (recentf-mode 1))
 
-;; dired
+(use-package ibuffer
+  :bind ("C-x C-b" . ibuffer)
+  :init
+  (add-hook 'ibuffer-load-hook
+            (lambda ()
+              (define-key ibuffer-mode-map (kbd "C-o") nil))))
+
 (use-package dired
   :init
   (setq dired-omit-files (rx (seq ".pyc" eol))
         dired-omit-files-p t
         dired-recursive-deletes 'always
         dired-recursive-copies 'always)
+  (add-hook 'dired-load-hook
+            (lambda ()
+              (define-key dired-mode-map (kbd "C-o") nil)))
   (use-package dired-x))
 
 ;; Use Google Chrome to open links

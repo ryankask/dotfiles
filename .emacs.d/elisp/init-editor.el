@@ -13,7 +13,6 @@
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
 
-(bind-key "C-x C-b" 'ibuffer)
 (bind-key "s-=" 'text-scale-increase)
 (bind-key "s--" 'text-scale-decrease)
 (bind-key "s-\\" "`")
