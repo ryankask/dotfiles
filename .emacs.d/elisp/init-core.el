@@ -56,12 +56,17 @@
   (unbind-key "C-o" ibuffer-mode-map))
 
 (use-package dired
-  :init
-  (setq dired-recursive-deletes 'always
-        dired-recursive-copies 'always)
+  :defer t
   :config
   (unbind-key "C-o" dired-mode-map)
-  (use-package dired-x))
+  (setq dired-recursive-deletes 'always
+        dired-recursive-copies 'always))
+
+(use-package dired-x
+  :after dired
+  :config
+  (setq-default dired-omit-files-p t)
+  (setq dired-omit-files (concat dired-omit-files "\\|\\`__pycache__\\'")))
 
 ;; Use Google Chrome to open links
 (setq browse-url-browser-function 'browse-url-generic
