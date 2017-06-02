@@ -44,6 +44,7 @@
 
 (use-package magit
   :ensure t
+  :after ido-ubiquitous
   :bind (("C-x g" . magit-status)
          ("C-x M-g" . magit-dispatch-popup)
          ("s-m m" . magit-status)
@@ -51,7 +52,7 @@
          ("s-m f" . magit-log-buffer-file)
          ("s-m b" . magit-blame))
   :config
-  (setq magit-completing-read-function 'ivy-completing-read))
+  (setq magit-completing-read-function 'magit-ido-completing-read))
 
 (use-package org
   :ensure t
