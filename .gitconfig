@@ -3,6 +3,16 @@
     email = dev@ryankaskel.com
     useconfigonly = true
 
+[core]
+    pager = less -FRSX
+    whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
+
+[push]
+    default = simple
+
+[diff]
+	indentHeuristic = true
+
 [alias]
     st = status
     sts = status -s
@@ -41,10 +51,3 @@
     added = yellow
     changed = green
     untracked = cyan
-
-[core]
-    pager = less -FRSX
-    whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
-
-[push]
-    default = simple
