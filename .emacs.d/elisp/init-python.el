@@ -15,6 +15,29 @@
   (interactive)
   (insert "import ipdb; ipdb.set_trace()"))
 
+(defun my-pytest-get-test-name-at-point ()
+  (save-excursion
+    (and (python-nav-beginning-of-defun)
+         (re-search-forward "^def \\([A-Za-z0-9_]+\\)(.*$" nil t)
+         (format "%s::%s" (buffer-file-name) (match-string-no-properties 1)))))
+
+(defun my-pytest-run-test-at-path (&rest paths)
+  (deferred:$
+    (python-environment-run (append '("pytest" "-q" "--tb" "short" "--color" "no") paths))
+    (deferred:error it
+      (lambda (err)
+        (let ((output (cadr err)))
+          (when (string-match "===\\(?:.\\|\n\\)+\\'" output)
+            (match-string-no-properties 0 output)))))))
+
+(defun my-pytest-run-test-at-point ()
+  (interactive)
+  (when-let (test-path (and (python-environment-exists-p)
+                            (my-pytest-get-test-name-at-point)))
+    (deferred:$
+      (my-pytest-run-test-at-path test-path)
+      (deferred:nextc it #'message))))
+
 (use-package python-environment
   :ensure t
   :init
@@ -24,8 +47,8 @@
 
 (use-package python
   :bind (:map python-mode-map
-              ("C-m" . newline-and-indent)
-              ("C-c /" . my-python-debug-insert-ipdb-set-trace))
+              ("C-c /" . my-python-debug-insert-ipdb-set-trace)
+              ("C-c C-t" . my-pytest-run-test-at-point))
   :init
   (setq my-default-virtualenv-path (python-environment-root-path)
         python-shell-virtualenv-root my-default-virtualenv-path

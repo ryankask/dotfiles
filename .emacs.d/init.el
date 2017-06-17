@@ -51,6 +51,8 @@
   (require 'use-package))
 (require 'diminish)
 (require 'bind-key)
+(require 'seq)
+(require 'subr-x)
 
 ;; Init packages
 
