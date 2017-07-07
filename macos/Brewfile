@@ -36,6 +36,7 @@ brew 'watchman'
 brew 'ffmpeg'
 brew 'reattach-to-user-namespace', args: ['with-wrap-pbcopy-and-pbpaste']
 brew 'haskell-stack'
+brew 'jq'
 
 cask 'iterm2'
 cask 'google-chrome'
