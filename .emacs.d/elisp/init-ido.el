@@ -1,20 +1,21 @@
 (use-package ido
+  :ensure t
   :init
+  :config
   (setq ido-enable-flex-matching t
         ido-create-new-buffer 'always
         ido-default-file-method 'selected-window
         ido-auto-merge-work-directories-length -1
         ido-use-virtual-buffers t
-        ido-handle-duplicate-virtual-buffers 2
         ido-max-work-file-list 250
         ido-max-dir-file-cache 250
         ido-ignore-extensions t
-        ido-save-directory-list-file (expand-file-name "ido.hist" dotemacs-dir))
-  :config
-  (setq ido-ignore-files (append ido-ignore-files '("\\`__pycache__/")))
-  (ido-mode t))
+        ido-save-directory-list-file (expand-file-name "ido.hist" dotemacs-dir)
+        ido-ignore-files (append ido-ignore-files '("\\`__pycache__/")))
+  (ido-mode t)
+  (ido-everywhere t))
 
-(use-package ido-ubiquitous
+(use-package ido-completing-read+
   :ensure t
   :config
   (ido-ubiquitous-mode t))
@@ -22,8 +23,8 @@
 (use-package ido-vertical-mode
   :ensure t
   :config
-  (ido-vertical-mode 1)
   (setq ido-vertical-define-keys 'C-n-and-C-p-only))
+  (ido-vertical-mode 1)
 
 (use-package smex
   :ensure t
