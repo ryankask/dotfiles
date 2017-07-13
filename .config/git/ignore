@@ -11,7 +11,10 @@ tramp
 .org-id-locations
 *_archive
 *_flymake.*
+.cask/
 flycheck_*.el
+.projectile
+.dir-locals.el
 
 # JetBrains
 
@@ -30,3 +33,7 @@ Thumbs.db
 # Python
 
 .virtualenv-root
+
+# Redis
+
+*.rdb
