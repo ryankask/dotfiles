@@ -24,6 +24,9 @@
             (unless (or (eq major-mode 'org-mode) (not do-delete-trailing-whitespace))
               (delete-trailing-whitespace))))
 
+(use-package subword
+  :diminish subword-mode)
+
 (use-package smartparens
   :ensure t
   :diminish smartparens-mode

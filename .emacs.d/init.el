@@ -65,5 +65,6 @@
 (use-package init-ido)
 (use-package init-python)
 (use-package init-go)
+(use-package init-haskell)
 (use-package init-elixir)
 (use-package init-web)
