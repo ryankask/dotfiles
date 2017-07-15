@@ -8,6 +8,7 @@
   :init
   (setq ivy-count-format "(%d/%d) "
         ivy-extra-directories nil
+        ivy-format-function 'ivy-format-function-arrow
         ivy-height 11
         ivy-use-virtual-buffers t)
   :config

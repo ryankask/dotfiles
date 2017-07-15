@@ -31,14 +31,23 @@
   "If solarized-dark is the current theme, switch to the light version, and vice versa."
   (interactive)
   (if (eql (position 'solarized-dark custom-enabled-themes) 0)
-    (load-theme 'solarized-light t)
-  (load-theme 'solarized-dark t)))
+      (load-theme 'solarized-light t)
+    (load-theme 'solarized-dark t)))
+
+(defun my-solarized-theme-customise ()
+  (solarized-with-color-variables 'dark
+    (custom-theme-set-faces
+     'solarized-dark
+     `(ivy-current-match ((,class (:weight bold :background ,base02))))
+     `(ivy-subdir ((,class (:foreground ,blue))))
+     `(ivy-virtual ((,class (:foreground ,cyan)))))))
 
 (use-package solarized-theme
   :ensure t
   :bind ("C-c w" . my-solarized-theme-swap)
   :init
   (setq solarized-use-variable-pitch nil)
-  (load-theme 'solarized-dark t))
+  (load-theme 'solarized-dark t)
+  (my-solarized-theme-customise))
 
 (provide 'init-ui)
