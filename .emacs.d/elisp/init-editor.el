@@ -27,11 +27,10 @@
 (use-package subword
   :diminish subword-mode)
 
-(use-package smartparens
-  :ensure t
+(use-package smartparens-config
+  :ensure smartparens
   :diminish smartparens-mode
   :config
-  (require 'smartparens-config)
   (smartparens-global-mode t)
   (show-smartparens-global-mode t)
   (sp-use-smartparens-bindings)

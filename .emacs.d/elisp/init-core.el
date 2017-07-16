@@ -43,10 +43,11 @@
 
 (use-package recentf
   :init
-  (setq recentf-save-file (expand-file-name "recentf" dotemacs-dir)
-        recentf-max-saved-items 500
+  (setq recentf-auto-cleanup 'never
+        recentf-exclude (list (concat "\\`" (expand-file-name "elpa/" dotemacs-dir)))
         recentf-max-menu-items 15
-        recentf-auto-cleanup 'never)
+        recentf-max-saved-items 500
+        recentf-save-file (expand-file-name "recentf" dotemacs-dir))
   :config
   (recentf-mode 1))
 
