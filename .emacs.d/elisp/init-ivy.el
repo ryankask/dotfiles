@@ -61,14 +61,14 @@
         smex-history-length 32))
 
 (defun my-counsel-ignore-regexp-builder (&rest regexp-units)
-  (format "\\`%s\\'" (mapconcat
-                      (lambda (unit)
-                        (format "\\(?:%s\\)" unit))
-                      regexp-units
-                      "\\|")))
+  (mapconcat
+   (lambda (unit)
+     (format "\\(?:%s\\)" unit))
+   regexp-units
+   "\\|"))
 
 (defun my-counsel-ignore-extensions (&rest extensions)
-  (format ".*\\.\\(?:%s\\)" (string-join extensions "\\|")))
+  (format "\\`.*\\.\\(?:%s\\)\\'" (string-join extensions "\\|")))
 
 (use-package counsel
   :ensure t
@@ -79,10 +79,8 @@
   :init
   (setq counsel-find-file-ignore-regexp
         (my-counsel-ignore-regexp-builder
-         "\\.git"
-         "__pycache__"
-         "\\.DS_Store"
-         "\\.#.*"
+         "\\`\\."
+         "\\`__pycache__\\'"
          (my-counsel-ignore-extensions "pyc" "elc"))))
 
 (provide 'init-ivy)
