@@ -51,8 +51,7 @@
 
 (use-package swiper
   :ensure t
-  :bind (("C-s" . swiper)
-         ("C-r" . swiper)))
+  :bind (("C-s" . swiper)))
 
 (use-package smex
   :ensure t
@@ -75,8 +74,9 @@
   :ensure t
   :bind (("M-x" . counsel-M-x)
          ("C-x C-f" . counsel-find-file)
-         ("C-c k" . counsel-ag)
-         ("C-x l" . counsel-locate))
+         ("C-c k" . counsel-rg)
+         ("C-c g" . counsel-git)
+         ("C-c j" . counsel-git-grep))
   :init
   (setq counsel-find-file-ignore-regexp
         (my-counsel-ignore-regexp-builder
