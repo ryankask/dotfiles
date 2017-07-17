@@ -78,4 +78,15 @@
     "Override annotating function"
     nil))
 
+(defun my-py-isort--call (orig-fun &rest args)
+  "Call ORIG-FUN with the current virtualenv's root at the front of EXEC-PATH"
+  (let ((exec-path (append (list (expand-file-name "bin" python-shell-virtualenv-root))
+                           exec-path)))
+    (apply orig-fun args)))
+
+(use-package py-isort
+  :ensure t
+  :config
+  (advice-add 'py-isort--call :around #'my-py-isort--call))
+
 (provide 'init-python)
