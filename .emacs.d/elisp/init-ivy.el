@@ -43,7 +43,8 @@
         ivy-extra-directories nil
         ivy-format-function 'ivy-format-function-arrow
         ivy-height 11
-        ivy-use-virtual-buffers t)
+        ivy-use-virtual-buffers t
+        ivy-virtual-abbreviate 'full)
   :config
   ;;(add-to-list 'ivy-sort-functions-alist '(read-file-name-internal . my-ivy-sort-file-function))
   (ivy-mode 1))
