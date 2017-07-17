@@ -21,7 +21,20 @@
   (save-excursion
     (and (python-nav-beginning-of-defun)
          (re-search-forward "^def \\([A-Za-z0-9_]+\\)(.*$" nil t)
-         (format "%s::%s" (buffer-file-name) (match-string-no-properties 1)))))
+         (match-string-no-properties 1))))
+
+(defun my-pytest-copy-test-command-at-point ()
+  (interactive)
+  (when-let ((test-name (my-pytest-get-test-name-at-point)))
+    (let ((process-connection-type nil))
+      (let ((proc (start-process "pbcopy" "*Messages*" "pbcopy")))
+        (process-send-string proc (format "pytest -s -k %s" test-name))
+        (process-send-eof proc)))
+    (message "Copied \"%s\" to clipboard" test-name)))
+
+(defun my-pytest-get-full-test-path-at-point ()
+  (when-let ((test-name (my-pytest-get-test-name-at-point)))
+      (format "%s::%s" (buffer-file-name) test-name)))
 
 (defun my-pytest-run-test-at-path (&rest paths)
   (deferred:$
@@ -35,7 +48,7 @@
 (defun my-pytest-run-test-at-point ()
   (interactive)
   (when-let (test-path (and (python-environment-exists-p)
-                            (my-pytest-get-test-name-at-point)))
+                            (my-pytest-get-full-test-path-at-point)))
     (deferred:$
       (my-pytest-run-test-at-path test-path)
       (deferred:nextc it #'message))))
@@ -50,7 +63,7 @@
 (use-package python
   :bind (:map python-mode-map
               ("C-c /" . my-python-debug-insert-ipdb-set-trace)
-              ("C-c C-t" . my-pytest-run-test-at-point))
+              ("C-c C-t" . my-pytest-copy-test-command-at-point))
   :init
   (setq my-default-virtualenv-path (python-environment-root-path)
         python-shell-virtualenv-root my-default-virtualenv-path
