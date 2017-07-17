@@ -80,7 +80,7 @@
   (setq counsel-find-file-ignore-regexp
         (my-counsel-ignore-regexp-builder
          "\\`\\."
-         "\\`__pycache__\\'"
+         "\\`__pycache__/\\'"
          (my-counsel-ignore-extensions "pyc" "elc"))))
 
 (provide 'init-ivy)
