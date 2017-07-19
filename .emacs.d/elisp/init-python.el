@@ -52,27 +52,6 @@
          (my-pytest-test-command test-name)
          (if arg "" "C-m"))))))
 
-(defun my-pytest-get-full-test-path-at-point ()
-  (when-let ((test-name (my-pytest-get-test-name-at-point)))
-      (format "%s::%s" (buffer-file-name) test-name)))
-
-(defun my-pytest-run-test-at-path (&rest paths)
-  (deferred:$
-    (python-environment-run (append '("pytest" "-q" "--tb" "short" "--color" "no") paths))
-    (deferred:error it
-      (lambda (err)
-        (let ((output (cadr err)))
-          (when (string-match "===\\(?:.\\|\n\\)+\\'" output)
-            (match-string-no-properties 0 output)))))))
-
-(defun my-pytest-run-test-at-point ()
-  (interactive)
-  (when-let (test-path (and (python-environment-exists-p)
-                            (my-pytest-get-full-test-path-at-point)))
-    (deferred:$
-      (my-pytest-run-test-at-path test-path)
-      (deferred:nextc it #'message))))
-
 (use-package python-environment
   :ensure t
   :init
