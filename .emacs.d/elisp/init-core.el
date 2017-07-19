@@ -7,6 +7,7 @@
 ;; Keybindings
 (global-unset-key (kbd "C-o"))
 (global-unset-key (kbd "s-m"))
+(bind-key "C-o r" 'repeat)
 
 ;; Local variables
 (setq safe-local-variable-values '((do-delete-trailing-whitespace)))

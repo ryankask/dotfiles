@@ -19,18 +19,38 @@
 
 (defun my-pytest-get-test-name-at-point ()
   (save-excursion
-    (and (python-nav-beginning-of-defun)
-         (re-search-forward "^def \\([A-Za-z0-9_]+\\)(.*$" nil t)
+    (and (re-search-backward "^def \\(test_[A-Za-z0-9_]+\\)(.*$" nil t)
          (match-string-no-properties 1))))
+
+(defun my-pytest-test-command (test-name)
+  (format "pytest %s -s -k %s"
+          (car (projectile-make-relative-to-root (list (buffer-file-name))))
+          test-name))
 
 (defun my-pytest-copy-test-command-at-point ()
   (interactive)
   (when-let ((test-name (my-pytest-get-test-name-at-point)))
     (let ((process-connection-type nil))
       (let ((proc (start-process "pbcopy" "*Messages*" "pbcopy")))
-        (process-send-string proc (format "pytest -s -k %s" test-name))
+        (process-send-string proc (my-pytest-test-command test-name))
         (process-send-eof proc)))
     (message "Copied \"%s\" to clipboard" test-name)))
+
+(defvar my-pytest-tmux-target-pane nil
+  "The tmux pane which will receive test commands")
+
+(defun my-pytest-send-test-command-at-point-to-tmux (arg)
+  "Send a command to run the test at point to the active tmux pane"
+  (interactive "P")
+  (when my-pytest-tmux-target-pane
+    (when-let ((test-name (my-pytest-get-test-name-at-point)))
+      (let ((process-connection-type nil))
+        (start-process
+         "pytest-tmux"
+         nil
+         "tmux" "send-keys" "-t" my-pytest-tmux-target-pane
+         (my-pytest-test-command test-name)
+         (if arg "" "C-m"))))))
 
 (defun my-pytest-get-full-test-path-at-point ()
   (when-let ((test-name (my-pytest-get-test-name-at-point)))
@@ -63,7 +83,8 @@
 (use-package python
   :bind (:map python-mode-map
               ("C-c /" . my-python-debug-insert-ipdb-set-trace)
-              ("C-c C-t" . my-pytest-copy-test-command-at-point))
+              ("C-c C-t" . my-pytest-copy-test-command-at-point)
+              ("C-c C-s" . my-pytest-send-test-command-at-point-to-tmux))
   :init
   (setq my-default-virtualenv-path (python-environment-root-path)
         python-shell-virtualenv-root my-default-virtualenv-path
