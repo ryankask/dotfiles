@@ -55,7 +55,7 @@
 
 (defun my-set-flycheck-flake8rc (&optional flake8rc)
   (interactive)
-  (setq flycheck-flake8rc flake8rc))
+  (setq flycheck-flake8rc (or flake8rc "~/.config/flake8")))
 
 (use-package python-environment
   :ensure t
