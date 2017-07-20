@@ -43,14 +43,19 @@
   "Send a command to run the test at point to the active tmux pane"
   (interactive "P")
   (when my-pytest-tmux-target-pane
-    (when-let ((test-name (my-pytest-get-test-name-at-point)))
+    (when-let ((test-name (my-pytest-get-test-name-at-point))
+               (test-command (my-pytest-test-command test-name)))
       (let ((process-connection-type nil))
         (start-process
          "pytest-tmux"
          nil
          "tmux" "send-keys" "-t" my-pytest-tmux-target-pane
-         (my-pytest-test-command test-name)
+         test-command
          (if arg "" "C-m"))))))
+
+(defun my-set-flycheck-flake8rc (&optional flake8rc)
+  (interactive)
+  (setq flycheck-flake8rc flake8rc))
 
 (use-package python-environment
   :ensure t
