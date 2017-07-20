@@ -36,7 +36,7 @@
   :diminish ivy-mode
   :bind (("C-c C-r" . ivy-resume)
          :map ivy-minibuffer-map
-         ("C-j" . ivy-immediate-done)
+         ("C-e" . ivy-immediate-done)
          ("RET" . ivy-alt-done))
   :init
   (setq ivy-count-format "(%d/%d) "
@@ -70,18 +70,23 @@
 (defun my-counsel-ignore-extensions (&rest extensions)
   (format "\\`.*\\.\\(?:%s\\)\\'" (string-join extensions "\\|")))
 
+(defun my-counsel-locate-cmd-mdfind (input)
+  "Return a shell command based on INPUT."
+  (format "mdfind -name '%s'" input))
+
 (use-package counsel
   :ensure t
   :bind (("M-x" . counsel-M-x)
          ("C-x C-f" . counsel-find-file)
-         ("C-c k" . counsel-rg)
-         ("C-c g" . counsel-git)
-         ("C-c j" . counsel-git-grep))
+         ("C-c n" . counsel-rg)
+         ("C-c i" . counsel-git)
+         ("C-c o" . counsel-git-grep)
+         ("C-c e" . counsel-locate))
   :init
-  (setq counsel-find-file-ignore-regexp
-        (my-counsel-ignore-regexp-builder
-         "\\`\\."
-         "\\`__pycache__/\\'"
-         (my-counsel-ignore-extensions "pyc" "elc"))))
+  (setq counsel-find-file-ignore-regexp (my-counsel-ignore-regexp-builder
+                                         "\\`\\."
+                                         "\\`__pycache__/\\'"
+                                         (my-counsel-ignore-extensions "pyc" "elc"))
+        counsel-locate-cmd 'counsel-locate-cmd-mdfind))
 
 (provide 'init-ivy)
