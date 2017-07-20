@@ -80,7 +80,6 @@
   :ensure t
   :diminish yas-minor-mode
   :config
-  (add-to-list 'yas-snippet-dirs (expand-file-name "snippets/shnippet" dotemacs-dir))
   (yas-global-mode 1)
   (setq-default yas-prompt-functions '(yas-ido-prompt yas-dropdown-prompt))
   (add-hook 'snippet-mode-hook
