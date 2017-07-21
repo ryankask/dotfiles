@@ -39,6 +39,13 @@
 (defvar my-pytest-tmux-target-pane nil
   "The tmux pane which will receive test commands")
 
+(defun my-pytest-set-tmux-target-pane ()
+  "Read and set the target tmux pane"
+  (interactive)
+  (let* ((target (string-trim (read-string "target tmux pane: " my-pytest-tmux-target-pane))))
+    (if (not (equal target ""))
+        (setq my-pytest-tmux-target-pane target))))
+
 (defun my-pytest-send-test-command-at-point-to-tmux (arg)
   "Send a command to run the test at point to the active tmux pane"
   (interactive "P")
