@@ -46,7 +46,8 @@
   :init
   (setq recentf-auto-cleanup 'never
         recentf-auto-save-timer (run-with-idle-timer 300 t 'recentf-save-list)
-        recentf-exclude (list (format "\\`%s\\(?:elpa\\|backups\\)/" dotemacs-dir))
+        recentf-exclude (list (format "\\`%s\\(?:elpa\\|backups\\)/" dotemacs-dir)
+                              "COMMIT_EDITMSG\\'")
         recentf-max-menu-items 15
         recentf-max-saved-items 1000
         recentf-save-file (expand-file-name "recentf" dotemacs-dir))
