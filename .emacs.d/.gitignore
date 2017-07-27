@@ -2,7 +2,7 @@
 *.elc
 /ac-comphist.dat
 /abbrev_defs
-/eshell/history
+/eshell
 /history
 /ido.hist
 /smex.hist
