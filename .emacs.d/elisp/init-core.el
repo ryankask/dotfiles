@@ -30,7 +30,8 @@
 
 ;; Autosaves
 (defconst my-autosave-directory (expand-file-name "autosave/" dotemacs-dir))
-(make-directory my-autosave-directory t)
+(unless (file-exists-p my-autosave-directory)
+  (make-directory my-autosave-directory t))
 (setq auto-save-file-name-transforms
       `((".*" ,my-autosave-directory t)))
 
