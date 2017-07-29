@@ -27,13 +27,6 @@
   :ensure t
   :defer t)
 
-(defun my-solarized-theme-swap ()
-  "If solarized-dark is the current theme, switch to the light version, and vice versa."
-  (interactive)
-  (if (eql (position 'solarized-dark custom-enabled-themes) 0)
-      (load-theme 'solarized-light t)
-    (load-theme 'solarized-dark t)))
-
 (defun my-solarized-theme-customise ()
   (solarized-with-color-variables 'dark
     (custom-theme-set-faces
@@ -44,10 +37,31 @@
 
 (use-package solarized-theme
   :ensure t
-  :bind ("C-c w" . my-solarized-theme-swap)
+  :disabled
   :init
   (setq solarized-use-variable-pitch nil)
   (load-theme 'solarized-dark t)
   (my-solarized-theme-customise))
+
+(defmacro my-doom-one-set-faces (&rest faces)
+  `(custom-theme-set-faces
+    'doom-one
+    ,@(mapcar #'doom-themes--build-face faces)))
+
+(defun my-doom-one-theme-customise ()
+  (my-doom-one-set-faces
+   ;; ivy
+   (ivy-current-match :weight 'bold :background base4)
+   (ivy-minibuffer-match-face-2 :foreground magenta)
+   (ivy-minibuffer-match-face-3 :foreground green)
+   (ivy-minibuffer-match-face-4 :foreground yellow)
+   (ivy-subdir :foreground blue)
+   (ivy-virtual :foreground teal)))
+
+(use-package doom-themes
+  :ensure t
+  :init
+  (load-theme 'doom-one t)
+  (my-doom-one-theme-customise))
 
 (provide 'init-ui)
