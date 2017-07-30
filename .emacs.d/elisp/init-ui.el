@@ -63,7 +63,7 @@
    (ivy-minibuffer-match-face-3 :foreground green)
    (ivy-minibuffer-match-face-4 :foreground yellow)
    (ivy-subdir :foreground blue)
-   (ivy-virtual :foreground dark-cyan)))
+   (ivy-virtual :foreground (doom-darken fg 0.2))))
 
 (use-package doom-themes
   :ensure t
