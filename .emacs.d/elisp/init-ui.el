@@ -58,12 +58,19 @@
    ;; dired
    (dired-directory :foreground blue)
    ;; ivy
-   (ivy-current-match :weight 'bold :background base4)
+   (ivy-current-match :background base4 :bold t)
    (ivy-minibuffer-match-face-2 :foreground magenta)
    (ivy-minibuffer-match-face-3 :foreground green)
    (ivy-minibuffer-match-face-4 :foreground yellow)
    (ivy-subdir :foreground blue)
-   (ivy-virtual :foreground (doom-darken fg 0.2))))
+   (ivy-virtual :foreground (doom-darken fg 0.2))
+   ;; org
+   (org-level-1 :foreground blue :background base3 :bold t :height 1.0)
+   ;; swiper
+   (swiper-line-face :background base4 :bold t)
+   (swiper-match-face-2 :background variables :foreground base0 :bold t)
+   (swiper-match-face-3 :background green :foreground base0 :bold t)
+   (swiper-match-face-4 :background yellow :foreground base0 :bold t)))
 
 (use-package doom-themes
   :ensure t
