@@ -36,27 +36,34 @@
      `(ivy-virtual ((,class (:foreground ,cyan)))))))
 
 (use-package solarized-theme
-  :ensure t
   :disabled
+  :ensure t
   :init
   (setq solarized-use-variable-pitch nil)
   (load-theme 'solarized-dark t)
   (my-solarized-theme-customise))
 
-(defmacro my-doom-one-set-faces (&rest faces)
+(defmacro my-doom-theme-set-faces (theme-name &rest faces)
   `(custom-theme-set-faces
-    'doom-one
+    ,theme-name
     ,@(mapcar #'doom-themes--build-face faces)))
 
 (defun my-doom-one-theme-customise ()
-  (my-doom-one-set-faces
+  (my-doom-theme-set-faces
+   'doom-one
+   ;; base
+   (cursor :background fg)
+   (minibuffer-prompt :foreground fg)
+   (font-lock-variable-name-face :foreground fg)
+   ;; dired
+   (dired-directory :foreground blue)
    ;; ivy
    (ivy-current-match :weight 'bold :background base4)
    (ivy-minibuffer-match-face-2 :foreground magenta)
    (ivy-minibuffer-match-face-3 :foreground green)
    (ivy-minibuffer-match-face-4 :foreground yellow)
    (ivy-subdir :foreground blue)
-   (ivy-virtual :foreground teal)))
+   (ivy-virtual :foreground dark-cyan)))
 
 (use-package doom-themes
   :ensure t
