@@ -57,20 +57,20 @@
    (font-lock-variable-name-face :foreground fg)
    ;; dired
    (dired-directory :foreground blue)
+   ;; avy
+   (avy-goto-char-timer-face :background blue :foreground base0)
+   (avy-lead-face :background yellow :foreground base0)
+   (avy-lead-face-0 :background red :foreground base0)
+   (avy-lead-face-1 :background orange :foreground base0)
+   (avy-lead-face-2 :background violet :foreground base0)
+   ;; column-marker
+   (column-marker-1 :background dark-blue)
+   (column-marker-2 :background blue)
    ;; ivy
-   (ivy-current-match :background base4 :bold t)
-   (ivy-minibuffer-match-face-2 :foreground magenta)
-   (ivy-minibuffer-match-face-3 :foreground green)
-   (ivy-minibuffer-match-face-4 :foreground yellow)
    (ivy-subdir :foreground blue)
-   (ivy-virtual :foreground (doom-darken fg 0.2))
+   (ivy-virtual :foreground (doom-darken fg 0.15))
    ;; org
-   (org-level-1 :foreground blue :background base3 :bold t :height 1.0)
-   ;; swiper
-   (swiper-line-face :background base4 :bold t)
-   (swiper-match-face-2 :background variables :foreground base0 :bold t)
-   (swiper-match-face-3 :background green :foreground base0 :bold t)
-   (swiper-match-face-4 :background yellow :foreground base0 :bold t)))
+   (org-level-1 :foreground blue :background base3 :bold t :height 1.0)))
 
 (use-package doom-themes
   :ensure t
