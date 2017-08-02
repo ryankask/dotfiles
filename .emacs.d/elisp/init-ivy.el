@@ -1,36 +1,3 @@
-(defun my-ivy-dir-p (filename)
-  (string-match-p "/\\'" filename))
-
-(defun my-ivy-dir-match (a b)
-  (string-match-p b a))
-
-(defun my-ivy-dir-recentf-index (f)
-  (seq-position recentf-list (concat ivy--directory f) #'my-ivy-dir-match))
-
-(defun my-ivy-sort-file-function (x y)
-  ;; (message "debug:\n  x=%s\n  fx=%s\n  x-dirp=%s\n  x-my-dir-p=%s\n  y=%s\n  y-dirp=%s\n  y-my-dir-p=%s"
-  ;;          x
-  ;;          (concat ivy--directory x)
-  ;;          (get-text-property 0 'dirp x)
-  ;;          (my-ivy-dir-p x)
-  ;;          y
-  ;;          (concat ivy--directory y)
-  ;;          (get-text-property 0 'dirp y)
-  ;;          (my-ivy-dir-p y))
-  (if (my-ivy-dir-p x)
-      (if (my-ivy-dir-p y)
-          (let* ((x-recentf-index (my-ivy-dir-recentf-index x))
-                 (y-recentf-index (and x-recentf-index (my-ivy-dir-recentf-index y))))
-            (cond ((and x-recentf-index y-recentf-index) (< x-recentf-index y-recentf-index))
-                  ((or x-recentf-index y-recentf-index) (and x-recentf-index t))
-                  (t (string< x y))))
-        t)
-    (if (my-ivy-dir-p y)
-        nil
-      ;; Sort files by mtime
-      (time-less-p (nth 5 (file-attributes y))
-                   (nth 5 (file-attributes x))))))
-
 (use-package ivy
   :ensure t
   :diminish ivy-mode
@@ -46,7 +13,6 @@
         ivy-use-virtual-buffers t
         ivy-virtual-abbreviate 'full)
   :config
-  ;;(add-to-list 'ivy-sort-functions-alist '(read-file-name-internal . my-ivy-sort-file-function))
   (ivy-mode 1))
 
 (use-package swiper
