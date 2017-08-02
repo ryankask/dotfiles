@@ -48,6 +48,11 @@
     ,theme-name
     ,@(mapcar #'doom-themes--build-face faces)))
 
+(defmacro my-doom-theme-set-variables (theme-name &rest vars)
+  `(custom-theme-set-variables
+    ,theme-name
+    ,@(mapcar #'doom-themes--build-var vars)))
+
 (defun my-doom-one-theme-customise ()
   (my-doom-theme-set-faces
    'doom-one
@@ -70,7 +75,12 @@
    (ivy-subdir :foreground blue)
    (ivy-virtual :foreground (doom-darken fg 0.15))
    ;; org
-   (org-level-1 :foreground blue :background base3 :bold t :height 1.0)))
+   (org-level-1 :foreground blue :background base3 :bold t :height 1.0))
+
+  (my-doom-theme-set-variables
+   'doom-one
+   ;; org
+   (org-ellipsis nil)))
 
 (use-package doom-themes
   :ensure t
