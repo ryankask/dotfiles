@@ -1,8 +1,8 @@
 <?xml version="1.1" encoding="UTF-8"?>
 <!DOCTYPE keyboard SYSTEM "file://localhost/System/Library/DTDs/KeyboardLayout.dtd">
 <!--Created by Ukelele version 2.2.6 on 2013-12-30 at 22:52 (GMT-5)-->
-<!--Last edited by Ukelele version 3.2.5.180 on 2017-08-05 at 13:37 (BST)-->
-<keyboard group="126" id="-5409" name="GB PL Colemak" maxout="1">
+<!--Last edited by Ukelele version 3.2.5.180 on 2017-08-05 at 14:09 (BST)-->
+<keyboard group="126" id="-30020" name="GB PL Colemak" maxout="1">
     <layouts>
         <layout first="0" last="17" mapSet="mapSet" modifiers="modifiers"/>
     </layouts>
@@ -32,12 +32,12 @@
         <keyMapSelect mapIndex="7">
             <modifier keys="anyShift? caps? anyOption? anyControl"/>
             <modifier keys="anyShift? anyOption? command? anyControl"/>
-            <modifier keys="anyShift caps anyOption command rightControl"/>
-            <modifier keys="anyShift caps rightOption? command anyControl"/>
-            <modifier keys="rightShift? caps anyOption command anyControl"/>
-            <modifier keys="anyShift caps anyOption command control"/>
-            <modifier keys="anyShift caps option? command anyControl"/>
-            <modifier keys="shift? caps anyOption command anyControl"/>
+            <modifier keys="anyShift caps anyOption command"/>
+            <modifier keys="anyShift caps command anyControl"/>
+            <modifier keys="caps anyOption command anyControl"/>
+            <modifier keys="anyShift caps anyOption command anyControl"/>
+            <modifier keys="anyShift caps anyOption? command anyControl"/>
+            <modifier keys="anyShift? caps anyOption command anyControl"/>
             <modifier keys="caps? anyOption? command? anyControl"/>
         </keyMapSelect>
     </modifierMap>
