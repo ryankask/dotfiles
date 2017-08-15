@@ -17,13 +17,17 @@
   (interactive)
   (insert "import ipdb; ipdb.set_trace()"))
 
+(defvar my-pytest-command "pytest"
+  "The pytest command to send to tmux")
+
 (defun my-pytest-get-test-name-at-point ()
   (save-excursion
     (and (re-search-backward "^def \\(test_[A-Za-z0-9_]+\\)(.*$" nil t)
          (match-string-no-properties 1))))
 
 (defun my-pytest-test-command (test-name)
-  (format "pytest %s -s -k %s"
+  (format "%s %s -s -k %s"
+          my-pytest-command
           (car (projectile-make-relative-to-root (list (buffer-file-name))))
           test-name))
 
