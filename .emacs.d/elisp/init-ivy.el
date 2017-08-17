@@ -3,7 +3,7 @@
   :diminish ivy-mode
   :bind (("C-c C-r" . ivy-resume)
          :map ivy-minibuffer-map
-         ("C-e" . ivy-immediate-done)
+         ("C-i" . ivy-immediate-done)
          ("RET" . ivy-alt-done))
   :init
   (setq ivy-count-format "(%d/%d) "
