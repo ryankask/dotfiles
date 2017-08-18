@@ -55,6 +55,7 @@
    (cursor :background fg)
    (minibuffer-prompt :foreground fg)
    (font-lock-variable-name-face :foreground fg)
+   (region :background (doom-lighten bg 0.1) :foreground nil :distant-foreground (doom-darken fg 0.2))
    ;; dired
    (dired-directory :foreground blue)
    ;; avy
