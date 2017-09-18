@@ -21,6 +21,7 @@
 (setq inhibit-startup-message t
       use-dialog-box nil
       initial-scratch-message nil
+      confirm-kill-emacs 'y-or-n-p
       show-paren-mode t)
 
 (use-package column-marker
