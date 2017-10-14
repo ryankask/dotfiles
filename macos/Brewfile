@@ -22,7 +22,7 @@ brew 'postgres'
 brew 'tree'
 brew 'redis'
 brew 'aspell', args: ['with-lang-en', 'with-lang-pl']
-brew 'htop-osx'
+brew 'htop'
 brew 'tarsnap'
 brew 'go'
 brew 'dnsmasq'
