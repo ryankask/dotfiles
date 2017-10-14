@@ -33,7 +33,6 @@ brew 'elixir'
 brew 'libffi'
 brew 'watchman'
 brew 'ffmpeg'
-brew 'reattach-to-user-namespace', args: ['with-wrap-pbcopy-and-pbpaste']
 brew 'haskell-stack'
 brew 'jq'
 brew 'direnv'
