@@ -56,7 +56,6 @@
 
 (use-package org
   :ensure t
-  :pin melpa-stable
   :defer t
   :init
   (setq org-log-done 'time))
