@@ -11,5 +11,6 @@
   "python.linting.flake8Path": "/Users/ryan/.virtualenvs/local/bin/flake8",
   "telemetry.enableCrashReporter": false,
   "telemetry.enableTelemetry": false,
-  "workbench.activityBar.visible": true
+  "workbench.activityBar.visible": true,
+  "typescript.check.npmIsInstalled": false
 }
