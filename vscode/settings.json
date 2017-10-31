@@ -4,6 +4,8 @@
   "editor.tabSize": 2,
   "files.autoSave": "off",
   "go.formatTool": "goreturns",
+  "prettier.singleQuote": true,
+  "prettier.trailingComma": "all",
   "python.pythonPath": "/Users/ryan/.virtualenvs/local/bin/python",
   "python.linting.enabled": true,
   "python.linting.pylintEnabled": false,
