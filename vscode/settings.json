@@ -14,5 +14,9 @@
   "telemetry.enableCrashReporter": false,
   "telemetry.enableTelemetry": false,
   "workbench.activityBar.visible": true,
-  "typescript.check.npmIsInstalled": false
+  "typescript.check.npmIsInstalled": false,
+
+  "[javascript]": {
+    "editor.formatOnSave": true
+  }
 }
