@@ -1,4 +1,4 @@
 [flake8]
-ignore = F403
+ignore = F403,E402
 exclude = .cache,.idea,build,node_modules
 max-line-length = 99
