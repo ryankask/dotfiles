@@ -1,10 +1,13 @@
 (use-package haskell-mode
   :ensure t
   :pin melpa-stable
-  :defer t
   :init
+  (setq haskell-process-type 'stack-ghci)
   (add-hook 'haskell-mode-hook
             (lambda ()
+              (flycheck-select-checker 'haskell-stack-ghc)
+              (setq-local flycheck-check-syntax-automatically '(save idle-change mode-enabled))
+              (interactive-haskell-mode)
               (subword-mode 1))))
 
 (use-package ghc
@@ -17,9 +20,8 @@
   :init
   (add-hook 'haskell-mode-hook
             (lambda ()
-              (set (make-local-variable 'company-backends)
-                   '((company-ghc :with company-dabbrev-code)
-                     company-dabbrev-code)))))
+              (setq-local company-backends
+                          '((company-ghc :with company-dabbrev-code) company-dabbrev-code)))))
 
 (use-package hindent
   :ensure t
