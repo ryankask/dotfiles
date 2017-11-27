@@ -63,6 +63,7 @@
 
 (use-package dired
   :defer t
+  :bind ("C-o C-d" . dired-jump)
   :config
   (unbind-key "C-o" dired-mode-map)
   (setq dired-recursive-deletes 'always
