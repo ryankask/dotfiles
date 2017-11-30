@@ -36,6 +36,7 @@ brew 'ffmpeg'
 brew 'haskell-stack'
 brew 'jq'
 brew 'direnv'
+brew 'wget'
 
 cask 'iterm2'
 cask 'google-chrome'
