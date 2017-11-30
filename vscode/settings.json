@@ -1,7 +1,7 @@
 // Place your settings in this file to overwrite the default settings
 {
   "editor.rulers": [80, 100, 120],
-  "editor.tabSize": 2,
+  "editor.tabSize": 4,
   "files.autoSave": "off",
   "go.formatTool": "goreturns",
   "prettier.singleQuote": true,
@@ -17,6 +17,7 @@
   "typescript.check.npmIsInstalled": false,
 
   "[javascript]": {
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
+    "editor.tabSize": 2
   }
 }
