@@ -18,11 +18,17 @@
 (bind-key "s-\\" "`")
 
 ;; get rid of trailing whitespace
-(defvar do-delete-trailing-whitespace t)
-(add-hook 'before-save-hook
-          (lambda()
-            (unless (or (eq major-mode 'org-mode) (not do-delete-trailing-whitespace))
-              (delete-trailing-whitespace))))
+(defcustom my-should-delete-trailing-whitespace t
+  "Should trailing whitespace be deleted from files."
+  :type 'boolean
+  :safe 'booleanp)
+
+(defun my-delete-trailing-whitespace ()
+  "Delete trailing whitespace in certain conditions."
+  (unless (or (eq major-mode 'org-mode) (not my-should-delete-trailing-whitespace))
+    (delete-trailing-whitespace)))
+
+(add-hook 'before-save-hook 'my-delete-trailing-whitespace)
 
 (use-package subword
   :diminish subword-mode)

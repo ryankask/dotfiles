@@ -9,9 +9,6 @@
 (global-unset-key (kbd "s-m"))
 (bind-key "C-o r" 'repeat)
 
-;; Local variables
-(setq safe-local-variable-values '((do-delete-trailing-whitespace)))
-
 ;; C-h behaves like C-h in readline
 (bind-key "C-h" 'delete-backward-char)
 (bind-key "s-h" 'help-command)

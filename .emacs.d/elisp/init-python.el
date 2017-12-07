@@ -40,8 +40,10 @@
         (process-send-eof proc)))
     (message "Copied \"%s\" to clipboard" test-name)))
 
-(defvar my-pytest-tmux-target-pane nil
-  "The tmux pane which will receive test commands")
+(defcustom my-pytest-tmux-target-pane nil
+  "The tmux pane which will receive test commands."
+  :type 'string
+  :safe 'stringp)
 
 (defun my-pytest-set-tmux-target-pane ()
   "Read and set the target tmux pane"
