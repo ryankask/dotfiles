@@ -44,7 +44,6 @@
 
 (use-package magit
   :ensure t
-  :after ido-ubiquitous
   :bind (("C-x g" . magit-status)
          ("C-x M-g" . magit-dispatch-popup)
          ("s-m m" . magit-status)
