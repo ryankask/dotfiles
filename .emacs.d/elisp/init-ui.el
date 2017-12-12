@@ -7,10 +7,14 @@
   (tool-bar-mode -1)
   (scroll-bar-mode -1)
 
-  (use-package nlinum
-    :ensure t
-    :config
-    (global-nlinum-mode 1)))
+  (if (version< emacs-version "26")
+      (use-package nlinum
+        :ensure t
+        :config
+        (global-nlinum-mode 1))
+    (progn
+      (setq display-line-numbers-grow-only t)
+      (global-display-line-numbers-mode))))
 
 ;; mode line settings
 (line-number-mode t)
@@ -56,6 +60,7 @@
    (cursor :background fg)
    (minibuffer-prompt :foreground fg)
    (font-lock-variable-name-face :foreground fg)
+   (line-number-current-line :inherit 'line-number)
    ;; dired
    (dired-directory :foreground blue)
    ;; avy
