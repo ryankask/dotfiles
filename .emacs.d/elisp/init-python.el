@@ -33,7 +33,7 @@
 
 (defun my-pytest-copy-test-command-at-point ()
   (interactive)
-  (when-let ((test-name (my-pytest-get-test-name-at-point)))
+  (when-let* ((test-name (my-pytest-get-test-name-at-point)))
     (let ((process-connection-type nil))
       (let ((proc (start-process "pbcopy" "*Messages*" "pbcopy")))
         (process-send-string proc (my-pytest-test-command test-name))
@@ -56,8 +56,8 @@
   "Send a command to run the test at point to the active tmux pane"
   (interactive "P")
   (when my-pytest-tmux-target-pane
-    (when-let ((test-name (my-pytest-get-test-name-at-point))
-               (test-command (my-pytest-test-command test-name)))
+    (when-let* ((test-name (my-pytest-get-test-name-at-point))
+                (test-command (my-pytest-test-command test-name)))
       (let ((process-connection-type nil))
         (start-process
          "pytest-tmux"
