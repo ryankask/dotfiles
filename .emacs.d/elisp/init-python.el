@@ -117,6 +117,9 @@
 
 (use-package py-isort
   :ensure t
+  :after (python)
+  :bind (:map python-mode-map
+              ("C-c i" . py-isort-buffer))
   :config
   (advice-add 'py-isort--call :around #'my-py-isort--call))
 
