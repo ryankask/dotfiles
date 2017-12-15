@@ -4,7 +4,8 @@
   :bind (("C-c C-r" . ivy-resume)
          :map ivy-minibuffer-map
          ("C-i" . ivy-immediate-done)
-         ("RET" . ivy-alt-done))
+         ("RET" . ivy-alt-done)
+         ("s-i" . ivy-insert-current))
   :init
   (setq ivy-count-format "(%d/%d) "
         ivy-extra-directories nil
