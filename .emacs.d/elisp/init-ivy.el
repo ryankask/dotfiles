@@ -48,7 +48,8 @@
          ("C-c n" . counsel-rg)
          ("C-c i" . counsel-git)
          ("C-c o" . counsel-git-grep)
-         ("C-c e" . counsel-locate))
+         ("C-c e" . counsel-locate)
+         ("C-c m" . counsel-imenu))
   :init
   (setq counsel-find-file-ignore-regexp (my-counsel-ignore-regexp-builder
                                          "\\`\\."
