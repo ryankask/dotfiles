@@ -1,3 +1,5 @@
+;;; -*- lexical-binding: t; -*-
+
 (define-coding-system-alias 'UTF-8 'utf-8)
 (setq utf-translate-cjk-mode nil)
 (set-language-environment 'utf-8)

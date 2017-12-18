@@ -1,3 +1,5 @@
+;;; -*- lexical-binding: t; -*-
+
 (defun my-python-activate-virtualenv ()
   "Find and activate the project's virtualenv root directory"
   (let* ((project-root (projectile-project-root))
@@ -25,11 +27,13 @@
     (and (re-search-backward "^def \\(test_[A-Za-z0-9_]+\\)(.*$" nil t)
          (match-string-no-properties 1))))
 
-(defun my-pytest-test-command (test-name)
-  (format "%s %s -s -k %s"
+(defun my-pytest-test-command (&optional test-name)
+  (format "%s %s -s%s"
           my-pytest-command
           (car (projectile-make-relative-to-root (list (buffer-file-name))))
-          test-name))
+          (if (and test-name (not (string= "" test-name)))
+              (concat " -k " test-name)
+            "")))
 
 (defun my-pytest-copy-test-command-at-point ()
   (interactive)
@@ -51,6 +55,20 @@
   (let* ((target (string-trim (read-string "target tmux pane: " my-pytest-tmux-target-pane))))
     (if (not (equal target ""))
         (setq my-pytest-tmux-target-pane target))))
+
+
+(defun my-pytest-send-test-buffer-file-command-to-tmux (arg)
+  "Send a command to the active tmux pane that runs the tests in the
+current buffer's file."
+  (interactive "P")
+  (when my-pytest-tmux-target-pane
+    (let ((process-connection-type nil))
+      (start-process
+       "pytest-tmux"
+       nil
+       "tmux" "send-keys" "-t" my-pytest-tmux-target-pane
+       (my-pytest-test-command)
+       (if arg "" "C-m")))))
 
 (defun my-pytest-send-test-command-at-point-to-tmux (arg)
   "Send a command to run the test at point to the active tmux pane"
@@ -119,7 +137,7 @@
   :ensure t
   :after (python)
   :bind (:map python-mode-map
-              ("C-c i" . py-isort-buffer))
+              ("C-c S" . py-isort-buffer))
   :config
   (advice-add 'py-isort--call :around #'my-py-isort--call))
 

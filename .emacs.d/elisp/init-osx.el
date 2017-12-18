@@ -1,3 +1,5 @@
+;;; -*- lexical-binding: t; -*-
+
 (setq ns-function-modifier 'hyper
       ring-bell-function 'ignore)
 

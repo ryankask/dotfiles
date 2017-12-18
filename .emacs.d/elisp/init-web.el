@@ -1,3 +1,5 @@
+;;; -*- lexical-binding: t; -*-
+
 (use-package web-mode
   :ensure t
   :mode ("\\.html?\\'"

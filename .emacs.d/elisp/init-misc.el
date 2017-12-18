@@ -1,4 +1,4 @@
-;;;; Load miscellaneous packages
+;;; Load miscellaneous packages -*- lexical-binding: t; -*-
 
 ;;; Productivity
 

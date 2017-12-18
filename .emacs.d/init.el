@@ -1,4 +1,4 @@
-;;;; Ryan Kaskel's emacs configuration
+;;;; Ryan Kaskel's emacs configuration -*- lexical-binding: t; -*-
 
 ;;; Paths
 

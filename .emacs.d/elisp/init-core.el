@@ -1,4 +1,4 @@
-;; Core settings
+;;; Core settings -*- lexical-binding: t; -*-
 
 (setq user-full-name "Ryan Kaskel"
       user-mail-address "dev@ryankaskel.com"
