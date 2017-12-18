@@ -72,6 +72,9 @@
   (setq-default dired-omit-files-p t)
   (setq dired-omit-files (concat dired-omit-files "\\|\\`__pycache__\\'")))
 
+(use-package imenu
+  :bind ("C-c m" . imenu))
+
 ;; Use Google Chrome to open links
 (setq browse-url-browser-function 'browse-url-generic
       browse-url-generic-program "open")
