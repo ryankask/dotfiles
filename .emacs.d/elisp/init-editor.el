@@ -11,6 +11,7 @@
       (append completion-ignored-extensions '(".DS_Store")))
 
 (add-hook 'text-mode-hook 'abbrev-mode)
+(add-hook 'prog-mode-hook 'flyspell-prog-mode)
 
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
