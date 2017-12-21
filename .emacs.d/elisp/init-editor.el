@@ -1,7 +1,5 @@
 ;;; -*- lexical-binding: t; -*-
 
-(global-auto-revert-mode t)
-
 (setq-default indent-tabs-mode nil
               tab-width 4)
 (setq tab-always-indent 'complete
@@ -9,9 +7,6 @@
       require-final-newline t
       completion-ignored-extensions
       (append completion-ignored-extensions '(".DS_Store")))
-
-(add-hook 'text-mode-hook 'abbrev-mode)
-(add-hook 'prog-mode-hook 'flyspell-prog-mode)
 
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
@@ -32,6 +27,22 @@
     (delete-trailing-whitespace)))
 
 (add-hook 'before-save-hook 'my-delete-trailing-whitespace)
+
+(use-package autorevert
+  :diminish auto-revert-mode
+  :config
+  (global-auto-revert-mode t))
+
+(use-package abbrev
+  :diminish abbrev-mode
+  :hook (text-mode . abbrev-mode))
+
+(use-package flyspell
+  :diminish flyspell-mode
+  :hook (prog-mode . flyspell-prog-mode))
+
+(use-package eldoc
+  :diminish eldoc-mode)
 
 (use-package subword
   :diminish subword-mode)
