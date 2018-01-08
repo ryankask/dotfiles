@@ -55,7 +55,12 @@
 
 (use-package org
   :ensure t
-  :defer t
+  :bind (:map org-mode-map
+              ("s-<return>" . org-meta-return)
+              ("s-<left>" . org-metaleft)
+              ("s-<right>" . org-metaright)
+              ("s-<up>" . org-metaup)
+              ("s-<down>" . org-metadown))
   :init
   (setq org-log-done 'time))
 
