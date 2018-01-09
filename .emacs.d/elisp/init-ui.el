@@ -76,7 +76,6 @@
    (column-marker-2 :background blue)
    ;; ivy
    (ivy-subdir :foreground blue)
-   (ivy-virtual :foreground (doom-darken fg 0.15))
    ;; org
    (org-level-1 :foreground blue :background base3 :bold t :height 1.0)))
 
