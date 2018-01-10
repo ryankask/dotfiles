@@ -37,3 +37,6 @@ Thumbs.db
 # Redis
 
 *.rdb
+
+# Tools
+*.envrc
