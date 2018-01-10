@@ -3,7 +3,7 @@
 (use-package ivy
   :ensure t
   :diminish ivy-mode
-  :bind (("C-c C-r" . ivy-resume)
+  :bind (("C-o C-r" . ivy-resume)
          :map ivy-minibuffer-map
          ("C-i" . ivy-immediate-done)
          ("RET" . ivy-alt-done)
