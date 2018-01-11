@@ -7,7 +7,9 @@
          :map ivy-minibuffer-map
          ("C-i" . ivy-immediate-done)
          ("RET" . ivy-alt-done)
-         ("s-i" . ivy-insert-current))
+         ("s-i" . ivy-insert-current)
+         :map ivy-occur-grep-mode-map
+         ("C-o" . nil))
   :init
   (setq ivy-count-format "(%d/%d) "
         ivy-extra-directories nil
