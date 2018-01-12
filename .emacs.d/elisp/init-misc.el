@@ -69,7 +69,7 @@
   :ensure t
   :diminish projectile-mode
   :init
-  (setq projectile-keymap-prefix (kbd "C-c ;")
+  (setq projectile-keymap-prefix (kbd "C-o p")
         projectile-completion-system 'ivy)
   :config
   (projectile-global-mode t))
