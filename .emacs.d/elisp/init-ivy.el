@@ -59,6 +59,7 @@
                                          "\\`\\."
                                          "\\`__pycache__/\\'"
                                          (my-counsel-ignore-extensions "pyc" "elc"))
+        counsel-git-grep-skip-counting-lines t
         counsel-locate-cmd 'counsel-locate-cmd-mdfind))
 
 (provide 'init-ivy)
