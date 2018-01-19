@@ -51,6 +51,7 @@
          ("s-m l" . magit-log)
          ("s-m f" . magit-log-buffer-file)
          ("s-m b" . magit-blame))
+  :hook (git-commit-setup . git-commit-turn-on-flyspell)
   :config
   (setq magit-completing-read-function 'ivy-completing-read))
 
