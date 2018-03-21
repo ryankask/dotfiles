@@ -79,6 +79,8 @@
    ;; org
    (org-level-1 :foreground blue :background base3 :bold t :height 1.0)))
 
+(bind-key "C-c d" 'my-doom-one-theme-customise)
+
 (use-package doom-themes
   :ensure t
   :init
