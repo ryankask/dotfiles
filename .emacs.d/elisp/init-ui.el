@@ -56,6 +56,7 @@
     ,@(mapcar #'doom-themes--build-face faces)))
 
 (defun my-doom-one-theme-customise ()
+  (interactive)
   (my-doom-theme-set-faces
    'doom-one
    ;; base
