@@ -137,7 +137,7 @@ current buffer's file."
   :ensure t
   :after (python)
   :bind (:map python-mode-map
-              ("C-c S" . py-isort-buffer))
+              ("C-o i" . py-isort-buffer))
   :config
   (advice-add 'py-isort--call :around #'my-py-isort--call))
 
