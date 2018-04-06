@@ -141,4 +141,12 @@ current buffer's file."
   :config
   (advice-add 'py-isort--call :around #'my-py-isort--call))
 
+(use-package blacken
+  :ensure t
+  :after (python)
+  :bind (:map python-mode-map
+              ("C-o f" . blacken-buffer))
+  :init
+  (setq blacken-executable (python-environment-bin "black" my-default-virtualenv-path)))
+
 (provide 'init-python)
