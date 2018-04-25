@@ -1,7 +1,8 @@
 ;;; -*- lexical-binding: t; -*-
 
 (setq ns-function-modifier 'hyper
-      ring-bell-function 'ignore)
+      ring-bell-function 'ignore
+      trash-directory "~/.Trash")
 
 (use-package exec-path-from-shell
   :ensure t
