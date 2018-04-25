@@ -1,21 +1,27 @@
 // Place your settings in this file to overwrite the default settings
 {
+  "editor.minimap.enabled": false,
   "editor.rulers": [80, 100, 120],
   "editor.tabSize": 4,
+  "editor.wordSeparators": "`~!@#$%^&*()-=+[{]}\\|;:'\",.<>/?_",
   "files.autoSave": "off",
   "go.formatTool": "goreturns",
   "prettier.singleQuote": true,
   "prettier.trailingComma": "all",
-  "python.pythonPath": "~/.virtualenvs/local/bin/python",
+  "python.pythonPath": "~/.virtualenvs/local/bin/python",  
   "python.linting.enabled": true,
   "python.linting.pylintEnabled": false,
   "python.linting.flake8Enabled": true,
   "python.linting.flake8Path": "~/.virtualenvs/local/bin/flake8",
+  "search.location": "panel",
   "telemetry.enableCrashReporter": false,
   "telemetry.enableTelemetry": false,
   "workbench.activityBar.visible": true,
   "typescript.check.npmIsInstalled": false,
 
+  "[html]": {
+    "editor.tabSize": 2
+  },
   "[javascript]": {
     "editor.formatOnSave": true,
     "editor.tabSize": 2
