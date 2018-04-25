@@ -59,7 +59,7 @@
 (use-package init-core)
 (use-package init-editor)
 (use-package init-ui)
-(use-package init-osx
+(use-package init-macos
   :if (eq system-type 'darwin))
 (use-package init-misc)
 (use-package init-ivy)
