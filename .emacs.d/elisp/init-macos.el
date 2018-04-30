@@ -14,4 +14,4 @@
 ;; Disable `ns-popup-font-panel', which causes emacs to sometimes freeze
 (global-unset-key (kbd "s-t"))
 
-(provide 'init-osx)
+(provide 'init-macos)
