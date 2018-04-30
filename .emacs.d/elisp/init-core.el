@@ -13,6 +13,16 @@
 (bind-key "C-h" 'delete-backward-char)
 (bind-key "s-h" 'help-command)
 
+;; Buffers
+
+(setq my-protected-buffers '("*scratch*" "*Messages*"))
+
+(defun my-kill-buffer-query ()
+  "Protect some special buffers from getting killed."
+  (not (member (buffer-name (current-buffer)) my-protected-buffers)))
+
+(add-hook 'kill-buffer-query-functions 'my-kill-buffer-query)
+
 ;; Backups
 (defconst my-backup-directory (expand-file-name "backups/" dotemacs-dir))
 (make-directory my-backup-directory t)
