@@ -64,7 +64,8 @@
               ("s-<up>" . org-metaup)
               ("s-<down>" . org-metadown))
   :init
-  (setq org-log-done 'time))
+  (setq org-cycle-separator-lines 1
+        org-log-done 'time))
 
 (use-package projectile
   :ensure t
