@@ -38,6 +38,7 @@ brew 'jq'
 brew 'direnv'
 brew 'wget'
 brew 'yarn', args: ['without-node']
+brew 'fd'
 
 cask 'iterm2'
 cask 'google-chrome'
