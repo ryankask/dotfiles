@@ -14,6 +14,7 @@
 (bind-key "s-=" 'text-scale-increase)
 (bind-key "s--" 'text-scale-decrease)
 (bind-key "s-\\" "`")
+(bind-key "M-\"" "€")
 
 ;; get rid of trailing whitespace
 (defcustom my-should-delete-trailing-whitespace t
