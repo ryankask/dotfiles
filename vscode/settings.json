@@ -18,6 +18,7 @@
   "telemetry.enableTelemetry": false,
   "typescript.check.npmIsInstalled": false,
   "workbench.activityBar.visible": true,
+  "workbench.editor.enablePreviewFromQuickOpen": false,
 
   "[html]": {
     "editor.tabSize": 2
