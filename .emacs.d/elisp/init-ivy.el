@@ -24,12 +24,11 @@
   :ensure t
   :bind (("C-s" . swiper)))
 
-(use-package smex
+(use-package amx
   :ensure t
   :defer t
   :init
-  (setq smex-save-file (expand-file-name "smex.hist" dotemacs-dir)
-        smex-history-length 32))
+  (setq amx-history-length 32))
 
 (defun my-counsel-ignore-regexp-builder (&rest regexp-units)
   (mapconcat
