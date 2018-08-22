@@ -31,8 +31,7 @@
       show-paren-mode t)
 
 (use-package column-marker
-  :ensure t
-  :defer t)
+  :load-path "elisp/vendor/")
 
 (defun my-solarized-theme-customise ()
   (solarized-with-color-variables 'dark
