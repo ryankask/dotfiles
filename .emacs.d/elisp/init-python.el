@@ -24,7 +24,7 @@
 
 (defun my-pytest-get-test-name-at-point ()
   (save-excursion
-    (and (re-search-backward "^def \\(test_[A-Za-z0-9_]+\\)(.*$" nil t)
+    (and (re-search-backward "^\\(?:async \\)?def \\(test_[A-Za-z0-9_]+\\)(.*$" nil t)
          (match-string-no-properties 1))))
 
 (defun my-pytest-test-command (&optional test-name)
