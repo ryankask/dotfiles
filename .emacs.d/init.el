@@ -67,4 +67,5 @@
 (use-package init-go)
 (use-package init-haskell)
 (use-package init-elixir)
+(use-package init-rust)
 (use-package init-web)
