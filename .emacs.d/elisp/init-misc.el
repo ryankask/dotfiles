@@ -82,8 +82,12 @@
   (setq rainbow-html-colors-major-mode-list
         '(html-mode css-mode php-mode nxml-mode xml-mode scss-mode)))
 
+(use-package yasnippet-snippets
+  :ensure t)
+
 (use-package yasnippet
   :ensure t
+  :after yasnippet-snippets
   :diminish yas-minor-mode
   :config
   (yas-global-mode 1)
