@@ -14,6 +14,11 @@
               (with-current-buffer buffer
                 (setq-local python-shell-virtualenv-root virtualenv-root))))))))
 
+(defun my-python-debug-insert-ipdb-set-trace ()
+  "Insert ipdb trace call into buffer."
+  (interactive)
+  (insert "import ipdb; ipdb.set_trace()"))
+
 (defvar my-pytest-command "pytest"
   "The pytest command to send to tmux")
 
@@ -92,6 +97,7 @@ current buffer's file."
 
 (use-package python
   :bind (:map python-mode-map
+              ("C-c /" . my-python-debug-insert-ipdb-set-trace)
               ("C-c C-t" . my-pytest-copy-test-command-at-point)
               ("C-c C-s" . my-pytest-send-test-command-at-point-to-tmux))
   :init
