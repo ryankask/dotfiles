@@ -70,11 +70,10 @@
 (use-package projectile
   :ensure t
   :diminish projectile-mode
-  :init
-  (setq projectile-keymap-prefix (kbd "C-o p")
-        projectile-completion-system 'ivy)
   :config
-  (projectile-global-mode t))
+  (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
+  (define-key projectile-mode-map (kbd "C-o p") 'projectile-command-map)
+  (projectile-mode +1))
 
 (use-package rainbow-mode
   :ensure t
