@@ -135,7 +135,9 @@
 
 (use-package markdown-mode
   :ensure t
-  :defer t)
+  :defer t
+  :init
+  (setq markdown-command "pandoc"))
 
 (use-package rst-mode
   :defer t
