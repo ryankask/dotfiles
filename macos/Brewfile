@@ -3,8 +3,6 @@
 tap 'caskroom/cask'
 
 brew 'git'
-brew 'gnutls'
-brew 'emacs', args: ['with-cocoa', 'with-gnutls']
 brew 'coreutils'
 brew 'findutils'
 brew 'bash'
@@ -41,6 +39,7 @@ brew 'yarn', args: ['without-node']
 brew 'fd'
 
 cask 'iterm2'
+cask 'emacs'
 cask 'google-chrome'
 cask 'ukelele'
 cask 'dropbox'
