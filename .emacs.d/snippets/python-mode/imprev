@@ -2,4 +2,4 @@
 # name: Import Django's reverse function
 # key: imprev
 # --
-from django.core.urlresolvers import reverse$0
+from django.urls import reverse$0
