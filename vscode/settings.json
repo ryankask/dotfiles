@@ -30,5 +30,6 @@
   "[reason]": {
     "editor.formatOnSave": true,
     "editor.tabSize": 2
-  }
+  },
+  "go.useLanguageServer": true
 }
