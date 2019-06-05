@@ -49,9 +49,9 @@
   :bind (("M-x" . counsel-M-x)
          ("C-x C-f" . counsel-find-file)
          ("C-c n" . counsel-rg)
-         ("C-c i" . counsel-git)
+         ("C-c e" . counsel-git)
+         ("C-c i" . counsel-locate)
          ("C-c o" . counsel-git-grep)
-         ("C-c e" . counsel-locate)
          ("C-c m" . counsel-imenu))
   :init
   (setq counsel-find-file-ignore-regexp (my-counsel-ignore-regexp-builder
