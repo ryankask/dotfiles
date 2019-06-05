@@ -7,6 +7,7 @@
 ;; Keybindings
 (global-unset-key (kbd "C-o"))
 (global-unset-key (kbd "s-m"))
+(global-unset-key (kbd "s-o"))
 (bind-key "C-o r" 'repeat)
 
 ;; C-h behaves like C-h in readline
