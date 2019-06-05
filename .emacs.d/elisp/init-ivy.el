@@ -7,6 +7,7 @@
          :map ivy-minibuffer-map
          ("C-i" . ivy-immediate-done)
          ("RET" . ivy-alt-done)
+         ("s-e" . ivy-yank-word)
          ("s-i" . ivy-insert-current)
          :map ivy-occur-grep-mode-map
          ("C-o" . nil))
