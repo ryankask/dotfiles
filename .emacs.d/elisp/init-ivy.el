@@ -5,8 +5,8 @@
   :diminish ivy-mode
   :bind (("C-o C-r" . ivy-resume)
          :map ivy-minibuffer-map
-         ("C-i" . ivy-immediate-done)
          ("RET" . ivy-alt-done)
+         ("<C-return>" . ivy-immediate-done)
          ("s-e" . ivy-yank-word)
          ("s-i" . ivy-insert-current)
          :map ivy-occur-grep-mode-map
