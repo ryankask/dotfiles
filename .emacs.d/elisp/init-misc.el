@@ -2,12 +2,6 @@
 
 ;;; Productivity
 
-(use-package ag
-  :ensure t
-  :init
-  (setq ag-highlight-search t
-        ag-reuse-buffers t))
-
 (use-package avy
   :bind (("C-'" . avy-goto-char-timer)
          ("M-g g" . avy-goto-line)
@@ -30,6 +24,10 @@
         company-minimum-prefix-length 2
         company-show-numbers t)
   (add-hook 'after-init-hook 'global-company-mode))
+
+(use-package deadgrep
+  :ensure t
+  :bind ("C-c u" . deadgrep))
 
 (use-package expand-region
   :ensure t
