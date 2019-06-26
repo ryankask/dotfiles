@@ -1,0 +1,99 @@
+# -*- mode: sh; -*-
+#
+# A theme based on steeef
+#
+# Authors:
+#   Steve Losh <steve@stevelosh.com>
+#   Bart Trojanowski <bart@jukie.net>
+#   Brian Carper <brian@carper.ca>
+#   steeef <steeef@gmail.com>
+#   Sorin Ionescu <sorin.ionescu@gmail.com>
+#
+# Screenshots:
+#   http://i.imgur.com/HyRvv.png
+#
+
+function python-info {
+  # Clean up previous $python_info.
+  unset python_info
+  typeset -gA python_info
+
+  # Grab the styling we might have to do
+  zstyle -s ':simple:module:python:info:virtualenv' format 'virtualenv_format'
+
+  # Format virtualenv.
+  if [[ -n "$virtualenv_format" ]]; then
+    if [[ -n "$VIRTUAL_ENV" ]]; then
+      zformat -f virtualenv_formatted "$virtualenv_format" "v:${VIRTUAL_ENV:t}"
+      python_info[virtualenv]="$virtualenv_formatted"
+    fi
+  fi
+}
+
+
+function prompt_ryan_precmd {
+  # Check for untracked files or updated submodules since vcs_info does not.
+  if [[ -n $(git ls-files --other --exclude-standard 2> /dev/null) ]]; then
+    branch_format="(%%B%F{cyan}%b%f%%b%u%c%F{red}●%f)"
+  else
+    branch_format="(%%B%F{cyan}%b%f%%b%u%c)"
+  fi
+
+  zstyle ':vcs_info:*:prompt:*' formats "${branch_format}"
+
+  vcs_info 'prompt'
+
+  python-info
+}
+
+function prompt_ryan_setup {
+  setopt LOCAL_OPTIONS
+  unsetopt XTRACE KSH_ARRAYS
+  prompt_opts=(cr percent sp subst)
+
+  # Load required functions.
+  autoload -Uz add-zsh-hook
+  autoload -Uz vcs_info
+
+  # Add hook for calling vcs_info before each command.
+  add-zsh-hook precmd prompt_ryan_precmd
+
+  # Formats:
+  #   %b - branchname
+  #   %u - unstagedstr (see below)
+  #   %c - stagedstr (see below)
+  #   %a - action (e.g. rebase-i)
+  #   %R - repository path
+  #   %S - path in the repository
+  local branch_format="(%%B%F{cyan}%b%f%%b%u%c)"
+  local action_format="(%F{green}%a%f)"
+  local unstaged_format="%F{yellow}●%f"
+  local staged_format="%F{green}●%f"
+
+  # Set vcs_info parameters.
+  zstyle ':vcs_info:*' enable git hg
+  zstyle ':vcs_info:*:prompt:*' check-for-changes true
+  zstyle ':vcs_info:*:prompt:*' unstagedstr "${unstaged_format}"
+  zstyle ':vcs_info:*:prompt:*' stagedstr "${staged_format}"
+  zstyle ':vcs_info:*:prompt:*' actionformats "${branch_format}${action_format}"
+  zstyle ':vcs_info:*:prompt:*' formats "${branch_format}"
+  zstyle ':vcs_info:*:prompt:*' nvcsformats   ""
+
+  # Set python-info parameters.
+  zstyle ':simple:module:python:info:virtualenv' format '(env:%B%F{magenta}%v%f%b)'
+
+  local hist_num="%B%F{yellow}[%F{green}%h%F{yellow}]%f%b"
+  local user_sys_info="%B%F{blue}%n%F{yellow}@%F{blue}%m%f%b"
+  local time_stamp="%B%F{yellow}[%b%F{red}%*%B%F{yellow}]%f%b"
+  local cwd_path="%B%F{yellow}[ %F{blue}%~%f%F{yellow} ]%f%b"
+  local main_prompt="%B%(?.%F{green}.%F{red})$%f%b"
+
+  # Define prompts.
+  PROMPT="
+${hist_num} ${user_sys_info} ${time_stamp} "'${vcs_info_msg_0_}'" "'$python_info[virtualenv]'"
+${cwd_path}
+${main_prompt} "
+  RPROMPT=''
+}
+
+prompt_ryan_setup "$@"

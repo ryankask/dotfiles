@@ -1,0 +1,78 @@
+# -*- mode: sh; -*-
+#
+# Executes commands at the start of an interactive session.
+#
+# Authors:
+#   Sorin Ionescu <sorin.ionescu@gmail.com>
+#
+
+if [[ -s "${ZDOTDIR:-$HOME}/.zsh/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zsh/init.zsh"
+fi
+
+# Customize to your needs...
+
+# Aliases
+
+alias g="git"
+
+# OS specific
+
+if [[ "$OSTYPE" == darwin* ]]; then
+  # OS X-specific aliases
+  alias find="$BREW_PREFIX/bin/gfind"
+  alias xargs="$BREW_PREFIX/bin/gxargs"
+
+  PG_DIR="$BREW_PREFIX/var/postgres"
+  alias pg_start="pg_ctl -D $PG_DIR -l $PG_DIR/server.log start"
+  alias pg_stop="pg_ctl -D $PG_DIR stop -s -m fast"
+fi
+
+# Python
+
+function pyclean() {
+    ZSH_PYCLEAN_PLACES=${*:-'.'}
+    find ${ZSH_PYCLEAN_PLACES} -type f -name "*.py[co]" -delete
+    find ${ZSH_PYCLEAN_PLACES} -type d -name "__pycache__" -delete
+}
+
+export PIP_REQUIRE_VIRTUALENV=true
+
+if (( $+commands[virtualenvwrapper.sh] )); then
+  export WORKON_HOME="$HOME/.virtualenvs"
+  [[ -n $BREW_PREFIX ]] && export VIRTUALENVWRAPPER_PYTHON="$BREW_PREFIX/bin/python3"
+  VIRTUAL_ENV_DISABLE_PROMPT=1
+  source "$commands[virtualenvwrapper.sh]"
+  alias wo="workon"
+fi
+
+# npm
+
+if [[ -s "$HOME/.nvm/nvm.sh" ]]; then
+  source "$HOME/.nvm/nvm.sh" --no-use
+fi
+
+# Docker
+
+if (( $+commands[docker] )); then
+  alias dk='docker'
+  alias dkc='docker-compose'
+  alias dkps='docker ps'
+  alias dkpsa='docker ps -a'
+  alias dkR='docker run -it --rm'
+  alias dkE='docker exec -it'
+  dkstop() { docker stop $(docker ps -a -q); }
+  dkrm() { docker rm $(docker ps -a -q); }
+fi
+
+# Misc
+
+if (( $+commands[direnv] )); then
+  eval "$(direnv hook zsh)"
+fi
+
+# Load local zshrc
+
+if [[ -s "$HOME/.zshrc.local" ]]; then
+  source "$HOME/.zshrc.local"
+fi
