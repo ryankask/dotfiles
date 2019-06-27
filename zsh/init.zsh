@@ -720,15 +720,6 @@ else
   alias topm='top -o %MEM'
 fi
 
-# Miscellaneous
-
-# Serves a directory via HTTP.
-if (( $+commands[python3] )); then
-  alias http-serve='python3 -m http.server'
-else
-  alias http-serve='python -m SimpleHTTPServer'
-fi
-
 #
 # Functions
 #
