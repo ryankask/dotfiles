@@ -15,6 +15,16 @@ fi
 # Aliases
 
 alias g="git"
+alias gcue='git config user.email "$COMPANY_EMAIL"'
+alias sane="stty sane"
+alias killrunserver='pkill -f runserver'
+alias killjedi='pkill -f jediepcserver'
+alias ads='adb -d shell input keyevent 82'
+alias adbi='adb -d install'
+alias startavd='${ANDROID_HOME}/tools/emulator -avd Pixel_2_API_26 > /dev/null 2>&1 &'
+alias rna='node_modules/.bin/react-native run-android'
+alias rnr='adb -d reverse tcp:8081 tcp:8081'
+alias rnl='adb logcat *:S ReactNative:V ReactNativeJS:V'
 
 # OS specific
 
