@@ -41,9 +41,10 @@ fi
 # Python
 
 function pyclean() {
-    ZSH_PYCLEAN_PLACES=${*:-'.'}
-    find ${ZSH_PYCLEAN_PLACES} -type f -name "*.py[co]" -delete
-    find ${ZSH_PYCLEAN_PLACES} -type d -name "__pycache__" -delete
+  local places=${*:-'.'}
+  find $places -type f -name "*.py[co]" -delete
+  find $places -type d -name "__pycache__" -delete
+  find $places -type d -name ".mypy_cache" -delete
 }
 
 export PIP_REQUIRE_VIRTUALENV=true

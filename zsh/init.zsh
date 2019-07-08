@@ -938,24 +938,16 @@ fi
 #
 
 cache_file="${TMPDIR:-/tmp}/fasd-cache.$UID.zsh"
+
 if [[ "${commands[fasd]}" -nt "$cache_file" \
         || "${ZDOTDIR:-$HOME}/.zsh/init.zsh" -nt "$cache_file" \
         || ! -s "$cache_file"  ]]; then
-  # Set the base init arguments.
-  init_args=(zsh-hook)
-
-  # Set fasd completion init arguments, if applicable.
-  if zstyle -t ':prezto:module:completion' loaded; then
-    init_args+=(zsh-ccomp zsh-ccomp-install zsh-wcomp zsh-wcomp-install)
-  fi
-
   # Cache init code.
-  fasd --init "$init_args[@]" >! "$cache_file" 2> /dev/null
+  fasd --init zsh-hook zsh-ccomp zsh-ccomp-install zsh-wcomp zsh-wcomp-install >! "$cache_file" 2> /dev/null
 fi
 
 source "$cache_file"
-
-unset cache_file init_args
+unset cache_file
 
 function fasd_cd {
   local fasd_ret="$(fasd -d "$@")"
