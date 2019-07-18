@@ -10,12 +10,10 @@
   (add-hook 'go-mode-hook
             (lambda ()
               ;; Prefer goreturns to gofmt if installed
-              (let ((goreturns (executable-find "goreturns")))
-                (when goreturns
-                  (setq gofmt-command goreturns)))
-
+              (let ((goreturns (executable-find "goimports")))
+                (when goimports
+                  (setq gofmt-command "goimports")))
               (subword-mode 1)
-              (set (make-local-variable 'company-backends) '(company-go))
               (add-hook 'before-save-hook 'gofmt-before-save))))
 
 (use-package company-go
