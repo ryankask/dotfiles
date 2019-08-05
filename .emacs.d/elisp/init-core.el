@@ -51,10 +51,15 @@
   :config
   (savehist-mode 1))
 
+(defun my-recentf-save-list ()
+  "Save the recentf file list but don't output a message."
+  (let ((save-silently t))
+    (recentf-save-list)))
+
 (use-package recentf
   :init
   (setq recentf-auto-cleanup 'never
-        recentf-auto-save-timer (run-with-idle-timer 300 t 'recentf-save-list)
+        recentf-auto-save-timer (run-with-idle-timer 300 t 'my-recentf-save-list)
         recentf-exclude (list (format "\\`%s\\(?:elpa\\|backups\\)/" dotemacs-dir)
                               "recentf\\'"
                               "COMMIT_EDITMSG\\'")
