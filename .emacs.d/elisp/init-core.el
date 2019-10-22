@@ -14,6 +14,10 @@
 (bind-key "C-h" 'delete-backward-char)
 (bind-key "s-h" 'help-command)
 
+;; Customisations
+
+(setq custom-file (expand-file-name "elisp/custom.el" dotemacs-dir))
+
 ;; Buffers
 
 (setq my-protected-buffers '("*scratch*" "*Messages*"))

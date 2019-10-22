@@ -69,3 +69,8 @@
 (use-package init-elixir)
 (use-package init-rust)
 (use-package init-web)
+
+;; Customisations
+
+(when (file-exists-p custom-file)
+  (load custom-file))
