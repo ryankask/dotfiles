@@ -19,13 +19,16 @@
   (interactive)
   (insert "import ipdb; ipdb.set_trace()"))
 
-(defvar my-pytest-command "pytest"
-  "The pytest command to send to tmux")
+(defcustom my-pytest-command "pytest"
+  "The pytest command to send to tmux"
+  :type 'string
+  :safe 'stringp)
 
 (defun my-pytest-get-test-name-at-point ()
   (save-excursion
     (and (re-search-backward "^\\(?:async \\)?def \\(test_[A-Za-z0-9_]+\\)(.*$" nil t)
          (match-string-no-properties 1))))
+
 
 (defun my-pytest-test-command (&optional test-name)
   (format "%s %s -s%s"
