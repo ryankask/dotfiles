@@ -38,5 +38,8 @@ Thumbs.db
 
 *.rdb
 
+# Docker
+docker-compose.override.yaml
+
 # Tools
 *.envrc
