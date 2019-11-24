@@ -25,6 +25,11 @@
         company-show-numbers t)
   (add-hook 'after-init-hook 'global-company-mode))
 
+(use-package direnv
+  :ensure t
+  :config
+  (direnv-mode))
+
 (use-package deadgrep
   :ensure t
   :bind ("C-c u" . deadgrep))
