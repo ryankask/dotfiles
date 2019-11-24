@@ -18,6 +18,7 @@ alias g="git"
 alias gcue='git config user.email "$COMPANY_EMAIL"'
 alias sane="stty sane"
 alias killrunserver='pkill -f runserver'
+alias killflaskserver="pkill -f 'flask run'"
 alias killjedi='pkill -f jediepcserver'
 alias ads='adb -d shell input keyevent 82'
 alias adbi='adb -d install'
