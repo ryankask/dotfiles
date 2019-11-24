@@ -106,7 +106,7 @@ current buffer's file."
   :init
   (setq my-default-virtualenv-path (python-environment-root-path)
         python-shell-virtualenv-root my-default-virtualenv-path
-        flycheck-python-flake8-executable (python-environment-bin "flake8" my-default-virtualenv-path))
+        flycheck-python-flake8-executable (executable-find "flake8"))
   (add-hook 'python-mode-hook
             (lambda ()
               (my-python-activate-virtualenv)
@@ -121,6 +121,7 @@ current buffer's file."
 (use-package company-jedi
   :ensure t
   :init
+  (setq jedi:environment-root "emacs-jedi")
   (add-hook 'python-mode-hook
             (lambda ()
               (jedi:setup)
@@ -130,26 +131,16 @@ current buffer's file."
     "Override annotating function"
     nil))
 
-(defun my-py-isort--call (orig-fun &rest args)
-  "Call ORIG-FUN with the current virtualenv's root at the front of EXEC-PATH"
-  (let ((exec-path (append (list (expand-file-name "bin" python-shell-virtualenv-root))
-                           exec-path)))
-    (apply orig-fun args)))
-
 (use-package py-isort
   :ensure t
   :after (python)
   :bind (:map python-mode-map
-              ("C-o i" . py-isort-buffer))
-  :config
-  (advice-add 'py-isort--call :around #'my-py-isort--call))
+              ("C-o i" . py-isort-buffer)))
 
 (use-package blacken
   :ensure t
   :after (python)
   :bind (:map python-mode-map
-              ("C-o f" . blacken-buffer))
-  :init
-  (setq blacken-executable (python-environment-bin "black" my-default-virtualenv-path)))
+              ("C-o f" . blacken-buffer)))
 
 (provide 'init-python)
