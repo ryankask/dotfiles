@@ -29,14 +29,25 @@
     (and (re-search-backward "^\\(?:async \\)?def \\(test_[A-Za-z0-9_]+\\)(.*$" nil t)
          (match-string-no-properties 1))))
 
+(defcustom my-pytest-run-directory-file-marker nil
+  "A file to use as a maker to determine which directory to run the tests from"
+  :type 'string
+  :safe 'stringp)
+
+(defun my-pytest-make-relative-test-file-path (file-name)
+  "Return the path to the test file relative to the project root"
+  (if my-pytest-run-directory-file-marker
+      (let ((project-root (locate-dominating-file file-name my-pytest-run-directory-file-marker)))
+        (file-relative-name file-name project-root))
+    (car (projectile-make-relative-to-root (list file-name)))))
 
 (defun my-pytest-test-command (&optional test-name)
-  (format "%s %s -s%s"
-          my-pytest-command
-          (car (projectile-make-relative-to-root (list (buffer-file-name))))
-          (if (and test-name (not (string= "" test-name)))
-              (concat " -k " test-name)
-            "")))
+  (let* ((test-file-name (buffer-file-name))
+         (test-file-path (my-pytest-make-relative-test-file-path test-file-name))
+         (test-name-with-args (if (and test-name (not (string= "" test-name)))
+                                  (concat " -k " test-name)
+                                "")))
+    (format "%s %s -s%s" my-pytest-command test-file-path test-name-with-args)))
 
 (defun my-pytest-copy-test-command-at-point ()
   (interactive)
