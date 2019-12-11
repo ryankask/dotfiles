@@ -10,7 +10,10 @@
 (use-package lsp-ui
   :ensure t
   :after (lsp-mode)
-  :commands lsp-ui-mode)
+  :commands lsp-ui-mode
+  :custom
+  (lsp-ui-doc-alignment 'window)
+  (lsp-ui-doc-header t))
 
 (use-package lsp-ivy
   :ensure t
@@ -20,9 +23,6 @@
   :ensure t
   :after (lsp-mode company)
   :commands (company-lsp)
-  :custom
-  (lsp-ui-doc-alignment 'window)
-  (lsp-ui-doc-header t)
   :init
   (push 'company-lsp company-backends))
 
