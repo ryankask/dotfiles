@@ -7,6 +7,7 @@
 /eshell
 /history
 /ido.hist
+/.lsp-session*
 /network-security.data
 /smex.hist
 /recentf

@@ -33,22 +33,6 @@
 (use-package column-marker
   :load-path "elisp/vendor/")
 
-(defun my-solarized-theme-customise ()
-  (solarized-with-color-variables 'dark
-    (custom-theme-set-faces
-     'solarized-dark
-     `(ivy-current-match ((,class (:weight bold :background ,base02))))
-     `(ivy-subdir ((,class (:foreground ,blue))))
-     `(ivy-virtual ((,class (:foreground ,cyan)))))))
-
-(use-package solarized-theme
-  :disabled
-  :ensure t
-  :init
-  (setq solarized-use-variable-pitch nil)
-  (load-theme 'solarized-dark t)
-  (my-solarized-theme-customise))
-
 (defmacro my-doom-theme-set-faces (theme-name &rest faces)
   `(custom-theme-set-faces
     ,theme-name
@@ -77,7 +61,10 @@
    ;; ivy
    (ivy-subdir :foreground blue)
    ;; org
-   (org-level-1 :foreground blue :background base3 :bold t :height 1.0)))
+   (org-level-1 :foreground blue :background base3 :bold t :height 1.0)
+   ;; lsp-ui
+   (lsp-ui-doc-background :background bg-alt)
+   (lsp-ui-doc-header :background highlight :foreground bg)))
 
 (bind-key "C-c d" 'my-doom-one-theme-customise)
 

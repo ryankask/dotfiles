@@ -69,6 +69,7 @@
 (use-package init-elixir)
 (use-package init-rust)
 (use-package init-web)
+(use-package init-lsp)
 
 ;; Customisations
 

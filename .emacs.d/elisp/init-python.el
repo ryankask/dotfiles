@@ -130,6 +130,7 @@ current buffer's file."
           company-jedi))))
 
 (use-package company-jedi
+  :disabled
   :ensure t
   :init
   (setq jedi:environment-root "emacs-jedi")
@@ -143,12 +144,14 @@ current buffer's file."
     nil))
 
 (use-package py-isort
+  :disabled
   :ensure t
   :after (python)
   :bind (:map python-mode-map
               ("C-o i" . py-isort-buffer)))
 
 (use-package blacken
+  :disabled
   :ensure t
   :after (python)
   :bind (:map python-mode-map
