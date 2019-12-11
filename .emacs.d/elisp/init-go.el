@@ -1,22 +1,18 @@
 ;;; -*- lexical-binding: t; -*-
 
+(defun my-go-mode-setup ()
+  "Hook to run when go-mode is enabled"
+  (subword-mode 1)
+  (lsp-deferred))
+
 (use-package go-mode
   :ensure t
   :bind (:map go-mode-map
               ("C-c C-r" . go-remove-unused-imports)
               ("s-h f" . godoc-at-point))
-  :init
-  (setq gofmt-show-errors nil)
-  (add-hook 'go-mode-hook
-            (lambda ()
-              ;; Prefer goreturns to gofmt if installed
-              (let ((goreturns (executable-find "goimports")))
-                (when goimports
-                  (setq gofmt-command "goimports")))
-              (subword-mode 1)
-              (add-hook 'before-save-hook 'gofmt-before-save))))
+  :hook ((go-mode . my-go-mode-setup)
+         (before-save . lsp-format-buffer)
+         (before-save . lsp-organize-imports)))
 
-(use-package company-go
-  :ensure t)
 
 (provide 'init-go)

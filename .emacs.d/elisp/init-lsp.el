@@ -2,8 +2,10 @@
 
 (use-package lsp-mode
   :ensure t
-  :hook ((python-mode go-mode) . lsp-deferred)
   :commands (lsp lsp-deferred)
+  :bind (:map lsp-mode-map              ;
+              ("C-c ." . lsp-find-definition)
+              ("C-o f" . lsp-format-buffer))
   :custom
   (lsp-prefer-flymake nil))
 
@@ -11,9 +13,13 @@
   :ensure t
   :after (lsp-mode)
   :commands lsp-ui-mode
+  :bind (:map lsp-ui-mode-map              ;
+              ("C-o d" . lsp-ui-doc-glance))
   :custom
+  (lsp-ui-doc-enable nil)
   (lsp-ui-doc-alignment 'window)
-  (lsp-ui-doc-header t))
+  (lsp-ui-doc-header t)
+  (lsp-ui-sideline-enable nil))
 
 (use-package lsp-ivy
   :ensure t

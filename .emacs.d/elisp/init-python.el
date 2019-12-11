@@ -109,52 +109,28 @@ current buffer's file."
         python-environment-directory venv-location
         python-environment-default-root-name "local"))
 
+(defun my-python-mode-setup ()
+  "Hook to run when python-mode is enabled"
+  (my-python-activate-virtualenv)
+  (lsp-deferred)
+  (column-marker-1 80)
+  (column-marker-2 100))
+
 (use-package python
   :bind (:map python-mode-map
               ("C-c /" . my-python-debug-insert-ipdb-set-trace)
               ("C-c C-t" . my-pytest-copy-test-command-at-point)
               ("C-c C-s" . my-pytest-send-test-command-at-point-to-tmux))
+  :hook (python-mode . my-python-mode-setup)
   :init
   (setq my-default-virtualenv-path (python-environment-root-path)
         python-shell-virtualenv-root my-default-virtualenv-path
-        flycheck-python-flake8-executable (executable-find "flake8"))
-  (add-hook 'python-mode-hook
-            (lambda ()
-              (my-python-activate-virtualenv)
-              (column-marker-1 80)
-              (column-marker-2 100))))
-
-(defun my-python-mode-set-company-backends ()
-  (set (make-local-variable 'company-backends)
-       '((company-dabbrev-code
-          company-jedi))))
-
-(use-package company-jedi
-  :disabled
-  :ensure t
-  :init
-  (setq jedi:environment-root "emacs-jedi")
-  (add-hook 'python-mode-hook
-            (lambda ()
-              (jedi:setup)
-              (my-python-mode-set-company-backends)))
-  :config
-  (defun company-jedi-annotation (candidate)
-    "Override annotating function"
-    nil))
+        flycheck-python-flake8-executable (executable-find "flake8")))
 
 (use-package py-isort
-  :disabled
   :ensure t
   :after (python)
   :bind (:map python-mode-map
               ("C-o i" . py-isort-buffer)))
-
-(use-package blacken
-  :disabled
-  :ensure t
-  :after (python)
-  :bind (:map python-mode-map
-              ("C-o f" . blacken-buffer)))
 
 (provide 'init-python)
