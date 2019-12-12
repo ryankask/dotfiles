@@ -19,6 +19,8 @@
   (lsp-ui-doc-enable nil)
   (lsp-ui-doc-alignment 'window)
   (lsp-ui-doc-header t)
+  (lsp-ui-imenu-enable nil)
+  (lsp-ui-peek-enable nil)
   (lsp-ui-sideline-enable nil))
 
 (use-package lsp-ivy
