@@ -23,10 +23,6 @@
   (lsp-ui-peek-enable nil)
   (lsp-ui-sideline-enable nil))
 
-(use-package lsp-ivy
-  :ensure t
-  :after (lsp-mode))
-
 (use-package company-lsp
   :ensure t
   :after (lsp-mode company)
