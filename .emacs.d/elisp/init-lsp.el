@@ -7,7 +7,9 @@
               ("C-c ." . lsp-find-definition)
               ("C-o f" . lsp-format-buffer))
   :custom
-  (lsp-prefer-flymake nil))
+  (lsp-prefer-flymake nil)
+  (lsp-enable-snippet nil)
+  (lsp-signature-render-documentation nil))
 
 (use-package lsp-ui
   :ensure t
