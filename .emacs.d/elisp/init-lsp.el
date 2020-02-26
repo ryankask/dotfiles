@@ -25,11 +25,9 @@
   (lsp-ui-peek-enable nil)
   (lsp-ui-sideline-enable nil))
 
-(use-package company-lsp
+(use-package lsp-ivy
   :ensure t
-  :after (lsp-mode company)
-  :commands (company-lsp)
-  :init
-  (push 'company-lsp company-backends))
+  :after (lsp-mode ivy)
+  :commands lsp-ivy-workspace-symbol)
 
 (provide 'init-lsp)
