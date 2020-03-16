@@ -4,6 +4,6 @@ layout_virtualenv() {
 }
 
 layout_virtualenvwrapper() {
-  local venv_path="${WORKON_HOME}/$1"
+  local venv_path="${WORKON_HOME:=$HOME/.virtualenvs}/$1"
   layout_virtualenv $venv_path
 }
