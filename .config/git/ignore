@@ -33,6 +33,7 @@ Thumbs.db
 # Python
 
 .virtualenv-root
+.mypy_cache
 
 # Redis
 
