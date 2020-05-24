@@ -47,6 +47,19 @@
   :init
   (add-hook 'after-init-hook #'global-flycheck-mode))
 
+(use-package lispy
+  :ensure t
+  :diminish lispy-mode
+  :config
+  (add-hook 'emacs-lisp-mode-hook (lambda () (lispy-mode 1)))
+  ;; Colemak-friendly replacements
+  ;; Note this comment from the author: https://github.com/abo-abo/lispy/issues/324#issuecomment-270357175
+  (lispy-define-key lispy-mode-map "n" 'lispy-down) (lispy-define-key lispy-mode-map "j" 'lispy-new-copy)
+  (lispy-define-key lispy-mode-map "e" 'lispy-up) (lispy-define-key lispy-mode-map "k" 'lispy-eval)
+  (lispy-define-key lispy-mode-map "i" 'lispy-right) (lispy-define-key lispy-mode-map "l" 'lispy-tab)
+  (lispy-define-key lispy-mode-map "t" 'lispy-flow) (lispy-define-key lispy-mode-map "f" 'lispy-teleport))
+
+
 (use-package magit
   :ensure t
   :bind (("C-x g" . magit-status)
@@ -74,10 +87,11 @@
 (use-package projectile
   :ensure t
   :diminish projectile-mode
+  :bind (:map projectile-mode-map
+              ("s-p" . projectile-command-map)
+              ("C-o p" . projectile-command-map))
   :config
   (setq projectile-completion-system 'ivy)
-  (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
-  (define-key projectile-mode-map (kbd "C-o p") 'projectile-command-map)
   (projectile-mode +1))
 
 (use-package rainbow-mode
