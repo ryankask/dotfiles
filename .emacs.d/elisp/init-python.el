@@ -1,19 +1,5 @@
 ;;; -*- lexical-binding: t; -*-
 
-(defun my-python-activate-virtualenv ()
-  "Find and activate the project's virtualenv root directory"
-  (let* ((project-root (projectile-project-root))
-         (virtualenv-root-file (concat project-root ".virtualenv-root"))
-         (buffer (current-buffer)))
-    (ignore-errors
-      (with-temp-buffer
-        (insert-file-contents virtualenv-root-file)
-        (let ((virtualenv-root (string-trim (thing-at-point 'line t))))
-          (if (and (not (string-empty-p virtualenv-root))
-                   (file-directory-p virtualenv-root))
-              (with-current-buffer buffer
-                (setq-local python-shell-virtualenv-root virtualenv-root))))))))
-
 (defun my-python-debug-insert-ipdb-set-trace ()
   "Insert ipdb trace call into buffer."
   (interactive)
@@ -111,7 +97,6 @@ current buffer's file."
 
 (defun my-python-mode-setup ()
   "Hook to run when python-mode is enabled"
-  (my-python-activate-virtualenv)
   (lsp-deferred)
   (column-marker-1 80)
   (column-marker-2 100))
