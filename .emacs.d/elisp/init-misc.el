@@ -54,11 +54,15 @@
   (add-hook 'emacs-lisp-mode-hook (lambda () (lispy-mode 1)))
   ;; Colemak-friendly replacements
   ;; Note this comment from the author: https://github.com/abo-abo/lispy/issues/324#issuecomment-270357175
-  (lispy-define-key lispy-mode-map "n" 'lispy-down) (lispy-define-key lispy-mode-map "j" 'lispy-new-copy)
-  (lispy-define-key lispy-mode-map "e" 'lispy-up) (lispy-define-key lispy-mode-map "k" 'lispy-eval)
-  (lispy-define-key lispy-mode-map "i" 'lispy-right) (lispy-define-key lispy-mode-map "l" 'lispy-tab)
-  (lispy-define-key lispy-mode-map "t" 'lispy-flow) (lispy-define-key lispy-mode-map "f" 'lispy-teleport))
-
+  (lispy-define-key lispy-mode-map "n" 'lispy-down)
+  (lispy-define-key lispy-mode-map "e" 'lispy-up)
+  (lispy-define-key lispy-mode-map "i" 'lispy-right)
+  (lispy-define-key lispy-mode-map "t" 'lispy-flow)
+  (lispy-define-key lispy-mode-map "f" 'lispy-teleport)
+  (lispy-define-key lispy-mode-map "j" 'lispy-new-copy)
+  (lispy-define-key lispy-mode-map "k" 'lispy-eval)
+  (lispy-define-key lispy-mode-map "y" 'lispy-tab)
+  (lispy-define-key lispy-mode-map "l" 'lispy-occur))
 
 (use-package magit
   :ensure t
