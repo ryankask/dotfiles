@@ -106,11 +106,10 @@
 (use-package projectile
   :ensure t
   :diminish projectile-mode
-  :bind (:map projectile-mode-map
-              ("s-p" . projectile-command-map)
-              ("C-o p" . projectile-command-map))
   :config
   (setq projectile-completion-system 'ivy)
+  (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
+  (define-key projectile-mode-map (kbd "C-o p") 'projectile-command-map)
   (projectile-mode +1))
 
 (use-package rainbow-mode
