@@ -62,7 +62,22 @@
   (lispy-define-key lispy-mode-map "j" 'lispy-new-copy)
   (lispy-define-key lispy-mode-map "k" 'lispy-eval)
   (lispy-define-key lispy-mode-map "y" 'lispy-tab)
-  (lispy-define-key lispy-mode-map "l" 'lispy-occur))
+  (lispy-define-key lispy-mode-map "l" 'lispy-occur)
+
+  (lispy-defverb
+   "other"
+   (("h" lispy-move-left)
+    ("n" lispy-down-slurp)
+    ("e" lispy-up-slurp)
+    ("i" lispy-move-right)
+    ("SPC" lispy-other-space)
+    ("d" lispy-goto-mode)))
+
+  (defhydra lh-knight ()
+    "knight"
+    ("n" lispy-knight-down)
+    ("e" lispy-knight-up)
+    ("z" nil)))
 
 (use-package magit
   :ensure t
