@@ -11,7 +11,8 @@
   (lsp-prefer-flymake nil)
   (lsp-enable-snippet nil)
   (lsp-signature-auto-activate nil)
-  (lsp-signature-render-documentation nil))
+  (lsp-signature-render-documentation nil)
+  (lsp-pyls-configuration-sources ["flake8"]))
 
 (use-package lsp-ui
   :ensure t
