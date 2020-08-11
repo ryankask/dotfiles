@@ -5,6 +5,7 @@
 (defconst dotemacs-dir (file-name-directory load-file-name))
 (defconst elisp-dir (expand-file-name "elisp" dotemacs-dir))
 (add-to-list 'load-path elisp-dir)
+(setq default-directory "~/")
 
 ;;; Packaging
 
