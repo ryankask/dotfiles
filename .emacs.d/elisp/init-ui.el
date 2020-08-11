@@ -33,38 +33,33 @@
 (use-package column-marker
   :load-path "elisp/vendor/")
 
-(defmacro my-doom-theme-set-faces (theme-name &rest faces)
-  `(custom-theme-set-faces
-    ,theme-name
-    ,@(mapcar #'doom-themes--build-face faces)))
-
 (defun my-doom-one-theme-customise ()
   (interactive)
-  (my-doom-theme-set-faces
-   'doom-one
+  (doom-themes-set-faces
+   'user
    ;; base
-   (cursor :background fg)
-   (minibuffer-prompt :foreground fg)
-   (font-lock-variable-name-face :foreground fg)
-   (line-number-current-line :inherit 'line-number)
+   '(cursor :background fg)
+   '(minibuffer-prompt :foreground fg)
+   '(font-lock-variable-name-face :foreground fg)
+   '(line-number-current-line :foreground base4)
    ;; dired
-   (dired-directory :foreground blue)
+   '(dired-directory :foreground blue)
    ;; avy
-   (avy-goto-char-timer-face :background blue :foreground base0)
-   (avy-lead-face :background yellow :foreground base0)
-   (avy-lead-face-0 :background red :foreground base0)
-   (avy-lead-face-1 :background orange :foreground base0)
-   (avy-lead-face-2 :background violet :foreground base0)
+   '(avy-goto-char-timer-face :background blue :foreground base0)
+   '(avy-lead-face :background yellow :foreground base0)
+   '(avy-lead-face-0 :background red :foreground base0)
+   '(avy-lead-face-1 :background orange :foreground base0)
+   '(avy-lead-face-2 :background violet :foreground base0)
    ;; column-marker
-   (column-marker-1 :background dark-blue)
-   (column-marker-2 :background blue)
+   '(column-marker-1 :background dark-blue)
+   '(column-marker-2 :background blue)
    ;; ivy
-   (ivy-subdir :foreground blue)
+   '(ivy-subdir :foreground blue)
    ;; org
-   (org-level-1 :foreground blue :background base3 :bold t :height 1.0)
+   '(org-level-1 :foreground blue :background base3 :bold t :height 1.0)
    ;; lsp-ui
-   (lsp-ui-doc-background :background bg-alt)
-   (lsp-ui-doc-header :background highlight :foreground bg)))
+   '(lsp-ui-doc-background :background bg-alt)
+   '(lsp-ui-doc-header :background highlight :foreground bg)))
 
 (bind-key "C-c d" 'my-doom-one-theme-customise)
 
