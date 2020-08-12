@@ -47,6 +47,15 @@
   :init
   (add-hook 'after-init-hook #'global-flycheck-mode))
 
+(use-package gcmh
+  :ensure t
+  :diminish gcmh-mode
+  :hook (emacs-startup . gcmh-mode)
+  :init
+  (setq gcmh-idle-delay 5
+        gcmh-high-cons-threshold (* 16 1024 1024)
+        gcmh-verbose t))
+
 (use-package lispy
   :ensure t
   :diminish lispy-mode

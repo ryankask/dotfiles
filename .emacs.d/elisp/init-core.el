@@ -2,7 +2,6 @@
 
 (setq user-full-name "Ryan Kaskel"
       user-mail-address "dev@ryankaskel.com"
-      gc-cons-threshold 50000000
       read-process-output-max (* 1024 1024))
 
 ;; Keybindings

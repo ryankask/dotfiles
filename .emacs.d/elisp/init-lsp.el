@@ -1,11 +1,16 @@
 ;;; -*- lexical-binding: t; -*-
 
+(defun my-lsp-mode-setup ()
+  ;; Optimisations - copied from Doom Emacs
+  (setq-local gcmh-high-cons-threshold (* 2 (default-value 'gcmh-high-cons-threshold))))
+
 (use-package lsp-mode
   :ensure t
   :commands (lsp lsp-deferred)
   :bind (:map lsp-mode-map              ;
               ("C-c ." . lsp-find-definition)
               ("C-o f" . lsp-format-buffer))
+  :hook (lsp-mode . my-lsp-mode-setup)
   :custom
   (lsp-prefer-capf t)
   (lsp-prefer-flymake nil)
