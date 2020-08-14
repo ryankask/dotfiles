@@ -54,7 +54,7 @@
   :init
   (setq gcmh-idle-delay 5
         gcmh-high-cons-threshold (* 16 1024 1024)
-        gcmh-verbose t))
+        gcmh-verbose nil))
 
 (use-package lispy
   :ensure t
