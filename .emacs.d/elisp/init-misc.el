@@ -43,9 +43,7 @@
   :ensure t
   :diminish flycheck-mode
   :bind (("C-c e n" . flycheck-next-error)
-         ("C-c e p" . flycheck-previous-error))
-  :init
-  (add-hook 'after-init-hook #'global-flycheck-mode))
+         ("C-c e p" . flycheck-previous-error)))
 
 (use-package gcmh
   :ensure t

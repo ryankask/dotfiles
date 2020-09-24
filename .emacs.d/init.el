@@ -67,6 +67,7 @@
 (use-package init-lsp)
 (use-package init-python)
 (use-package init-go)
+(use-package init-rust)
 (use-package init-web)
 
 ;; Customisations
