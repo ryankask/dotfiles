@@ -1,11 +1,11 @@
 ;;; -*- lexical-binding: t; -*-
 
 (menu-bar-mode -1)
+(set-frame-font "Fira Code-14" nil t)
 
 (when (display-graphic-p)
-  (add-to-list 'default-frame-alist (cons 'width 120))
-  (add-to-list 'default-frame-alist (cons 'height (/ (- (x-display-pixel-height) 100)
-                                                     (frame-char-height))))
+  (add-to-list 'default-frame-alist (cons 'width 102))
+  (add-to-list 'default-frame-alist (cons 'height 50))
   (tool-bar-mode -1)
   (scroll-bar-mode -1)
 
