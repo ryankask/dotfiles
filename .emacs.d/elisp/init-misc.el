@@ -54,11 +54,17 @@
         gcmh-high-cons-threshold (* 16 1024 1024)
         gcmh-verbose nil))
 
+
+(defun my-lispy-emacs-lisp-mode-hook ()
+  "Enable lispy-mode in any Emacs lisp buffer except for the scratch buffer."
+  (when (not (string= (buffer-name) "*scratch*"))
+    (lispy-mode 1)))
+
 (use-package lispy
   :ensure t
   :diminish lispy-mode
+  :hook (emacs-lisp-mode . my-lispy-emacs-lisp-mode-hook)
   :config
-  (add-hook 'emacs-lisp-mode-hook (lambda () (lispy-mode 1)))
   ;; Colemak-friendly replacements
   ;; Note this comment from the author: https://github.com/abo-abo/lispy/issues/324#issuecomment-270357175
   (lispy-define-key lispy-mode-map "n" 'lispy-down)
