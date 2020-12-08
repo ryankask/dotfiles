@@ -5,7 +5,7 @@
 
 (when (display-graphic-p)
   (add-to-list 'default-frame-alist (cons 'width 102))
-  (add-to-list 'default-frame-alist (cons 'height 50))
+  (add-to-list 'default-frame-alist (cons 'height 56))
   (tool-bar-mode -1)
   (scroll-bar-mode -1)
 
