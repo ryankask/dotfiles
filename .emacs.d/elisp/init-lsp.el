@@ -15,6 +15,7 @@
   (lsp-prefer-capf t)
   (lsp-prefer-flymake nil)
   (lsp-enable-snippet nil)
+  (lsp-headerline-breadcrumb-enable nil)
   (lsp-signature-auto-activate nil)
   (lsp-signature-render-documentation nil)
   (lsp-pyls-configuration-sources ["flake8"]))
