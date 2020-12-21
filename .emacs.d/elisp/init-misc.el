@@ -131,6 +131,12 @@
   (setq rainbow-html-colors-major-mode-list
         '(html-mode css-mode php-mode nxml-mode xml-mode scss-mode)))
 
+(use-package which-key
+  :ensure t
+  :diminish which-key-mode
+  :config
+  (which-key-mode))
+
 (use-package yasnippet-snippets
   :ensure t)
 
