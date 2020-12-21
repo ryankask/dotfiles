@@ -6,6 +6,7 @@
 (when (display-graphic-p)
   (add-to-list 'default-frame-alist (cons 'width 102))
   (add-to-list 'default-frame-alist (cons 'height 56))
+  (set-frame-position nil 604 0)
   (tool-bar-mode -1)
   (scroll-bar-mode -1)
 
