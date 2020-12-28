@@ -24,7 +24,7 @@
   :ensure t
   :after (lsp-mode)
   :commands lsp-ui-mode
-  :bind (:map lsp-ui-mode-map              ;
+  :bind (:map lsp-ui-mode-map
               ("C-o d" . lsp-ui-doc-glance))
   :custom
   (lsp-ui-doc-enable nil)
