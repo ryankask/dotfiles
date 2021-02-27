@@ -29,5 +29,8 @@
     "editor.formatOnSave": true,
     "editor.tabSize": 2
   },
-  "go.useLanguageServer": true
+  "go.useLanguageServer": true,
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }
