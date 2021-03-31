@@ -42,7 +42,7 @@
    '(cursor :background fg)
    '(minibuffer-prompt :foreground fg)
    '(font-lock-variable-name-face :foreground fg)
-   '(line-number-current-line :foreground base4)
+   '(line-number-current-line :foreground base4 :background bg)
    ;; dired
    '(dired-directory :foreground blue)
    ;; avy
