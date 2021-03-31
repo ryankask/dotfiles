@@ -13,6 +13,8 @@
 
 (bind-key "s-=" 'text-scale-increase)
 (bind-key "s--" 'text-scale-decrease)
+(unbind-key "<C-wheel-up>")
+(unbind-key "<C-wheel-down>")
 (bind-key "s-\\" "`")
 (bind-key "M-\"" "€")
 
@@ -40,7 +42,8 @@
 
 (use-package flyspell
   :diminish flyspell-mode
-  :hook (prog-mode . flyspell-prog-mode))
+  :hook ((text-mode . flyspell-mode)
+         (prog-mode . flyspell-prog-mode)))
 
 (use-package eldoc
   :diminish eldoc-mode)
