@@ -1,7 +1,7 @@
 ;;; -*- lexical-binding: t; -*-
 
 (menu-bar-mode -1)
-(set-frame-font "Menlo-13" nil t)
+(set-frame-font "Menlo Nerd Font-13" nil t)
 
 (when (display-graphic-p)
   (add-to-list 'default-frame-alist (cons 'width 102))
