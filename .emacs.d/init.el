@@ -25,7 +25,8 @@
 (package-initialize)
 
 (setq url-http-attempt-keepalives nil
-      gnutls-verify-error nil)
+      gnutls-verify-error t
+      gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
 
 (defconst my-packages
   '(use-package
