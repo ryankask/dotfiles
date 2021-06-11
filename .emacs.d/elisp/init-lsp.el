@@ -17,8 +17,7 @@
   (lsp-enable-snippet nil)
   (lsp-headerline-breadcrumb-enable nil)
   (lsp-signature-auto-activate nil)
-  (lsp-signature-render-documentation nil)
-  (lsp-pyls-configuration-sources ["flake8"]))
+  (lsp-signature-render-documentation nil))
 
 (use-package lsp-ui
   :ensure t
