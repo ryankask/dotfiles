@@ -1,21 +1,11 @@
 ;;; -*- lexical-binding: t; -*-
 
-(defun my-rust-mode-setup ()
-  (lsp-deferred))
+(defun my-rustic-mode-setup ()
+  (setq-local buffer-save-without-query t))
 
-(use-package rust-mode
+(use-package rustic
   :ensure t
   :defer t
-  :hook (rust-mode . my-rust-mode-setup))
-
-(use-package cargo
-  :ensure t
-  :after rust-mode
-  :diminish cargo-minor-mode
-  :hook (rust-mode . cargo-minor-mode))
-
-(use-package toml-mode
-  :ensure t
-  :mode "/\\(Cargo.lock\\|\\.cargo/config\\)\\'")
+  :hook (rustic-mode . my-rustic-mode-setup))
 
 (provide 'init-rust)
