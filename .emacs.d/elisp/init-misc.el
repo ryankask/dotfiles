@@ -183,21 +183,29 @@
 
 ;;; Formats
 
+(use-package toml-mode
+  :ensure t
+  :defer t)
+
 (use-package yaml-mode
   :ensure t
   :defer t)
 
 ;;; Writing
 
+(defun my-markdown-mode-hook ()
+  (setq fill-column 88))
+
 (use-package markdown-mode
   :ensure t
   :defer t
+  :hook (markdown-mode . my-markdown-mode-hook)
   :init
   (setq markdown-command "pandoc"))
 
 (use-package rst-mode
   :defer t
   :init
-  (add-hook 'rst-mode-hook (lambda () (set-fill-column 80))))
+  (add-hook 'rst-mode-hook (lambda () (set-fill-column 88))))
 
 (provide 'init-misc)
