@@ -88,6 +88,14 @@ if (( $+commands[starship] )); then
   eval "$(starship init zsh)"
 fi
 
+if (( $+commands[fzf] )); then
+  export FZF_DEFAULT_OPTS="--bind=ctrl-j:accept,ctrl-k:kill-line"
+fi
+
+if (( $+commands[zoxide] )); then
+  eval "$(zoxide init zsh --cmd c)"
+fi
+
 # Load local zshrc
 
 if [[ -s "$HOME/.zshrc.local" ]]; then

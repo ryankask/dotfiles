@@ -843,52 +843,6 @@ zstyle ':completion:*:ssh:*' group-order users hosts-domain hosts-host users hos
 zstyle ':completion:*:(ssh|scp|rsync):*:hosts-host' ignored-patterns '*(.|:)*' loopback ip6-loopback localhost ip6-localhost broadcasthost
 zstyle ':completion:*:(ssh|scp|rsync):*:hosts-domain' ignored-patterns '<->.<->.<->.<->' '^[-[:alnum:]]##(.[-[:alnum:]]##)##' '*@*'
 zstyle ':completion:*:(ssh|scp|rsync):*:hosts-ipaddr' ignored-patterns '^(<->.<->.<->.<->|(|::)([[:xdigit:].]##:(#c,2))##(|%*))' '127.0.0.<->' '255.255.255.255' '::1' 'fe80::*'
-#
-# Maintains a frequently used file and directory list for fast access.
-#
-# Authors:
-#   Wei Dai <x@wei23.net>
-#   Sorin Ionescu <sorin.ionescu@gmail.com>
-#
-
-# If the command doesn't exist externally, we need to fall back to the bundled
-# submodule.
-if (( ! $+commands[fasd] )); then
-  source "${0:h}/external/fasd" || return 1
-fi
-
-#
-# Initialization
-#
-
-cache_file="${TMPDIR:-/tmp}/fasd-cache.$UID.zsh"
-
-if [[ "${commands[fasd]}" -nt "$cache_file" \
-        || "${ZDOTDIR:-$HOME}/.zsh/init.zsh" -nt "$cache_file" \
-        || ! -s "$cache_file"  ]]; then
-  # Cache init code.
-  fasd --init zsh-hook zsh-ccomp zsh-ccomp-install zsh-wcomp zsh-wcomp-install >! "$cache_file" 2> /dev/null
-fi
-
-source "$cache_file"
-unset cache_file
-
-function fasd_cd {
-  local fasd_ret="$(fasd -d "$@")"
-  if [[ -d "$fasd_ret" ]]; then
-    cd "$fasd_ret"
-  else
-    print "$fasd_ret"
-  fi
-}
-
-#
-# Aliases
-#
-
-# Changes the current working directory interactively.
-alias j='fasd_cd -i'
-#
 # Integrates history-substring-search into Prezto.
 #
 # Authors:
