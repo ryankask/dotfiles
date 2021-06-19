@@ -5,7 +5,8 @@
 
 (use-package rustic
   :ensure t
-  :defer t
+  :bind (:map rustic-compilation-mode-map
+              ("C-o" . nil))
   :hook (rustic-mode . my-rustic-mode-setup))
 
 (provide 'init-rust)
