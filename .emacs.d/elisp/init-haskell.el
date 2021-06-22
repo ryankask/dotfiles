@@ -10,7 +10,7 @@
               (flycheck-select-checker 'haskell-stack-ghc)
               (setq-local flycheck-check-syntax-automatically '(save idle-change mode-enabled))
               (interactive-haskell-mode)
-              (subword-mode 1))))
+              (subword-mode +1))))
 
 (use-package ghc
   :disabled
