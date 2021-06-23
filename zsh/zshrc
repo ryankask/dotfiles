@@ -54,7 +54,7 @@ export PIPX_HOME="$HOME/.local/pipx"
 if (( $+commands[virtualenvwrapper.sh] )); then
   export WORKON_HOME="$HOME/.virtualenvs"
   [[ -n $BREW_PREFIX ]] && export VIRTUALENVWRAPPER_PYTHON="$PIPX_HOME/venvs/virtualenvwrapper/bin/python3"
-  VIRTUAL_ENV_DISABLE_PROMPT=1
+  export VIRTUAL_ENV_DISABLE_PROMPT=1
   source "$commands[virtualenvwrapper.sh]"
   alias wo="workon"
 fi
