@@ -7,3 +7,30 @@ layout_virtualenvwrapper() {
   local venv_path="${WORKON_HOME:=$HOME/.virtualenvs}/$1"
   layout_virtualenv $venv_path
 }
+
+layout_poetry() {
+  # Create the path to the virtualenv without invoking Poetry.
+  # From https://github.com/python-poetry/poetry/blob/master/poetry/utils/env.py#L418
+  local sanitized_project_name=$( \
+      awk -F '[ ="]+' '$1 == "name" { print $2 }' pyproject.toml \
+    | tr '[:upper:]' '[:lower:]' \
+    | sed 's/[^-_[:alnum:]]/_/g' \
+    | cut -c -42 \
+  )
+  local hashed_pwd=$(
+      echo -n $PWD \
+    | sha256sum \
+    | cut -d ' ' -f 1 \
+    | xxd -r -p \
+    | base64 \
+    | cut -c -8 \
+    | tr '/+' '_-' \
+    | tr -d '='
+  )
+  local venv_prefix="${sanitized_project_name}-${hashed_pwd}"
+  local venv_dir="$HOME/Library/Caches/pypoetry/virtualenvs"
+  local python_minor_version=$(awk -F '[ ="]+' -v pattern="\\\[$venv_prefix\\\]" '$0 ~ pattern { getline; print $2 }' ${venv_dir}/envs.toml)
+  local venv_path="${venv_dir}/${venv_prefix}-py${python_minor_version}"
+  layout_virtualenv $venv_path
+  export POETRY_ACTIVE=1
+}
