@@ -18,14 +18,14 @@
 (use-package company
   :ensure t
   :diminish company-mode
-  :hook (after-init-hook . global-company-mode)
   :bind (:map company-active-map
               ("TAB"))
   :init
   (setq company-idle-delay 0.3
         company-tooltip-limit 10
         company-minimum-prefix-length 2
-        company-show-numbers t))
+        company-show-numbers t)
+  (add-hook 'after-init-hook 'global-company-mode))
 
 (use-package direnv
   :ensure t
