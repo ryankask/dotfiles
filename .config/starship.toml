@@ -4,6 +4,9 @@ disabled = true
 [battery]
 disabled = true
 
+[docker_context]
+disabled = true
+
 [gcloud]
 disabled = true
 
