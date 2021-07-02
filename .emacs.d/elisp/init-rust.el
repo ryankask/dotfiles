@@ -8,6 +8,10 @@
   :ensure t
   :bind (:map rustic-compilation-mode-map
               ("C-o" . nil))
-  :hook (rustic-mode . my-rustic-mode-setup))
+  :hook (rustic-mode . my-rustic-mode-setup)
+  :config
+  (if (fboundp 'sp-local-pair)
+      (sp-with-modes '(rustic-mode)
+        (sp-local-pair "{" nil :post-handlers '(("||\n[i]" "RET"))))))
 
 (provide 'init-rust)
