@@ -3,6 +3,7 @@
 ;;; Productivity
 
 (use-package avy
+  :straight t
   :bind (("C-'" . avy-goto-char-timer)
          ("M-g g" . avy-goto-line)
          ("M-g e" . avy-goto-word-0)
@@ -12,11 +13,11 @@
         avy-timeout-seconds 0.3))
 
 (use-package ace-window
-  :ensure t
+  :straight t
   :bind ("C-o C-o" . ace-window))
 
 (use-package company
-  :ensure t
+  :straight t
   :diminish company-mode
   :bind (:map company-active-map
               ("TAB"))
@@ -28,27 +29,27 @@
   (add-hook 'after-init-hook 'global-company-mode))
 
 (use-package direnv
-  :ensure t
+  :straight t
   :config
   (setq direnv-always-show-summary nil)
   (direnv-mode))
 
 (use-package deadgrep
-  :ensure t
+  :straight t
   :bind ("C-c u" . deadgrep))
 
 (use-package expand-region
-  :ensure t
+  :straight t
   :bind ("C-=" . er/expand-region))
 
 (use-package flycheck
-  :ensure t
+  :straight t
   :diminish flycheck-mode
   :bind (("C-c e n" . flycheck-next-error)
          ("C-c e p" . flycheck-previous-error)))
 
 (use-package gcmh
-  :ensure t
+  :straight t
   :diminish gcmh-mode
   :hook (emacs-startup . gcmh-mode)
   :init
@@ -63,7 +64,7 @@
     (lispy-mode 1)))
 
 (use-package lispy
-  :ensure t
+  :straight t
   :diminish lispy-mode
   :hook (emacs-lisp-mode . my-lispy-emacs-lisp-mode-hook)
   :bind (("M-s m" . lispy-mark))
@@ -96,7 +97,7 @@
     ("z" nil)))
 
 (use-package magit
-  :ensure t
+  :straight t
   :bind (("C-x g" . magit-status)
          ("C-x M-g" . magit-dispatch-popup)
          ("s-m m" . magit-status)
@@ -108,7 +109,7 @@
   (setq magit-completing-read-function 'ivy-completing-read))
 
 (use-package org
-  :ensure t
+  :straight t
   :bind (:map org-mode-map
               ("s-<return>" . org-meta-return)
               ("s-<left>" . org-metaleft)
@@ -120,7 +121,7 @@
         org-log-done 'time))
 
 (use-package projectile
-  :ensure t
+  :straight t
   :diminish projectile-mode
   :config
   (setq projectile-completion-system 'ivy)
@@ -129,22 +130,22 @@
   (projectile-mode +1))
 
 (use-package rainbow-mode
-  :ensure t
+  :straight t
   :init
   (setq rainbow-html-colors-major-mode-list
         '(html-mode css-mode php-mode nxml-mode xml-mode scss-mode)))
 
 (use-package which-key
-  :ensure t
+  :straight t
   :diminish which-key-mode
   :config
   (which-key-mode))
 
 (use-package yasnippet-snippets
-  :ensure t)
+  :straight t)
 
 (use-package yasnippet
-  :ensure t
+  :straight t
   :after yasnippet-snippets
   :diminish yas-minor-mode
   :config
@@ -168,11 +169,11 @@
   (setq js-indent-level 2))
 
 (use-package lua-mode
-  :ensure t
+  :straight t
   :defer t)
 
 (use-package scss-mode
-  :ensure t
+  :straight t
   :defer t
   :init
   (setq scss-compile-at-save nil))
@@ -186,11 +187,11 @@
 ;;; Formats
 
 (use-package toml-mode
-  :ensure t
+  :straight t
   :defer t)
 
 (use-package yaml-mode
-  :ensure t
+  :straight t
   :defer t)
 
 ;;; Writing
@@ -199,7 +200,7 @@
   (setq fill-column 88))
 
 (use-package markdown-mode
-  :ensure t
+  :straight t
   :defer t
   :hook (markdown-mode . my-markdown-mode-hook)
   :init

@@ -2,7 +2,7 @@
 
 (use-package haskell-mode
   :disabled
-  :ensure t
+  :straight t
   :init
   (setq haskell-process-type 'stack-ghci)
   (add-hook 'haskell-mode-hook
@@ -14,13 +14,13 @@
 
 (use-package ghc
   :disabled
-  :ensure t
+  :straight t
   :commands (ghc-init ghc-debug)
   :init (add-hook 'haskell-mode-hook 'ghc-init))
 
 (use-package company-ghc
   :disabled
-  :ensure t
+  :straight t
   :init
   (add-hook 'haskell-mode-hook
             (lambda ()
@@ -29,7 +29,7 @@
 
 (use-package hindent
   :disabled
-  :ensure t
+  :straight t
   :defer t
   :diminish t
   :init
@@ -37,7 +37,7 @@
 
 (use-package intero
   :disabled
-  :ensure t
+  :straight t
   :defer t
   :diminish t
   :init

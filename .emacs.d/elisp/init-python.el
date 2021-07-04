@@ -89,7 +89,7 @@ current buffer's file."
   (setq flycheck-flake8rc (or flake8rc "~/.config/flake8")))
 
 (use-package python-environment
-  :ensure t
+  :straight t
   :init
   (setq venv-location "~/.virtualenvs"
         python-environment-directory venv-location
@@ -113,7 +113,7 @@ current buffer's file."
         flycheck-python-flake8-executable (executable-find "flake8")))
 
 (use-package py-isort
-  :ensure t
+  :straight t
   :after (python)
   :bind (:map python-mode-map
               ("C-o i" . py-isort-buffer)))

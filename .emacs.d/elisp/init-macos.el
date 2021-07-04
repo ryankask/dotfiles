@@ -5,7 +5,7 @@
       trash-directory "~/.Trash")
 
 (use-package exec-path-from-shell
-  :ensure t
+  :straight t
   :config
   (setq exec-path-from-shell-variables
         (append exec-path-from-shell-variables '("GOPATH")))

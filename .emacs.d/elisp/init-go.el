@@ -11,7 +11,7 @@
   (lsp-deferred))
 
 (use-package go-mode
-  :ensure t
+  :straight t
   :bind (:map go-mode-map
               ("C-c C-r" . go-remove-unused-imports)
               ("s-h f" . godoc-at-point))

@@ -1,16 +1,16 @@
 ;;; -*- lexical-binding: t; -*-
 
 (use-package elixir-mode
-  :ensure t
+  :straight t
   :defer t)
 
 (use-package alchemist
-  :ensure t
+  :straight t
   :defer t
   :diminish "alch")
 
 (use-package ruby-end
-  :ensure t
+  :straight t
   :defer t
   :diminish ruby-end-mode
   :init

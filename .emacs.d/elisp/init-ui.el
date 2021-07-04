@@ -12,7 +12,7 @@
 
   (if (version< emacs-version "26")
       (use-package nlinum
-        :ensure t
+        :straight t
         :config
         (global-nlinum-mode 1))
     (progn
@@ -65,7 +65,7 @@
 (bind-key "C-c d" 'my-doom-one-theme-customise)
 
 (use-package doom-themes
-  :ensure t
+  :straight t
   :init
   (load-theme 'doom-one t)
   (my-doom-one-theme-customise))

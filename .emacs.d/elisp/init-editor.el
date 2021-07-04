@@ -52,7 +52,7 @@
   :diminish subword-mode)
 
 (use-package smartparens-config
-  :ensure smartparens
+  :straight smartparens
   :diminish smartparens-mode
   :config
   (smartparens-global-mode t)
@@ -73,20 +73,20 @@
   (setq reb-re-syntax 'string))
 
 (use-package browse-kill-ring
-  :ensure t
+  :straight t
   :bind ("s-y" . browse-kill-ring)
   :config
   (browse-kill-ring-default-keybindings))
 
 (use-package undo-tree
-  :ensure
+  :straight t
   :diminish undo-tree-mode
   :bind ("C-s-/" . undo-tree-redo)
   :config
   (global-undo-tree-mode))
 
 (use-package volatile-highlights
-  :ensure t
+  :straight t
   :diminish volatile-highlights-mode
   :config
   (volatile-highlights-mode t))

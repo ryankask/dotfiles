@@ -1,7 +1,7 @@
 ;;; -*- lexical-binding: t; -*-
 
 (use-package web-mode
-  :ensure t
+  :straight t
   :mode ("\\.html?\\'"
          "\\.jsx\\'"
          "\\.eex\\'")

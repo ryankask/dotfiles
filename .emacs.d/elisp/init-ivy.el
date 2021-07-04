@@ -1,7 +1,7 @@
 ;;; -*- lexical-binding: t; -*-
 
 (use-package ivy
-  :ensure t
+  :straight t
   :diminish ivy-mode
   :bind (("C-o C-r" . ivy-resume)
          :map ivy-minibuffer-map
@@ -23,11 +23,11 @@
   (ivy-mode 1))
 
 (use-package swiper
-  :ensure t
+  :straight t
   :bind (("C-s" . swiper)))
 
 (use-package amx
-  :ensure t
+  :straight t
   :defer t
   :init
   (setq amx-history-length 32))
@@ -47,7 +47,7 @@
   (format "mdfind -name '%s'" input))
 
 (use-package counsel
-  :ensure t
+  :straight t
   :bind (("M-x" . counsel-M-x)
          ("C-x C-f" . counsel-find-file)
          ("C-c n" . counsel-rg)

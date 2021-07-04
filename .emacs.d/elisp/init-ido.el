@@ -1,7 +1,7 @@
 ;;; -*- lexical-binding: t; -*-
 
 (use-package ido
-  :ensure t
+  :straight t
   :init
   :config
   (setq ido-enable-flex-matching t
@@ -18,18 +18,18 @@
   (ido-everywhere t))
 
 (use-package ido-completing-read+
-  :ensure t
+  :straight t
   :config
   (ido-ubiquitous-mode t))
 
 (use-package ido-vertical-mode
-  :ensure t
+  :straight t
   :config
   (setq ido-vertical-define-keys 'C-n-and-C-p-only))
   (ido-vertical-mode 1)
 
 (use-package smex
-  :ensure t
+  :straight t
   :bind (("M-x" . smex)
          ("M-X" . smex-major-mode-commands)
          ("C-c M-x" . execute-extended-command))

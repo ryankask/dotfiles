@@ -5,7 +5,7 @@
   (setq-local gcmh-high-cons-threshold (* 2 (default-value 'gcmh-high-cons-threshold))))
 
 (use-package lsp-mode
-  :ensure t
+  :straight t
   :commands (lsp lsp-deferred)
   :bind (:map lsp-mode-map              ;
               ("C-c ." . lsp-find-definition)
@@ -20,7 +20,7 @@
   (lsp-signature-render-documentation nil))
 
 (use-package lsp-ui
-  :ensure t
+  :straight t
   :after (lsp-mode)
   :commands lsp-ui-mode
   :bind (:map lsp-ui-mode-map
@@ -34,7 +34,7 @@
   (lsp-ui-sideline-enable nil))
 
 (use-package lsp-ivy
-  :ensure t
+  :straight t
   :after (lsp-mode ivy)
   :commands lsp-ivy-workspace-symbol)
 
