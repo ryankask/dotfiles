@@ -120,6 +120,10 @@
   (setq org-cycle-separator-lines 1
         org-log-done 'time))
 
+(use-package project
+  :straight (:type built-in)
+  :defer)
+
 (use-package projectile
   :straight t
   :diminish projectile-mode
