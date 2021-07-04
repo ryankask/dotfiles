@@ -1,19 +1,165 @@
 # -*- mode: sh; -*-
-#
-# Executes commands at the start of an interactive session.
-#
-# Authors:
-#   Sorin Ionescu <sorin.ionescu@gmail.com>
-#
 
-if [[ -s "${ZDOTDIR:-$HOME}/.zsh/init.zsh" ]]; then
-  source "${ZDOTDIR:-$HOME}/.zsh/init.zsh"
-fi
+#  Smart URLs
+autoload -Uz bracketed-paste-url-magic
+zle -N bracketed-paste bracketed-paste-url-magic
+autoload -Uz url-quote-magic
+zle -N self-insert url-quote-magic
 
-# Customize to your needs...
+# Options
+
+# General
+setopt COMBINING_CHARS      # Combine zero-length punctuation characters (accents)
+                            # with the base character.
+setopt INTERACTIVE_COMMENTS # Enable comments in interactive shell.
+setopt RC_QUOTES            # Allow 'Henry''s Garage' instead of 'Henry'\''s Garage'.
+unsetopt MAIL_WARNING       # Don't print a warning message if a mail file has been accessed.
+
+# Jobs
+setopt LONG_LIST_JOBS     # List jobs in the long format by default.
+setopt AUTO_RESUME        # Attempt to resume existing job before creating a new process.
+setopt NOTIFY             # Report status of background jobs immediately.
+unsetopt BG_NICE          # Don't run all background jobs at a lower priority.
+unsetopt HUP              # Don't kill jobs on shell exit.
+unsetopt CHECK_JOBS       # Don't report on jobs when shell exit.
+
+# Termcap
+export LESS_TERMCAP_mb=$'\E[01;31m'      # Begins blinking.
+export LESS_TERMCAP_md=$'\E[01;31m'      # Begins bold.
+export LESS_TERMCAP_me=$'\E[0m'          # Ends mode.
+export LESS_TERMCAP_se=$'\E[0m'          # Ends standout-mode.
+export LESS_TERMCAP_so=$'\E[00;47;30m'   # Begins standout-mode.
+export LESS_TERMCAP_ue=$'\E[0m'          # Ends underline.
+export LESS_TERMCAP_us=$'\E[01;32m'      # Begins underline.
+
+# Editing
+
+# Treat these characters as part of a word.
+WORDCHARS='*?_-.[]~&;!#$%^(){}<>'
+# Set the emacs key layout.
+bindkey -e
+
+# History
+
+setopt BANG_HIST                 # Treat the '!' character specially during expansion.
+setopt EXTENDED_HISTORY          # Write the history file in the ':start:elapsed;command' format.
+setopt SHARE_HISTORY             # Share history between all sessions.
+setopt HIST_EXPIRE_DUPS_FIRST    # Expire a duplicate event first when trimming history.
+setopt HIST_IGNORE_DUPS          # Do not record an event that was just recorded again.
+setopt HIST_IGNORE_ALL_DUPS      # Delete an old recorded event if a new event is a duplicate.
+setopt HIST_FIND_NO_DUPS         # Do not display a previously found event.
+setopt HIST_IGNORE_SPACE         # Do not record an event starting with a space.
+setopt HIST_SAVE_NO_DUPS         # Do not write a duplicate event to the history file.
+setopt HIST_VERIFY               # Do not execute immediately upon history expansion.
+setopt HIST_BEEP                 # Beep when accessing non-existent history.
+
+HISTFILE="${ZDOTDIR:-$HOME}/.zhistory"  # The path to the history file.
+HISTSIZE=10000                   # The maximum number of events to save in the internal history.
+SAVEHIST=10000                   # The maximum number of events to save in the history file.
+
+# Directories
+
+setopt AUTO_CD              # Auto changes to a directory without typing cd.
+setopt AUTO_PUSHD           # Push the old directory onto the stack on cd.
+setopt PUSHD_IGNORE_DUPS    # Do not store duplicates in the stack.
+setopt PUSHD_SILENT         # Do not print the directory stack after pushd or popd.
+setopt PUSHD_TO_HOME        # Push to home directory when no argument is given.
+setopt CDABLE_VARS          # Change directory to a path stored in a variable.
+setopt MULTIOS              # Write to multiple descriptors.
+setopt EXTENDED_GLOB        # Use extended globbing syntax.
+unsetopt CLOBBER            # Do not overwrite existing files with > and >>.
+                            # Use >! and >>! to bypass.
 
 # Aliases
 
+# Correct commands.
+setopt CORRECT
+
+# Disable correction.
+alias ack='nocorrect ack'
+alias cd='nocorrect cd'
+alias cp='nocorrect cp'
+alias ebuild='nocorrect ebuild'
+alias gcc='nocorrect gcc'
+alias gist='nocorrect gist'
+alias grep='nocorrect grep'
+alias heroku='nocorrect heroku'
+alias ln='nocorrect ln'
+alias man='nocorrect man'
+alias mkdir='nocorrect mkdir'
+alias mv='nocorrect mv'
+alias mysql='nocorrect mysql'
+alias rm='nocorrect rm'
+
+# Disable globbing.
+alias bower='noglob bower'
+alias fc='noglob fc'
+alias find='noglob find'
+alias ftp='noglob ftp'
+alias history='noglob history'
+alias locate='noglob locate'
+alias rake='noglob rake'
+alias rsync='noglob rsync'
+alias scp='noglob scp'
+alias sftp='noglob sftp'
+
+# Define general aliases.
+alias _='sudo'
+alias b='${(z)BROWSER}'
+
+alias diffu="diff --unified"
+alias e='${(z)VISUAL:-${(z)EDITOR}}'
+alias mkdir="${aliases[mkdir]:-mkdir} -p"
+alias p='${(z)PAGER}'
+alias po='popd'
+alias pu='pushd'
+alias sa='alias | grep -i'
+alias type='type -a'
+
+# Safe ops. Ask the user before doing anything destructive.
+alias rmi="${aliases[rm]:-rm} -i"
+alias mvi="${aliases[mv]:-mv} -i"
+alias cpi="${aliases[cp]:-cp} -i"
+alias lni="${aliases[ln]:-ln} -i"
+alias rm='rmi'
+alias mv='mvi'
+alias cp='cpi'
+alias ln='lni'
+
+if [[ -z "$LS_COLORS" ]]; then
+  eval "$(dircolors --sh)"
+fi
+alias ls="${aliases[ls]:-ls} --group-directories-first --color=auto"
+alias l='ls -1A'         # Lists in one column, hidden files.
+alias ll='ls -lh'        # Lists human readable sizes.
+alias lr='ll -R'         # Lists human readable sizes, recursively.
+alias la='ll -A'         # Lists human readable sizes, hidden files.
+alias lm='la | "$PAGER"' # Lists human readable sizes, hidden files through pager.
+alias lx='ll -XB'        # Lists sorted by extension (GNU only).
+alias lk='ll -Sr'        # Lists sorted by size, largest last.
+alias lt='ll -tr'        # Lists sorted by date, most recent last.
+alias lc='lt -c'         # Lists sorted by date, most recent last, shows change time.
+alias lu='lt -u'         # Lists sorted by date, most recent last, shows access time.
+alias sl='ls'            # I often screw this up.
+
+# Grep
+export GREP_COLOR='37;45'           # BSD.
+export GREP_COLORS="mt=$GREP_COLOR" # GNU.
+alias grep="${aliases[grep]:-grep} --color=auto"
+
+# File Download
+if (( $+commands[curl] )); then
+  alias get='curl --continue-at - --location --progress-bar --remote-name --remote-time'
+elif (( $+commands[wget] )); then
+  alias get='wget --continue --progress=bar --timestamping'
+fi
+
+# Resource Usage
+alias df='df -kh'
+alias du='du -kh'
+
+# Other
+alias o='open'
 alias g="git"
 alias gcue='git config user.email "$COMPANY_EMAIL"'
 alias sane="stty sane"
@@ -26,8 +172,6 @@ alias startavd='${ANDROID_HOME}/emulator/emulator -avd Pixel_3_API_28 > /dev/nul
 alias rna='node_modules/.bin/react-native run-android'
 alias rnr='adb -d reverse tcp:8081 tcp:8081'
 alias rnl='adb logcat \*:S ReactNative:V ReactNativeJS:V'
-
-# OS specific
 
 if [[ "$OSTYPE" == darwin* ]]; then
   # OS X-specific aliases
@@ -107,4 +251,10 @@ fi
 
 if [[ -s "$HOME/.zshrc.local" ]]; then
   source "$HOME/.zshrc.local"
+fi
+
+# Completion
+
+if [[ -s "${ZDOTDIR:-$HOME}/.zsh/completion.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zsh/completion.zsh"
 fi
