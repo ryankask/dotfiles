@@ -22,10 +22,17 @@
   :bind (:map company-active-map
               ("TAB"))
   :init
-  (setq company-idle-delay 0.3
+  (setq company-backends '(company-capf
+                           company-files
+                           company-dabbrev-code
+                           company-dabbrev)
+        company-idle-delay 0.3
         company-tooltip-limit 10
         company-minimum-prefix-length 2
-        company-show-numbers t)
+        company-show-numbers t
+        company-dabbrev-other-buffers nil
+        company-dabbrev-ignore-case nil
+        company-dabbrev-downcase nil)
   (add-hook 'after-init-hook 'global-company-mode))
 
 (use-package direnv
