@@ -31,6 +31,18 @@
       confirm-kill-emacs 'y-or-n-p
       show-paren-mode t)
 
+;; From https://github.com/minad/vertico
+;; Add prompt indicator to `completing-read-multiple'.
+(defun my-crm-indicator (args)
+  (cons (concat "[CRM] " (car args)) (cdr args)))
+(advice-add #'completing-read-multiple :filter-args #'my-crm-indicator)
+
+(setq enable-recursive-minibuffers t
+      ;; Do not allow the cursor in the minibuffer prompt
+      minibuffer-prompt-properties
+      '(read-only t cursor-intangible t face minibuffer-prompt))
+(add-hook 'minibuffer-setup-hook #'cursor-intangible-mode)
+
 (use-package column-marker
   :load-path "elisp/vendor/")
 
@@ -55,7 +67,6 @@
    '(column-marker-1 :background dark-blue)
    '(column-marker-2 :background blue)
    ;; ivy
-   '(ivy-subdir :foreground blue)
    ;; org
    '(org-level-1 :foreground blue :background base3 :bold t :height 1.0)
    ;; lsp-ui

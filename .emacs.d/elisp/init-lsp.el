@@ -33,9 +33,8 @@
   (lsp-ui-peek-enable nil)
   (lsp-ui-sideline-enable nil))
 
-(use-package lsp-ivy
+(use-package consult-lsp
   :straight t
-  :after (lsp-mode ivy)
-  :commands lsp-ivy-workspace-symbol)
+  :after (lsp-mode consult))
 
 (provide 'init-lsp)

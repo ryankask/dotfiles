@@ -111,9 +111,7 @@
          ("s-m l" . magit-log)
          ("s-m f" . magit-log-buffer-file)
          ("s-m b" . magit-blame))
-  :hook (git-commit-setup . git-commit-turn-on-flyspell)
-  :config
-  (setq magit-completing-read-function 'ivy-completing-read))
+  :hook (git-commit-setup . git-commit-turn-on-flyspell))
 
 (use-package org
   :straight t
@@ -135,7 +133,6 @@
   :straight t
   :diminish projectile-mode
   :config
-  (setq projectile-completion-system 'ivy)
   (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
   (define-key projectile-mode-map (kbd "C-o p") 'projectile-command-map)
   (projectile-mode +1))
