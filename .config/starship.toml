@@ -19,5 +19,8 @@ disabled = true
 [openstack]
 disabled = true
 
+[package]
+disabled = true
+
 [python]
 symbol = " "
