@@ -245,7 +245,13 @@ fi
 
 if (( $+commands[zoxide] )); then
   eval "$(zoxide init zsh --cmd c)"
+  alias cd='nocorrect c'
 fi
+
+if (( $+commands[bat] )); then
+  alias cat='nocorrect bat'
+fi
+
 
 # Load local zshrc
 
