@@ -5,6 +5,19 @@
   :init
   (vertico-mode))
 
+(eval-and-compile
+  (defun my-vertico-extensions-load-path ()
+    (concat (file-name-directory (locate-library "vertico")) "extensions/")))
+
+(use-package vertico-directory
+  :load-path (lambda () (list (my-vertico-extensions-load-path)))
+  :after vertico
+  :bind (:map vertico-map
+              ("RET" . vertico-directory-enter)
+              ("DEL" . vertico-directory-delete-char)
+              ("M-DEL" . vertico-directory-delete-word))
+  :hook (rfn-eshadow-update-overlay . vertico-directory-tidy))
+
 (use-package orderless
   :straight t
   :custom (completion-styles '(orderless))
