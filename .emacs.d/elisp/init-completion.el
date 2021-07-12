@@ -37,7 +37,7 @@
 
 (defun my-consult-locate-mdfind (&optional initial)
   (interactive "P")
-  (let ((consult-locate-command "mdfind -name OPTS ARGS"))
+  (let ((consult-locate-command "mdfind -name OPTS ARG"))
     (consult-locate initial)))
 
 (use-package consult
