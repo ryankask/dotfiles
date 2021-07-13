@@ -161,7 +161,7 @@ alias du='du -kh'
 # Other
 alias o='open'
 alias g="git"
-alias gcue='git config user.email "$COMPANY_EMAIL"'
+alias gitemail='git config user.email'
 alias sane="stty sane"
 alias killrunserver='pkill -f runserver'
 alias killflaskserver="pkill -f 'flask run'"
