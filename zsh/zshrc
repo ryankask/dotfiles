@@ -244,8 +244,9 @@ if (( $+commands[fzf] )); then
 fi
 
 if (( $+commands[zoxide] )); then
-  eval "$(zoxide init zsh --cmd c)"
-  alias cd='nocorrect c'
+  eval "$(zoxide init zsh --no-aliases)"
+  alias cd='__zoxide_z'
+  alias ci='__zoxide_zi'
 fi
 
 if (( $+commands[bat] )); then
