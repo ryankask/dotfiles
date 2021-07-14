@@ -73,8 +73,6 @@
    '(lsp-ui-doc-background :background bg-alt)
    '(lsp-ui-doc-header :background highlight :foreground bg)))
 
-(bind-key "C-c d" 'my-doom-one-theme-customise)
-
 (use-package doom-themes
   :straight t
   :init

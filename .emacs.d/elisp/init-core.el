@@ -5,14 +5,12 @@
       read-process-output-max (* 1024 1024))
 
 ;; Keybindings
-(global-unset-key (kbd "C-o"))
-(global-unset-key (kbd "s-m"))
-(global-unset-key (kbd "s-o"))
+;; Custom prefixes
+(bind-key "C-o" nil)
+(bind-key "s-m" nil)
+(bind-key "s-o" nil)
+;; Other
 (bind-key "C-o r" 'repeat)
-
-;; C-h behaves like C-h in readline
-(bind-key "C-h" 'delete-backward-char)
-(bind-key "s-h" 'help-command)
 
 ;; Customisations
 
