@@ -14,7 +14,7 @@ layout_poetry() {
   local sanitized_project_name=$( \
       awk -F '[ ="]+' '$1 == "name" { print $2 }' pyproject.toml \
     | tr '[:upper:]' '[:lower:]' \
-    | sed 's/[^-_[:alnum:]]/_/g' \
+    | sed 's/[^-[:alnum:]]/-/g' \
     | cut -c -42 \
   )
   local hashed_pwd=$(
