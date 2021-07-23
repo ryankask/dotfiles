@@ -12,7 +12,7 @@
         ido-max-work-file-list 250
         ido-max-dir-file-cache 250
         ido-ignore-extensions t
-        ido-save-directory-list-file (expand-file-name "ido.hist" dotemacs-dir)
+        ido-save-directory-list-file (expand-file-name "ido.hist" user-emacs-directory)
         ido-ignore-files (append ido-ignore-files '("\\`__pycache__/")))
   (ido-mode t)
   (ido-everywhere t))
@@ -34,7 +34,7 @@
          ("M-X" . smex-major-mode-commands)
          ("C-c M-x" . execute-extended-command))
   :init
-  (setq smex-save-file (expand-file-name "smex.hist" dotemacs-dir)
+  (setq smex-save-file (expand-file-name "smex.hist" user-emacs-directory)
         smex-history-length 32))
 
 (provide 'init-ido)

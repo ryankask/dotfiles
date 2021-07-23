@@ -2,9 +2,8 @@
 
 ;;; Paths
 
-(defconst dotemacs-dir (file-name-directory load-file-name))
-(defconst elisp-dir (expand-file-name "elisp" dotemacs-dir))
-(add-to-list 'load-path elisp-dir)
+(defconst my-elisp-dir (concat user-emacs-directory "elisp"))
+(add-to-list 'load-path my-elisp-dir)
 (setq default-directory "~/")
 
 ;;; Packaging

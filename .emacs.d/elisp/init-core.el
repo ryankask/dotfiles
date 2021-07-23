@@ -15,7 +15,7 @@
 
 ;; Customisations
 
-(setq custom-file (expand-file-name "elisp/custom.el" dotemacs-dir))
+(setq custom-file (expand-file-name "elisp/custom.el" user-emacs-directory))
 
 ;; Buffers
 
@@ -28,7 +28,7 @@
 (add-hook 'kill-buffer-query-functions 'my-kill-buffer-query)
 
 ;; Backups
-(defconst my-backup-directory (expand-file-name "backups/" dotemacs-dir))
+(defconst my-backup-directory (expand-file-name "backups/" user-emacs-directory))
 (make-directory my-backup-directory t)
 (setq make-backup-files t
       vc-make-backup-files t
@@ -40,7 +40,7 @@
       version-control t)
 
 ;; Autosaves
-(defconst my-autosave-directory (expand-file-name "autosave/" dotemacs-dir))
+(defconst my-autosave-directory (expand-file-name "autosave" user-emacs-directory))
 (unless (file-exists-p my-autosave-directory)
   (make-directory my-autosave-directory t))
 (setq auto-save-file-name-transforms
@@ -50,7 +50,7 @@
   :init
   (setq savehist-additional-variables '(search ring regexp-search-ring)
         savehist-autosave-interval 60
-        savehist-file (expand-file-name "savehist" dotemacs-dir))
+        savehist-file (expand-file-name "savehist" user-emacs-directory))
   :config
   (savehist-mode 1))
 
@@ -63,12 +63,13 @@
   :init
   (setq recentf-auto-cleanup 'never
         recentf-auto-save-timer (run-with-idle-timer 300 t 'my-recentf-save-list)
-        recentf-exclude (list (format "\\`%s\\(?:elpa\\|backups\\)/" dotemacs-dir)
+        recentf-exclude (list (format "\\`%s\\(?:elpa\\|backups\\)/"
+                                      (expand-file-name user-emacs-directory))
                               "recentf\\'"
                               "COMMIT_EDITMSG\\'")
         recentf-max-menu-items 15
         recentf-max-saved-items 1000
-        recentf-save-file (expand-file-name "recentf" dotemacs-dir))
+        recentf-save-file (expand-file-name "recentf" user-emacs-directory))
   :config
   (recentf-mode 1))
 
