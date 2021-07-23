@@ -97,9 +97,7 @@ current buffer's file."
 
 (defun my-python-mode-setup ()
   "Hook to run when python-mode is enabled"
-  (lsp-deferred)
-  (column-marker-1 80)
-  (column-marker-2 100))
+  (lsp-deferred))
 
 (use-package python
   :bind (:map python-mode-map

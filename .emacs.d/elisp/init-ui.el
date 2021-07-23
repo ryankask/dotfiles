@@ -43,8 +43,6 @@
       '(read-only t cursor-intangible t face minibuffer-prompt))
 (add-hook 'minibuffer-setup-hook #'cursor-intangible-mode)
 
-(use-package column-marker
-  :load-path "elisp/vendor/")
 
 (defun my-doom-one-theme-customise ()
   (interactive)
