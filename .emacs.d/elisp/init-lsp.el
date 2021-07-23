@@ -7,8 +7,7 @@
 (use-package lsp-mode
   :straight t
   :commands (lsp lsp-deferred)
-  :bind (:map lsp-mode-map              ;
-              ("C-c ." . lsp-find-definition)
+  :bind (:map lsp-mode-map
               ("C-o f" . lsp-format-buffer))
   :hook (lsp-mode . my-lsp-mode-setup)
   :custom
