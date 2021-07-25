@@ -98,4 +98,19 @@
   :init
   (marginalia-mode))
 
+(use-package embark
+  :straight t
+  :bind (("C-." . embark-act)
+         ("s-." . embark-dwim)
+         ("C-h B" . embark-bindings))
+  :config
+  (add-to-list 'display-buffer-alist
+               '("\\`\\*Embark Collect \\(Live\\|Completions\\)\\*"
+                 nil
+                 (window-parameters (mode-line-format . none)))))
+
+(use-package embark-consult
+  :straight t
+  :after (embark consult))
+
 (provide 'init-completion)

@@ -42,6 +42,9 @@
 
 (use-package flyspell
   :diminish flyspell-mode
+  :bind (:map flyspell-mode-map
+              ("C-." . nil)
+              ("M-." . nil))
   :hook ((text-mode . flyspell-mode)
          (prog-mode . flyspell-prog-mode)))
 
