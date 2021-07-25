@@ -142,6 +142,9 @@
   (setq rainbow-html-colors-major-mode-list
         '(html-mode css-mode php-mode nxml-mode xml-mode scss-mode)))
 
+;; internal
+(use-package straight-helpers)
+
 (use-package which-key
   :straight t
   :diminish which-key-mode
