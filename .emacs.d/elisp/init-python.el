@@ -56,6 +56,24 @@
     (if (not (equal target ""))
         (setq my-pytest-tmux-target-pane target))))
 
+(defun my-tmux-select-pane ()
+  "Select a tmux pane from a list of active choices"
+  (let* ((panes (process-lines "tmux" "list-panes" "-a" "-F" "#S:#I.#P (#W)"))
+         (candidates (lambda (str pred action)
+                       (if (eq action 'metadata)
+                           '(metadata
+                             (cycle-sort-function . identity)
+                             (display-sort-function . identity))
+                         (complete-with-action action panes str pred))))
+         (selected-pane (completing-read "Pane: " candidates nil t)))
+    (when (string-match "\\`\\(.*\\) .*\\'" selected-pane)
+      (match-string 1 selected-pane))))
+
+(defun my-pytest-select-tmux-pane ()
+  (interactive)
+  (when-let (pane (my-tmux-select-pane))
+    (setq my-pytest-tmux-target-pane pane)
+    (message "Selected pane: %s" my-pytest-tmux-target-pane)))
 
 (defun my-pytest-send-test-buffer-file-command-to-tmux (arg)
   "Send a command to the active tmux pane that runs the tests in the
