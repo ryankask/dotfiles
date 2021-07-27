@@ -84,17 +84,6 @@ current buffer's file."
          test-command
          (if arg "" "C-m"))))))
 
-(defun my-set-flycheck-flake8rc (&optional flake8rc)
-  (interactive)
-  (setq flycheck-flake8rc (or flake8rc "~/.config/flake8")))
-
-(use-package python-environment
-  :straight t
-  :init
-  (setq venv-location "~/.virtualenvs"
-        python-environment-directory venv-location
-        python-environment-default-root-name "local"))
-
 (defun my-python-mode-setup ()
   "Hook to run when python-mode is enabled"
   (lsp-deferred))
@@ -104,16 +93,6 @@ current buffer's file."
               ("C-c /" . my-python-debug-insert-ipdb-set-trace)
               ("C-c C-t" . my-pytest-copy-test-command-at-point)
               ("C-c C-s" . my-pytest-send-test-command-at-point-to-tmux))
-  :hook (python-mode . my-python-mode-setup)
-  :init
-  (setq my-default-virtualenv-path (python-environment-root-path)
-        python-shell-virtualenv-root my-default-virtualenv-path
-        flycheck-python-flake8-executable (executable-find "flake8")))
-
-(use-package py-isort
-  :straight t
-  :after (python)
-  :bind (:map python-mode-map
-              ("C-o i" . py-isort-buffer)))
+  :hook (python-mode . my-python-mode-setup))
 
 (provide 'init-python)
