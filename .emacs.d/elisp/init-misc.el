@@ -151,19 +151,18 @@
   :config
   (which-key-mode))
 
-(use-package yasnippet-snippets
-  :straight t)
-
 (use-package yasnippet
   :straight t
-  :after yasnippet-snippets
   :diminish yas-minor-mode
   :config
   (yas-global-mode 1)
-  (setq-default yas-prompt-functions '(yas-ido-prompt yas-dropdown-prompt))
   (add-hook 'snippet-mode-hook
             (lambda ()
               (set (make-local-variable require-final-newline) nil))))
+
+(use-package yasnippet-snippets
+  :straight t
+  :after yasnippet)
 
 ;;; Languages
 
