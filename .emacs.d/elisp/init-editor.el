@@ -4,9 +4,7 @@
               tab-width 4)
 (setq tab-always-indent 'complete
       tab-stop-list (number-sequence 4 200 4)
-      require-final-newline t
-      completion-ignored-extensions
-      (append completion-ignored-extensions '(".DS_Store")))
+      require-final-newline t)
 
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
