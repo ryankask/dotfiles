@@ -67,8 +67,6 @@
         uniquify-after-kill-buffer-p t
         uniquify-ignore-buffers-re "^\\*"))
 
-(use-package midnight)
-
 (use-package re-builder
   :init
   (setq reb-re-syntax 'string))
