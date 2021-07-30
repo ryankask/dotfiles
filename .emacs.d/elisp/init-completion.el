@@ -104,11 +104,34 @@
   :init
   (marginalia-mode))
 
+(defun embark-which-key-indicator (keymap targets)
+  "An embark indicator that displays KEYMAP with which-key.
+The which-key help message will show the type and value of the
+current target followed by an ellipsis if there are further
+TARGETS."
+  (which-key--show-keymap
+   (if (eq (caar targets) 'embark-become)
+       "Become"
+     (format "Act on %s '%s'%s"
+             (caar targets)
+             (embark--truncate-target (cdar targets))
+             (if (cdr targets) "…" "")))
+   keymap
+   nil nil t)
+  (lambda (prefix)
+    (if prefix
+        (embark-which-key-indicator (lookup-key keymap prefix) targets)
+      (kill-buffer which-key--buffer))))
+
 (use-package embark
   :straight t
   :bind (("C-." . embark-act)
          ("s-." . embark-dwim)
          ("C-h B" . embark-bindings))
+  :custom
+  (embark-indicator #'embark-which-key-indicator)
+  :init
+  (setq prefix-help-command #'embark-prefix-help-command)
   :config
   (add-to-list 'display-buffer-alist
                '("\\`\\*Embark Collect \\(Live\\|Completions\\)\\*"
