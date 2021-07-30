@@ -11,7 +11,7 @@
 (bind-key "s-m" nil)
 (bind-key "s-o" nil)
 ;; Other
-(bind-key "C-o r" 'repeat)
+(bind-key "C-o z" 'repeat)
 
 ;; Customisations
 
@@ -91,6 +91,9 @@
   :config
   (setq-default dired-omit-files-p t)
   (setq dired-omit-files (concat dired-omit-files "\\|\\`__pycache__\\'")))
+
+(use-package register
+  :bind-keymap ("s-r r" . ctl-x-r-map))
 
 ;; Use Google Chrome to open links
 (setq browse-url-browser-function 'browse-url-generic
