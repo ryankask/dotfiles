@@ -11,7 +11,7 @@
  ("emacs-direnv" . "4b94393a9adf677c7c037215e233eef5fbca553d")
  ("emacs-which-key" . "cc84b2d0da629ecb62a92e3fd23cbee4ea20ce56")
  ("emacsmirror-mirror" . "b0d77288d51b360224c778f310c34b588590ca5e")
- ("embark" . "1a7e6b556142216fa5f9b897bd5eca73968f3c49")
+ ("embark" . "2abf476b6234c6cc23052d6c7e6699d1196c39b8")
  ("epl" . "78ab7a85c08222cd15582a298a364774e3282ce6")
  ("exec-path-from-shell" . "bf4bdc8b8911e7a2c04e624b9a343164c3878282")
  ("expand-region.el" . "95a773bd8f557cbd43d3b2dab2fa4417ec5927ab")
