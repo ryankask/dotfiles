@@ -52,8 +52,7 @@
 (use-package flycheck
   :straight t
   :diminish flycheck-mode
-  :bind (("C-c e n" . flycheck-next-error)
-         ("C-c e p" . flycheck-previous-error)))
+  :custom (flycheck-keymap-prefix (kbd "C-o e")))
 
 (use-package gcmh
   :straight t
