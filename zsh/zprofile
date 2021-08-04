@@ -35,7 +35,11 @@ fi
 #
 
 export GOPATH="$HOME/Projects/go"
-export BREW_PREFIX="/usr/local"
+if [[ $CPUTYPE == "arm64" ]]; then
+  export BREW_PREFIX="/opt/homebrew"
+else
+  export BREW_PREFIX="/usr/local"
+fi
 export ANDROID_HOME="/usr/local/Android/sdk"
 
 # Ensure path arrays do not contain duplicates.
@@ -47,6 +51,7 @@ path=(
   $GOPATH/bin
   $HOME/.cargo/bin
   $BREW_PREFIX/opt/coreutils/libexec/gnubin
+  $BREW_PREFIX/bin
   /usr/local/{bin,sbin}
   $path
 )
