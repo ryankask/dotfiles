@@ -46,7 +46,7 @@ defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
 defaults write com.apple.Finder FXPreferredViewStyle -string "Nlsv"
 
 # Show the ~/Library folder.
-chflags nohidden ~/Library
+chflags nohidden ~/Library && xattr -d com.apple.FinderInfo ~/Library
 
 #-----
 # Dock
@@ -91,7 +91,7 @@ defaults write com.googlecode.iterm2 PromptOnQuit -bool false
 defaults write com.apple.screencapture location -string "${HOME}/Pictures/Screenshots"
 
 # Save screenshots in PNG format (other options: BMP, GIF, JPG, PDF, TIFF)
-defaults write com.apple.screencapture type -string "jpg"
+defaults write com.apple.screencapture type -string "png"
 
 #-------
 # Safari
