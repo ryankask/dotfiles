@@ -1,0 +1,50 @@
+#!/usr/bin/env zsh
+
+set -eu -o pipefail
+
+DEST=$1
+
+if [[ -z "$DEST" ]]; then
+  echo "Install destination directory required"
+  exit 1
+fi
+
+if [[ ! -d "$DEST" ]]; then
+  echo "Destination directory \"$DEST\" does not exist"
+  exit 1
+fi
+
+TARGET_PREFIX=${0:a:h}
+
+typeset -A files
+
+files=(
+  # Destination file: symlink target
+  ".config/direnv/direnvrc" ""
+  ".config/git" ""
+  ".config/starship.toml" ""
+  ".docker" ""
+  ".emacs.d" ""
+  ".ghc/ghci.conf" "ghc/ghci.conf"
+  ".inputrc" ""
+  ".pg_format" ""
+  ".psqlrc" "postgres/psqlrc"
+  ".tmux.conf" ""
+  ".zlogin" "zsh/zlogin"
+  ".zprofile" "zsh/zprofile"
+  ".zshenv" "zsh/zshenv"
+  ".zshrc" "zsh/zshrc"
+  "Library/Application Support/pip" "pip"
+)
+
+for reldest reltarget in "${(@kv)files}"; do
+  dest="${DEST}/${reldest}"
+  destparent="${dest:a:h}"
+  target="${TARGET_PREFIX=}/${reltarget:-$reldest}"
+
+  if [[ $destparent != $DEST && ! -d $destparent ]]; then
+    mkdir -p $destparent
+  fi
+
+  ln -s $target $dest
+done
