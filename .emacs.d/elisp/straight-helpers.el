@@ -7,23 +7,26 @@
     (string-to-number (buffer-string))))
 
 (defun my-list-straight-packages-with-update-counts ()
-  (let ((results nil))
-    (pcase-dolist
-        (`(,path . ,file-attrs)
-         (directory-files-and-attributes (straight--repos-dir) t))
-      (when (and (nth 0 file-attrs)
-                 (file-directory-p (concat (file-name-as-directory path) ".git")))
-        (let ((behind-count (my-count-git-commits-behind path)))
-          (if (> behind-count 0)
-              (push (cons (file-name-nondirectory path) behind-count) results)))))
-    results))
+  (let ((package-counts nil))
+    (straight--map-repos
+     (lambda (recipe)
+       (straight--with-plist recipe
+           (package local-repo)
+         (let ((commits-behind (my-count-git-commits-behind
+                                (straight--repos-dir local-repo))))
+           (when (> commits-behind 0)
+             (push (cons package commits-behind) package-counts))))))
+    (sort package-counts (lambda (a b) (funcall #'string< (car a) (car b))))))
+
+(defcustom my-outdated-straight-packages-buffer-name "*outdated-straight-packages*"
+  "Name of the buffer used to output outdated Striaght packages")
 
 (defun my-print-straight-packages-with-updates ()
   "Print the list of straight.el packages that have available updates."
   (interactive)
   (let* ((updated (my-list-straight-packages-with-update-counts))
          (updated-count (length updated)))
-    (with-output-to-temp-buffer "*outdated-straight-packages*"
+    (with-output-to-temp-buffer my-outdated-straight-packages-buffer-name
       (princ (format "------Outdated Straight packages: %d-----\n" updated-count))
       (if (> updated-count 0)
           (pcase-dolist
@@ -35,5 +38,11 @@
   (interactive)
   (straight-fetch-all)
   (my-print-straight-packages-with-updates))
+
+(defun my-pull-straight-package-at-point ()
+  (interactive)
+  (when-let* ((symbol (symbol-at-point))
+              (package (symbol-name symbol)))
+    (straight-pull-package package)))
 
 (provide 'straight-helpers)
