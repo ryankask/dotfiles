@@ -181,6 +181,10 @@ if [[ "$OSTYPE" == darwin* ]]; then
   PG_DIR="$BREW_PREFIX/var/postgres"
   alias pg_start="pg_ctl -D $PG_DIR -l $PG_DIR/server.log start"
   alias pg_stop="pg_ctl -D $PG_DIR stop -s -m fast"
+
+  if [[ $CPUTYPE == "arm64" ]]; then
+    alias uname="/usr/bin/uname"
+  fi
 fi
 
 # Python
@@ -194,11 +198,12 @@ function pyclean() {
 
 export PIP_REQUIRE_VIRTUALENV=true
 export PIPX_HOME="$HOME/.local/pipx"
+export VIRTUAL_ENV_DISABLE_PROMPT=1
 
 if (( $+commands[virtualenvwrapper.sh] )); then
   export WORKON_HOME="$HOME/.virtualenvs"
   [[ -n $BREW_PREFIX ]] && export VIRTUALENVWRAPPER_PYTHON="$PIPX_HOME/venvs/virtualenvwrapper/bin/python3"
-  export VIRTUAL_ENV_DISABLE_PROMPT=1
+
   source "$commands[virtualenvwrapper.sh]"
   alias wo="workon"
 fi
