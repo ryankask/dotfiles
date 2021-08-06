@@ -12,6 +12,6 @@
   (exec-path-from-shell-initialize))
 
 ;; Disable `ns-popup-font-panel', which causes emacs to sometimes freeze
-(global-unset-key (kbd "s-t"))
+(unbind-key "s-t")
 
 (provide 'init-macos)
