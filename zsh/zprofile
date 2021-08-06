@@ -34,6 +34,7 @@ fi
 # Paths
 #
 
+export DOTFILES="${${(%):-%x}:A:h:h}"
 export GOPATH="$HOME/Projects/go"
 if [[ $CPUTYPE == "arm64" ]]; then
   export BREW_PREFIX="/opt/homebrew"

@@ -258,10 +258,6 @@ if (( $+commands[bat] )); then
   alias cat='nocorrect bat'
 fi
 
-if [[ $+commands[gcloud] ]]; then
-  source "$BREW_PREFIX/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
-fi
-
 # Load local zshrc
 
 if [[ -s "$HOME/.zshrc.local" ]]; then
@@ -270,6 +266,4 @@ fi
 
 # Completion
 
-if [[ -s "${ZDOTDIR:-$HOME}/.zsh/completion.zsh" ]]; then
-  source "${ZDOTDIR:-$HOME}/.zsh/completion.zsh"
-fi
+source "$DOTFILES/zsh/completion.zsh"
