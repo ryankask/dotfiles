@@ -60,4 +60,11 @@
   :config
   (modus-themes-load-vivendi))
 
+(use-package minions
+  :straight t
+  :demand t
+  :custom (minions-mode-line-lighter "")
+  :bind ("C-o =" . minions-minor-modes-menu)
+  :config (minions-mode 1))
+
 (provide 'init-ui)
