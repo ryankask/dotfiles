@@ -122,11 +122,23 @@ targets."
        (if prefix (lookup-key keymap prefix) keymap)
        nil nil t))))
 
+(defun my-open-file-in-finder (file)
+  "Reveal FILE in finder. If FILE is a directory, open it directly in Finder so its contents are displayed instead of revealing it."
+  (let ((expanded-file (expand-file-name file)))
+    (call-process
+     "open" nil 0 nil
+     (if (not (file-directory-p expanded-file))
+         "-R"
+       "")
+     expanded-file)))
+
 (use-package embark
   :straight t
   :bind (("C-." . embark-act)
          ("s-." . embark-dwim)
-         ("C-h B" . embark-bindings))
+         ("C-h B" . embark-bindings)
+         :map embark-file-map
+         ("X" . my-open-file-in-finder))
   :custom
   (embark-indicator #'embark-which-key-indicator)
   :init
