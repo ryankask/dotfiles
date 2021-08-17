@@ -104,9 +104,9 @@
 
 (use-package magit
   :straight t
-  :bind (("C-x g" . magit-status)
-         ("C-x M-g" . magit-dispatch-popup)
-         ("s-m m" . magit-status)
+  :custom (magit-define-global-key-bindings nil)
+  :bind (("s-m m" . magit-status)
+         ("s-m d" . magit-file-dispatch)
          ("s-m l" . magit-log)
          ("s-m f" . magit-log-buffer-file)
          ("s-m b" . magit-blame))
