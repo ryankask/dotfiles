@@ -22,6 +22,7 @@ files=(
   # Destination file: symlink target
   ".config/direnv/direnvrc" ""
   ".config/git" ""
+  ".config/karabiner" ""
   ".config/starship.toml" ""
   ".docker" ""
   ".emacs.d" ""
@@ -39,6 +40,12 @@ files=(
 
 for reldest reltarget in "${(@kv)files}"; do
   dest="${DEST}/${reldest}"
+
+  if [[ -e $dest ]]; then
+    echo "Skipping $dest: already exists."
+    continue
+  fi
+
   destparent="${dest:a:h}"
   target="${TARGET_PREFIX=}/${reltarget:-$reldest}"
 
