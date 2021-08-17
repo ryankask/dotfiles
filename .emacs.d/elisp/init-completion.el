@@ -157,10 +157,9 @@ targets."
          ("C-h B" . embark-bindings)
          :map embark-file-map
          ("X" . my-open-file-in-finder))
-  :custom
-  (embark-indicator #'embark-which-key-indicator)
   :init
   (setq prefix-help-command #'embark-prefix-help-command)
+  (advice-add #'embark-verbose-indicator :override #'embark-which-key-indicator)
   :config
   (add-to-list 'display-buffer-alist
                '("\\`\\*Embark Collect \\(Live\\|Completions\\)\\*"
