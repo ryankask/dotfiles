@@ -1,7 +1,7 @@
 ;;; -*- lexical-binding: t; -*-
 
-(setq completion-ignored-extensions (nconc completion-ignored-extensions
-                                           '(".DS_Store" "__pycache__/")))
+(setq completion-ignored-extensions
+      (nconc completion-ignored-extensions '(".DS_Store" "__pycache__/")))
 
 (use-package vertico
   :straight t
