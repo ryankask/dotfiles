@@ -28,20 +28,31 @@
   (setq completion-category-defaults nil)
   (setq completion-category-overrides nil))
 
-(defun my-consult-find-fd (&optional dir initial)
-  (interactive "P")
-  (let ((consult-find-command "fd --color=never --hidden --full-path ARG OPTS"))
-    (consult-find dir initial)))
+(defun my-consult-fd-builder (input)
+  (pcase-let* ((`(,arg . ,opts) (consult--command-split input))
+               (`(,re . ,hl) (funcall consult--regexp-compiler arg 'extended)))
+    (when re
+      (list :command (append
+                      (list "fd" "--color=never" "--hidden" "--full-path"
+                            (consult--join-regexps re 'extended))
+                      opts)
+            :highlight hl))))
 
-(defun my-consult-find-git (&optional dir initial)
+(defun my-consult-fd (&optional dir initial)
   (interactive "P")
-  (let ((consult-find-command "git ls-files --full-name OPTS -- *ARG*"))
-    (consult-find dir initial)))
+  (let* ((prompt-dir (consult--directory-prompt "Fd" dir))
+         (default-directory (cdr prompt-dir)))
+    (find-file
+     (consult--find (car prompt-dir) #'my-consult-fd-builder initial))))
 
-(defun my-consult-locate-mdfind (&optional initial)
-  (interactive "P")
-  (let ((consult-locate-command "mdfind -name OPTS ARG"))
-    (consult-locate initial)))
+(defun my-consult-mdfind-builder (input)
+  (pcase-let ((`(,arg . ,opts) (consult--command-split input)))
+    `(:command ("mdfind" "-name" ,arg ,@opts))))
+
+(defun my-consult-mdfind (&optional initial)
+  (interactive)
+  (find-file
+   (consult--find "Mdfind: " #'my-consult-mdfind-builder initial)))
 
 (use-package consult
   :straight t
@@ -50,8 +61,8 @@
          ("M-y" . consult-yank-pop)
          ("<help> a" . consult-apropos)
          ("C-c n" . consult-ripgrep)
-         ("C-c e" . my-consult-find-git)
-         ("C-c i" . my-consult-locate-mdfind)
+         ("C-c e" . my-consult-fd)
+         ("C-c i" . my-consult-mdfind)
          ("C-c o" . consult-git-grep)
          ("C-c b" . consult-bookmark)
          ("s-r s-r" . consult-register)
