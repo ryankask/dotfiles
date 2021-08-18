@@ -134,8 +134,8 @@ targets."
        (if (eq (caar targets) 'embark-become)
            "Become"
          (format "Act on %s '%s'%s"
-                 (caar targets)
-                 (embark--truncate-target (cdar targets))
+                 (plist-get (car targets) :type)
+                 (embark--truncate-target (plist-get (car targets) :target))
                  (if (cdr targets) "…" "")))
        (if prefix (lookup-key keymap prefix) keymap)
        nil nil t))))
@@ -154,7 +154,6 @@ targets."
   :straight t
   :bind (("C-." . embark-act)
          ("s-." . embark-dwim)
-         ("C-h B" . embark-bindings)
          :map embark-file-map
          ("X" . my-open-file-in-finder))
   :init
