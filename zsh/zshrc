@@ -241,6 +241,9 @@ if (( $+commands[fzf] )); then
   export FZF_DEFAULT_OPTS="--height=40% --reverse --color=16 --prompt='❯ ' --pointer='❯' --marker='❯' --bind=ctrl-j:accept,ctrl-k:kill-line,ctrl-v:page-down,alt-v:page-up"
   [[ $- == *i* ]] && source "$BREW_PREFIX/opt/fzf/shell/completion.zsh" 2> /dev/null
   source "$BREW_PREFIX/opt/fzf/shell/key-bindings.zsh"
+  # Move C-t to M-t to preserve `transpose-chars`
+  bindkey '^T' transpose-chars
+  bindkey '\et' fzf-file-widget
   if (( $+commands[fd] )); then
     export FZF_DEFAULT_COMMAND="fd --type file --hidden --follow"
     export FZF_CTRL_T_COMMAND=$FZF_DEFAULT_COMMAND
