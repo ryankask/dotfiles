@@ -79,12 +79,13 @@
   (unbind-key "C-o" ibuffer-mode-map))
 
 (use-package dired
-  :defer t
   :bind ("C-o C-d" . dired-jump)
+  :custom
+  (dired-listing-switches "-aBhl -v --group-directories-first")
+  (dired-recursive-copies 'always)
+  (dired-recursive-deletes 'always)
   :config
-  (unbind-key "C-o" dired-mode-map)
-  (setq dired-recursive-deletes 'always
-        dired-recursive-copies 'always))
+  (unbind-key "C-o" dired-mode-map))
 
 (use-package dired-x
   :after dired
