@@ -87,12 +87,6 @@
   :config
   (unbind-key "C-o" dired-mode-map))
 
-(use-package dired-x
-  :after dired
-  :config
-  (setq-default dired-omit-files-p t)
-  (setq dired-omit-files (concat dired-omit-files "\\|\\`__pycache__\\'")))
-
 (use-package register
   :bind-keymap ("s-r r" . ctl-x-r-map))
 
