@@ -121,9 +121,10 @@
               ("s-<right>" . org-metaright)
               ("s-<up>" . org-metaup)
               ("s-<down>" . org-metadown))
-  :init
-  (setq org-cycle-separator-lines 1
-        org-log-done 'time))
+  :hook (org-mode . my-fill-column-setup)
+  :custom
+  (org-cycle-separator-lines 1)
+  (org-log-done 'time))
 
 (use-package project
   :straight (:type built-in)
@@ -159,10 +160,6 @@
   (add-hook 'snippet-mode-hook
             (lambda ()
               (set (make-local-variable require-final-newline) nil))))
-
-(use-package yasnippet-snippets
-  :straight t
-  :after yasnippet)
 
 ;;; Languages
 
@@ -205,19 +202,14 @@
 
 ;;; Writing
 
-(defun my-markdown-mode-hook ()
-  (setq fill-column 88))
-
 (use-package markdown-mode
   :straight t
-  :defer t
-  :hook (markdown-mode . my-markdown-mode-hook)
-  :init
-  (setq markdown-command "pandoc"))
+  :hook (markdown-mode . my-fill-column-setup)
+  :custom
+  (markdown-command "pandoc"))
 
 (use-package rst-mode
   :defer t
-  :init
-  (add-hook 'rst-mode-hook (lambda () (set-fill-column 88))))
+  :hook (rst-mode . my-fill-column-setup))
 
 (provide 'init-misc)

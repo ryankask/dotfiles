@@ -29,6 +29,9 @@
 
 (add-hook 'before-save-hook 'my-delete-trailing-whitespace)
 
+(defun my-fill-column-setup ()
+  (setq fill-column 88))
+
 (use-package autorevert
   :diminish auto-revert-mode
   :config
