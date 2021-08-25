@@ -11,7 +11,10 @@
 (bind-key "s-m" nil)
 (bind-key "s-o" nil)
 ;; Other
-(bind-key "C-o z" 'repeat)
+(bind-key "C-o z" #'repeat)
+(bind-key "M-g" #'transpose-words)
+(bind-key "M-t" goto-map)
+(bind-key "s-r r" ctl-x-r-map)
 
 ;; Customisations
 
@@ -86,9 +89,6 @@
   (dired-recursive-deletes 'always)
   :config
   (unbind-key "C-o" dired-mode-map))
-
-(use-package register
-  :bind-keymap ("s-r r" . ctl-x-r-map))
 
 ;; Use Google Chrome to open links
 (setq browse-url-browser-function 'browse-url-generic

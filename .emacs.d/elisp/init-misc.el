@@ -5,9 +5,10 @@
 (use-package avy
   :straight t
   :bind (("C-'" . avy-goto-char-timer)
-         ("M-g g" . avy-goto-line)
-         ("M-g w" . avy-goto-word-0)
-         ("M-g M-w" . avy-goto-word-1))
+         :map goto-map
+         ("l" . avy-goto-line)
+         ("w" . avy-goto-word-0)
+         ("M-w" . avy-goto-word-1))
   :init
   (setq avy-keys '(?a ?r ?s ?t ?n ?e ?i ?o)
         avy-timeout-seconds 0.3))
