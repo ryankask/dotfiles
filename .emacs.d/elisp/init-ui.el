@@ -28,18 +28,12 @@
 (setq inhibit-startup-message t
       use-dialog-box nil
       initial-scratch-message nil
-      confirm-kill-emacs 'y-or-n-p)
-
-;; From https://github.com/minad/vertico
-;; Add prompt indicator to `completing-read-multiple'.
-(defun my-crm-indicator (args)
-  (cons (concat "[CRM] " (car args)) (cdr args)))
-(advice-add #'completing-read-multiple :filter-args #'my-crm-indicator)
-
-(setq enable-recursive-minibuffers t
+      confirm-kill-emacs 'y-or-n-p
+      enable-recursive-minibuffers t
       ;; Do not allow the cursor in the minibuffer prompt
-      minibuffer-prompt-properties
       '(read-only t cursor-intangible t face minibuffer-prompt))
+      minibuffer-prompt-properties
+
 (add-hook 'minibuffer-setup-hook #'cursor-intangible-mode)
 
 (defun my-modus-themes-custom-faces ())
