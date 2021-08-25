@@ -95,9 +95,7 @@
   (setq xref-show-xrefs-function #'consult-xref
         xref-show-definitions-function #'consult-xref
         register-preview-delay 0
-        register-preview-function #'consult-register-format
-        xref-show-xrefs-function #'consult-xref
-        xref-show-definitions-function #'consult-xref)
+        register-preview-function #'consult-register-format)
 
   (advice-add #'register-preview :override #'consult-register-window)
   :config
