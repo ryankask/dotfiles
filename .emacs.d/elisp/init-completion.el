@@ -68,10 +68,11 @@
          ("s-r s-r" . consult-register)
          ("s-r s-t" . consult-register-load)
          ("s-r s-s" . consult-register-store)
+         ("s-l" . consult-goto-line)
          :map goto-map
          ("e" . consult-compile-error)
          ("f" . consult-flymake)
-         ("M-g" . consult-goto-line)
+         ("g" . consult-goto-line)
          ("o" . consult-outline)
          ("m" . consult-mark)
          ("k" . consult-global-mark)
