@@ -91,12 +91,17 @@
          ("M-e" . consult-isearch)   ;; orig. isearch-edit-string
          ("M-s e" . consult-isearch) ;; orig. isearch-edit-string
          ("M-s l" . consult-line))
+  :custom
+  (consult-project-root-function
+   (lambda ()
+     (when-let (project (project-current))
+       (car (project-roots project)))))
+  (consult-ripgrep-args "rg --line-buffered --color=never --max-columns=1000 --path-separator / --smart-case --no-heading --line-number . --hidden")
   :init
   (setq xref-show-xrefs-function #'consult-xref
         xref-show-definitions-function #'consult-xref
         register-preview-delay 0
         register-preview-function #'consult-register-format)
-
   (advice-add #'register-preview :override #'consult-register-window)
   :config
   (consult-customize
@@ -106,11 +111,6 @@
    consult-bookmark consult-recent-file consult-xref
    consult--source-file consult--source-project-file consult--source-bookmark
    :preview-key (kbd "M-."))
-
-  (setq consult-project-root-function
-        (lambda ()
-          (when-let (project (project-current))
-            (car (project-roots project)))))
 
   (setq completion-in-region-function
         (lambda (&rest args)
