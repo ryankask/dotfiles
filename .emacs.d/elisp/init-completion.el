@@ -6,14 +6,12 @@
 (use-package vertico
   :straight t
   :init
-  (vertico-mode))
-
-(eval-and-compile
-  (defun my-vertico-extensions-load-path ()
-    (concat (file-name-directory (locate-library "vertico")) "extensions/")))
+  (vertico-mode)
+  ;; Make Vertico extensions available
+  (add-to-list 'load-path
+               (concat (file-name-directory (locate-library "vertico")) "extensions/")))
 
 (use-package vertico-directory
-  :load-path (lambda () (list (my-vertico-extensions-load-path)))
   :after vertico
   :bind (:map vertico-map
               ("RET" . vertico-directory-enter)
