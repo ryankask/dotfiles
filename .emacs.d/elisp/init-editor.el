@@ -64,27 +64,27 @@
   (setq sp-autoescape-string-quote nil))
 
 (use-package uniquify
-  :config
-  (setq uniquify-buffer-name-style 'forward
-        uniquify-separator "/"
-        uniquify-after-kill-buffer-p t
-        uniquify-ignore-buffers-re "^\\*"))
+  :custom
+  (uniquify-buffer-name-style 'forward)
+  (uniquify-separator "/")
+  (uniquify-after-kill-buffer-p t)
+  (uniquify-ignore-buffers-re "^\\*"))
 
 (use-package re-builder
-  :init
-  (setq reb-re-syntax 'string))
+  :custom
+  (reb-re-syntax 'string))
 
 (use-package browse-kill-ring
   :straight t
   :bind ("s-y" . browse-kill-ring)
-  :config
+  :init
   (browse-kill-ring-default-keybindings))
 
 (use-package undo-tree
   :straight t
   :diminish undo-tree-mode
   :bind ("C-s-/" . undo-tree-redo)
-  :config
+  :init
   (global-undo-tree-mode))
 
 (use-package volatile-highlights

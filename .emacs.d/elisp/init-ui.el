@@ -8,16 +8,13 @@
   (add-to-list 'default-frame-alist (cons 'height 56))
   (set-frame-position nil 604 0)
   (tool-bar-mode -1)
-  (scroll-bar-mode -1)
+  (scroll-bar-mode -1))
 
-  (if (version< emacs-version "26")
-      (use-package nlinum
-        :straight t
-        :config
-        (global-nlinum-mode 1))
-    (progn
-      (setq display-line-numbers-grow-only t)
-      (global-display-line-numbers-mode))))
+(use-package display-line-numbers
+  :custom
+  (display-line-numbers-grow-only t)
+  :init
+  (global-display-line-numbers-mode))
 
 ;; mode line settings
 (line-number-mode t)
@@ -51,7 +48,6 @@
   :init
   (add-hook 'modus-themes-after-load-theme-hook #'my-modus-themes-custom-faces)
   (modus-themes-load-themes)
-  :config
   (modus-themes-load-vivendi))
 
 (use-package minions
@@ -59,6 +55,7 @@
   :demand t
   :custom (minions-mode-line-lighter "")
   :bind ("C-o =" . minions-minor-modes-menu)
-  :config (minions-mode 1))
+  :init
+  (minions-mode 1))
 
 (provide 'init-ui)

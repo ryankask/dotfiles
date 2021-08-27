@@ -9,9 +9,9 @@
          ("l" . avy-goto-line)
          ("w" . avy-goto-word-0)
          ("M-w" . avy-goto-word-1))
-  :init
-  (setq avy-keys '(?a ?r ?s ?t ?n ?e ?i ?o)
-        avy-timeout-seconds 0.3))
+  :custom
+  (avy-keys '(?a ?r ?s ?t ?n ?e ?i ?o))
+  (avy-timeout-seconds 0.3))
 
 (use-package ace-window
   :straight t
@@ -22,24 +22,26 @@
   :diminish company-mode
   :bind (:map company-active-map
               ("TAB"))
+  :custom
+  (company-backends '(company-capf
+                      company-files
+                      company-dabbrev-code
+                      company-dabbrev))
+  (company-idle-delay 0.3)
+  (company-tooltip-limit 10)
+  (company-minimum-prefix-length 2)
+  (company-show-numbers t)
+  (company-dabbrev-other-buffers nil)
+  (company-dabbrev-ignore-case nil)
+  (company-dabbrev-downcase nil)
   :init
-  (setq company-backends '(company-capf
-                           company-files
-                           company-dabbrev-code
-                           company-dabbrev)
-        company-idle-delay 0.3
-        company-tooltip-limit 10
-        company-minimum-prefix-length 2
-        company-show-numbers t
-        company-dabbrev-other-buffers nil
-        company-dabbrev-ignore-case nil
-        company-dabbrev-downcase nil)
   (add-hook 'after-init-hook 'global-company-mode))
 
 (use-package direnv
   :straight t
-  :config
-  (setq direnv-always-show-summary nil)
+  :custom
+  (direnv-always-show-summary nil)
+  :init
   (direnv-mode))
 
 (use-package deadgrep
@@ -59,11 +61,10 @@
   :straight t
   :diminish gcmh-mode
   :hook (emacs-startup . gcmh-mode)
-  :init
-  (setq gcmh-idle-delay 5
-        gcmh-high-cons-threshold (* 16 1024 1024)
-        gcmh-verbose nil))
-
+  :custom
+  (gcmh-idle-delay 5)
+  (gcmh-high-cons-threshold (* 16 1024 1024))
+  (gcmh-verbose nil))
 
 (defun my-lispy-emacs-lisp-mode-hook ()
   "Enable lispy-mode in any Emacs lisp buffer except for the scratch buffer."
@@ -139,9 +140,9 @@
 
 (use-package rainbow-mode
   :straight t
-  :init
-  (setq rainbow-html-colors-major-mode-list
-        '(html-mode css-mode php-mode nxml-mode xml-mode scss-mode)))
+  :custom
+  (rainbow-html-colors-major-mode-list
+   '(html-mode css-mode php-mode nxml-mode xml-mode scss-mode)))
 
 ;; internal
 (use-package straight-helpers)
@@ -149,13 +150,13 @@
 (use-package which-key
   :straight t
   :diminish which-key-mode
-  :config
+  :init
   (which-key-mode))
 
 (use-package yasnippet
   :straight t
   :diminish yas-minor-mode
-  :config
+  :init
   (yas-global-mode 1)
   (add-hook 'snippet-mode-hook
             (lambda ()
@@ -165,14 +166,14 @@
 
 (use-package css
   :defer t
-  :init
-  (setq css-indent-offset 2))
+  :custom
+  (css-indent-offset 2))
 
 (use-package js-mode
   :mode ("\\.js\\'"
          "\\.json\\'")
-  :init
-  (setq js-indent-level 2))
+  :custom
+  (js-indent-level 2))
 
 (use-package lua-mode
   :straight t
@@ -181,14 +182,15 @@
 (use-package scss-mode
   :straight t
   :defer t
-  :init
-  (setq scss-compile-at-save nil))
+  :custom
+  (scss-compile-at-save nil))
 
 (use-package sh-mode
   :mode "\\.zsh\\'"
-  :init
-  (setq sh-basic-offset 2
-        sh-indentation 2))
+  :defer t
+  :custom
+  (sh-basic-offset 2)
+  (sh-indentation 2))
 
 ;;; Formats
 
