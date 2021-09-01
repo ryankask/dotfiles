@@ -5,44 +5,18 @@
   (interactive)
   (insert "import ipdb; ipdb.set_trace()"))
 
-(defcustom my-pytest-command "pytest"
-  "The pytest command to send to tmux"
-  :type 'string
-  :safe 'stringp)
-
-(defun my-pytest-get-test-name-at-point ()
-  (save-excursion
-    (and (re-search-backward "^\\(?:async \\)?def \\(test_[A-Za-z0-9_]+\\)(.*$" nil t)
-         (match-string-no-properties 1))))
-
 (defcustom my-pytest-run-directory-file-marker nil
   "A file to use as a maker to determine which directory to run the tests from"
   :type 'string
   :safe 'stringp)
 
-(defun my-pytest-make-relative-test-file-path (file-name)
-  "Return the path to the test file relative to the project root"
-  (if my-pytest-run-directory-file-marker
-      (let ((project-root (locate-dominating-file file-name my-pytest-run-directory-file-marker)))
-        (file-relative-name file-name project-root))
-    (car (projectile-make-relative-to-root (list file-name)))))
-
-(defun my-pytest-test-command (&optional test-name)
-  (let* ((test-file-name (buffer-file-name))
-         (test-file-path (my-pytest-make-relative-test-file-path test-file-name))
-         (test-name-with-args (if (and test-name (not (string= "" test-name)))
-                                  (concat " -k " test-name)
-                                "")))
-    (format "%s %s -s%s" my-pytest-command test-file-path test-name-with-args)))
-
-(defun my-pytest-copy-test-command-at-point ()
-  (interactive)
-  (when-let* ((test-name (my-pytest-get-test-name-at-point)))
-    (let ((process-connection-type nil))
-      (let ((proc (start-process "pbcopy" "*Messages*" "pbcopy")))
-        (process-send-string proc (my-pytest-test-command test-name))
-        (process-send-eof proc)))
-    (message "Copied \"%s\" to clipboard" test-name)))
+(defun my-pytest-locate-custom-project-root ()
+  "If `my-pytest-run-directory-file-marker' is set, use it to
+find the root of a project that uses pytest. Return nil if a root
+isn't found."
+  (and my-pytest-run-directory-file-marker
+       (locate-dominating-file default-directory
+                               my-pytest-run-directory-file-marker)))
 
 (defcustom my-pytest-tmux-target-pane nil
   "The tmux pane which will receive test commands."
@@ -52,7 +26,8 @@
 (defun my-pytest-set-tmux-target-pane ()
   "Read and set the target tmux pane"
   (interactive)
-  (let* ((target (string-trim (read-string "target tmux pane: " my-pytest-tmux-target-pane))))
+  (let* ((target (string-trim (read-string "target tmux pane: "
+                                           my-pytest-tmux-target-pane))))
     (if (not (equal target ""))
         (setq my-pytest-tmux-target-pane target))))
 
@@ -75,42 +50,22 @@
     (setq my-pytest-tmux-target-pane pane)
     (message "Selected pane: %s" my-pytest-tmux-target-pane)))
 
-(defun my-pytest-send-test-buffer-file-command-to-tmux (arg)
-  "Send a command to the active tmux pane that runs the tests in the
-current buffer's file."
-  (interactive "P")
-  (when my-pytest-tmux-target-pane
-    (let ((process-connection-type nil))
-      (start-process
-       "pytest-tmux"
-       nil
-       "tmux" "send-keys" "-t" my-pytest-tmux-target-pane
-       (my-pytest-test-command)
-       (if arg "" "C-m")))))
-
-(defun my-pytest-send-test-command-at-point-to-tmux (arg)
-  "Send a command to run the test at point to the active tmux pane"
-  (interactive "P")
-  (when my-pytest-tmux-target-pane
-    (when-let* ((test-name (my-pytest-get-test-name-at-point))
-                (test-command (my-pytest-test-command test-name)))
-      (let ((process-connection-type nil))
-        (start-process
-         "pytest-tmux"
-         nil
-         "tmux" "send-keys" "-t" my-pytest-tmux-target-pane
-         test-command
-         (if arg "" "C-m"))))))
-
 (defun my-python-mode-setup ()
   "Hook to run when python-mode is enabled"
   (lsp-deferred))
 
 (use-package python
   :bind (:map python-mode-map
-              ("C-c /" . my-python-debug-insert-ipdb-set-trace)
-              ("C-c C-t" . my-pytest-copy-test-command-at-point)
-              ("C-c C-s" . my-pytest-send-test-command-at-point-to-tmux))
+              ("C-c /" . my-python-debug-insert-ipdb-set-trace))
   :hook (python-mode . my-python-mode-setup))
+
+(use-package python-pytest
+  :after python
+  :straight t
+  :bind (:map python-mode-map
+              ("C-o C-t" . python-pytest-dispatch))
+  :config
+  (advice-add #'python-pytest--project-root :before-until
+              #'my-pytest-locate-custom-project-root))
 
 (provide 'init-python)
