@@ -2,8 +2,7 @@
 
 (setq-default indent-tabs-mode nil
               tab-width 4)
-(setq tab-always-indent 'complete
-      tab-stop-list (number-sequence 4 200 4)
+(setq tab-stop-list (number-sequence 4 200 4)
       require-final-newline t)
 
 (put 'upcase-region 'disabled nil)
