@@ -8,29 +8,14 @@
   :straight t
   :commands (lsp lsp-deferred)
   :bind (:map lsp-mode-map
+              ("C-o d" . lsp-describe-thing-at-point)
               ("C-o f" . lsp-format-buffer))
   :hook (lsp-mode . my-lsp-mode-setup)
   :custom
-  (lsp-prefer-capf t)
-  (lsp-prefer-flymake nil)
   (lsp-enable-snippet nil)
   (lsp-headerline-breadcrumb-enable nil)
   (lsp-signature-auto-activate nil)
   (lsp-signature-render-documentation nil))
-
-(use-package lsp-ui
-  :straight t
-  :after (lsp-mode)
-  :commands lsp-ui-mode
-  :bind (:map lsp-ui-mode-map
-              ("C-o d" . lsp-ui-doc-glance))
-  :custom
-  (lsp-ui-doc-enable nil)
-  (lsp-ui-doc-alignment 'window)
-  (lsp-ui-doc-header t)
-  (lsp-ui-imenu-enable nil)
-  (lsp-ui-peek-enable nil)
-  (lsp-ui-sideline-enable nil))
 
 (use-package consult-lsp
   :straight t
