@@ -5,9 +5,9 @@
 (setq tab-stop-list (number-sequence 4 200 4)
       require-final-newline t)
 
-(put 'upcase-region 'disabled nil)
-(put 'downcase-region 'disabled nil)
-
+(bind-key "M-u" 'upcase-dwim)
+(bind-key "M-l" 'downcase-dwim)
+(bind-key "M-c" 'capitalize-dwim)
 (bind-key "s-=" 'text-scale-increase)
 (bind-key "s--" 'text-scale-decrease)
 (unbind-key "<C-wheel-up>")
