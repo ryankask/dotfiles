@@ -94,7 +94,7 @@
    (lambda ()
      (when-let (project (project-current))
        (car (project-roots project)))))
-  (consult-ripgrep-args "rg --line-buffered --color=never --max-columns=1000 --path-separator / --smart-case --no-heading --line-number . --hidden")
+  (consult-ripgrep-args "rg --null --line-buffered --color=never --max-columns=1000 --path-separator / --smart-case --no-heading --line-number . --hidden")
   :init
   (setq xref-show-xrefs-function #'consult-xref
         xref-show-definitions-function #'consult-xref
