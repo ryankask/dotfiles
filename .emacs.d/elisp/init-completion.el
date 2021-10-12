@@ -94,7 +94,6 @@
    (lambda ()
      (when-let (project (project-current))
        (car (project-roots project)))))
-  (consult-ripgrep-args "rg --null --line-buffered --color=never --max-columns=1000 --path-separator / --smart-case --no-heading --line-number . --hidden")
   :init
   (setq xref-show-xrefs-function #'consult-xref
         xref-show-definitions-function #'consult-xref
@@ -103,6 +102,7 @@
   (advice-add #'register-preview :override #'consult-register-window)
   (advice-add #'completing-read-multiple :override #'consult-completing-read-multiple)
   :config
+  (setq consult-ripgrep-args (concat consult-ripgrep-args " --hidden"))
   (consult-customize
    consult-theme
    :preview-key '(:debounce 0.2 any)
@@ -117,6 +117,13 @@
                      #'consult-completion-in-region
                    #'completion--in-region)
                  args))))
+
+(use-package consult-dir
+  :straight t
+  :bind (("C-x C-d" . consult-dir)
+         :map vertico-map
+         ("C-x C-d" . consult-dir)
+         ("C-x C-j" . consult-dir-jump-file)))
 
 (use-package marginalia
   :straight t
