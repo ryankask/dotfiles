@@ -85,10 +85,4 @@
   :init
   (global-undo-tree-mode))
 
-(use-package volatile-highlights
-  :straight t
-  :diminish volatile-highlights-mode
-  :config
-  (volatile-highlights-mode t))
-
 (provide 'init-editor)

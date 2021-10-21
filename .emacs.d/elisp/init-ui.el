@@ -85,4 +85,10 @@
   :init
   (minions-mode 1))
 
+(use-package goggles
+  :straight t
+  :hook ((prog-mode text-mode) . goggles-mode)
+  :config
+  (setq-default goggles-pulse t))
+
 (provide 'init-ui)
