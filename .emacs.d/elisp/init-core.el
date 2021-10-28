@@ -10,9 +10,6 @@
 (bind-key "s-h" nil)
 (bind-key "s-m" nil)
 (bind-key "s-o" nil)
-;; Aliases
-(bind-key "s-x" (kbd "C-x") key-translation-map)
-(bind-key "s-c" (kbd "C-c") key-translation-map)
 ;; Other
 (bind-key "C-o z" #'repeat)
 (bind-key "M-g" #'transpose-words)
