@@ -65,6 +65,9 @@ isn't found."
   :bind (:map python-mode-map
               ("C-o C-t" . python-pytest-dispatch))
   :config
+  (pcase-dolist (`(,loc . ,key) '(("f" . "_") ("F" . "f") ("_" . "F")
+                                  ("d" . "_") ("D" . "d") ("_" . "D")))
+    (transient-suffix-put 'python-pytest-dispatch loc :key key))
   (advice-add #'python-pytest--project-root :before-until
               #'my-pytest-locate-custom-project-root))
 
