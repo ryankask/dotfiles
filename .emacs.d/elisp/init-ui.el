@@ -31,6 +31,13 @@
       minibuffer-prompt-properties
       '(read-only t cursor-intangible t face minibuffer-prompt))
 
+(use-package window
+  :bind
+  ("s-`" . delete-window)
+  ("s-1" . delete-other-windows)
+  ("s-2" . split-window-below)
+  ("s-3" . split-window-right))
+
 (defvar my-theme-frame-settings nil
   "Alist that contains frame settings specific to the current theme")
 
