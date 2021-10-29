@@ -128,7 +128,6 @@
   (org-log-done 'time))
 
 (use-package project
-  :straight (:type built-in)
   :defer)
 
 (use-package projectile
