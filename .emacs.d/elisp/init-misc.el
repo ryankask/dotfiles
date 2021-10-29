@@ -128,14 +128,7 @@
   (org-log-done 'time))
 
 (use-package project
-  :defer)
-
-(use-package projectile
-  :straight t
-  :diminish projectile-mode
-  :config
-  (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
-  (projectile-mode +1))
+  :bind-keymap ("s-p" . project-prefix-map))
 
 (use-package rainbow-mode
   :straight t
