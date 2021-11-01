@@ -13,6 +13,7 @@
 (unbind-key "<C-wheel-down>")
 (bind-key "s-\\" "`")
 (bind-key "M-\"" "€")
+(put 'narrow-to-region 'disabled nil)
 
 ;; get rid of trailing whitespace
 (defcustom my-should-delete-trailing-whitespace t
