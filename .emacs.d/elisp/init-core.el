@@ -4,16 +4,12 @@
       user-mail-address "dev@ryankaskel.com"
       read-process-output-max (* 1024 1024))
 
-;; Keybindings
 ;; Custom prefixes
+
 (bind-key "C-o" nil)
 (bind-key "s-h" nil)
 (bind-key "s-m" nil)
 (bind-key "s-o" nil)
-;; Other
-(bind-key "C-o z" #'repeat)
-(bind-key "M-g" #'transpose-words)
-(bind-key "M-t" goto-map)
 
 ;; Customisations
 

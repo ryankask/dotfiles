@@ -7,12 +7,14 @@
 (bind-key "M-u" 'upcase-dwim)
 (bind-key "M-l" 'downcase-dwim)
 (bind-key "M-c" 'capitalize-dwim)
+(bind-key "M-g" #'transpose-words)
+(bind-key "M-t" goto-map)
+(bind-key "M-\"" "€")
 (bind-key "s-=" 'text-scale-increase)
 (bind-key "s--" 'text-scale-decrease)
 (unbind-key "<C-wheel-up>")
 (unbind-key "<C-wheel-down>")
-(bind-key "s-\\" "`")
-(bind-key "M-\"" "€")
+
 (put 'narrow-to-region 'disabled nil)
 
 ;; get rid of trailing whitespace
