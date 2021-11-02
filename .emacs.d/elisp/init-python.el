@@ -18,6 +18,14 @@ isn't found."
        (locate-dominating-file default-directory
                                my-pytest-run-directory-file-marker)))
 
+(defun my-pytest-project-name-adapter (project-name)
+  "If a custom project root is available, append its base name to the project name."
+  (if-let ((subproject-root (my-pytest-locate-custom-project-root)))
+      (format "%s:%s"
+              project-name
+              (file-name-nondirectory (directory-file-name subproject-root)))
+    project-name))
+
 (defcustom my-pytest-tmux-target-pane nil
   "The tmux pane which will receive test commands."
   :type 'string
@@ -69,6 +77,8 @@ isn't found."
                                   ("d" . "_") ("D" . "d") ("_" . "D")))
     (transient-suffix-put 'python-pytest-dispatch loc :key key))
   (advice-add #'python-pytest--project-root :before-until
-              #'my-pytest-locate-custom-project-root))
+              #'my-pytest-locate-custom-project-root)
+  (advice-add #'python-pytest--project-name :filter-return
+              #'my-pytest-project-name-adapter))
 
 (provide 'init-python)
