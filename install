@@ -24,6 +24,7 @@ files=(
   ".config/git" ""
   ".config/fd" ""
   ".config/karabiner" ""
+  ".config/karabiner.edn" ""
   ".config/starship.toml" ""
   ".docker" ""
   ".emacs.d" ""
