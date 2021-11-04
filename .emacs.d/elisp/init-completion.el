@@ -157,11 +157,12 @@ targets."
 
 (defun embark-hide-which-key-indicator (fn &rest args)
   "Hide the which-key indicator immediately when using the completing-read prompter."
-  (when-let ((win (get-buffer-window which-key--buffer
-                                     'visible)))
-    (quit-window 'kill-buffer win)
-    (let ((embark-indicators (delq #'embark-which-key-indicator embark-indicators)))
-      (apply fn args))))
+  (if-let ((win (get-buffer-window which-key--buffer 'visible)))
+      (progn
+        (quit-window 'kill-buffer win)
+        (let ((embark-indicators (delq #'embark-which-key-indicator embark-indicators)))
+          (apply fn args)))
+    (apply fn args)))
 
 (defun my-open-file-in-finder (file)
   "Reveal FILE in finder. If FILE is a directory, open it directly in Finder so its contents are displayed instead of revealing it."
@@ -183,6 +184,7 @@ targets."
                                embark-highlight-indicator
                                embark-isearch-highlight-indicator))
   :init
+  (setq prefix-help-command #'embark-prefix-help-command)
   (advice-add #'embark-completing-read-prompter
               :around #'embark-hide-which-key-indicator)
   :config
