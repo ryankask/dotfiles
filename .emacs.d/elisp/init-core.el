@@ -81,7 +81,8 @@
   :custom
   (dired-listing-switches "-aBhl -v --group-directories-first")
   (dired-recursive-copies 'always)
-  (dired-recursive-deletes 'always)
+  (dired-recursive-deletes 'top)
+  (dired-create-destination-dirs 'ask)
   :config
   (unbind-key "C-o" dired-mode-map))
 
