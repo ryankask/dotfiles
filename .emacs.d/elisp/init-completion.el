@@ -157,8 +157,7 @@ targets."
 
 (defun embark-hide-which-key-indicator (fn &rest args)
   "Hide the which-key indicator immediately when using the completing-read prompter."
-  (when-let ((win (get-buffer-window which-key--buffer 'visible)))
-    (quit-window 'kill-buffer win))
+  (which-key--hide-popup-ignore-command)
   (let ((embark-indicators
          (remq #'embark-which-key-indicator embark-indicators)))
     (apply fn args)))
