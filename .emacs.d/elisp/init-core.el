@@ -85,6 +85,23 @@
   :config
   (unbind-key "C-o" dired-mode-map))
 
+(use-package dired-x
+  :hook (dired-mode . dired-omit-mode)
+  :custom
+  (dired-omit-verbose nil)
+  (dired-omit-files
+   (concat dired-omit-files
+           "\\|^.DS_Store\\'"
+           "\\|^.project\\(?:ile\\)?\\'"
+           "\\|^.\\(svn\\|git\\)\\'"
+           "\\|^.ccls-cache\\'"
+           "\\|^\\.DS_Store\\'"
+           "\\|^\\.project\\(?:ile\\)?\\'"
+           "\\|^\\.\\(?:svn\\|git\\)\\'"
+           "\\|^\\.ccls-cache\\'"
+           "\\|\\(?:\\.js\\)?\\.meta\\'"
+           "\\|\\.\\(?:elc\\|o\\|pyo\\|swp\\|class\\)\\'")))
+
 ;; Use Google Chrome to open links
 (setq browse-url-browser-function 'browse-url-generic
       browse-url-generic-program "open")
