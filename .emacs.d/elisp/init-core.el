@@ -38,19 +38,23 @@
       version-control t)
 
 ;; Autosaves
-(defconst my-autosave-directory (expand-file-name "autosave" user-emacs-directory))
-(unless (file-exists-p my-autosave-directory)
-  (make-directory my-autosave-directory t))
+(defconst my-autosave-directory (expand-file-name "autosave/" user-emacs-directory))
+(make-directory my-autosave-directory t)
 (setq auto-save-file-name-transforms
       `((".*" ,my-autosave-directory t)))
 
 (use-package savehist
+  :custom
+  (savehist-file (expand-file-name "savehist" user-emacs-directory))
+  (savehist-autosave-interval 60)
+  (savehist-additional-variables
+   '(kill-ring
+     register-alist
+     mark-ring global-mark-ring
+     search-ring regexp-search-ring))
+  (savehist-mode)
   :init
-  (setq savehist-additional-variables '(search ring regexp-search-ring)
-        savehist-autosave-interval 60
-        savehist-file (expand-file-name "savehist" user-emacs-directory))
-  :config
-  (savehist-mode 1))
+  (savehist-mode))
 
 (defun my-recentf-save-list ()
   "Save the recentf file list but don't output a message."
@@ -68,8 +72,7 @@
         recentf-max-menu-items 15
         recentf-max-saved-items 1000
         recentf-save-file (expand-file-name "recentf" user-emacs-directory))
-  :config
-  (recentf-mode 1))
+  (recentf-mode))
 
 (use-package ibuffer
   :bind ("C-x C-b" . ibuffer)
@@ -104,9 +107,5 @@
                 "\\|^\\.ccls-cache\\'"
                 "\\|\\(?:\\.js\\)?\\.meta\\'"
                 "\\|\\.\\(?:elc\\|o\\|pyo\\|swp\\|class\\)\\'")))
-
-;; Use Google Chrome to open links
-(setq browse-url-browser-function 'browse-url-generic
-      browse-url-generic-program "open")
 
 (provide 'init-core)

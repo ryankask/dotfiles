@@ -62,7 +62,8 @@
   :diminish gcmh-mode
   :hook (emacs-startup . gcmh-mode)
   :custom
-  (gcmh-idle-delay 5)
+  (gcmh-idle-delay 'auto)
+  (gcmh-auto-idle-delay-factor 10)
   (gcmh-high-cons-threshold (* 16 1024 1024))
   (gcmh-verbose nil))
 

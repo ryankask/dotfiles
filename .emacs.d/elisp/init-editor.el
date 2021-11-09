@@ -2,7 +2,9 @@
 
 (setq-default indent-tabs-mode nil
               tab-width 4)
-(setq require-final-newline t)
+(setq sentence-end-double-space nil
+      require-final-newline t
+      kill-do-not-save-duplicates t)
 
 (bind-key "M-u" 'upcase-dwim)
 (bind-key "M-l" 'downcase-dwim)

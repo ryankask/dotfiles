@@ -1,14 +1,18 @@
 ;;; -*- lexical-binding: t; -*-
 
-(menu-bar-mode -1)
+(push '(menu-bar-lines . 0) default-frame-alist)
+(push '(tool-bar-lines . 0) default-frame-alist)
+(push '(vertical-scroll-bars) default-frame-alist)
+(setq menu-bar-mode nil
+      tool-bar-mode nil
+      scroll-bar-mode nil)
+
 (set-frame-font "Menlo Nerd Font-13" nil t)
 
 (when (display-graphic-p)
   (add-to-list 'default-frame-alist (cons 'width 102))
   (add-to-list 'default-frame-alist (cons 'height 56))
-  (set-frame-position nil 604 0)
-  (tool-bar-mode -1)
-  (scroll-bar-mode -1))
+  (set-frame-position nil 604 0))
 
 (use-package display-line-numbers
   :custom
@@ -17,12 +21,12 @@
   (global-display-line-numbers-mode))
 
 ;; mode line settings
-(line-number-mode t)
 (column-number-mode t)
 (size-indication-mode t)
 
 (fset 'yes-or-no-p 'y-or-n-p)
-(setq inhibit-startup-message t
+(setq idle-update-delay 1.0
+      inhibit-startup-message t
       use-dialog-box nil
       initial-scratch-message nil
       confirm-kill-emacs 'y-or-n-p
