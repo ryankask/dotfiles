@@ -50,7 +50,16 @@
               ("C-." . nil)
               ("M-." . nil))
   :hook ((text-mode . flyspell-mode)
-         (prog-mode . flyspell-prog-mode)))
+         (prog-mode . flyspell-prog-mode))
+  :custom
+  (flyspell-issue-welcome-flag nil)
+  (flyspell-issue-message-flag nil))
+
+(use-package flyspell-correct
+  :straight t
+  :after flyspell
+  :bind (:map flyspell-mode-map
+              ("C-;" . flyspell-correct-wrapper)))
 
 (use-package eldoc
   :diminish eldoc-mode)
