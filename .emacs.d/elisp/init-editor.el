@@ -44,6 +44,11 @@
   :diminish abbrev-mode
   :hook (text-mode . abbrev-mode))
 
+(use-package ispell
+  :custom
+  (ispell-program-name "aspell")
+  (ispell-extra-args '("--sug-mode=ultra" "--run-together")))
+
 (use-package flyspell
   :diminish flyspell-mode
   :bind (:map flyspell-mode-map
