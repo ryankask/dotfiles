@@ -10,12 +10,14 @@
          ("w" . avy-goto-word-0)
          ("M-w" . avy-goto-word-1))
   :custom
-  (avy-keys '(?a ?r ?s ?t ?n ?e ?i ?o))
+  (avy-keys '(?r ?s ?t ?n ?e ?i ?o ?d ?h))
   (avy-timeout-seconds 0.3))
 
 (use-package ace-window
   :straight t
-  :bind ("C-o C-o" . ace-window))
+  :bind ("C-o C-o" . ace-window)
+  :custom
+  (aw-keys avy-keys))
 
 (use-package company
   :straight t
