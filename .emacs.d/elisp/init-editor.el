@@ -53,10 +53,12 @@
   :diminish flyspell-mode
   :bind (:map flyspell-mode-map
               ("C-." . nil)
-              ("M-." . nil))
+              ("C-," . nil)
+              ("C-c $" . nil))
   :hook ((text-mode . flyspell-mode)
          (prog-mode . flyspell-prog-mode))
   :custom
+  (flyspell-use-meta-tab nil)
   (flyspell-issue-welcome-flag nil)
   (flyspell-issue-message-flag nil))
 
