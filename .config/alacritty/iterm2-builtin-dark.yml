@@ -1,0 +1,33 @@
+# Colors (iTerm2 Builtin Dark)
+colors:
+  primary:
+    background: '#000000'
+    foreground: '#c7c7c7'
+
+  cursor:
+    cursor: '#bbbbbb'
+    text: '#ffffff'
+
+  selection:
+    background: '#c1ddff'
+    text: '#000000'
+
+  normal:
+    black: '#000000'
+    red: '#c91b00'
+    green: '#00c200'
+    yellow: '#c7c400'
+    blue: '#0225c7'
+    magenta: '#c930c7'
+    cyan: '#00c5c7'
+    white: '#c7c7c7'
+
+  bright:
+    black: '#676767'
+    red: '#ff6d67'
+    green: '#5ff967'
+    yellow: '#fefb67'
+    blue: '#6871ff'
+    magenta: '#ff76ff'
+    cyan: '#5ffdff'
+    white: '#feffff'

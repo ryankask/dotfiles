@@ -20,11 +20,13 @@ typeset -A files
 
 files=(
   # Destination file: symlink target
+  ".config/alacritty" ""
   ".config/direnv/direnvrc" ""
   ".config/git" ""
   ".config/fd" ""
   ".config/karabiner" ""
   ".config/karabiner.edn" ""
+  ".config/kitty" ""
   ".config/starship.toml" ""
   ".docker" ""
   ".emacs.d" ""
