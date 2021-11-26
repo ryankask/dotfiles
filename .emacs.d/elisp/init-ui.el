@@ -14,9 +14,14 @@
   (add-to-list 'default-frame-alist (cons 'height 56))
   (set-frame-position nil 604 0))
 
+(defun my-hide-line-numbers ()
+  "Turn off `display-line-numbers-mode'"
+  (display-line-numbers-mode -1))
+
 (use-package display-line-numbers
   :custom
   (display-line-numbers-grow-only t)
+  :hook (image-mode . my-hide-line-numbers)
   :init
   (global-display-line-numbers-mode))
 
@@ -24,12 +29,12 @@
 (column-number-mode t)
 (size-indication-mode t)
 
-(fset 'yes-or-no-p 'y-or-n-p)
 (setq idle-update-delay 1.0
       inhibit-startup-message t
       use-dialog-box nil
       initial-scratch-message nil
-      confirm-kill-emacs 'y-or-n-p
+      use-short-answers t
+      confirm-kill-emacs 'yes-or-no-p
       enable-recursive-minibuffers t
       ;; Do not allow the cursor in the minibuffer prompt
       minibuffer-prompt-properties
