@@ -9,7 +9,6 @@
 (bind-key "C-o" nil)
 (bind-key "s-h" nil)
 (bind-key "s-m" nil)
-(bind-key "s-o" nil)
 
 ;; Customisations
 

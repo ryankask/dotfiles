@@ -15,7 +15,7 @@
 
 (use-package ace-window
   :straight t
-  :bind ("C-o C-o" . ace-window)
+  :bind ("s-o" . ace-window)
   :custom
   (aw-keys '(?t ?s ?r ?n ?e ?i ?o ?a)))
 
