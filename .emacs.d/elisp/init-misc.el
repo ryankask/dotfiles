@@ -142,6 +142,13 @@
 ;; internal
 (use-package straight-helpers)
 
+(use-package vterm
+  :straight t
+  :bind (:map vterm-mode-map
+              ("C-o" . nil)
+              ("C-o C-t" . vterm-copy-mode))
+  :hook (vterm-mode . my-hide-line-numbers))
+
 (use-package which-key
   :straight t
   :diminish which-key-mode
