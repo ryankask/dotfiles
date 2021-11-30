@@ -195,4 +195,19 @@ targets."
   :straight t
   :after (embark consult))
 
+(use-package corfu
+  :straight t
+  :custom
+  (corfu-cycle t)
+  (completion-cycle-threshold 3)
+  (tab-always-indent #'complete)
+  :init
+  (corfu-global-mode))
+
+(use-package cape
+  :straight t
+  :init
+  (add-to-list 'completion-at-point-functions #'cape-file)
+  (add-to-list 'completion-at-point-functions #'cape-dabbrev))
+
 (provide 'init-completion)

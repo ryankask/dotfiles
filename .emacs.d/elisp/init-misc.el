@@ -19,26 +19,6 @@
   :custom
   (aw-keys '(?t ?s ?r ?n ?e ?i ?o ?a)))
 
-(use-package company
-  :straight t
-  :diminish company-mode
-  :bind (:map company-active-map
-              ("TAB"))
-  :custom
-  (company-backends '(company-capf
-                      company-files
-                      company-dabbrev-code
-                      company-dabbrev))
-  (company-idle-delay 0.3)
-  (company-tooltip-limit 10)
-  (company-minimum-prefix-length 2)
-  (company-show-numbers t)
-  (company-dabbrev-other-buffers nil)
-  (company-dabbrev-ignore-case nil)
-  (company-dabbrev-downcase nil)
-  :init
-  (add-hook 'after-init-hook 'global-company-mode))
-
 (use-package direnv
   :straight t
   :custom

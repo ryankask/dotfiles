@@ -4,6 +4,10 @@
   ;; Optimisations - copied from Doom Emacs
   (setq-local gcmh-high-cons-threshold (* 2 (default-value 'gcmh-high-cons-threshold))))
 
+(defun my-lsp-mode-setup-completion ()
+  (setf (alist-get 'styles (alist-get 'lsp-capf completion-category-defaults))
+        '(orderless)))
+
 (defun my-lsp-help-mode-setup ()
   "Customize faces for the lsp-help buffer"
   (when (string= (buffer-name) "*lsp-help*")
@@ -16,8 +20,10 @@
               ("C-o d" . lsp-describe-thing-at-point)
               ("C-o f" . lsp-format-buffer))
   :hook ((lsp-mode . my-lsp-mode-setup)
+         (lsp-completion-mode . my-lsp-mode-setup-completion)
          (help-mode . my-lsp-help-mode-setup))
   :custom
+  (lsp-completion-provider :none)
   (lsp-enable-snippet nil)
   (lsp-headerline-breadcrumb-enable nil)
   (lsp-signature-auto-activate nil)
