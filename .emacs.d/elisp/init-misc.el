@@ -101,6 +101,7 @@
 (use-package org
   :straight t
   :bind (:map org-mode-map
+              ("C-'" . nil)
               ("s-<return>" . org-meta-return)
               ("s-<left>" . org-metaleft)
               ("s-<right>" . org-metaright)
