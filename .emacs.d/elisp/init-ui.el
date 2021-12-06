@@ -47,6 +47,19 @@
   ("s-2" . split-window-below)
   ("s-3" . split-window-right))
 
+(use-package winner
+  :preface (defvar winner-dont-bind-my-keys t)
+  :hook (after-init . winner-mode)
+  :bind (:map winner-mode-map
+              ("C-c [" . winner-undo)
+              ("C-c ]" . winner-redo))
+  :config
+  (setq winner-boring-buffers
+        (append winner-boring-buffers
+                '("*Compile-Log*" "*inferior-lisp*" "*Fuzzy Completions*"
+                  "*Apropos*" "*Help*" "*cvs*" "*Buffer List*" "*Ibuffer*"
+                  "*esh command on file*"))))
+
 (defvar my-theme-frame-settings nil
   "Alist that contains frame settings specific to the current theme")
 
