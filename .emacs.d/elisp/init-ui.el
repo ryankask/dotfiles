@@ -7,7 +7,10 @@
       tool-bar-mode nil
       scroll-bar-mode nil)
 
-(set-frame-font "Menlo Nerd Font-13" nil t)
+(setq my-font (font-spec :family "Menlo" :size 13))
+(set-fontset-font t 'unicode my-font)
+(set-fontset-font t 'unicode (font-spec :family "Symbols Nerd Font" :size 13) nil 'append)
+(setf (alist-get 'font default-frame-alist) (font-xlfd-name my-font))
 
 (when (display-graphic-p)
   (add-to-list 'default-frame-alist (cons 'width 102))
