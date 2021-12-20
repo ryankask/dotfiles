@@ -90,13 +90,15 @@
 
 (use-package magit
   :straight t
-  :custom (magit-define-global-key-bindings nil)
   :bind (("s-m m" . magit-status)
          ("s-m d" . magit-file-dispatch)
          ("s-m l" . magit-log)
          ("s-m f" . magit-log-buffer-file)
          ("s-m b" . magit-blame))
-  :hook (git-commit-setup . git-commit-turn-on-flyspell))
+  :hook (git-commit-setup . git-commit-turn-on-flyspell)
+  :custom
+  (magit-define-global-key-bindings nil)
+  (magit-diff-refine-hunk t))
 
 (use-package org
   :straight t
