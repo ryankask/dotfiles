@@ -34,11 +34,10 @@ the upstream branch they are."
 takes should take the found number and returns the updated value.
 This function moves the point and it is expected save-excursion
 will used by the caller."
-  (when-let* ((end (re-search-forward "[[:digit:]]+" (line-end-position)))
-              (start (match-beginning 0))
-              (current-count (string-to-number (buffer-substring-no-properties start end)))
-              (next-count (funcall update current-count)))
-    (let ((inhibit-read-only t))
+  (when (re-search-forward "[[:digit:]]+" (line-end-position) t)
+    (let* ((current-count (string-to-number (match-string-no-properties 0)))
+           (next-count (funcall update current-count))
+           (inhibit-read-only t))
       (replace-match (number-to-string next-count)))))
 
 (defun my-straight-helpers--update-outdated-count (update)
