@@ -65,7 +65,9 @@ isn't found."
 (use-package python
   :bind (:map python-mode-map
               ("C-c /" . my-python-debug-insert-ipdb-set-trace))
-  :hook (python-mode . my-python-mode-setup))
+  :hook (python-mode . my-python-mode-setup)
+  :custom
+  (python-fill-docstring-style symmetric))
 
 (use-package python-pytest
   :after python
