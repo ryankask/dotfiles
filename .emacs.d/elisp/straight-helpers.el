@@ -47,7 +47,7 @@ should take the current count and return the next count."
     (goto-char (point-min))
     (my-straight-helpers--replace-number-on-line update)))
 
-(defun straight-helpers-display-packages-with-updates ()
+(defun my-straight-helpers-display-packages-with-updates ()
   "Print the list of straight.el packages that have available
 updates."
   (interactive)
