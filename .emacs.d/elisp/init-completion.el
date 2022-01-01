@@ -77,7 +77,7 @@
          ("i" . consult-imenu)
          ("I" . consult-project-imenu)
          :map search-map
-         ("f" . consult-find)
+         ("d" . consult-find)
          ("g" . consult-grep)
          ("G" . consult-git-grep)
          ("L" . consult-line-multi)
