@@ -22,6 +22,7 @@ files=(
   # Destination file: symlink target
   ".config/alacritty" ""
   ".config/direnv/direnvrc" ""
+  ".config/emacs" ".emacs.d"
   ".config/git" ""
   ".config/fd" ""
   ".config/karabiner" ""
@@ -29,7 +30,6 @@ files=(
   ".config/kitty" ""
   ".config/starship.toml" ""
   ".docker" ""
-  ".emacs.d" ""
   ".ghc/ghci.conf" "ghc/ghci.conf"
   ".inputrc" ""
   ".pg_format" ""
