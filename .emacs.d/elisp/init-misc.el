@@ -130,8 +130,7 @@
   :straight t
   :bind (:map vterm-mode-map
               ("C-o" . nil)
-              ("C-o C-t" . vterm-copy-mode))
-  :hook (vterm-mode . my-hide-line-numbers))
+              ("C-o C-t" . vterm-copy-mode)))
 
 (use-package which-key
   :straight t

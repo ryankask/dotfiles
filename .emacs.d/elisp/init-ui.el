@@ -17,16 +17,10 @@
   (add-to-list 'default-frame-alist (cons 'height 56))
   (set-frame-position nil 604 0))
 
-(defun my-hide-line-numbers ()
-  "Turn off `display-line-numbers-mode'"
-  (display-line-numbers-mode -1))
-
 (use-package display-line-numbers
   :custom
   (display-line-numbers-grow-only t)
-  :hook (image-mode . my-hide-line-numbers)
-  :init
-  (global-display-line-numbers-mode))
+  :hook ((prog-mode text-mode conf-mode) . display-line-numbers-mode))
 
 ;; mode line settings
 (column-number-mode t)
