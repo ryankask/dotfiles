@@ -4,12 +4,9 @@
       (nconc completion-ignored-extensions '(".DS_Store" "__pycache__/")))
 
 (use-package vertico
-  :straight t
+  :straight (vertico :files (:defaults "extensions/*"))
   :init
-  (vertico-mode)
-  ;; Make Vertico extensions available
-  (add-to-list 'load-path
-               (concat (file-name-directory (locate-library "vertico")) "extensions/")))
+  (vertico-mode))
 
 (use-package vertico-directory
   :after vertico
@@ -18,6 +15,18 @@
               ("DEL" . vertico-directory-delete-char)
               ("M-DEL" . vertico-directory-delete-word))
   :hook (rfn-eshadow-update-overlay . vertico-directory-tidy))
+
+(use-package vertico-multiform
+  :after (vertico consult)
+  :custom
+  (vertico-multiform-commands '((consult-line buffer)))
+  :init
+  (vertico-multiform-mode))
+
+(use-package vertico-repeat
+  :after vertico
+  :bind ("C-o C-r" . vertico-repeat)
+  :hook (minibuffer-setup . vertico-repeat-save))
 
 (use-package orderless
   :straight t
