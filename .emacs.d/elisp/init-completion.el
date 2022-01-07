@@ -194,7 +194,6 @@ targets."
                  (window-parameters (mode-line-format . none)))))
 
 (use-package embark-consult
-  :straight t
   :after (embark consult))
 
 (use-package corfu
