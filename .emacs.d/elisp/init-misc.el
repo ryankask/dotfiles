@@ -108,7 +108,8 @@
               ("s-<left>" . org-metaleft)
               ("s-<right>" . org-metaright)
               ("s-<up>" . org-metaup)
-              ("s-<down>" . org-metadown))
+              ("s-<down>" . org-metadown)
+              ("M-t o" . consult-org-heading))
   :hook (org-mode . my-fill-column-setup)
   :custom
   (org-cycle-separator-lines 1)
