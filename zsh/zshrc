@@ -129,7 +129,7 @@ alias ln='lni'
 if [[ -z "$LS_COLORS" ]]; then
   eval "$(dircolors --sh)"
 fi
-alias ls="${aliases[ls]:-ls} --group-directories-first --color=auto"
+alias ls="${aliases[ls]:-ls} --group-directories-first --color=auto --hyperlink=auto"
 alias l='ls -1A'         # Lists in one column, hidden files.
 alias ll='ls -lh'        # Lists human readable sizes.
 alias lr='ll -R'         # Lists human readable sizes, recursively.
@@ -259,6 +259,12 @@ fi
 
 if (( $+commands[bat] )); then
   alias cat='nocorrect bat'
+fi
+
+if [[ -n "$KITTY_INSTALLATION_DIR" ]]; then
+  autoload -Uz -- "$KITTY_INSTALLATION_DIR"/shell-integration/zsh/kitty-integration
+  kitty-integration
+  unfunction kitty-integration
 fi
 
 # Load local zshrc
