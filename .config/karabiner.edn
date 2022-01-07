@@ -23,6 +23,8 @@
                  ;; C-c
                  [:!Qc [:!Wc ["emacs-C-c" 1]]]
                  [:!Qb :!Wb :emacs-C-c]
+                 [:!Qe :!We :emacs-C-c]
+                 [:!Qj :!Wj :emacs-C-c]
                  [:!Qs :!Ws :emacs-C-c]
                  [:!Qf :!Wf :emacs-C-c]
                  ;; Exit layers
