@@ -36,6 +36,10 @@
 (defun my-fill-column-setup ()
   (setq fill-column 88))
 
+(use-package isearch
+  :bind (:map search-map
+         ("s" . isearch-forward)))
+
 (use-package autorevert
   :diminish auto-revert-mode
   :config
