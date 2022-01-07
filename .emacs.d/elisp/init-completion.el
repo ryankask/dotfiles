@@ -118,14 +118,7 @@
    consult-ripgrep consult-git-grep consult-grep
    consult-bookmark consult-recent-file consult-xref
    consult--source-file consult--source-project-file consult--source-bookmark
-   :preview-key (kbd "M-."))
-
-  (setq completion-in-region-function
-        (lambda (&rest args)
-          (apply (if vertico-mode
-                     #'consult-completion-in-region
-                   #'completion--in-region)
-                 args))))
+   :preview-key (kbd "M-.")))
 
 (use-package consult-dir
   :straight t
