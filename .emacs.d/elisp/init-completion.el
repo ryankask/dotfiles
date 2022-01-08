@@ -65,6 +65,8 @@
   :straight t
   :bind (("C-s" . consult-line)
          ("C-x b" . consult-buffer)
+         ("C-x 4 b" . consult-buffer-other-window)
+         ("C-x 5 b" . consult-buffer-other-frame)
          ("M-y" . consult-yank-pop)
          ("<help> a" . consult-apropos)
          ("C-c n" . consult-ripgrep)
@@ -93,11 +95,12 @@
          ("m" . consult-multi-occur)
          ("k" . consult-keep-lines)
          ("u" . consult-focus-lines)
-         ("e" . consult-isearch)
+         ("e" . consult-isearch-history)
          :map isearch-mode-map
-         ("M-e" . consult-isearch)   ;; orig. isearch-edit-string
-         ("M-s e" . consult-isearch) ;; orig. isearch-edit-string
-         ("M-s l" . consult-line))
+         ("M-e" . consult-isearch-history)   ;; orig. isearch-edit-string
+         ("M-s e" . consult-isearch-history) ;; orig. isearch-edit-string
+         ("M-s l" . consult-line)
+         ("M-s L" . consult-line-multi))
   :custom
   (consult-project-root-function
    (lambda ()
