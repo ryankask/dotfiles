@@ -128,6 +128,7 @@
 (use-package straight-helpers)
 
 (use-package vterm
+  :disabled t
   :straight t
   :bind (:map vterm-mode-map
          ("C-o" . nil)
