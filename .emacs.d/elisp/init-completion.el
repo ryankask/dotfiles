@@ -197,7 +197,9 @@ targets."
                  (window-parameters (mode-line-format . none)))))
 
 (use-package embark-consult
-  :after (embark consult))
+  :after (embark consult)
+  :bind (:map embark-file-map
+         ("x" . consult-open-externally)))
 
 (use-package corfu
   :straight t
