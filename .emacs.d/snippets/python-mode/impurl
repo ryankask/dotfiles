@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: Import common Django URL patterns-related functions
-# key: impurl
-# --
-from django.conf.urls import include, url$0

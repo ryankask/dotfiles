@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: Import the login_required decorator
-# key: implr
-# --
-from django.contrib.auth.decorators import login_required

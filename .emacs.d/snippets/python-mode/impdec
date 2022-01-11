@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: Import Decimal
-# key: impdec
-# --
-from decimal import Decimal

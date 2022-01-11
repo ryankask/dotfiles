@@ -1,5 +1,0 @@
-# -*- mode: snippet; -*-
-# name: Import DRF's serializers module
-# key: impser
-# --
-from rest_framework import serializers$0

@@ -127,6 +127,28 @@
 ;; internal
 (use-package straight-helpers)
 
+(defun tempel-setup-capf ()
+  (add-hook 'completion-at-point-functions #'tempel-expand -1 'local))
+
+(defun my-tempel-immediate-done ()
+  "If required, move to the last field and then finish the
+session."
+  (interactive)
+  (when-let (pos (tempel--end))
+    (when (< (point) pos)
+      (goto-char pos))
+    (tempel-done)))
+
+(use-package tempel
+  :straight (tempel :type git :host github :repo "minad/tempel")
+  :bind (("C-o t i" . tempel-insert)
+         :map tempel-map
+         ("s-]" . tempel-next)
+         ("s-[" . tempel-previous)
+         ("s-<return>" . tempel-done)
+         ("C-c C-c" . my-tempel-immediate-done))
+  :hook ((prog-mode text-mode) . tempel-setup-capf))
+
 (use-package vterm
   :disabled t
   :straight t
@@ -141,15 +163,6 @@
   (which-key-use-C-h-commands nil)
   :init
   (which-key-mode))
-
-(use-package yasnippet
-  :straight t
-  :diminish yas-minor-mode
-  :init
-  (yas-global-mode 1)
-  (add-hook 'snippet-mode-hook
-            (lambda ()
-              (set (make-local-variable require-final-newline) nil))))
 
 ;;; Languages
 

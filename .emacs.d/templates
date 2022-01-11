@@ -1,0 +1,14 @@
+;; -*- mode: emacs-lisp -*-
+
+fundamental-mode
+
+(today (format-time-string "%Y-%m-%d"))
+
+python-mode
+
+(ifm "if __name__ == \"__main__\":" n> (p "main()"))
+(impcache "from django.core.cache import cache")
+(impdec "from decimal import Decimal")
+(impdt "from datetime import datetime, timedelta")
+(impset "from django.conf import settings")
+(imptz "from django.utils import timezone")

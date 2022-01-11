@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: Insert the asyncio pytest mark
-# key: markaio
-# --
-@pytest.mark.asyncio

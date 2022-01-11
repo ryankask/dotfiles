@@ -1,5 +1,0 @@
-# -*- mode: snippet; -*-
-# name: Import Django's TemplateResopnse
-# key: imptr
-# --
-from django.template.response import TemplateResponse
