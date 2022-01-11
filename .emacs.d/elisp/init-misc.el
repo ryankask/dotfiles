@@ -130,8 +130,8 @@
 (use-package vterm
   :straight t
   :bind (:map vterm-mode-map
-              ("C-o" . nil)
-              ("C-o C-t" . vterm-copy-mode)))
+         ("C-o" . nil)
+         ("C-o C-t" . vterm-copy-mode)))
 
 (use-package which-key
   :straight t
