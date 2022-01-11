@@ -1,4 +1,16 @@
-;;; -*- lexical-binding: t; -*-
+;;; straight-helpers.el --- Straight package dashboard -*- lexical-binding: t; -*-
+
+;; Copyright (C) 2022  Ryan Kaskel
+
+;; Author: Ryan Kaskel <dev@ryankaskel.com>
+;; Keywords: convenience
+
+;;; Commentary:
+
+;; This package contains functions to display outdated Straight
+;; packages and update them directly from the buffer.
+
+;;; Code:
 
 (defun my-straight-helpers--count-git-commits-behind (repo-dir)
   (with-temp-buffer
