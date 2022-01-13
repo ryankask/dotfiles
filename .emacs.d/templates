@@ -12,3 +12,8 @@ python-mode
 (impdt "from datetime import datetime, timedelta")
 (impset "from django.conf import settings")
 (imptz "from django.utils import timezone")
+
+sh-mode
+
+(strictbash "set -Eeuo pipefail")
+(strictzsh "set -euo pipefail")
