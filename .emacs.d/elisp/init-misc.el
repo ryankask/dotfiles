@@ -50,6 +50,15 @@
   (gcmh-high-cons-threshold (* 16 1024 1024))
   (gcmh-verbose nil))
 
+(use-package helpful
+  :straight t
+  :bind (("C-h f" . helpful-callable)
+         ("C-h v" . helpful-variable)
+         ("C-h k" . helpful-key)
+         ("C-h F" . helpful-function)
+         ("C-h C" . helpful-command)
+         ("C-o d" . helpful-at-point)))
+
 (defun my-lispy-emacs-lisp-mode-hook ()
   "Enable lispy-mode in any Emacs lisp buffer except for the scratch buffer."
   (when (not (string= (buffer-name) "*scratch*"))
