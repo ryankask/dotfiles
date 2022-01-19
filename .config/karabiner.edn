@@ -13,6 +13,7 @@
          :rules [:emacs
                  ;; C-x
                  [:!Qx [:!Wx ["emacs-C-x" 1]]]
+                 [:!Qa :!Wa :emacs-C-c]
                  [:!Qb :!Wb :emacs-C-x]
                  [:!Qg :!Wg :emacs-C-x]
                  [:!Qe :!We :emacs-C-x]
@@ -22,6 +23,7 @@
                  [:!Qv :!Wv :emacs-C-x]
                  ;; C-c
                  [:!Qc [:!Wc ["emacs-C-c" 1]]]
+                 [:!Qa :!Wa :emacs-C-c]
                  [:!Qb :!Wb :emacs-C-c]
                  [:!Qe :!We :emacs-C-c]
                  [:!Qj :!Wj :emacs-C-c]
