@@ -150,8 +150,7 @@ session."
 
 (use-package tempel
   :straight (tempel :type git :host github :repo "minad/tempel")
-  :bind (("C-o t i" . tempel-insert)
-         :map tempel-map
+  :bind (:map tempel-map
          ("s-]" . tempel-next)
          ("s-[" . tempel-previous)
          ("s-<return>" . tempel-done)
