@@ -154,7 +154,7 @@ session."
          ("s-]" . tempel-next)
          ("s-[" . tempel-previous)
          ("s-<return>" . tempel-done)
-         ("C-c C-c" . my-tempel-immediate-done))
+         ("C-s-]" . my-tempel-immediate-done))
   :hook ((prog-mode text-mode) . tempel-setup-capf))
 
 (use-package vterm
