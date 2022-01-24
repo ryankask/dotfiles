@@ -127,11 +127,9 @@
 (use-package project
   :bind-keymap ("s-p" . project-prefix-map))
 
-(use-package rainbow-mode
-  :straight t
-  :custom
-  (rainbow-html-colors-major-mode-list
-   '(html-mode css-mode php-mode nxml-mode xml-mode scss-mode)))
+(use-package raindbow-delimeters
+  :hook
+  (prog-mode . rainbow-delimiters-mode-enable))
 
 ;; internal
 (use-package straight-helpers)
