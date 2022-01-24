@@ -13,6 +13,20 @@ python-mode
 (impset "from django.conf import settings")
 (imptz "from django.utils import timezone")
 
+rust-mode
+
+(ass "assert!(" (p "predicate") ");")
+(aeq "assert_eq!(" (p "expected") ", " (p "actual") ");")
+(cl "|" (p "arguments") "| {" n> p n "}")
+(derive "#[derive(" (p "Trait") ")]")
+(fn "fn " p "(" p ") " (if (> (length return-type) 0) "-> " "") (s return-type) "{" n> p n "}")
+(p "println!(\"" (p "{}") "\", " p ");")
+(pfn "pub fn " p "(" p ") " (if (> (length return-type) 0) "-> " "") (s return-type) "{" n> p n "}")
+(pfnr "pub fn " p "(" p ") -> " p " {" n> p n "}")
+(test "#[test]" n "fn " (p "test_name") "() {" n> p n "}")
+(testmod "#[cfg(test)]" n "mod " (p "tests") " {" n> "use " (p "super::*") "; " n n>
+         "#[test]" n> "fn " (p "test_name") "() {" n> p n "    }" n "}")
+
 sh-mode
 
 (strictbash "set -Eeuo pipefail")
