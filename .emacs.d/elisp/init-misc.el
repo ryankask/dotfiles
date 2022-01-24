@@ -139,7 +139,16 @@
 (defun tempel-setup-capf ()
   (add-hook 'completion-at-point-functions #'tempel-expand -1 'local))
 
-(defun my-tempel-immediate-done ()
+(defun my-tempel-immediate-done-beginning ()
+  "If required, move to the beginning of the first field and then
+finish the session."
+  (interactive)
+  (when-let (pos (tempel--beginning))
+    (when (> (point) pos)
+      (goto-char pos))
+    (tempel-done)))
+
+(defun my-tempel-immediate-done-end ()
   "If required, move to the last field and then finish the
 session."
   (interactive)
@@ -154,7 +163,8 @@ session."
          ("s-]" . tempel-next)
          ("s-[" . tempel-previous)
          ("s-<return>" . tempel-done)
-         ("C-s-]" . my-tempel-immediate-done))
+         ("C-s-[" . my-tempel-immediate-done-beginning)
+         ("C-s-]" . my-tempel-immediate-done-end))
   :hook ((prog-mode text-mode) . tempel-setup-capf))
 
 (use-package vterm
