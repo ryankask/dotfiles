@@ -68,7 +68,8 @@
   :straight t
   :diminish lispy-mode
   :hook (emacs-lisp-mode . my-lispy-emacs-lisp-mode-hook)
-  :bind (("M-s m" . lispy-mark))
+  :bind (:map lispy-mode-map-lispy
+              ("s-," . lispy-mark))
   :config
   ;; Colemak-friendly replacements
   ;; Note this comment from the author: https://github.com/abo-abo/lispy/issues/324#issuecomment-270357175
