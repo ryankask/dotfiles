@@ -128,7 +128,8 @@
 (use-package project
   :bind-keymap ("s-p" . project-prefix-map))
 
-(use-package raindbow-delimeters
+(use-package rainbow-delimiters
+  :straight t
   :hook
   (prog-mode . rainbow-delimiters-mode-enable))
 
