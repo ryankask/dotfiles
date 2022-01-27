@@ -81,10 +81,6 @@
   (my-theme-update-frame-defaults))
 
 (defun my-modus-themes-setup ()
-  (modus-themes-with-colors
-    (custom-set-faces
-     `(help-key-binding ((,class :inherit bold :foreground ,blue-alt-other
-                                 :background ,bg-main :box nil)))))
   (setf (alist-get 'background-mode my-theme-frame-settings)
         (pcase (modus-themes--current-theme)
           ('modus-operandi 'light)
