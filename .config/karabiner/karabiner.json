@@ -437,6 +437,114 @@
           } ],
           "type" : "basic"
         } ]
+      }, {
+        "description" : "launch mode",
+        "manipulators" : [ {
+          "from" : {
+            "simultaneous" : [ {
+              "key_code" : "comma"
+            }, {
+              "key_code" : "period"
+            } ],
+            "simultaneous_options" : {
+              "detect_key_down_uninterruptedly" : true,
+              "key_down_order" : "insensitive",
+              "key_up_order" : "insensitive",
+              "key_up_when" : "any",
+              "to_after_key_up" : [ {
+                "set_variable" : {
+                  "name" : "launch-mode",
+                  "value" : 0
+                }
+              } ]
+            }
+          },
+          "to" : [ {
+            "set_variable" : {
+              "name" : "launch-mode",
+              "value" : 1
+            }
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "c"
+          },
+          "to" : [ {
+            "shell_command" : "open -b com.google.Chrome"
+          } ],
+          "conditions" : [ {
+            "name" : "launch-mode",
+            "value" : 1,
+            "type" : "variable_if"
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "d"
+          },
+          "to" : [ {
+            "shell_command" : "open -b com.tinyspeck.slackmacgap"
+          } ],
+          "conditions" : [ {
+            "name" : "launch-mode",
+            "value" : 1,
+            "type" : "variable_if"
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "e"
+          },
+          "to" : [ {
+            "shell_command" : "open -b org.gnu.Emacs"
+          } ],
+          "conditions" : [ {
+            "name" : "launch-mode",
+            "value" : 1,
+            "type" : "variable_if"
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "f"
+          },
+          "to" : [ {
+            "shell_command" : "open -b net.kovidgoyal.kitty"
+          } ],
+          "conditions" : [ {
+            "name" : "launch-mode",
+            "value" : 1,
+            "type" : "variable_if"
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "m"
+          },
+          "to" : [ {
+            "shell_command" : "open -b com.spotify.client"
+          } ],
+          "conditions" : [ {
+            "name" : "launch-mode",
+            "value" : 1,
+            "type" : "variable_if"
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "v"
+          },
+          "to" : [ {
+            "shell_command" : "open -b com.apple.finder"
+          } ],
+          "conditions" : [ {
+            "name" : "launch-mode",
+            "value" : 1,
+            "type" : "variable_if"
+          } ],
+          "type" : "basic"
+        } ]
       } ]
     },
     "devices" : [ ],

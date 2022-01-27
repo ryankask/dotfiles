@@ -33,4 +33,18 @@
                  [:##right_command
                   :right_command
                   nil
-                  {:afterup [["emacs-C-x" 0] ["emacs-C-c" 0]]}]]}]}
+                  {:afterup [["emacs-C-x" 0] ["emacs-C-c" 0]]}]]}
+         {:des "launch mode"
+          :rules [[{:sim [:comma :period]
+                    :simo {:interrupt true
+                           :dorder :insensitive
+                           :uorder :insensitive
+                           :afterup {:set ["launch-mode" 0]}}}
+                    ["launch-mode" 1]]
+                  [:condi :launch-mode]
+                  [:c "open -b com.google.Chrome"]
+                  [:d "open -b com.tinyspeck.slackmacgap"]
+                  [:e "open -b org.gnu.Emacs"]
+                  [:f "open -b net.kovidgoyal.kitty"]
+                  [:m "open -b com.spotify.client"]
+                  [:v "open -b com.apple.finder"]]}]}
