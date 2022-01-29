@@ -20,6 +20,7 @@ rust-mode
 (cl "|" (p "arguments") "| {" n> p n "}")
 (derive "#[derive(" (p "Trait") ")]")
 (fn "fn " p "(" p ") " (if (> (length return-type) 0) "-> " "") (s return-type) "{" n> p n "}")
+(fmt "format!(\"" (p "{}") "\", " p ");")
 (p "println!(\"" (p "{}") "\", " p ");")
 (pfn "pub fn " p "(" p ") " (if (> (length return-type) 0) "-> " "") (s return-type) "{" n> p n "}")
 (pfnr "pub fn " p "(" p ") -> " p " {" n> p n "}")
