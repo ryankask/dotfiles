@@ -468,6 +468,19 @@
           "type" : "basic"
         }, {
           "from" : {
+            "key_code" : "a"
+          },
+          "to" : [ {
+            "shell_command" : "open -b com.apple.ActivityMonitor"
+          } ],
+          "conditions" : [ {
+            "name" : "launch-mode",
+            "value" : 1,
+            "type" : "variable_if"
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
             "key_code" : "c"
           },
           "to" : [ {
@@ -537,6 +550,19 @@
           },
           "to" : [ {
             "shell_command" : "open -b com.apple.finder"
+          } ],
+          "conditions" : [ {
+            "name" : "launch-mode",
+            "value" : 1,
+            "type" : "variable_if"
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "w"
+          },
+          "to" : [ {
+            "shell_command" : "open -b com.apple.iCal"
           } ],
           "conditions" : [ {
             "name" : "launch-mode",
