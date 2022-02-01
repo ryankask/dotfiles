@@ -2,16 +2,30 @@
 
 ;;; Productivity
 
+(defun my-avy-action-embark (pt)
+  (unwind-protect
+      (save-excursion
+        (goto-char pt)
+        (embark-act)))
+  (select-window
+   (cdr (ring-ref avy-ring 0)))
+  t)
+
 (use-package avy
   :straight t
   :bind (("C-'" . avy-goto-char-timer)
          :map goto-map
          ("l" . avy-goto-line)
          ("w" . avy-goto-word-0)
-         ("M-w" . avy-goto-word-1))
+         ("M-w" . avy-goto-word-1)
+         :map isearch-mode-map
+         ("C-'" . avy-isearch))
   :custom
   (avy-keys '(?a ?r ?s ?t ?n ?e ?i ?o))
-  (avy-timeout-seconds 0.3))
+  (avy-timeout-seconds 0.3)
+  :config
+  ;; Extra actions from Karthink (https://github.com/karthink/.emacs.d)
+  (setf (alist-get ?. avy-dispatch-alist) 'my-avy-action-embark))
 
 (use-package ace-window
   :straight t
