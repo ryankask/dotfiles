@@ -15,6 +15,7 @@
                  [:!Qx [:!Wx ["emacs-C-x" 1]]]
                  [:!Qa :!Wa :emacs-C-c]
                  [:!Qb :!Wb :emacs-C-x]
+                 [:!Qd :!Wd :emacs-C-x]
                  [:!Qg :!Wg :emacs-C-x]
                  [:!Qe :!We :emacs-C-x]
                  [:!Qf :!Wf :emacs-C-x]
