@@ -82,7 +82,7 @@
   :bind (("C-o C-d" . dired-jump)
          :map dired-mode-map
          ("C-o" . nil)
-         ("," . dired-up-directory))
+         ("r" . dired-up-directory))
   :custom
   (dired-listing-switches "-aBhl -v --group-directories-first")
   (dired-recursive-copies 'always)
