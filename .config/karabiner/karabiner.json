@@ -38,55 +38,6 @@
           "type" : "basic"
         } ]
       }, {
-        "description" : "double tap right shift to escape",
-        "manipulators" : [ {
-          "from" : {
-            "key_code" : "right_shift",
-            "modifiers" : {
-              "optional" : [ "any" ]
-            }
-          },
-          "to" : [ {
-            "key_code" : "escape"
-          } ],
-          "conditions" : [ {
-            "name" : "right-shift-pressed",
-            "value" : 1,
-            "type" : "variable_if"
-          } ],
-          "type" : "basic"
-        }, {
-          "to_delayed_action" : {
-            "to_if_invoked" : [ {
-              "set_variable" : {
-                "name" : "right-shift-pressed",
-                "value" : 0
-              }
-            } ],
-            "to_if_canceled" : [ {
-              "set_variable" : {
-                "name" : "right-shift-pressed",
-                "value" : 0
-              }
-            } ]
-          },
-          "from" : {
-            "key_code" : "right_shift",
-            "modifiers" : {
-              "optional" : [ "any" ]
-            }
-          },
-          "to" : [ {
-            "set_variable" : {
-              "name" : "right-shift-pressed",
-              "value" : 1
-            }
-          }, {
-            "key_code" : "right_shift"
-          } ],
-          "type" : "basic"
-        } ]
-      }, {
         "description" : "emacs right command to right control",
         "manipulators" : [ {
           "from" : {

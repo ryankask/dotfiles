@@ -2,13 +2,6 @@
  :main [{:des "swap caps lock to left control"
          :rules [[:##caps_lock :left_control]
                  [:##left_control :caps_lock]]}
-        {:des "double tap right shift to escape"
-         :rules [[:##right_shift :escape :right-shift-pressed]
-                 [:##right_shift
-                  [["right-shift-pressed" 1] :right_shift]
-                  nil
-                  {:delayed {:invoked ["right-shift-pressed" 0]
-                             :canceled ["right-shift-pressed" 0]}}]]}
         {:des "emacs right command to right control"
          :rules [:emacs
                  ;; C-x
