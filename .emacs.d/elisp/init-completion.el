@@ -203,6 +203,7 @@ targets."
 (use-package corfu
   :straight t
   :custom
+  (corfu-auto t)
   (corfu-cycle t)
   (completion-cycle-threshold 3)
   (tab-always-indent #'complete)
