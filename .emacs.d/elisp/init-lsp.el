@@ -2,7 +2,8 @@
 
 (defun my-lsp-mode-setup ()
   ;; Optimisations - copied from Doom Emacs
-  (setq-local gcmh-high-cons-threshold (* 2 (default-value 'gcmh-high-cons-threshold))))
+  (setq-local gcmh-high-cons-threshold (* 2 (default-value 'gcmh-high-cons-threshold)))
+  (lsp-enable-which-key-integration))
 
 (defun my-lsp-mode-setup-completion ()
   (setf (alist-get 'styles (alist-get 'lsp-capf completion-category-defaults))
