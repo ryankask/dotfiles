@@ -5,15 +5,17 @@
 
 (use-package vertico
   :straight (vertico :files (:defaults "extensions/*"))
+  :bind (:map vertico-map
+         ("C-<return>" . vertico-exit-input))
   :init
   (vertico-mode))
 
 (use-package vertico-directory
   :after vertico
   :bind (:map vertico-map
-              ("RET" . vertico-directory-enter)
-              ("DEL" . vertico-directory-delete-char)
-              ("M-DEL" . vertico-directory-delete-word))
+         ("RET" . vertico-directory-enter)
+         ("DEL" . vertico-directory-delete-char)
+         ("M-DEL" . vertico-directory-delete-word))
   :hook (rfn-eshadow-update-overlay . vertico-directory-tidy))
 
 (use-package vertico-multiform
