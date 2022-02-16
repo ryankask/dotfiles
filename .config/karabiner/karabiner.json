@@ -38,6 +38,27 @@
           "type" : "basic"
         } ]
       }, {
+        "description" : "C-m to return in more places",
+        "manipulators" : [ {
+          "from" : {
+            "key_code" : "m",
+            "modifiers" : {
+              "mandatory" : [ "left_control" ]
+            }
+          },
+          "to" : [ {
+            "key_code" : "return_or_enter"
+          } ],
+          "conditions" : [ {
+            "type" : "frontmost_application_if",
+            "bundle_identifiers" : [ "^com\\.google\\.Chrome$" ]
+          }, {
+            "type" : "frontmost_application_if",
+            "bundle_identifiers" : [ "^com\\.tinyspeck\\.slackmacgap$" ]
+          } ],
+          "type" : "basic"
+        } ]
+      }, {
         "description" : "emacs right command to right control",
         "manipulators" : [ {
           "from" : {
