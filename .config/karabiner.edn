@@ -1,12 +1,13 @@
 {:applications {:emacs ["^org\\.gnu\\.Emacs$"]
                 :kitty ["^net\\.kovidgoyal\\.kitty$"]
-                :chrome ["^com\\.google\\.Chrome$"]
-                :slack ["^com\\.tinyspeck\\.slackmacgap$"]}
+                :C-m-apps ["^com\\.google\\.Chrome$"
+                           "^com\\.tinyspeck\\.slackmacgap$"
+                           "^com\\.microsoft\\.VSCode$"]}
  :main [{:des "swap caps lock to left control"
          :rules [[:##caps_lock :left_control]
                  [:##left_control :caps_lock]]}
         {:des "C-m to return in more places"
-         :rules [[:!Tm :return_or_enter [:chrome :slack]]]}
+         :rules [[:!Tm :return_or_enter [:C-m-apps]]]}
         {:des "emacs right command to right control"
          :rules [:emacs
                  ;; C-x

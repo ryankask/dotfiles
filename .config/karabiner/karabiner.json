@@ -51,10 +51,7 @@
           } ],
           "conditions" : [ {
             "type" : "frontmost_application_if",
-            "bundle_identifiers" : [ "^com\\.google\\.Chrome$" ]
-          }, {
-            "type" : "frontmost_application_if",
-            "bundle_identifiers" : [ "^com\\.tinyspeck\\.slackmacgap$" ]
+            "bundle_identifiers" : [ "^com\\.google\\.Chrome$", "^com\\.tinyspeck\\.slackmacgap$", "^com\\.microsoft\\.VSCode$" ]
           } ],
           "type" : "basic"
         } ]
