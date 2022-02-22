@@ -96,7 +96,9 @@
   (modus-themes-mode-line '(3d))
   (modus-themes-region '(bg-only))
   (modus-themes-paren-match '(intense))
-  (modus-themes-completions 'opinionated)
+  (modus-themes-completions '((matches . (extrabold background intense))
+                              (selection . (semibold accented intense))
+                              (popup . (accented))))
   :bind ("C-o w" . modus-themes-toggle)
   :init
   (add-hook 'modus-themes-after-load-theme-hook #'my-modus-themes-setup)
