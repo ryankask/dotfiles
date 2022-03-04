@@ -151,7 +151,9 @@
 (use-package straight-helpers)
 
 (defun tempel-setup-capf ()
-  (add-hook 'completion-at-point-functions #'tempel-expand -1 'local))
+  (setq-local completion-at-point-functions
+              (cons #'tempel-expand
+                    completion-at-point-functions)))
 
 (defun my-tempel-immediate-done-beginning ()
   "If required, move to the beginning of the first field and then

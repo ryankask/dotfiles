@@ -9,7 +9,7 @@
   (setf (alist-get 'styles (alist-get 'lsp-capf completion-category-defaults))
         '(orderless))
   (when (fboundp 'tempel-expand)
-    (add-hook 'completion-at-point-functions #'tempel-expand -1 'local)))
+    (tempel-setup-capf)))
 
 (defun my-lsp-help-mode-setup ()
   "Customize faces for the lsp-help buffer"
