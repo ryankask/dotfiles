@@ -39,7 +39,7 @@
 
 (defun my-consult-fd-builder (input)
   (pcase-let* ((`(,arg . ,opts) (consult--command-split input))
-               (`(,re . ,hl) (funcall consult--regexp-compiler arg 'extended)))
+               (`(,re . ,hl) (funcall consult--regexp-compiler arg 'extended t)))
     (when re
       (list :command (append
                       (list "fd" "--color=never" "--hidden" "--full-path"
