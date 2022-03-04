@@ -99,10 +99,13 @@
          ("u" . consult-focus-lines)
          ("e" . consult-isearch-history)
          :map isearch-mode-map
-         ("M-e" . consult-isearch-history)   ;; orig. isearch-edit-string
+         ("M-e" . consult-isearch-history) ;; orig. isearch-edit-string
          ("M-s e" . consult-isearch-history) ;; orig. isearch-edit-string
          ("M-s l" . consult-line)
-         ("M-s L" . consult-line-multi))
+         ("M-s L" . consult-line-multi)
+         :map minibuffer-local-map
+         ("M-s" . consult-history)
+         ("M-r" . consult-history))
   :custom
   (consult-project-root-function
    (lambda ()
