@@ -136,8 +136,13 @@
               ("M-t o" . consult-org-heading))
   :hook (org-mode . my-fill-column-setup)
   :custom
+  (org-catch-invisible-edits 'show-and-error)
   (org-cycle-separator-lines 1)
-  (org-log-done 'time))
+  (org-hide-emphasis-markers t)
+  (org-insert-heading-respect-content t)
+  (org-log-done 'time)
+  (org-pretty-entities t)
+  (org-special-ctrl-a/e t))
 
 (use-package project
   :bind-keymap ("s-p" . project-prefix-map))
