@@ -5,7 +5,6 @@
 ;; before package and UI initialization happens.
 
 (setq gc-cons-threshold most-positive-fixnum
-      native-comp-deferred-compilation nil
       package-enable-at-startup nil
       load-prefer-newer noninteractive
       frame-inhibit-implied-resize t)
