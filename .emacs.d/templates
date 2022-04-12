@@ -12,6 +12,7 @@ python-mode
 (impdt "from datetime import datetime, timedelta")
 (impset "from django.conf import settings")
 (imptz "from django.utils import timezone")
+(she "#!/usr/bin/env python3")
 
 rust-mode
 
@@ -29,5 +30,6 @@ rust-mode
 
 sh-mode
 
+(she "#!/usr/bin/env " (format "%s" sh-shell))
 (strictbash "set -Eeuo pipefail")
 (strictzsh "set -euo pipefail")
