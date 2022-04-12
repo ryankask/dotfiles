@@ -26,7 +26,7 @@ type-case=1
 function-case=0
 
 # Do not add an extra empty line at end of the output.
-no-extra-line=0
+no-extra-line=1
 
 # Maximum length of a query, it will be cutted above the given size. Default: no truncate.
 maxlength=0
