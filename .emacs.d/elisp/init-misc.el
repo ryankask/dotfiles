@@ -188,6 +188,12 @@ session."
          ("C-s-]" . my-tempel-immediate-done-end))
   :hook ((prog-mode text-mode) . tempel-setup-capf))
 
+;; internal
+(use-package use-package-helpers
+  :config
+  (dolist (func '(eval-last-sexp lispy-eval))
+    (advice-add func :before-until #'uph-eval-last-sexp-advice)))
+
 (use-package vterm
   :disabled t
   :straight t
