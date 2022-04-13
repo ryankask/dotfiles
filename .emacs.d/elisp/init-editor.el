@@ -104,11 +104,25 @@
   :init
   (browse-kill-ring-default-keybindings))
 
-(use-package undo-tree
+(use-package undo-fu
   :straight t
-  :diminish undo-tree-mode
-  :bind ("C-s-/" . undo-tree-redo)
+  :custom
+  (undo-limit 400000)                   ; 400kb (default is 160kb)
+  (undo-strong-limit 3000000)           ; 3mb   (default is 240kb)
+  (undo-outer-limit 48000000)           ; 48mb  (default is 24mb)
   :init
-  (global-undo-tree-mode))
+  (define-minor-mode undo-fu-mode
+    "Enables `undo-fu' for the current session."
+    :keymap (let ((map (make-sparse-keymap)))
+              (define-key map [remap undo] #'undo-fu-only-undo)
+              (define-key map [remap redo] #'undo-fu-only-redo)
+              (define-key map (kbd "C-s-/") #'undo-fu-only-redo)
+              (define-key map (kbd "C-_") #'undo-fu-only-undo)
+              (define-key map (kbd "M-_") #'undo-fu-only-redo)
+              (define-key map (kbd "C-M-_") #'undo-fu-only-redo-all)
+              map)
+    :init-value nil
+    :global t)
+  (undo-fu-mode))
 
 (provide 'init-editor)
