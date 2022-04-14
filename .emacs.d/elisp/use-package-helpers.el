@@ -24,16 +24,17 @@
 
 ;;; Code:
 
+(eval-when-compile
+  (require 'cl-lib))
+
 (defun uph--in-custom-section-p ()
   "Return t if the current point is in a :custom section"
   (save-excursion
     (ignore-error scan-error
-      (let (result)
-        (while (and (not (bobp)) (not result))
-          (backward-sexp)
-          (if (looking-at-p ":custom$")
-              (setq result t)))
-        result))))
+      (cl-loop until (bobp)
+               do (backward-sexp)
+               if (looking-at ":\\([[:alnum:]]+\\)$")
+                 return (string= (match-string 1) "custom")))))
 
 (defun uph-custom-eval-last-sexp ()
   "Eval setq on the preceding sexp in a :custom section. Return
