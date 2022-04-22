@@ -34,3 +34,13 @@ layout_poetry() {
   layout_virtualenv $venv_path
   export POETRY_ACTIVE=1
 }
+
+layout_conda() {
+  local env="$1"
+  if [[ -z $env ]]; then
+    echo "Conda env required"
+    exit 1
+  fi
+  eval "$(conda shell.bash hook)"
+  conda activate $env
+}
