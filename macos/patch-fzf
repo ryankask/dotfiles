@@ -1,0 +1,7 @@
+#!/usr/bin/env zsh
+
+path="$BREW_PREFIX/opt/fzf/shell/key-bindings.zsh"
+target='zle vi-fetch-history -n $num'
+replacement='LBUFFER+="$(fc -ln $num $num)"'
+
+/opt/homebrew/bin/gsed --in-place "s/$target/$replacement/" $path
