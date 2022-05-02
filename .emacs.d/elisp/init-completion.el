@@ -214,7 +214,7 @@ targets."
   (completion-cycle-threshold 3)
   (tab-always-indent #'complete)
   :init
-  (corfu-global-mode))
+  (global-corfu-mode))
 
 (use-package cape
   :straight t
