@@ -6,6 +6,7 @@
 
 (setq gc-cons-threshold most-positive-fixnum
       package-enable-at-startup nil
+      native-comp-async-report-warnings-errors nil
       load-prefer-newer noninteractive
       frame-inhibit-implied-resize t)
 
