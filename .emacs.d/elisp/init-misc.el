@@ -45,6 +45,14 @@
   :straight t
   :bind ("C-c u" . deadgrep))
 
+(use-package elfeed
+  :straight t
+  :bind ("C-c r" . elfeed)
+  :custom
+  (elfeed-feeds
+   '("https://cloud.google.com/feeds/gcp-release-notes.xml"
+     "https://docs.digitalocean.com/release-notes/index.xml")))
+
 (use-package expand-region
   :straight t
   :bind ("C-=" . er/expand-region))
