@@ -149,6 +149,7 @@
   (org-hide-emphasis-markers t)
   (org-insert-heading-respect-content t)
   (org-log-done 'time)
+  (org-log-into-drawer t)
   (org-pretty-entities t)
   (org-special-ctrl-a/e t))
 
