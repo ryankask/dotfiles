@@ -209,6 +209,8 @@ session."
   (vterm-always-compile-module t)
   :bind (:map vterm-mode-map
          ("C-o" . nil)
+         ("C-o C-t" . vterm-copy-mode)
+         :map vterm-copy-mode-map
          ("C-o C-t" . vterm-copy-mode)))
 
 (use-package which-key
