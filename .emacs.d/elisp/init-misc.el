@@ -204,8 +204,9 @@ session."
     (advice-add func :before-until #'uph-eval-last-sexp-advice)))
 
 (use-package vterm
-  :disabled t
   :straight t
+  :custom
+  (vterm-always-compile-module t)
   :bind (:map vterm-mode-map
          ("C-o" . nil)
          ("C-o C-t" . vterm-copy-mode)))
