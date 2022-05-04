@@ -203,13 +203,21 @@ session."
   (dolist (func '(eval-last-sexp lispy-eval))
     (advice-add func :before-until #'uph-eval-last-sexp-advice)))
 
+(defun my-vterm-mode-hook ()
+  (setq-local confirm-kill-processes nil))
+
 (use-package vterm
   :straight t
+  :hook (vterm-mode . my-vterm-mode-hook)
   :custom
   (vterm-always-compile-module t)
+  (vterm-max-scrollback 5000)
   :bind (:map vterm-mode-map
          ("C-o" . nil)
          ("C-o C-t" . vterm-copy-mode)
+         ("C-o C-g" . vterm-send-C-g)
+         ("C-o C-u" . vterm-send-C-u)
+         ("C-o C-l" . vterm-clear-scrollback)
          :map vterm-copy-mode-map
          ("C-o C-t" . vterm-copy-mode)))
 
