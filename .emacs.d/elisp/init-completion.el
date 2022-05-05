@@ -63,6 +63,19 @@
   (find-file
    (consult--find "Mdfind: " #'my-consult-mdfind-builder initial)))
 
+(defvar my-consult-terminal-source
+  (list :name "Terminal Buffer"
+        :category 'buffer
+        :narrow ?t
+        :face 'consult-buffer
+        :history 'buffer-name-history
+        :state #'consult--buffer-state
+        :items (lambda ()
+                 (consult--buffer-query
+                  :as #'buffer-name
+                  :sort 'visibility
+                  :mode '(vterm-mode term-mode)))))
+
 (use-package consult
   :straight t
   :bind (("C-s" . consult-line)
@@ -127,7 +140,8 @@
    consult-bookmark consult-recent-file consult-xref
    consult--source-recent-file consult--source-project-recent-file
    consult--source-bookmark
-   :preview-key (kbd "M-.")))
+   :preview-key (kbd "M-."))
+  (add-to-list 'consult-buffer-sources 'my-consult-terminal-source 'append))
 
 (use-package consult-dir
   :straight t
