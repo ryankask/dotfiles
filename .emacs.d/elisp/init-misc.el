@@ -154,8 +154,46 @@
   (org-pretty-entities t)
   (org-special-ctrl-a/e t))
 
+;; Adapted from https://github.com/karthink/project-x/blob/master/project-x.el
+
+(defcustom my-project-local-identifier (list ".project" "pyproject.toml")
+  "Filename(s) that identifies a directory as a project.
+You can specify a single filename or a list of names."
+  :type '(choice (string :tag "Single file")
+                 (repeat (string :tag "Filename")))
+  :safe (lambda (x)
+          (or (stringp x)
+              (and (listp x)
+                   (cl-every #'stringp x)))))
+
+(defcustom my-project-local-commands (list #'vterm-toggle)
+  "List of commands that should use local identifiers as project
+markers."
+  :type '(list function))
+
+(defun my-project-try-local (dir)
+  "Determine if DIR is a non-VC project.
+DIR must include a .project file to be considered a project."
+  (when-let (root (and
+                   (or (not this-command)
+                       (not my-project-local-commands)
+                       (memq this-command my-project-local-commands))
+                   (if (listp my-project-local-identifier)
+                       (seq-some (lambda (n)
+                                   (locate-dominating-file dir n))
+                                 my-project-local-identifier)
+                     (locate-dominating-file dir my-project-local-identifier))))
+    (cons 'local root)))
+
 (use-package project
-  :bind-keymap ("s-p" . project-prefix-map))
+  :bind-keymap ("s-p" . project-prefix-map)
+  :custom
+  (vterm-toggle-scope 'project)
+  :config
+  (add-hook 'project-find-functions 'my-project-try-local -10)
+  (cl-defmethod project-root ((project (head local)))
+    "Return root directory of current PROJECT."
+    (cdr project)))
 
 (use-package rainbow-delimiters
   :straight t
@@ -222,6 +260,10 @@ session."
          ("C-o C-l" . vterm-clear-scrollback)
          :map vterm-copy-mode-map
          ("C-o C-t" . vterm-copy-mode)))
+
+(use-package vterm-toggle
+  :straight t
+  :bind ("C-o C-v" . vterm-toggle))
 
 (use-package which-key
   :straight t
