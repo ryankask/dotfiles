@@ -245,6 +245,12 @@ session."
 (defun my-vterm-mode-hook ()
   (setq-local confirm-kill-processes nil))
 
+(defun my-vterm-send-C-k ()
+  "Send `C-k' to libvterm."
+  (interactive)
+  (kill-ring-save (point) (vterm-end-of-line))
+  (vterm-send-key "k" nil nil t))
+
 (use-package vterm
   :straight t
   :hook (vterm-mode . my-vterm-mode-hook)
@@ -252,7 +258,9 @@ session."
   (vterm-always-compile-module t)
   (vterm-max-scrollback 5000)
   (vterm-timer-delay .025)
-  :bind (:map vterm-mode-map
+  :bind (nil
+         :map vterm-mode-map
+         ("C-k" . my-vterm-send-C-k)
          ("C-o" . nil)
          ("C-o C-t" . vterm-copy-mode)
          ("C-o C-g" . vterm-send-C-g)
