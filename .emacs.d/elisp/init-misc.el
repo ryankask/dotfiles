@@ -258,8 +258,7 @@ session."
   (vterm-always-compile-module t)
   (vterm-max-scrollback 5000)
   (vterm-timer-delay .025)
-  :bind (nil
-         :map vterm-mode-map
+  :bind (:map vterm-mode-map
          ("C-k" . my-vterm-send-C-k)
          ("C-o" . nil)
          ("C-o C-t" . vterm-copy-mode)
