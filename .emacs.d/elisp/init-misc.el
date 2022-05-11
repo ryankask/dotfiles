@@ -60,7 +60,7 @@
 (use-package flycheck
   :straight t
   :diminish flycheck-mode
-  :custom (flycheck-keymap-prefix (kbd "C-o f")))
+  :custom (flycheck-keymap-prefix (kbd "C-o C-k")))
 
 (use-package gcmh
   :straight t
