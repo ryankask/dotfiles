@@ -98,12 +98,6 @@
   :custom
   (reb-re-syntax 'string))
 
-(use-package browse-kill-ring
-  :straight t
-  :bind ("s-y" . browse-kill-ring)
-  :init
-  (browse-kill-ring-default-keybindings))
-
 (use-package undo-fu
   :straight t
   :custom
