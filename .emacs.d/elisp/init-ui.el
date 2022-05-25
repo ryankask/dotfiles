@@ -10,6 +10,7 @@
 (setq my-font (font-spec :family "Menlo" :size 13))
 (set-fontset-font t 'unicode my-font)
 (set-fontset-font t 'unicode (font-spec :family "Symbols Nerd Font" :size 13) nil 'append)
+(set-fontset-font t 'unicode "Apple Color Emoji" nil 'append)
 (setf (alist-get 'font default-frame-alist) (font-xlfd-name my-font))
 
 (when (display-graphic-p)
