@@ -314,11 +314,16 @@ session."
   (scss-compile-at-save nil))
 
 (use-package sh-mode
-  :mode "\\.zsh\\'"
   :defer t
   :custom
   (sh-basic-offset 2)
-  (sh-indentation 2))
+  (sh-indentation 2)
+  :config
+  (dolist (capf (list #'sh-completion-at-point-function
+                      #'comint-completion-at-point))
+    (advice-add capf :around
+                (lambda (orig)
+                  (cape-wrap-properties orig :exclusive 'no)))))
 
 ;;; Formats
 
