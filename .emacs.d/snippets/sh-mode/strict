@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: strict mode
+# key: strict
+# --
+`(pcase sh-shell ('zsh "set -euo pipefail")
+                 ('bash "set -Eeuo pipefail")
+                 (_ (message "Unknown shell")))`
+
+$0

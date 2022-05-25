@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: shebang
+# key: she
+# --
+#!/usr/bin/env python3
