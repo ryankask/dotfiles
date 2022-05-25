@@ -227,6 +227,7 @@ session."
     (tempel-done)))
 
 (use-package tempel
+  :disabled t
   :straight (tempel :type git :host github :repo "minad/tempel")
   :bind (:map tempel-map
          ("s-]" . tempel-next)
@@ -279,6 +280,15 @@ session."
   (which-key-use-C-h-commands nil)
   :init
   (which-key-mode))
+
+(defun my-yasnippet-snippet-mode-hook ()
+  (setq-local require-final-newline nil))
+
+(use-package yasnippet
+  :straight t
+  :hook (snippet-mode . my-yasnippet-snippet-mode-hook)
+  :init
+  (yas-global-mode 1))
 
 ;;; Languages
 

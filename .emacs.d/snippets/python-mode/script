@@ -1,0 +1,13 @@
+# -*- mode: snippet -*-
+# name: script
+# key: script
+# --
+#!/usr/bin/env python3
+
+
+def main():
+    ${0:pass}
+
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: shebang
+# key: she
+# --
+#!/usr/bin/env ${1:zsh}
+
+$0

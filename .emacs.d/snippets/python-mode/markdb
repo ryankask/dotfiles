@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: Insert the django_db pytest mark
+# key: markdb
+# --
+@pytest.mark.django_db
+$0
