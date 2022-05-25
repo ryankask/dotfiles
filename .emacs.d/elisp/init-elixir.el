@@ -6,13 +6,11 @@
 
 (use-package alchemist
   :straight t
-  :defer t
-  :diminish "alch")
+  :defer t)
 
 (use-package ruby-end
   :straight t
   :defer t
-  :diminish ruby-end-mode
   :init
   (add-hook 'elixir-mode-hook
             (lambda ()

@@ -59,12 +59,10 @@
 
 (use-package flycheck
   :straight t
-  :diminish flycheck-mode
   :custom (flycheck-keymap-prefix (kbd "C-o C-k")))
 
 (use-package gcmh
   :straight t
-  :diminish gcmh-mode
   :hook (emacs-startup . gcmh-mode)
   :custom
   (gcmh-idle-delay 'auto)
@@ -88,7 +86,6 @@
 
 (use-package lispy
   :straight t
-  :diminish lispy-mode
   :hook (emacs-lisp-mode . my-lispy-emacs-lisp-mode-hook)
   :bind (:map lispy-mode-map-lispy
          ("s-," . lispy-mark-symbol)
@@ -275,7 +272,6 @@ session."
 
 (use-package which-key
   :straight t
-  :diminish which-key-mode
   :custom
   (which-key-use-C-h-commands nil)
   :init
