@@ -41,12 +41,10 @@
          ("s" . isearch-forward)))
 
 (use-package autorevert
-  :diminish auto-revert-mode
   :config
   (global-auto-revert-mode t))
 
 (use-package abbrev
-  :diminish abbrev-mode
   :hook (text-mode . abbrev-mode))
 
 (use-package ispell
@@ -55,7 +53,6 @@
   (ispell-extra-args '("--sug-mode=ultra" "--run-together")))
 
 (use-package flyspell
-  :diminish flyspell-mode
   :bind (:map flyspell-mode-map
               ("C-." . nil)
               ("C-," . nil)
@@ -73,15 +70,8 @@
   :bind (:map flyspell-mode-map
               ("C-;" . flyspell-correct-wrapper)))
 
-(use-package eldoc
-  :diminish eldoc-mode)
-
-(use-package subword
-  :diminish subword-mode)
-
 (use-package smartparens-config
   :straight smartparens
-  :diminish smartparens-mode
   :config
   (smartparens-global-mode t)
   (show-smartparens-global-mode t)

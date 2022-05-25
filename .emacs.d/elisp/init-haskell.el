@@ -31,7 +31,6 @@
   :disabled
   :straight t
   :defer t
-  :diminish t
   :init
   (add-hook 'haskell-mode-hook 'hindent-mode))
 
@@ -39,7 +38,6 @@
   :disabled
   :straight t
   :defer t
-  :diminish t
   :init
   (add-hook 'haskell-mode-hook 'intero-mode))
 
