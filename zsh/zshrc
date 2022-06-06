@@ -239,7 +239,7 @@ if (( $+commands[direnv] )); then
   eval "$(direnv hook zsh)"
 fi
 
-if (( $+commands[starship] )); then
+if [[ $TERM != dumb && $+commands[starship] == 1 ]]; then
   eval "$(starship init zsh)"
 fi
 
