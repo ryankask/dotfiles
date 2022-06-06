@@ -58,35 +58,32 @@
                   "*Apropos*" "*Help*" "*cvs*" "*Buffer List*" "*Ibuffer*"
                   "*esh command on file*"))))
 
-(defvar my-theme-frame-settings nil
-  "Alist that contains frame settings specific to the current theme")
+(defun my-theme-get-ns-appearance ()
+  (pcase (modus-themes--current-theme)
+    ('modus-operandi 'light)
+    ('modus-vivendi 'dark)
+    (theme (error "'%s' is not a Modus theme" theme))))
 
 (defun my-theme-get-ns-frame-parameters ()
   `((ns-transparent-titlebar . t)
-    (ns-appearance . ,(alist-get 'background-mode my-theme-frame-settings))))
+    (ns-appearance . ,(my-theme-get-ns-appearance))))
 
-(defun my-theme-update-frame-defaults ()
-  (pcase-dolist (`(,property . ,value) (my-theme-get-ns-frame-parameters))
+(defun my-theme-update-frame-defaults (frame-parameters)
+  (pcase-dolist (`(,property . ,value) frame-parameters)
     (setf (alist-get property default-frame-alist) value)))
 
-(defun my-theme-update-frame-titlebar (frame &rest _)
-  "Based on https://github.com/purcell/ns-auto-titlebar/blob/master/ns-auto-titlebar.el"
-  (when-let (display-graphic-p frame)
-    (modify-frame-parameters frame (my-theme-get-ns-frame-parameters))))
-
-(defun my-theme-update-all-frame-titlebars ()
-  (mapc #'my-theme-update-frame-titlebar (frame-list)))
+(defun my-theme-update-all-frame-titlebars (frame-parameters)
+  (mapc (lambda (frame)
+          (when (display-graphic-p frame)
+            (modify-frame-parameters frame frame-parameters)))
+        (frame-list)))
 
 (defun my-theme-configure-frames ()
-  (my-theme-update-all-frame-titlebars)
-  (my-theme-update-frame-defaults))
+  (let ((frame-parameters (my-theme-get-ns-frame-parameters)))
+    (my-theme-update-all-frame-titlebars frame-parameters)
+    (my-theme-update-frame-defaults frame-parameters)))
 
 (defun my-modus-themes-setup ()
-  (setf (alist-get 'background-mode my-theme-frame-settings)
-        (pcase (modus-themes--current-theme)
-          ('modus-operandi 'light)
-          ('modus-vivendi 'dark)
-          (theme (error "'%s' is not a Modus theme" theme))))
   (my-theme-configure-frames))
 
 (use-package modus-themes
