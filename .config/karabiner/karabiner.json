@@ -341,6 +341,26 @@
           "type" : "basic"
         }, {
           "from" : {
+            "key_code" : "f",
+            "modifiers" : {
+              "mandatory" : [ "right_command" ]
+            }
+          },
+          "to" : [ {
+            "key_code" : "f",
+            "modifiers" : [ "right_control" ]
+          } ],
+          "conditions" : [ {
+            "type" : "frontmost_application_if",
+            "bundle_identifiers" : [ "^org\\.gnu\\.Emacs$" ]
+          }, {
+            "name" : "emacs-C-c",
+            "value" : 1,
+            "type" : "variable_if"
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
             "key_code" : "j",
             "modifiers" : {
               "mandatory" : [ "right_command" ]
@@ -381,13 +401,13 @@
           "type" : "basic"
         }, {
           "from" : {
-            "key_code" : "f",
+            "key_code" : "v",
             "modifiers" : {
               "mandatory" : [ "right_command" ]
             }
           },
           "to" : [ {
-            "key_code" : "f",
+            "key_code" : "v",
             "modifiers" : [ "right_control" ]
           } ],
           "conditions" : [ {
