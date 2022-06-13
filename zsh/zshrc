@@ -258,9 +258,7 @@ if (( $+commands[fzf] )); then
 fi
 
 if (( $+commands[zoxide] )); then
-  eval "$(zoxide init zsh --no-aliases)"
-  alias cd='__zoxide_z'
-  alias ci='__zoxide_zi'
+  eval "$(zoxide init zsh --cmd=cd)"
 fi
 
 if (( $+commands[bat] )); then
