@@ -14,6 +14,7 @@
 (bind-key "M-\"" "€")
 (bind-key "s-=" 'text-scale-increase)
 (bind-key "s--" 'text-scale-decrease)
+(bind-key "s-i" 'open-line)
 (bind-key "C-o e" #'eval-expression)
 (unbind-key "<C-wheel-up>")
 (unbind-key "<C-wheel-down>")
