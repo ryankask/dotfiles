@@ -131,6 +131,12 @@
   (magit-define-global-key-bindings nil)
   (magit-diff-refine-hunk t))
 
+(defun my-org-open-line-after-meta-data ()
+  "Open a new line after the the following metadata."
+  (interactive)
+  (org-end-of-meta-data t)
+  (open-line 1))
+
 (use-package org
   :straight t
   :bind (:map org-mode-map
@@ -140,7 +146,8 @@
               ("s-<right>" . org-metaright)
               ("s-<up>" . org-metaup)
               ("s-<down>" . org-metadown)
-              ("M-t o" . consult-org-heading))
+              ("M-t o" . consult-org-heading)
+              ("C-s-<return>" . my-org-open-line-after-meta-data))
   :hook (org-mode . my-fill-column-setup)
   :custom
   (org-catch-invisible-edits 'show-and-error)
