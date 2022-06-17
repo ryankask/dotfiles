@@ -51,6 +51,7 @@
   :custom
   (elfeed-feeds
    '("https://cloud.google.com/feeds/gcp-release-notes.xml"
+     "https://status.cloud.google.com/en/feed.atom"
      "https://docs.digitalocean.com/release-notes/index.xml")))
 
 (use-package expand-region
