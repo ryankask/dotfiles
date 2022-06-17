@@ -14,7 +14,6 @@
 (bind-key "M-\"" "€")
 (bind-key "s-=" 'text-scale-increase)
 (bind-key "s--" 'text-scale-decrease)
-(bind-key "s-i" 'open-line)
 (bind-key "C-o e" #'eval-expression)
 (unbind-key "<C-wheel-up>")
 (unbind-key "<C-wheel-down>")
@@ -109,5 +108,29 @@
     :init-value nil
     :global t)
   (undo-fu-mode))
+
+;;; From crux.el: https://github.com/bbatsov/crux/blob/master/crux.el
+
+(defun crux-smart-open-line-above ()
+  "Insert an empty line above the current line.
+Position the cursor at its beginning, according to the current mode."
+  (interactive)
+  (move-beginning-of-line nil)
+  (insert "\n")
+  (if electric-indent-inhibit
+      ;; We can't use `indent-according-to-mode' in languages like Python,
+      ;; as there are multiple possible indentations with different meanings.
+      (let* ((indent-end (progn (crux-move-to-mode-line-start) (point)))
+             (indent-start (progn (move-beginning-of-line nil) (point)))
+             (indent-chars (buffer-substring indent-start indent-end)))
+        (forward-line -1)
+        ;; This new line should be indented with the same characters as
+        ;; the current line.
+        (insert indent-chars))
+    ;; Just use the current major-mode's indent facility.
+    (forward-line -1)
+    (indent-according-to-mode)))
+
+(bind-key "s-i" 'crux-smart-open-line-above)
 
 (provide 'init-editor)
