@@ -1,5 +1,10 @@
 # -*- mode: sh; -*-
 
+if [[ $TERM == "dumb" ]]; then
+  unsetopt zle
+  return
+fi
+
 #  Smart URLs
 autoload -Uz bracketed-paste-url-magic
 zle -N bracketed-paste bracketed-paste-url-magic
@@ -239,7 +244,7 @@ if (( $+commands[direnv] )); then
   eval "$(direnv hook zsh)"
 fi
 
-if [[ $TERM != dumb && $+commands[starship] == 1 ]]; then
+if (( $+commands[starship] )); then
   eval "$(starship init zsh)"
 fi
 
