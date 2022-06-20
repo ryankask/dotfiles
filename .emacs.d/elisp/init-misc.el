@@ -52,7 +52,8 @@
   (elfeed-feeds
    '("https://cloud.google.com/feeds/gcp-release-notes.xml"
      "https://status.cloud.google.com/en/feed.atom"
-     "https://docs.digitalocean.com/release-notes/index.xml")))
+     "https://docs.digitalocean.com/release-notes/index.xml"
+     "https://www.londonreconnections.com/feed/")))
 
 (use-package expand-region
   :straight t
