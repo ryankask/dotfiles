@@ -1,5 +1,8 @@
 ;;; -*- lexical-binding: t; -*-
 
+(defun my-lsp-mode-update-keybindings ()
+  (setcar (assq ?g (cdr lsp-command-map)) ?t))
+
 (defun my-lsp-mode-setup ()
   ;; Optimisations - copied from Doom Emacs
   (setq-local gcmh-high-cons-threshold (* 2 (default-value 'gcmh-high-cons-threshold)))
@@ -30,7 +33,9 @@
   (lsp-enable-snippet nil)
   (lsp-headerline-breadcrumb-enable nil)
   (lsp-signature-auto-activate nil)
-  (lsp-signature-render-documentation nil))
+  (lsp-signature-render-documentation nil)
+  :config
+  (my-lsp-mode-update-keybindings))
 
 (use-package consult-lsp
   :straight t
