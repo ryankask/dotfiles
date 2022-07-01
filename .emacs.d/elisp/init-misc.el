@@ -136,7 +136,9 @@
   "Open a new line after the the following metadata."
   (interactive)
   (org-end-of-meta-data t)
-  (open-line 1))
+  (open-line 1)
+  (while (org-previous-line-empty-p)
+    (next-line -1)))
 
 (use-package org
   :straight t
