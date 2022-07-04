@@ -45,7 +45,9 @@
   (global-auto-revert-mode t))
 
 (use-package abbrev
-  :hook (text-mode . abbrev-mode))
+  :hook (text-mode . abbrev-mode)
+  :custom
+  (save-abbrevs 'silently))
 
 (use-package ispell
   :custom
