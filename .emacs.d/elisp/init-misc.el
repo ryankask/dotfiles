@@ -150,7 +150,8 @@
               ("s-<up>" . org-metaup)
               ("s-<down>" . org-metadown)
               ("M-t o" . consult-org-heading)
-              ("C-s-<return>" . my-org-open-line-after-meta-data))
+              ("C-s-<return>" . my-org-open-line-after-meta-data)
+              ("s-RET" . my-org-open-line-after-meta-data))
   :hook (org-mode . my-fill-column-setup)
   :custom
   (org-catch-invisible-edits 'show-and-error)
@@ -160,7 +161,8 @@
   (org-log-done 'time)
   (org-log-into-drawer t)
   (org-pretty-entities t)
-  (org-special-ctrl-a/e t))
+  (org-special-ctrl-a/e t)
+  (org-use-sub-superscripts "{}"))
 
 ;; Adapted from https://github.com/karthink/project-x/blob/master/project-x.el
 
