@@ -40,6 +40,10 @@
   :bind (:map search-map
          ("s" . isearch-forward)))
 
+(use-package repeat
+  :init
+  (repeat-mode))
+
 (use-package autorevert
   :config
   (global-auto-revert-mode t))

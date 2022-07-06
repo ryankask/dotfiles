@@ -290,6 +290,13 @@ session."
   :init
   (which-key-mode))
 
+(use-package repeat-help
+  :straight (repeat-help :type git :host github :repo "karthink/repeat-help")
+  :custom
+  (repeat-help-auto t)
+  :init
+  (repeat-help-mode))
+
 (defun my-yasnippet-snippet-mode-hook ()
   (setq-local require-final-newline nil))
 
