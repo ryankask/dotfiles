@@ -4,7 +4,8 @@
               tab-width 4)
 (setq sentence-end-double-space nil
       require-final-newline t
-      kill-do-not-save-duplicates t)
+      kill-do-not-save-duplicates t
+      next-error-find-buffer-function #'next-error-buffer-unnavigated-current)
 
 (bind-key "M-u" 'upcase-dwim)
 (bind-key "M-l" 'downcase-dwim)
