@@ -45,6 +45,15 @@
   :init
   (repeat-mode))
 
+(use-package repeat-help
+  :after (repeat embark)
+  :straight t
+  :custom
+  (repeat-help-popup-type 'embark)
+  (repeat-help-auto t)
+  :init
+  (repeat-help-mode))
+
 (use-package autorevert
   :config
   (global-auto-revert-mode t))

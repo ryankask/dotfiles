@@ -290,13 +290,6 @@ session."
   :init
   (which-key-mode))
 
-(use-package repeat-help
-  :straight t
-  :custom
-  (repeat-help-auto t)
-  :init
-  (repeat-help-mode))
-
 (defun my-yasnippet-snippet-mode-hook ()
   (setq-local require-final-newline nil))
 
