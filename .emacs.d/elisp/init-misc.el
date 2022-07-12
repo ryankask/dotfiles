@@ -291,7 +291,7 @@ session."
   (which-key-mode))
 
 (use-package repeat-help
-  :straight (repeat-help :type git :host github :repo "karthink/repeat-help")
+  :straight t
   :custom
   (repeat-help-auto t)
   :init
