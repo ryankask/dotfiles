@@ -45,8 +45,24 @@
   :straight t
   :bind ("C-c u" . deadgrep))
 
+(defun my-shr-strong-tag (dom)
+  "Improve the styling of a <strong> tag if it appears to come
+from a GCP release notes entry."
+  (if-let ((class (dom-attr dom 'class))
+           ((string-match-p "\\brelease-note-product-title\\b" class)))
+      (shr-tag-h2 dom)
+    (shr-tag-strong dom)))
+
 (defun my-elfeed-show-mode-hook ()
-  (setq-local shr-width 88))
+  (setq-local shr-width 88
+              shr-external-rendering-functions '((strong . my-shr-strong-tag)))
+  (pcase-dolist (`(,face . ,height) '((shr-h1 . 2.074)
+                                      (shr-h2 . 1.728)
+                                      (shr-h3 . 1.44)
+                                      (shr-h4 . 1.2)
+                                      (shr-h5 . 1.0)
+                                      (shr-h6 . 1.0)))
+    (face-remap-add-relative face :height height :weight 'semi-bold)))
 
 (use-package elfeed
   :straight t
