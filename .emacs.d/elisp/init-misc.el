@@ -45,15 +45,13 @@
   :straight t
   :bind ("C-c u" . deadgrep))
 
+(defun my-elfeed-show-mode-hook ()
+  (setq-local shr-width 88))
+
 (use-package elfeed
   :straight t
-  :bind ("C-c r" . elfeed)
-  :custom
-  (elfeed-feeds
-   '("https://cloud.google.com/feeds/gcp-release-notes.xml"
-     "https://status.cloud.google.com/en/feed.atom"
-     "https://docs.digitalocean.com/release-notes/index.xml"
-     "https://www.londonreconnections.com/feed/")))
+  :hook (elfeed-show-mode . my-elfeed-show-mode-hook)
+  :bind ("C-c r" . elfeed))
 
 (use-package expand-region
   :straight t
