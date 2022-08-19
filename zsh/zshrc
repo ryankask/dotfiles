@@ -198,6 +198,12 @@ if [[ "$INSIDE_EMACS" == "vterm" ]]; then
   alias clear='vterm_printf "51;Evterm-clear-scrollback";tput clear'
 fi
 
+# asdf
+
+if (( $+commands[asdf] )); then
+  source $BREW_PREFIX/opt/asdf/libexec/asdf.sh
+fi
+
 # Python
 
 function pyclean() {
