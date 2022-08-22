@@ -146,6 +146,10 @@ from a GCP release notes entry."
   (magit-define-global-key-bindings nil)
   (magit-diff-refine-hunk t))
 
+(use-package nix-mode
+  :straight t
+  :defer t)
+
 (defun my-org-open-line-after-meta-data ()
   "Open a new line after the the following metadata."
   (interactive)
