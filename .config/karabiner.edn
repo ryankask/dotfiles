@@ -28,8 +28,11 @@
                  [:!Qe :!We :emacs-C-c]
                  [:!Qf :!Wf :emacs-C-c]
                  [:!Qj :!Wj :emacs-C-c]
+                 [:!Qk :!Wk :emacs-C-c]
+                 [:!Qr :!Wr :emacs-C-c]
                  [:!Qs :!Ws :emacs-C-c]
                  [:!Qv :!Wv :emacs-C-c]
+                 [:!Qw :!Ww :emacs-C-c]
                  ;; Exit layers
                  [:##right_command
                   :right_command
