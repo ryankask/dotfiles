@@ -160,16 +160,26 @@ from a GCP release notes entry."
 
 (use-package org
   :straight t
-  :bind (:map org-mode-map
-              ("C-'" . nil)
-              ("s-<return>" . org-meta-return)
-              ("s-<left>" . org-metaleft)
-              ("s-<right>" . org-metaright)
-              ("s-<up>" . org-metaup)
-              ("s-<down>" . org-metadown)
-              ("M-t o" . consult-org-heading)
-              ("C-s-<return>" . my-org-open-line-after-meta-data)
-              ("s-RET" . my-org-open-line-after-meta-data))
+  :bind (nil
+         :map org-mode-map
+         ("C-'" . nil)
+         ("s-<return>" . org-meta-return)
+         ("s-<left>" . org-metaleft)
+         ("s-<right>" . org-metaright)
+         ("s-<up>" . org-metaup)
+         ("s-<down>" . org-metadown)
+         ("M-t o" . consult-org-heading)
+         ("C-s-<return>" . my-org-open-line-after-meta-data)
+         ("s-RET" . my-org-open-line-after-meta-data)
+         :repeat-map my-org-motion-repeat-map
+         :exit
+         ("j" . org-goto)
+         :continue
+         ("u" . outline-up-heading)
+         ("b" . org-backward-heading-same-level)
+         ("f" . org-forward-heading-same-level)
+         ("p" . org-previous-visible-heading)
+         ("n" . org-next-visible-heading))
   :hook (org-mode . my-fill-column-setup)
   :custom
   (org-catch-invisible-edits 'show-and-error)
