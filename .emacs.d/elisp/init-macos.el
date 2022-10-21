@@ -2,7 +2,8 @@
 
 (setq ns-function-modifier 'hyper
       ring-bell-function 'ignore
-      trash-directory "~/.Trash")
+      trash-directory "~/.Trash"
+      native-comp-driver-options '("-Wl,-w"))
 
 (use-package exec-path-from-shell
   :straight t
