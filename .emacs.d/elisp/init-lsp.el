@@ -37,8 +37,4 @@
   :config
   (my-lsp-mode-update-keybindings))
 
-(use-package consult-lsp
-  :straight t
-  :after (lsp-mode consult))
-
 (provide 'init-lsp)
