@@ -72,6 +72,8 @@ brew "xsv"
 brew "zoxide"
 brew "zsh"
 brew "twilio/brew/twilio"
+brew "git-delta"
+brew "xh"
 
 cask "1password"
 cask "adoptopenjdk"
