@@ -93,6 +93,8 @@
   (sp-highlight-wrap-tag-overlay nil)
   (sp-max-prefix-length 25)
   (sp-max-pair-length 4)
+  :init
+  (show-paren-mode -1)
   :config
   (smartparens-global-mode t)
   (show-smartparens-global-mode t)
