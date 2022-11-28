@@ -30,17 +30,28 @@
 (setq make-backup-files t
       vc-make-backup-files t
       backup-by-copying t
-      backup-directory-alist `((".*" . ,my-backup-directory))
+      backup-directory-alist (list (cons "." my-backup-directory))
       delete-old-versions t
       kept-new-versions 8
       kept-old-versions 4
-      version-control t)
+      version-control t
+      tramp-backup-directory-alist backup-directory-alist)
 
 ;; Autosaves
-(defconst my-autosave-directory (expand-file-name "autosave/" user-emacs-directory))
+(defconst my-autosave-directory
+  (expand-file-name "autosave/" user-emacs-directory))
 (make-directory my-autosave-directory t)
-(setq auto-save-file-name-transforms
-      `((".*" ,my-autosave-directory t)))
+(defconst my-tramp-autosave-directory
+  (expand-file-name "tramp-autosave/" user-emacs-directory))
+(make-directory my-tramp-autosave-directory t)
+(setq auto-save-default t
+      auto-save-list-file-prefix my-autosave-directory
+      tramp-auto-save-directory my-tramp-autosave-directory
+      auto-save-file-name-transforms
+      (list (list "\\`/[^/]*:\\([^/]*/\\)*\\([^/]*\\)\\'"
+                  ;; Prefix tramp autosaves to prevent conflicts with local ones
+                  (concat auto-save-list-file-prefix "tramp-\\2") t)
+            (list ".*" auto-save-list-file-prefix t)))
 
 (use-package savehist
   :custom
