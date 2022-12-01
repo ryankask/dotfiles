@@ -198,6 +198,7 @@ targets."
 
 (use-package embark
   :straight t
+  :hook (after-init . (lambda () (require 'embark)))
   :bind (("C-." . embark-act)
          ("s-." . embark-dwim)
          :map embark-file-map
