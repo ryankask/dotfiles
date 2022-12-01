@@ -45,6 +45,17 @@
   :init
   (repeat-mode))
 
+(defcustom my-repeat-help-ignored-commands
+  (list #'dired-jump)
+  "List of commands that should not show repeat-help key
+ descriptions."
+  :type '(repeat function))
+
+(defun my-repeat-help-activate-auto-advice ()
+  "Return non-nil if the current command should not show
+ repeat-mode key descriptions."
+  (memq (or this-command real-this-command) my-repeat-help-ignored-commands))
+
 (use-package repeat-help
   :after (repeat embark)
   :straight t
@@ -52,6 +63,8 @@
   (repeat-help-popup-type 'embark)
   (repeat-help-auto t)
   :init
+  (advice-add #'repeat-help--activate-auto :before-until
+              #'my-repeat-help-activate-auto-advice)
   (repeat-help-mode))
 
 (use-package autorevert
