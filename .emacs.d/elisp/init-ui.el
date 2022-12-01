@@ -104,7 +104,6 @@
 
 (use-package minions
   :straight t
-  :demand t
   :custom (minions-mode-line-lighter "")
   :bind ("C-o =" . minions-minor-modes-menu)
   :init
