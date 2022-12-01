@@ -10,6 +10,7 @@
 /history
 /ido.hist
 /.lsp-session*
+/multisession
 /network-security.data
 /smex.hist
 /recentf
