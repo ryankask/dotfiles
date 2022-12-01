@@ -98,13 +98,13 @@
   (dired-listing-switches "-aBhl -v --group-directories-first")
   (dired-recursive-copies 'always)
   (dired-recursive-deletes 'top)
-  (dired-create-destination-dirs 'ask))
+  (dired-create-destination-dirs 'ask)
+  (dired-clean-confirm-killing-deleted-buffers nil))
 
 (use-package dired-x
   :hook (dired-mode . dired-omit-mode)
   :custom
   (dired-omit-verbose nil)
-  (dired-clean-confirm-killing-deleted-buffers nil)
   :config
   (setq dired-omit-files
         (concat dired-omit-files
