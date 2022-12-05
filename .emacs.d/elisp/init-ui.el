@@ -26,9 +26,14 @@
 (column-number-mode t)
 (size-indication-mode t)
 
+;; Most of these are from doom-start.el
 (setq idle-update-delay 1.0
       inhibit-startup-message t
       use-dialog-box nil
+      highlight-nonselected-windows nil
+      redisplay-skip-fontification-on-input t
+      frame-resize-pixelwise t
+      window-resize-pixelwise nil
       initial-scratch-message nil
       use-short-answers t
       confirm-kill-emacs 'yes-or-no-p
@@ -36,6 +41,7 @@
       ;; Do not allow the cursor in the minibuffer prompt
       minibuffer-prompt-properties
       '(read-only t cursor-intangible t face minibuffer-prompt))
+(setq-default cursor-in-non-selected-windows nil)
 
 (use-package window
   :bind
