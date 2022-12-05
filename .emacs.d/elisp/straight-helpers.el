@@ -46,7 +46,7 @@ the upstream branch they are."
 takes should take the found number and returns the updated value.
 This function moves the point and it is expected save-excursion
 will used by the caller."
-  (when (re-search-forward "[[:digit:]]+" (line-end-position) t)
+  (when (re-search-forward "[[:digit:]]+" (pos-eol) t)
     (let* ((current-count (string-to-number (match-string-no-properties 0)))
            (next-count (funcall update current-count))
            (inhibit-read-only t))
@@ -85,7 +85,7 @@ available updates."
 (defun my-straight-helpers--line-package ()
   "Return the straight package on the current line."
   (save-excursion
-    (let ((line-end-pos (line-end-position)))
+    (let ((line-end-pos (pos-eol)))
       (beginning-of-line)
       (when-let ((start (or (and (looking-at "[[:alpha:]]") (point))
                             (1- (re-search-forward "[[:alpha:]]" line-end-pos t))))
@@ -95,7 +95,7 @@ available updates."
 (defun my-straight-helpers--delete-current-line ()
   "Delete the whole line, including the newline."
   (let ((inhibit-read-only t))
-    (delete-region (line-beginning-position) (1+ (line-end-position)))))
+    (delete-region (pos-bol) (1+ (pos-eol)))))
 
 (defun my-straight-helpers--pull-line-package ()
   "Pull the latest changes for the package on the current line."
@@ -106,7 +106,7 @@ available updates."
            (behind-count (my-straight-helpers--git-commits-behind recipe)))
       (if (> behind-count 0)
           (save-excursion
-            (goto-char (line-beginning-position))
+            (goto-char (pos-bol))
             (my-straight-helpers--replace-number-on-line
              (lambda (&rest args) behind-count)))
         (my-straight-helpers--delete-current-line)
