@@ -22,6 +22,7 @@
 /straight/*
 !/straight/versions/
 /transient
+/tree-sitter
 bookmarks
 elpa
 session*
