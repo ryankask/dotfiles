@@ -1,5 +1,8 @@
 ;;;; Ryan Kaskel's emacs configuration -*- lexical-binding: t; -*-
 
+(setq user-full-name "Ryan Kaskel"
+      user-mail-address "dev@ryankaskel.com")
+
 ;;; Paths
 
 (defconst my-elisp-dir (concat user-emacs-directory "elisp"))
@@ -33,7 +36,6 @@
 
 ;; Init packages
 
-(use-package init-core)
 (use-package init-editor)
 (use-package init-ui)
 (use-package init-macos
@@ -47,6 +49,8 @@
 (use-package init-web)
 
 ;; Customisations
+
+(setq custom-file (expand-file-name "elisp/custom.el" user-emacs-directory))
 
 (when (file-exists-p custom-file)
   (load custom-file))
