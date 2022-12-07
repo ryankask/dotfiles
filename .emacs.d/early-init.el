@@ -8,7 +8,8 @@
       package-enable-at-startup nil
       native-comp-async-report-warnings-errors nil
       load-prefer-newer noninteractive
-      frame-inhibit-implied-resize t)
+      frame-inhibit-implied-resize t
+      read-process-output-max (* 1024 1024))
 
 (unless (or (daemonp) noninteractive)
   (setq-default inhibit-redisplay t
