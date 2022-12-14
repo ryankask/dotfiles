@@ -86,6 +86,11 @@ from a GCP release notes entry."
   (gcmh-high-cons-threshold (* 16 1024 1024))
   (gcmh-verbose nil))
 
+(defun my-lispy-emacs-lisp-mode-hook ()
+  "Enable lispy-mode in any Emacs lisp buffer except for the scratch buffer."
+  (when (not (string= (buffer-name) "*scratch*"))
+    (lispy-mode 1)))
+
 (use-package helpful
   :straight t
   :bind (("C-h f" . helpful-callable)
@@ -95,16 +100,10 @@ from a GCP release notes entry."
          ("C-h C" . helpful-command)
          ("C-o d" . helpful-at-point)))
 
-(defun my-lispy-emacs-lisp-mode-hook ()
-  "Enable lispy-mode in any Emacs lisp buffer except for the scratch buffer."
-  (when (not (string= (buffer-name) "*scratch*"))
-    (lispy-mode 1)))
-
 (use-package lispy
   :straight t
   :hook (emacs-lisp-mode . my-lispy-emacs-lisp-mode-hook)
   :bind (:map lispy-mode-map-lispy
-         ("s-," . lispy-mark-symbol)
          ("C-s-," . lispy-mark))
   :config
   ;; Colemak-friendly replacements
@@ -232,6 +231,25 @@ DIR must include a .project file to be considered a project."
   (cl-defmethod project-root ((project (head local)))
     "Return root directory of current PROJECT."
     (cdr project)))
+
+(use-package puni
+  :disabled t
+  :straight t
+  :hook ((emacs-lisp-mode) . puni-disable-puni-mode)
+  :bind (nil
+         :map puni-mode-map
+         ("C-s-t" . puni-syntactic-forward-punct)
+         ("C-s-s" . puni-syntactic-backward-punct)
+         :repeat-map puni-mode-repeat-map
+         ("f" . puni-forward-sexp)
+         ("b" . puni-backward-sexp)
+         ("a" . puni-beginning-of-sexp)
+         ("e" . puni-end-of-sexp)
+         ("t" . puni-syntactic-forward-punct)
+         ("s" . puni-syntactic-backward-punct)
+         ("T" . puni-syntactic-backward-punct))
+  :init
+  (puni-global-mode))
 
 (use-package rainbow-delimiters
   :straight t
