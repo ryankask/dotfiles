@@ -56,7 +56,7 @@
           "type" : "basic"
         } ]
       }, {
-        "description" : "emacs right command to right control",
+        "description" : "emacs",
         "manipulators" : [ {
           "from" : {
             "key_code" : "x",
@@ -499,6 +499,28 @@
           },
           "to" : [ {
             "key_code" : "right_command"
+          } ],
+          "conditions" : [ {
+            "type" : "frontmost_application_if",
+            "bundle_identifiers" : [ "^org\\.gnu\\.Emacs$" ]
+          } ],
+          "type" : "basic"
+        }, {
+          "to_if_alone" : [ {
+            "key_code" : "p",
+            "modifiers" : [ "left_command", "left_control", "left_option", "left_shift" ]
+          } ],
+          "parameters" : {
+            "basic.to_if_alone_timeout_milliseconds" : 500
+          },
+          "from" : {
+            "key_code" : "right_shift",
+            "modifiers" : {
+              "optional" : [ "any" ]
+            }
+          },
+          "to" : [ {
+            "key_code" : "right_shift"
           } ],
           "conditions" : [ {
             "type" : "frontmost_application_if",
