@@ -8,7 +8,7 @@
                  [:##left_control :caps_lock]]}
         {:des "C-m to return in more places"
          :rules [[:!Tm :return_or_enter [:C-m-apps]]]}
-        {:des "emacs right command to right control"
+        {:des "emacs"
          :rules [:emacs
                  ;; C-x
                  [:!Qx [:!Wx ["emacs-C-x" 1]]]
@@ -37,7 +37,13 @@
                  [:##right_command
                   :right_command
                   nil
-                  {:afterup [["emacs-C-x" 0] ["emacs-C-c" 0]]}]]}
+                  {:afterup [["emacs-C-x" 0] ["emacs-C-c" 0]]}]
+                 ;; Other
+                 [:##right_shift
+                  :right_shift
+                  nil
+                  {:alone :!!p
+                   :params {:alone 500}}]]}
          {:des "launch mode"
           :rules [[{:sim [:comma :period]
                     :simo {:interrupt true
