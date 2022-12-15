@@ -27,6 +27,47 @@
 
 (put 'narrow-to-region 'disabled nil)
 
+;; Modal editing
+
+(defun my-ryo-modal-theme-setup ()
+  (setq ryo-modal-cursor-color (modus-themes-color 'blue-intense)
+        ryo-modal-default-cursor-color (face-attribute 'cursor :background)))
+
+(use-package ryo-modal
+  :straight t
+  :after (modus-themes)
+  :bind ("C-M-s-:" . ryo-modal-mode)
+  :hook (modus-themes-after-load-theme . my-ryo-modal-theme-setup)
+  :config
+  (ryo-modal-key "x" ctl-x-map)
+  (ryo-modal-keys
+   ("." ryo-modal-repeat)
+   ("h" "C-b")
+   ("n" "C-n")
+   ("e" "C-p")
+   ("i" "C-f")
+   ("w" "M-f")
+   ("W" "M-b")
+   ("t" "C-M-f")
+   ("s" "C-M-b")
+   ("v" "C-v")
+   ("V" "M-v"))
+  (ryo-modal-keys
+   (:norepeat t)
+   ("0" "M-0")
+   ("1" "M-1")
+   ("2" "M-2")
+   ("3" "M-3")
+   ("4" "M-4")
+   ("5" "M-5")
+   ("6" "M-6")
+   ("7" "M-7")
+   ("8" "M-8")
+   ("9" "M-9"))
+  (with-eval-after-load 'which-key-mode
+    ;; which-key integration
+    (push '((nil . "ryo:.*:") . (nil . "")) which-key-replacement-alist)))
+
 ;; Buffers
 
 (setq my-protected-buffers '("*scratch*" "*Messages*"))

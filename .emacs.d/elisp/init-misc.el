@@ -20,6 +20,7 @@
          ("M-w" . avy-goto-word-1)
          :map isearch-mode-map
          ("C-'" . avy-isearch))
+  :ryo ("'" "C-'")
   :custom
   (avy-keys '(?a ?r ?s ?t ?n ?e ?i ?o))
   (avy-timeout-seconds 0.3)
@@ -71,7 +72,18 @@ from a GCP release notes entry."
 
 (use-package expand-region
   :straight t
-  :bind ("C-=" . er/expand-region))
+  :bind ("C-=" . er/expand-region)
+  :ryo
+  ("=" er/expand-region)
+  ("m"
+   (("w" er/mark-word)
+    ("d" er/mark-defun)
+    ("s" er/mark-symbol)
+    ("'" er/mark-inside-quotes)
+    ("\"" er/mark-outside-quotes)
+    ("[" er/mark-inside-pairs)
+    ("{" er/mark-outside-pairs)
+    ("c" er/mark-comment))))
 
 (use-package flycheck
   :straight t
