@@ -35,13 +35,13 @@
 
 (use-package ryo-modal
   :straight t
-  :after (modus-themes)
   :bind ("C-M-s-:" . ryo-modal-mode)
   :hook (modus-themes-after-load-theme . my-ryo-modal-theme-setup)
   :config
-  (ryo-modal-key "x" ctl-x-map)
+  (suppress-keymap ryo-modal-mode-map 't)
   (ryo-modal-keys
    ("." ryo-modal-repeat)
+   ("g" "C-g")
    ("h" "C-b")
    ("n" "C-n")
    ("e" "C-p")
@@ -51,7 +51,8 @@
    ("t" "C-M-f")
    ("s" "C-M-b")
    ("v" "C-v")
-   ("V" "M-v"))
+   ("V" "M-v")
+   ("m m" "C-SPC"))
   (ryo-modal-keys
    (:norepeat t)
    ("0" "M-0")
