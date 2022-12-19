@@ -24,7 +24,8 @@
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
 
-(straight-use-package 'use-package)
+(when (< emacs-major-version 29)
+  (straight-use-package 'use-package))
 
 ;;; Initialization
 
