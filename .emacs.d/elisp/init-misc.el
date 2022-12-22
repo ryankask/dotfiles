@@ -224,8 +224,6 @@ DIR must include a .project file to be considered a project."
 
 (use-package project
   :bind-keymap ("s-p" . project-prefix-map)
-  :custom
-  (vterm-toggle-scope 'project)
   :config
   (add-hook 'project-find-functions 'my-project-try-local -10)
   (cl-defmethod project-root ((project (head local)))
@@ -315,7 +313,9 @@ session."
   (vterm-always-compile-module t)
   (vterm-max-scrollback 5000)
   (vterm-timer-delay .025)
-  :bind (:map vterm-mode-map
+  (vterm-toggle-scope 'project)
+  :bind (nil
+         :map vterm-mode-map
          ("C-k" . my-vterm-send-C-k)
          ("C-o" . nil)
          ("C-o C-t" . vterm-copy-mode)
