@@ -86,6 +86,12 @@ from a GCP release notes entry."
   (gcmh-high-cons-threshold (* 16 1024 1024))
   (gcmh-verbose nil))
 
+;; internal
+(use-package golink
+  :bind (("C-o g" . golink-open)
+         :map embark-url-map
+         ("g" . golink-create)))
+
 (defun my-lispy-emacs-lisp-mode-hook ()
   "Enable lispy-mode in any Emacs lisp buffer except for the scratch buffer."
   (when (not (string= (buffer-name) "*scratch*"))
