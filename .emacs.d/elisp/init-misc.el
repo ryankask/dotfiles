@@ -222,13 +222,42 @@ DIR must include a .project file to be considered a project."
                      (locate-dominating-file dir my-project-local-identifier))))
     (cons 'local root)))
 
+(defun my-project-get-relative-path (path &optional project)
+  "Return PATH relative to the root of PROJECT. If PROJECT is nil,
+use the current project."
+  (let ((project (or project (project-current))))
+    (file-relative-name path (project-root project))))
+
+(defun my-copy-project-relative-path-as-kill (&optional path)
+  "Copy PATH relative to the current project's path to the
+ kill ring. If PATH is nil, use `buffer-file-name'."
+  (interactive)
+  (when-let ((path (or path buffer-file-name))
+             (rel-path (my-project-get-relative-path path)))
+    (message "%s" rel-path)
+    (kill-new rel-path)))
+
+(defun my-dired-copy-project-relative-path-as-kill ()
+  "Copy the project relative path of the current line of a dired
+ buffer to the kill ring."
+  (interactive)
+  (when-let ((path (dired-get-filename)))
+    (my-copy-project-relative-path-as-kill path)))
+
 (use-package project
   :bind-keymap ("s-p" . project-prefix-map)
+  :bind (nil
+         :map project-prefix-map
+         ("w" . my-copy-project-relative-path-as-kill))
   :config
   (add-hook 'project-find-functions 'my-project-try-local -10)
   (cl-defmethod project-root ((project (head local)))
     "Return root directory of current PROJECT."
-    (cdr project)))
+    (cdr project))
+
+  (with-eval-after-load 'dired
+    (bind-key "W" #'my-dired-copy-project-relative-path-as-kill
+              dired-mode-map)))
 
 (use-package puni
   :disabled t
