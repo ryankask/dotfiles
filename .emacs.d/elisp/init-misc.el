@@ -190,6 +190,7 @@ from a GCP release notes entry."
   (org-catch-invisible-edits 'show-and-error)
   (org-cycle-separator-lines 1)
   (org-hide-emphasis-markers t)
+  (org-fontify-done-headline nil)
   (org-insert-heading-respect-content t)
   (org-log-done 'time)
   (org-log-into-drawer t)

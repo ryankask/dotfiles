@@ -91,22 +91,25 @@
 (defun my-modus-themes-setup ()
   (my-theme-configure-frames))
 
+(defun my-modus-themes-init ()
+  (require 'modus-themes)
+  (modus-themes-load-theme 'modus-vivendi))
+
 (use-package modus-themes
   :straight t
   :custom
+  (modus-themes-custom-auto-reload nil)
   (modus-themes-bold-constructs nil)
   (modus-themes-italic-constructs t)
-  (modus-themes-mode-line '(3d))
-  (modus-themes-region '(bg-only))
-  (modus-themes-paren-match '(intense))
-  (modus-themes-completions '((matches . (background intense))
-                              (selection . (intense))
-                              (popup . (accented intense))))
+  (modus-themes-common-palette-overrides
+   `((bg-region bg-lavender)
+     (fg-region unspecified)
+     (bg-paren-match bg-magenta-intense)
+     (border-mode-line-active unspecified)
+     (border-mode-line-inactive unspecified)))
   :bind ("C-o w" . modus-themes-toggle)
-  :init
-  (add-hook 'modus-themes-after-load-theme-hook #'my-modus-themes-setup)
-  (modus-themes-load-themes)
-  (modus-themes-load-vivendi))
+  :hook ((after-init . my-modus-themes-init)
+         (modus-themes-after-load-theme . my-modus-themes-setup)))
 
 (use-package minions
   :straight t
