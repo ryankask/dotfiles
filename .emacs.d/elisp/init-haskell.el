@@ -17,7 +17,7 @@
 (use-package lsp-haskell
   :straight t
   :after haskell-mode
-  :hook ((haskell-mode . lsp-deferred)
-         (haskell-liteate-mode . lsp-deferred)))
+  :hook ((haskell-mode . my-lsp-ensure)
+         (haskell-liteate-mode . my-lsp-ensure)))
 
 (provide 'init-haskell)
