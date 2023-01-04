@@ -215,14 +215,27 @@ You can specify a single filename or a list of names."
 markers."
   :type '(list function))
 
+(defun my-project--from-local-command ()
+  "Return non-nil if `this-command' should respect project local
+ identifiers."
+  (and this-command
+       my-project-local-commands
+       (memq this-command my-project-local-commands)))
+
+(defun my-project--use-local ()
+  "Return non-nil if local project identifiers should be used to
+find projects."
+  (or
+   ;; Either eglot is searching for a project
+   (and (boundp 'eglot-lsp-context) eglot-lsp-context)
+   ;; Or the current command should respect local identifiers
+   (my-project--from-local-command)))
+
 (defun my-project-try-local (dir)
   "Determine if DIR is a non-VC project.
 DIR must include a .project file to be considered a project."
-  (when-let (root (and
-                   (or (not this-command)
-                       (not my-project-local-commands)
-                       (memq this-command my-project-local-commands))
-                   (if (listp my-project-local-identifier)
+  (when-let (((my-project--use-local))
+             (root (if (listp my-project-local-identifier)
                        (seq-some (lambda (n)
                                    (locate-dominating-file dir n))
                                  my-project-local-identifier)

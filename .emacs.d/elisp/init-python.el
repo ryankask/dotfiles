@@ -60,7 +60,7 @@ isn't found."
 
 (defun my-python-mode-setup ()
   "Hook to run when python-mode is enabled"
-  (lsp-deferred))
+  (my-lsp-ensure))
 
 (use-package python
   :bind (:map python-mode-map
