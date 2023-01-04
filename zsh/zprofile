@@ -51,6 +51,8 @@ path=(
   $HOME/.local/bin
   $GOPATH/bin
   $HOME/.cargo/bin
+  $HOME/.cabal/bin
+  $HOME/.ghcup/bin
   $BREW_PREFIX/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin
   $BREW_PREFIX/opt/coreutils/libexec/gnubin
   $BREW_PREFIX/bin
