@@ -47,6 +47,7 @@
 (use-package init-python)
 (use-package init-go)
 (use-package init-rust)
+(use-package init-haskell)
 (use-package init-web)
 
 ;; Customisations
