@@ -1,44 +1,23 @@
 ;;; -*- lexical-binding: t; -*-
 
+(defun my-haskell-mode-setup ()
+  (interactive-haskell-mode)
+  (subword-mode 1))
+
 (use-package haskell-mode
-  :disabled
   :straight t
+  :custom
+  (haskell-process-suggest-remove-import-lines t)
+  (haskell-process-auto-import-loaded-modules t)
+  (haskell-process-show-overlays nil)
+  :hook (haskell-mode . my-haskell-mode-setup)
   :init
-  (setq haskell-process-type 'stack-ghci)
-  (add-hook 'haskell-mode-hook
-            (lambda ()
-              (flycheck-select-checker 'haskell-stack-ghc)
-              (setq-local flycheck-check-syntax-automatically '(save idle-change mode-enabled))
-              (interactive-haskell-mode)
-              (subword-mode +1))))
+  (add-to-list 'completion-ignored-extensions ".hi"))
 
-(use-package ghc
-  :disabled
+(use-package lsp-haskell
   :straight t
-  :commands (ghc-init ghc-debug)
-  :init (add-hook 'haskell-mode-hook 'ghc-init))
-
-(use-package company-ghc
-  :disabled
-  :straight t
-  :init
-  (add-hook 'haskell-mode-hook
-            (lambda ()
-              (setq-local company-backends
-                          '((company-ghc :with company-dabbrev-code) company-dabbrev-code)))))
-
-(use-package hindent
-  :disabled
-  :straight t
-  :defer t
-  :init
-  (add-hook 'haskell-mode-hook 'hindent-mode))
-
-(use-package intero
-  :disabled
-  :straight t
-  :defer t
-  :init
-  (add-hook 'haskell-mode-hook 'intero-mode))
+  :after haskell-mode
+  :hook ((haskell-mode . lsp-deferred)
+         (haskell-liteate-mode . lsp-deferred)))
 
 (provide 'init-haskell)
