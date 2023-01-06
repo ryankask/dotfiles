@@ -265,4 +265,8 @@ Position the cursor at its beginning, according to the current mode."
 
 (bind-key "s-i" 'crux-smart-open-line-above)
 
+(use-package eldoc
+  :custom
+  (eldoc-echo-area-use-multiline-p nil))
+
 (provide 'init-editor)

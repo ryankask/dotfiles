@@ -73,10 +73,6 @@ from a GCP release notes entry."
   :straight t
   :bind ("C-=" . er/expand-region))
 
-(use-package flycheck
-  :straight t
-  :custom (flycheck-keymap-prefix (kbd "C-o C-k")))
-
 (use-package gcmh
   :straight t
   :hook (emacs-startup . gcmh-mode)
