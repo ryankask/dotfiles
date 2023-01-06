@@ -53,9 +53,16 @@
   (eglot-connect-timeout 10)
   (eglot-autoshutdown t)
   (eglot-menu-string "€")
-  :bind (nil
+  :bind (("C-o s s" . eglot)
          :map eglot-mode-map
-         ("C-o f" . eglot-format)))
+         ("C-o f" . eglot-format)
+         ("C-o s v" . eglot-events-buffer)
+         ("C-o s f" . eglot-format)
+         ("C-o s t" . eglot-code-actions)
+         ("C-o s S" . eglot-reconnect)
+         ("C-o s r" . eglot-rename)
+         ("C-o s c" . eglot-show-workspace-configuration)
+         ("C-o s q" . eglot-shutdown)))
 
 ;; Common interface
 
