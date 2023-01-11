@@ -175,7 +175,7 @@
 (use-package ispell
   :custom
   (ispell-program-name "aspell")
-  (ispell-extra-args '("--sug-mode=ultra" "--run-together"))
+  (ispell-extra-args '("--sug-mode=ultra"))
   :config
   (dolist (item '((":\\(PROPERTIES\\|LOGBOOK\\):" . ":END:")
                   ("#\\+BEGIN_SRC" . "#\\+END_SRC")
