@@ -57,6 +57,7 @@
   (expand-file-name "tramp-autosave/" user-emacs-directory))
 (make-directory my-tramp-autosave-directory t)
 (setq auto-save-default t
+      auto-save-include-big-deletions t
       auto-save-list-file-prefix my-autosave-directory
       tramp-auto-save-directory my-tramp-autosave-directory
       auto-save-file-name-transforms
@@ -64,6 +65,12 @@
                   ;; Prefix tramp autosaves to prevent conflicts with local ones
                   (concat auto-save-list-file-prefix "tramp-\\2") t)
             (list ".*" auto-save-list-file-prefix t)))
+
+;; Lockfiles
+(defconst my-lockfile-directory (expand-file-name "lockfiles/" user-emacs-directory))
+(make-directory my-lockfile-directory t)
+(setq create-lockfiles t
+      lock-file-name-transforms (list (list ".*" my-lockfile-directory t)))
 
 (use-package savehist
   :custom
