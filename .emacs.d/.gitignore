@@ -3,6 +3,8 @@
 /ac-comphist.dat
 /abbrev_defs
 /amx-items
+/autosave
+/backups
 /custom.el
 /eln-cache
 /eshell
@@ -10,6 +12,7 @@
 /history
 /ido.hist
 /.lsp-session*
+/lockfiles
 /multisession
 /network-security.data
 /smex.hist
@@ -22,6 +25,7 @@
 /spell-fu
 /straight/*
 !/straight/versions/
+/tramp
 /transient
 /tree-sitter
 bookmarks
