@@ -1,3 +1,7 @@
+# Emacs
+
+.dir-locals.el
+
 # JetBrains
 
 /.idea
