@@ -15,6 +15,7 @@
   (add-to-list 'completion-ignored-extensions ".hi"))
 
 (use-package lsp-haskell
+  :if (eq my-lsp-provider 'lsp-mode)
   :straight t
   :after haskell-mode
   :hook ((haskell-mode . my-lsp-ensure)

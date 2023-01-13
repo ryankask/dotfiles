@@ -9,6 +9,8 @@
   :bind (:map rustic-compilation-mode-map
               ("C-o" . nil))
   :hook (rustic-mode . my-rustic-mode-setup)
+  :custom
+  (rustic-lsp-client my-lsp-provider)
   :config
   (if (fboundp 'sp-local-pair)
       (sp-with-modes '(rustic-mode)
