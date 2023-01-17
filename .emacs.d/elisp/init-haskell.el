@@ -1,6 +1,7 @@
 ;;; -*- lexical-binding: t; -*-
 
 (defun my-haskell-mode-setup ()
+  (my-lsp-ensure)
   (interactive-haskell-mode)
   (subword-mode 1))
 
