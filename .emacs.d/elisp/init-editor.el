@@ -325,4 +325,14 @@ Position the cursor at its beginning, according to the current mode."
   :custom
   (eldoc-echo-area-use-multiline-p nil))
 
+(use-package flymake
+  :bind (nil
+         :map flymake-mode-map
+         ("M-n" . flymake-goto-next-error)
+         ("M-p" . flymake-goto-prev-error)
+         ("C-c y" . flymake-show-buffer-diagnostics)
+         :repeat-map my-flymake-mode-repeat-map
+         ("n" . flymake-goto-next-error)
+         ("p" . flymake-goto-prev-error)))
+
 (provide 'init-editor)
