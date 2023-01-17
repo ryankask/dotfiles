@@ -356,6 +356,7 @@ session."
   :hook (vterm-mode . my-vterm-mode-hook)
   :custom
   (vterm-always-compile-module t)
+  (vterm-kill-buffer-on-exit t)
   (vterm-max-scrollback 5000)
   (vterm-timer-delay .025)
   (vterm-toggle-scope 'project)
