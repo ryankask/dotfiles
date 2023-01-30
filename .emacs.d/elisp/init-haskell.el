@@ -24,7 +24,7 @@
 
 (use-package lsp-haskell
   :if (eq my-lsp-provider 'lsp-mode)
-  :straight t
+  :straight nil
   :after haskell-mode
   :hook ((haskell-mode . my-lsp-ensure)
          (haskell-liteate-mode . my-lsp-ensure)))
