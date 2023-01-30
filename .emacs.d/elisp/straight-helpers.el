@@ -120,8 +120,8 @@ buffer."
 
 (defvar my-straight-packages-mode-map
   (let ((map (make-sparse-keymap)))
-    (define-key map (kbd "u") #'my-straight-helpers--pull-line-package)
-    (define-key map (kbd "U") #'my-straight-helpers--pull-all-outdated-packages)
+    (keymap-set map "u" #'my-straight-helpers--pull-line-package)
+    (keymap-set map "U" #'my-straight-helpers--pull-all-outdated-packages)
     map)
   "Keymap for managing straight packages.")
 

@@ -286,12 +286,12 @@
   (define-minor-mode undo-fu-mode
     "Enables `undo-fu' for the current session."
     :keymap (let ((map (make-sparse-keymap)))
-              (define-key map [remap undo] #'undo-fu-only-undo)
-              (define-key map [remap redo] #'undo-fu-only-redo)
-              (define-key map (kbd "C-s-/") #'undo-fu-only-redo)
-              (define-key map (kbd "C-_") #'undo-fu-only-undo)
-              (define-key map (kbd "M-_") #'undo-fu-only-redo)
-              (define-key map (kbd "C-M-_") #'undo-fu-only-redo-all)
+              (keymap-set map "<remap> <undo>" #'undo-fu-only-undo)
+              (keymap-set map "<remap> <redo>" #'undo-fu-only-redo)
+              (keymap-set map "C-s-/" #'undo-fu-only-redo)
+              (keymap-set map "C-_" #'undo-fu-only-undo)
+              (keymap-set map "M-_" #'undo-fu-only-redo)
+              (keymap-set map "C-M-_" #'undo-fu-only-redo-all)
               map)
     :init-value nil
     :global t)
