@@ -84,6 +84,8 @@
          ("C-x 5 b" . consult-buffer-other-frame)
          ("C-x p b" . consult-project-buffer)
          ("M-y" . consult-yank-pop)
+         ("C-c h" . consult-info)
+         ([remap Info-search] . consult-info)
          ("C-c n" . consult-ripgrep)
          ("C-c e" . my-consult-fd)
          ("C-c i" . my-consult-mdfind)
