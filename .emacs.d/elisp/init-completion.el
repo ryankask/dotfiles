@@ -56,7 +56,7 @@
 
 (defun my-consult-mdfind-builder (input)
   (pcase-let ((`(,arg . ,opts) (consult--command-split input)))
-    `(:command ("mdfind" "-name" ,arg ,@opts))))
+    (cons (append (list "mdfind" "-name" arg) opts) nil)))
 
 (defun my-consult-mdfind (&optional initial)
   (interactive)
