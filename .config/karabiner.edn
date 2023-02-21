@@ -1,8 +1,9 @@
 {:applications {:emacs ["^org\\.gnu\\.Emacs$"]
                 :kitty ["^net\\.kovidgoyal\\.kitty$"]
                 :C-m-apps ["^com\\.google\\.Chrome$"
-                           "^com\\.tinyspeck\\.slackmacgap$"
-                           "^com\\.microsoft\\.VSCode$"]}
+                           "^com\\.microsoft\\.VSCode$"]
+                :emacs-emulation-apps ["^com\\.tinyspeck\\.slackmacgap$"
+                                       "^notion\\.id"$]}
  :main [{:des "swap caps lock to left control"
          :rules [[:##caps_lock :left_control]
                  [:##left_control :caps_lock]]}
@@ -44,6 +45,12 @@
                   nil
                   {:alone :!!p
                    :params {:alone 500}}]]}
+        {:des "Emacs emulation apps"
+         :rules [:emacs-emulation-apps
+                 [:!Tm :return_or_enter]
+                 [:!Tr :up_arrow]
+                 [:!Tj :down_arrow]
+                 [:!Tt :escape]]}
          {:des "launch mode"
           :rules [[{:sim [:comma :period]
                     :simo {:interrupt true
