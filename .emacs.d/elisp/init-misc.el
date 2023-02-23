@@ -1,7 +1,5 @@
 ;;; Load miscellaneous packages -*- lexical-binding: t; -*-
 
-;;; Productivity
-
 (defun my-avy-action-embark (pt)
   (unwind-protect
       (save-excursion
@@ -33,6 +31,11 @@
          ("s-o" . ace-window))
   :custom
   (aw-keys '(?t ?s ?r ?n ?e ?i ?o ?a)))
+
+(use-package css
+  :defer t
+  :custom
+  (css-indent-offset 2))
 
 (use-package direnv
   :straight t
@@ -88,11 +91,6 @@ from a GCP release notes entry."
          :map embark-url-map
          ("g" . golink-create)))
 
-(defun my-lispy-emacs-lisp-mode-hook ()
-  "Enable lispy-mode in any Emacs lisp buffer except for the scratch buffer."
-  (when (not (string= (buffer-name) "*scratch*"))
-    (lispy-mode 1)))
-
 (use-package helpful
   :straight t
   :bind (("C-h f" . helpful-callable)
@@ -102,11 +100,33 @@ from a GCP release notes entry."
          ("C-h C" . helpful-command)
          ("C-o d" . helpful-at-point)))
 
+(use-package js-mode
+  :mode ("\\.js\\'"
+         "\\.json\\'")
+  :custom
+  (js-indent-level 2))
+
+(defun my-ledger-mode-hook ()
+  (setq-local corfu-quit-no-match t))
+
+(use-package ledger-mode
+  :straight t
+  :defer t
+  :hook
+  (ledger-mode . my-ledger-mode-hook)
+  :custom
+  (ledger-default-date-format ledger-iso-date-format))
+
+(defun my-lispy-emacs-lisp-mode-hook ()
+  "Enable lispy-mode in any Emacs lisp buffer except for the scratch buffer."
+  (when (not (string= (buffer-name) "*scratch*"))
+    (lispy-mode 1)))
+
 (use-package lispy
   :straight t
   :hook (emacs-lisp-mode . my-lispy-emacs-lisp-mode-hook)
   :bind (:map lispy-mode-map-lispy
-         ("C-s-," . lispy-mark))
+              ("C-s-," . lispy-mark))
   :config
   ;; Colemak-friendly replacements
   ;; Note this comment from the author: https://github.com/abo-abo/lispy/issues/324#issuecomment-270357175
@@ -135,6 +155,10 @@ from a GCP release notes entry."
     ("e" lispy-knight-up)
     ("z" nil)))
 
+(use-package lua-mode
+  :straight t
+  :defer t)
+
 (use-package magit
   :straight t
   :bind (("s-m m" . magit-status)
@@ -146,6 +170,12 @@ from a GCP release notes entry."
   :custom
   (magit-define-global-key-bindings nil)
   (magit-diff-refine-hunk t))
+
+(use-package markdown-mode
+  :straight t
+  :hook (markdown-mode . my-fill-column-setup)
+  :custom
+  (markdown-command "pandoc"))
 
 (use-package nix-mode
   :straight t
@@ -299,6 +329,28 @@ use the current project."
   :hook
   (prog-mode . rainbow-delimiters-mode-enable))
 
+(use-package rst-mode
+  :defer t
+  :hook (rst-mode . my-fill-column-setup))
+
+(use-package scss-mode
+  :straight t
+  :defer t
+  :custom
+  (scss-compile-at-save nil))
+
+(use-package sh-mode
+  :defer t
+  :custom
+  (sh-basic-offset 2)
+  (sh-indentation 2)
+  :config
+  (dolist (capf (list #'sh-completion-at-point-function
+                      #'comint-completion-at-point))
+    (advice-add capf :around
+                (lambda (orig)
+                  (cape-wrap-properties orig :exclusive 'no)))))
+
 ;; internal
 (use-package straight-helpers)
 
@@ -335,6 +387,10 @@ session."
          ("C-s-[" . my-tempel-immediate-done-beginning)
          ("C-s-]" . my-tempel-immediate-done-end))
   :hook ((prog-mode text-mode) . tempel-setup-capf))
+
+(use-package toml-mode
+  :straight t
+  :defer t)
 
 ;; internal
 (use-package use-package-helpers
@@ -382,6 +438,10 @@ session."
   :init
   (which-key-mode))
 
+(use-package yaml-mode
+  :straight t
+  :defer t)
+
 (defun my-yasnippet-snippet-mode-hook ()
   (setq-local require-final-newline nil))
 
@@ -390,62 +450,5 @@ session."
   :hook (snippet-mode . my-yasnippet-snippet-mode-hook)
   :init
   (yas-global-mode 1))
-
-;;; Languages
-
-(use-package css
-  :defer t
-  :custom
-  (css-indent-offset 2))
-
-(use-package js-mode
-  :mode ("\\.js\\'"
-         "\\.json\\'")
-  :custom
-  (js-indent-level 2))
-
-(use-package lua-mode
-  :straight t
-  :defer t)
-
-(use-package scss-mode
-  :straight t
-  :defer t
-  :custom
-  (scss-compile-at-save nil))
-
-(use-package sh-mode
-  :defer t
-  :custom
-  (sh-basic-offset 2)
-  (sh-indentation 2)
-  :config
-  (dolist (capf (list #'sh-completion-at-point-function
-                      #'comint-completion-at-point))
-    (advice-add capf :around
-                (lambda (orig)
-                  (cape-wrap-properties orig :exclusive 'no)))))
-
-;;; Formats
-
-(use-package toml-mode
-  :straight t
-  :defer t)
-
-(use-package yaml-mode
-  :straight t
-  :defer t)
-
-;;; Writing
-
-(use-package markdown-mode
-  :straight t
-  :hook (markdown-mode . my-fill-column-setup)
-  :custom
-  (markdown-command "pandoc"))
-
-(use-package rst-mode
-  :defer t
-  :hook (rst-mode . my-fill-column-setup))
 
 (provide 'init-misc)
