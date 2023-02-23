@@ -106,6 +106,10 @@ from a GCP release notes entry."
   :custom
   (js-indent-level 2))
 
+(use-package just-mode
+  :straight t
+  :defer t)
+
 (defun my-ledger-mode-hook ()
   (setq-local corfu-quit-no-match t))
 
