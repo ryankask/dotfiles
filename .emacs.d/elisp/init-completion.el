@@ -21,7 +21,9 @@
 (use-package vertico-multiform
   :after (vertico consult)
   :custom
-  (vertico-multiform-commands '((consult-line buffer)))
+  (vertico-multiform-commands
+   '((consult-line buffer)
+     (embark-prefix-help-command buffer)))
   :init
   (vertico-multiform-mode))
 
