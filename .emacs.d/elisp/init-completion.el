@@ -51,10 +51,10 @@
 
 (defun my-consult-fd (&optional dir initial)
   (interactive "P")
-  (let* ((prompt-dir (consult--directory-prompt "Fd" dir))
-         (default-directory (cdr prompt-dir)))
+  (pcase-let* ((`(,prompt ,paths ,dir) (consult--directory-prompt "Fd" dir))
+               (default-directory dir))
     (find-file
-     (consult--find (car prompt-dir) #'my-consult-fd-builder initial))))
+     (consult--find prompt #'my-consult-fd-builder initial))))
 
 (defun my-consult-mdfind-builder (input)
   (pcase-let ((`(,arg . ,opts) (consult--command-split input)))
