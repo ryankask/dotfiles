@@ -213,8 +213,13 @@ targets."
                                embark-isearch-highlight-indicator))
   :init
   (setq prefix-help-command #'embark-prefix-help-command)
-  (advice-add #'embark-completing-read-prompter
-              :around #'embark-hide-which-key-indicator)
+  (with-eval-after-load 'which-key
+    ;; Prevent which-key from resetting prefix-help-command when it's
+    ;; disabled/re-enabled (eg by Magit)
+    (setq which-key--prefix-help-cmd-backup #'embark-prefix-help-command)
+    (push #'embark-prefix-help-command which-key--paging-functions)
+    (advice-add #'embark-completing-read-prompter
+                :around #'embark-hide-which-key-indicator))
   :config
   (add-to-list 'display-buffer-alist
                '("\\`\\*Embark Collect \\(Live\\|Completions\\)\\*"
