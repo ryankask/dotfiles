@@ -351,7 +351,7 @@ use the current project."
   :defer t
   :custom
   (sh-basic-offset 2)
-  (sh-indentation 2)
+  (sh-indent-for-continuation sh-basic-offset)
   :config
   (dolist (capf (list #'sh-completion-at-point-function
                       #'comint-completion-at-point))
