@@ -62,7 +62,10 @@
          ("C-o s S" . eglot-reconnect)
          ("C-o s r" . eglot-rename)
          ("C-o s c" . eglot-show-workspace-configuration)
-         ("C-o s q" . eglot-shutdown)))
+         ("C-o s q" . eglot-shutdown))
+  :config
+  (setf (alist-get 'styles (alist-get 'eglot completion-category-defaults))
+        '(orderless)))
 
 ;; Common interface
 
