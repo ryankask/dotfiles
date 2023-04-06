@@ -10,15 +10,20 @@ layout_virtualenvwrapper() {
 
 layout_poetry() {
   # Create the path to the virtualenv without invoking Poetry.
-  # From https://github.com/python-poetry/poetry/blob/master/poetry/utils/env.py#L418
+  # Adapted from `EnvManager.generate_env_name()` in
+  # https://github.com/python-poetry/poetry/blob/master/src/poetry/utils/env.py
   local sanitized_project_name=$( \
-      awk -F '[ ="]+' '$1 == "name" { print $2 }' pyproject.toml \
+    awk -f $DOTFILES/.config/direnv/poetry-project-name.awk pyproject.toml \
     | tr '[:upper:]' '[:lower:]' \
-    | sed 's/[^-[:alnum:]]/-/g' \
-    | cut -c -42 \
+    | sed 's/[ $`!*@"\]/_/g' \
+    | cut -c -42
   )
+  if [[ -z "$sanitized_project_name" ]]; then
+    echo "layout_poetry: project name not found"
+    exit 1
+  fi
   local hashed_pwd=$(
-      echo -n $PWD \
+    echo -n $PWD \
     | sha256sum \
     | cut -d ' ' -f 1 \
     | xxd -r -p \
