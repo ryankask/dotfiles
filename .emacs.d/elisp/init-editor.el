@@ -46,8 +46,7 @@
       delete-old-versions t
       kept-new-versions 8
       kept-old-versions 4
-      version-control t
-      tramp-backup-directory-alist backup-directory-alist)
+      version-control t)
 
 ;; Autosaves
 (defconst my-autosave-directory
