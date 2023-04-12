@@ -53,16 +53,19 @@
   (eglot-connect-timeout 10)
   (eglot-autoshutdown t)
   (eglot-menu-string "€")
-  :bind (("C-o s s" . eglot)
+  :bind (("C-o C-s s" . eglot)
          :map eglot-mode-map
          ("C-o f" . eglot-format)
-         ("C-o s v" . eglot-events-buffer)
-         ("C-o s f" . eglot-format)
-         ("C-o s t" . eglot-code-actions)
-         ("C-o s S" . eglot-reconnect)
-         ("C-o s r" . eglot-rename)
-         ("C-o s c" . eglot-show-workspace-configuration)
-         ("C-o s q" . eglot-shutdown))
+         :prefix-map my-eglot-mode-map
+         :prefix "C-o C-s"
+         ("v" . eglot-events-buffer)
+         ("f" . eglot-format)
+         ("t" . eglot-code-actions)
+         ("C-t" . eglot-code-actions)
+         ("S" . eglot-reconnect)
+         ("r" . eglot-rename)
+         ("c" . eglot-show-workspace-configuration)
+         ("q" . eglot-shutdown))
   :config
   (setf (alist-get 'styles (alist-get 'eglot completion-category-defaults))
         '(orderless)))
