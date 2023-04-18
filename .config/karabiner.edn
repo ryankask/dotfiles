@@ -9,44 +9,26 @@
                  [:##left_control :caps_lock]]}
         {:des "C-m to return in more places"
          :rules [[:!Tm :return_or_enter [:C-m-apps]]]}
-        {:des "# to right control when held"
-         :rules [[:#COQEbackslash :right_control nil {:alone :backslash}]]}
-        {:des "emacs"
-         :rules [:emacs
-                 ;; C-x
-                 [:!Qx [:!Wx ["emacs-C-x" 1]]]
-                 [:!Qa :!Wa :emacs-C-c]
-                 [:!Qb :!Wb :emacs-C-x]
-                 [:!Qd :!Wd :emacs-C-x]
-                 [:!Qg :!Wg :emacs-C-x]
-                 [:!Qe :!We :emacs-C-x]
-                 [:!Qf :!Wf :emacs-C-x]
-                 [:!Qq :!Wq :emacs-C-x]
-                 [:!Qw :!Ww :emacs-C-x]
-                 [:!Qv :!Wv :emacs-C-x]
-                 ;; C-c
-                 [:!Qc [:!Wc ["emacs-C-c" 1]]]
-                 [:!Qa :!Wa :emacs-C-c]
-                 [:!Qb :!Wb :emacs-C-c]
-                 [:!Qe :!We :emacs-C-c]
-                 [:!Qf :!Wf :emacs-C-c]
-                 [:!Qj :!Wj :emacs-C-c]
-                 [:!Qk :!Wk :emacs-C-c]
-                 [:!Qr :!Wr :emacs-C-c]
-                 [:!Qs :!Ws :emacs-C-c]
-                 [:!Qv :!Wv :emacs-C-c]
-                 [:!Qw :!Ww :emacs-C-c]
-                 ;; Exit layers
-                 [:##right_command
-                  :right_command
+        {:des "' to right control when held"
+         :rules [[:#COQEquote
+                  :right_control
                   nil
-                  {:afterup [["emacs-C-x" 0] ["emacs-C-c" 0]]}]
-                 ;; Other
-                 [:##right_shift
-                  :right_shift
-                  nil
-                  {:alone :!!p
-                   :params {:alone 500}}]]}
+                  {:alone :quote
+                   :afterup [["right-control-prefix-map" 0]]}]
+                 ; Activate a prefix map so the below exclusions don't take effect
+                 [:!Wx [:!Wx ["right-control-prefix-map" 1]]]
+                 [:!Wc [:!Wc ["right-control-prefix-map" 1]]]
+                 [:!Wh [:!Wh ["right-control-prefix-map" 1]]]
+                 [:!Wo [:!Wo ["right-control-prefix-map" 1]]]
+                 ; Exclude letters that commonly appear with apostrophes if a prefix
+                 ; map isn't activated
+                 [:!Wd [:quote :d] :!right-control-prefix-map]    ; she's
+                 [:!Wf [:quote :f] :!right-control-prefix-map]    ; hasn't
+                 [:!Wg [:quote :g] :!right-control-prefix-map]    ; he'd
+                 [:!Wm [:quote :m] :!right-control-prefix-map]    ; I'm
+                 [:!Ws [:quote :s] :!right-control-prefix-map]    ; you're
+                 [:!Wu [:quote :u] :!right-control-prefix-map]    ; we'll
+                 [:!Wv [:quote :v] :!right-control-prefix-map]]}  ; they've
         {:des "Emacs emulation apps"
          :rules [:emacs-emulation-apps
                  [:!Tm :return_or_enter]
