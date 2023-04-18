@@ -39,12 +39,14 @@
                   :right_command
                   nil
                   {:afterup [["emacs-C-x" 0] ["emacs-C-c" 0]]}]
-                 ;; Other
-                 [:##right_shift
-                  :right_shift
+                 ;; Quote held down posts right control
+                 [:#COQEquote
                   nil
-                  {:alone :!!p
-                   :params {:alone 500}}]]}
+                  nil
+                  {:alone {:key quote :halt true}
+                   :delayed {:canceled :quote}
+                   :held :right_control
+                   :params {:delay 150 :held 150}}]]}]}
         {:des "Emacs emulation apps"
          :rules [:emacs-emulation-apps
                  [:!Tm :return_or_enter]
