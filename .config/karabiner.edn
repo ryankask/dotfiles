@@ -9,6 +9,8 @@
                  [:##left_control :caps_lock]]}
         {:des "C-m to return in more places"
          :rules [[:!Tm :return_or_enter [:C-m-apps]]]}
+        {:des "# to right control when held"
+         :rules [[:#COQEbackslash :right_control nil {:alone :backslash}]]}
         {:des "emacs"
          :rules [:emacs
                  ;; C-x
