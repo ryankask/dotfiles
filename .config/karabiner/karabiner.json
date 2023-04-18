@@ -56,13 +56,19 @@
           "type" : "basic"
         } ]
       }, {
-        "description" : "# to right control when held",
+        "description" : "' to right control when held",
         "manipulators" : [ {
           "to_if_alone" : [ {
-            "key_code" : "backslash"
+            "key_code" : "quote"
+          } ],
+          "to_after_key_up" : [ {
+            "set_variable" : {
+              "name" : "right-control-prefix-map",
+              "value" : 0
+            }
           } ],
           "from" : {
-            "key_code" : "backslash",
+            "key_code" : "quote",
             "modifiers" : {
               "optional" : [ "left_command", "left_option", "right_command", "right_option" ]
             }
@@ -71,14 +77,11 @@
             "key_code" : "right_control"
           } ],
           "type" : "basic"
-        } ]
-      }, {
-        "description" : "emacs",
-        "manipulators" : [ {
+        }, {
           "from" : {
             "key_code" : "x",
             "modifiers" : {
-              "mandatory" : [ "right_command" ]
+              "mandatory" : [ "right_control" ]
             }
           },
           "to" : [ {
@@ -86,200 +89,16 @@
             "modifiers" : [ "right_control" ]
           }, {
             "set_variable" : {
-              "name" : "emacs-C-x",
+              "name" : "right-control-prefix-map",
               "value" : 1
             }
-          } ],
-          "conditions" : [ {
-            "type" : "frontmost_application_if",
-            "bundle_identifiers" : [ "^org\\.gnu\\.Emacs$" ]
-          } ],
-          "type" : "basic"
-        }, {
-          "from" : {
-            "key_code" : "a",
-            "modifiers" : {
-              "mandatory" : [ "right_command" ]
-            }
-          },
-          "to" : [ {
-            "key_code" : "a",
-            "modifiers" : [ "right_control" ]
-          } ],
-          "conditions" : [ {
-            "type" : "frontmost_application_if",
-            "bundle_identifiers" : [ "^org\\.gnu\\.Emacs$" ]
-          }, {
-            "name" : "emacs-C-c",
-            "value" : 1,
-            "type" : "variable_if"
-          } ],
-          "type" : "basic"
-        }, {
-          "from" : {
-            "key_code" : "b",
-            "modifiers" : {
-              "mandatory" : [ "right_command" ]
-            }
-          },
-          "to" : [ {
-            "key_code" : "b",
-            "modifiers" : [ "right_control" ]
-          } ],
-          "conditions" : [ {
-            "type" : "frontmost_application_if",
-            "bundle_identifiers" : [ "^org\\.gnu\\.Emacs$" ]
-          }, {
-            "name" : "emacs-C-x",
-            "value" : 1,
-            "type" : "variable_if"
-          } ],
-          "type" : "basic"
-        }, {
-          "from" : {
-            "key_code" : "d",
-            "modifiers" : {
-              "mandatory" : [ "right_command" ]
-            }
-          },
-          "to" : [ {
-            "key_code" : "d",
-            "modifiers" : [ "right_control" ]
-          } ],
-          "conditions" : [ {
-            "type" : "frontmost_application_if",
-            "bundle_identifiers" : [ "^org\\.gnu\\.Emacs$" ]
-          }, {
-            "name" : "emacs-C-x",
-            "value" : 1,
-            "type" : "variable_if"
-          } ],
-          "type" : "basic"
-        }, {
-          "from" : {
-            "key_code" : "g",
-            "modifiers" : {
-              "mandatory" : [ "right_command" ]
-            }
-          },
-          "to" : [ {
-            "key_code" : "g",
-            "modifiers" : [ "right_control" ]
-          } ],
-          "conditions" : [ {
-            "type" : "frontmost_application_if",
-            "bundle_identifiers" : [ "^org\\.gnu\\.Emacs$" ]
-          }, {
-            "name" : "emacs-C-x",
-            "value" : 1,
-            "type" : "variable_if"
-          } ],
-          "type" : "basic"
-        }, {
-          "from" : {
-            "key_code" : "e",
-            "modifiers" : {
-              "mandatory" : [ "right_command" ]
-            }
-          },
-          "to" : [ {
-            "key_code" : "e",
-            "modifiers" : [ "right_control" ]
-          } ],
-          "conditions" : [ {
-            "type" : "frontmost_application_if",
-            "bundle_identifiers" : [ "^org\\.gnu\\.Emacs$" ]
-          }, {
-            "name" : "emacs-C-x",
-            "value" : 1,
-            "type" : "variable_if"
-          } ],
-          "type" : "basic"
-        }, {
-          "from" : {
-            "key_code" : "f",
-            "modifiers" : {
-              "mandatory" : [ "right_command" ]
-            }
-          },
-          "to" : [ {
-            "key_code" : "f",
-            "modifiers" : [ "right_control" ]
-          } ],
-          "conditions" : [ {
-            "type" : "frontmost_application_if",
-            "bundle_identifiers" : [ "^org\\.gnu\\.Emacs$" ]
-          }, {
-            "name" : "emacs-C-x",
-            "value" : 1,
-            "type" : "variable_if"
-          } ],
-          "type" : "basic"
-        }, {
-          "from" : {
-            "key_code" : "q",
-            "modifiers" : {
-              "mandatory" : [ "right_command" ]
-            }
-          },
-          "to" : [ {
-            "key_code" : "q",
-            "modifiers" : [ "right_control" ]
-          } ],
-          "conditions" : [ {
-            "type" : "frontmost_application_if",
-            "bundle_identifiers" : [ "^org\\.gnu\\.Emacs$" ]
-          }, {
-            "name" : "emacs-C-x",
-            "value" : 1,
-            "type" : "variable_if"
-          } ],
-          "type" : "basic"
-        }, {
-          "from" : {
-            "key_code" : "w",
-            "modifiers" : {
-              "mandatory" : [ "right_command" ]
-            }
-          },
-          "to" : [ {
-            "key_code" : "w",
-            "modifiers" : [ "right_control" ]
-          } ],
-          "conditions" : [ {
-            "type" : "frontmost_application_if",
-            "bundle_identifiers" : [ "^org\\.gnu\\.Emacs$" ]
-          }, {
-            "name" : "emacs-C-x",
-            "value" : 1,
-            "type" : "variable_if"
-          } ],
-          "type" : "basic"
-        }, {
-          "from" : {
-            "key_code" : "v",
-            "modifiers" : {
-              "mandatory" : [ "right_command" ]
-            }
-          },
-          "to" : [ {
-            "key_code" : "v",
-            "modifiers" : [ "right_control" ]
-          } ],
-          "conditions" : [ {
-            "type" : "frontmost_application_if",
-            "bundle_identifiers" : [ "^org\\.gnu\\.Emacs$" ]
-          }, {
-            "name" : "emacs-C-x",
-            "value" : 1,
-            "type" : "variable_if"
           } ],
           "type" : "basic"
         }, {
           "from" : {
             "key_code" : "c",
             "modifiers" : {
-              "mandatory" : [ "right_command" ]
+              "mandatory" : [ "right_control" ]
             }
           },
           "to" : [ {
@@ -287,261 +106,169 @@
             "modifiers" : [ "right_control" ]
           }, {
             "set_variable" : {
-              "name" : "emacs-C-c",
+              "name" : "right-control-prefix-map",
               "value" : 1
             }
           } ],
-          "conditions" : [ {
-            "type" : "frontmost_application_if",
-            "bundle_identifiers" : [ "^org\\.gnu\\.Emacs$" ]
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "h",
+            "modifiers" : {
+              "mandatory" : [ "right_control" ]
+            }
+          },
+          "to" : [ {
+            "key_code" : "h",
+            "modifiers" : [ "right_control" ]
+          }, {
+            "set_variable" : {
+              "name" : "right-control-prefix-map",
+              "value" : 1
+            }
           } ],
           "type" : "basic"
         }, {
           "from" : {
-            "key_code" : "a",
+            "key_code" : "o",
             "modifiers" : {
-              "mandatory" : [ "right_command" ]
+              "mandatory" : [ "right_control" ]
             }
           },
           "to" : [ {
-            "key_code" : "a",
+            "key_code" : "o",
             "modifiers" : [ "right_control" ]
-          } ],
-          "conditions" : [ {
-            "type" : "frontmost_application_if",
-            "bundle_identifiers" : [ "^org\\.gnu\\.Emacs$" ]
           }, {
-            "name" : "emacs-C-c",
-            "value" : 1,
-            "type" : "variable_if"
+            "set_variable" : {
+              "name" : "right-control-prefix-map",
+              "value" : 1
+            }
           } ],
           "type" : "basic"
         }, {
           "from" : {
-            "key_code" : "b",
+            "key_code" : "d",
             "modifiers" : {
-              "mandatory" : [ "right_command" ]
+              "mandatory" : [ "right_control" ]
             }
           },
           "to" : [ {
-            "key_code" : "b",
-            "modifiers" : [ "right_control" ]
+            "key_code" : "quote"
+          }, {
+            "key_code" : "d"
           } ],
           "conditions" : [ {
-            "type" : "frontmost_application_if",
-            "bundle_identifiers" : [ "^org\\.gnu\\.Emacs$" ]
-          }, {
-            "name" : "emacs-C-c",
+            "name" : "right-control-prefix-map",
             "value" : 1,
-            "type" : "variable_if"
-          } ],
-          "type" : "basic"
-        }, {
-          "from" : {
-            "key_code" : "e",
-            "modifiers" : {
-              "mandatory" : [ "right_command" ]
-            }
-          },
-          "to" : [ {
-            "key_code" : "e",
-            "modifiers" : [ "right_control" ]
-          } ],
-          "conditions" : [ {
-            "type" : "frontmost_application_if",
-            "bundle_identifiers" : [ "^org\\.gnu\\.Emacs$" ]
-          }, {
-            "name" : "emacs-C-c",
-            "value" : 1,
-            "type" : "variable_if"
+            "type" : "variable_unless"
           } ],
           "type" : "basic"
         }, {
           "from" : {
             "key_code" : "f",
             "modifiers" : {
-              "mandatory" : [ "right_command" ]
+              "mandatory" : [ "right_control" ]
             }
           },
           "to" : [ {
-            "key_code" : "f",
-            "modifiers" : [ "right_control" ]
+            "key_code" : "quote"
+          }, {
+            "key_code" : "f"
           } ],
           "conditions" : [ {
-            "type" : "frontmost_application_if",
-            "bundle_identifiers" : [ "^org\\.gnu\\.Emacs$" ]
-          }, {
-            "name" : "emacs-C-c",
+            "name" : "right-control-prefix-map",
             "value" : 1,
-            "type" : "variable_if"
+            "type" : "variable_unless"
           } ],
           "type" : "basic"
         }, {
           "from" : {
-            "key_code" : "j",
+            "key_code" : "g",
             "modifiers" : {
-              "mandatory" : [ "right_command" ]
+              "mandatory" : [ "right_control" ]
             }
           },
           "to" : [ {
-            "key_code" : "j",
-            "modifiers" : [ "right_control" ]
+            "key_code" : "quote"
+          }, {
+            "key_code" : "g"
           } ],
           "conditions" : [ {
-            "type" : "frontmost_application_if",
-            "bundle_identifiers" : [ "^org\\.gnu\\.Emacs$" ]
-          }, {
-            "name" : "emacs-C-c",
+            "name" : "right-control-prefix-map",
             "value" : 1,
-            "type" : "variable_if"
+            "type" : "variable_unless"
           } ],
           "type" : "basic"
         }, {
           "from" : {
-            "key_code" : "k",
+            "key_code" : "m",
             "modifiers" : {
-              "mandatory" : [ "right_command" ]
+              "mandatory" : [ "right_control" ]
             }
           },
           "to" : [ {
-            "key_code" : "k",
-            "modifiers" : [ "right_control" ]
+            "key_code" : "quote"
+          }, {
+            "key_code" : "m"
           } ],
           "conditions" : [ {
-            "type" : "frontmost_application_if",
-            "bundle_identifiers" : [ "^org\\.gnu\\.Emacs$" ]
-          }, {
-            "name" : "emacs-C-c",
+            "name" : "right-control-prefix-map",
             "value" : 1,
-            "type" : "variable_if"
-          } ],
-          "type" : "basic"
-        }, {
-          "from" : {
-            "key_code" : "r",
-            "modifiers" : {
-              "mandatory" : [ "right_command" ]
-            }
-          },
-          "to" : [ {
-            "key_code" : "r",
-            "modifiers" : [ "right_control" ]
-          } ],
-          "conditions" : [ {
-            "type" : "frontmost_application_if",
-            "bundle_identifiers" : [ "^org\\.gnu\\.Emacs$" ]
-          }, {
-            "name" : "emacs-C-c",
-            "value" : 1,
-            "type" : "variable_if"
+            "type" : "variable_unless"
           } ],
           "type" : "basic"
         }, {
           "from" : {
             "key_code" : "s",
             "modifiers" : {
-              "mandatory" : [ "right_command" ]
+              "mandatory" : [ "right_control" ]
             }
           },
           "to" : [ {
-            "key_code" : "s",
-            "modifiers" : [ "right_control" ]
+            "key_code" : "quote"
+          }, {
+            "key_code" : "s"
           } ],
           "conditions" : [ {
-            "type" : "frontmost_application_if",
-            "bundle_identifiers" : [ "^org\\.gnu\\.Emacs$" ]
-          }, {
-            "name" : "emacs-C-c",
+            "name" : "right-control-prefix-map",
             "value" : 1,
-            "type" : "variable_if"
+            "type" : "variable_unless"
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "u",
+            "modifiers" : {
+              "mandatory" : [ "right_control" ]
+            }
+          },
+          "to" : [ {
+            "key_code" : "quote"
+          }, {
+            "key_code" : "u"
+          } ],
+          "conditions" : [ {
+            "name" : "right-control-prefix-map",
+            "value" : 1,
+            "type" : "variable_unless"
           } ],
           "type" : "basic"
         }, {
           "from" : {
             "key_code" : "v",
             "modifiers" : {
-              "mandatory" : [ "right_command" ]
+              "mandatory" : [ "right_control" ]
             }
           },
           "to" : [ {
-            "key_code" : "v",
-            "modifiers" : [ "right_control" ]
+            "key_code" : "quote"
+          }, {
+            "key_code" : "v"
           } ],
           "conditions" : [ {
-            "type" : "frontmost_application_if",
-            "bundle_identifiers" : [ "^org\\.gnu\\.Emacs$" ]
-          }, {
-            "name" : "emacs-C-c",
+            "name" : "right-control-prefix-map",
             "value" : 1,
-            "type" : "variable_if"
-          } ],
-          "type" : "basic"
-        }, {
-          "from" : {
-            "key_code" : "w",
-            "modifiers" : {
-              "mandatory" : [ "right_command" ]
-            }
-          },
-          "to" : [ {
-            "key_code" : "w",
-            "modifiers" : [ "right_control" ]
-          } ],
-          "conditions" : [ {
-            "type" : "frontmost_application_if",
-            "bundle_identifiers" : [ "^org\\.gnu\\.Emacs$" ]
-          }, {
-            "name" : "emacs-C-c",
-            "value" : 1,
-            "type" : "variable_if"
-          } ],
-          "type" : "basic"
-        }, {
-          "to_after_key_up" : [ {
-            "set_variable" : {
-              "name" : "emacs-C-x",
-              "value" : 0
-            }
-          }, {
-            "set_variable" : {
-              "name" : "emacs-C-c",
-              "value" : 0
-            }
-          } ],
-          "from" : {
-            "key_code" : "right_command",
-            "modifiers" : {
-              "optional" : [ "any" ]
-            }
-          },
-          "to" : [ {
-            "key_code" : "right_command"
-          } ],
-          "conditions" : [ {
-            "type" : "frontmost_application_if",
-            "bundle_identifiers" : [ "^org\\.gnu\\.Emacs$" ]
-          } ],
-          "type" : "basic"
-        }, {
-          "to_if_alone" : [ {
-            "key_code" : "p",
-            "modifiers" : [ "left_command", "left_control", "left_option", "left_shift" ]
-          } ],
-          "parameters" : {
-            "basic.to_if_alone_timeout_milliseconds" : 500
-          },
-          "from" : {
-            "key_code" : "right_shift",
-            "modifiers" : {
-              "optional" : [ "any" ]
-            }
-          },
-          "to" : [ {
-            "key_code" : "right_shift"
-          } ],
-          "conditions" : [ {
-            "type" : "frontmost_application_if",
-            "bundle_identifiers" : [ "^org\\.gnu\\.Emacs$" ]
+            "type" : "variable_unless"
           } ],
           "type" : "basic"
         } ]
