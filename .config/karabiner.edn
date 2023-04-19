@@ -14,7 +14,8 @@
                   :right_control
                   nil
                   {:alone :quote
-                   :afterup [["right-control-prefix-map" 0]]}]
+                   :afterup [["right-control-prefix-map" 0]]
+                   :params {:alone 300}}]
                  ; Activate a prefix map so the below exclusions don't take effect
                  [:!Wx [:!Wx ["right-control-prefix-map" 1]]]
                  [:!Wc [:!Wc ["right-control-prefix-map" 1]]]
