@@ -53,7 +53,7 @@ path=(
   $HOME/.cargo/bin
   $HOME/.cabal/bin
   $HOME/.ghcup/bin
-  /opt/google-cloud-sdk/bin
+  /opt/local/google-cloud-sdk/bin
   $BREW_PREFIX/opt/coreutils/libexec/gnubin
   $BREW_PREFIX/bin
   /usr/local/{bin,sbin}
