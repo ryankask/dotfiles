@@ -13,23 +13,24 @@
          :rules [[:#COQEquote
                   :right_control
                   nil
-                  {:alone :quote
-                   :afterup [["right-control-prefix-map" 0]]
-                   :params {:alone 300}}]
+                  {:alone {:key :quote :halt true}
+                   :delayed {:invoked [["force-right-control" 1]]}
+                   :afterup [["force-right-control" 0]]
+                   :params {:alone 300 :delay 301}}]
                  ; Activate a prefix map so the below exclusions don't take effect
-                 [:!Wx [:!Wx ["right-control-prefix-map" 1]]]
-                 [:!Wc [:!Wc ["right-control-prefix-map" 1]]]
-                 [:!Wh [:!Wh ["right-control-prefix-map" 1]]]
-                 [:!Wo [:!Wo ["right-control-prefix-map" 1]]]
+                 [:!Wx [:!Wx ["force-right-control" 1]]]
+                 [:!Wc [:!Wc ["force-right-control" 1]]]
+                 [:!Wh [:!Wh ["force-right-control" 1]]]
+                 [:!Wo [:!Wo ["force-right-control" 1]]]
                  ; Exclude letters that commonly appear with apostrophes if a prefix
                  ; map isn't activated
-                 [:!Wd [:quote :d] :!right-control-prefix-map]    ; she's
-                 [:!Wf [:quote :f] :!right-control-prefix-map]    ; hasn't
-                 [:!Wg [:quote :g] :!right-control-prefix-map]    ; he'd
-                 [:!Wm [:quote :m] :!right-control-prefix-map]    ; I'm
-                 [:!Ws [:quote :s] :!right-control-prefix-map]    ; you're
-                 [:!Wu [:quote :u] :!right-control-prefix-map]    ; we'll
-                 [:!Wv [:quote :v] :!right-control-prefix-map]]}  ; they've
+                 [:!Wd [:quote :d] :!force-right-control]    ; she's
+                 [:!Wf [:quote :f] :!force-right-control]    ; hasn't
+                 [:!Wg [:quote :g] :!force-right-control]    ; he'd
+                 [:!Wm [:quote :m] :!force-right-control]    ; I'm
+                 [:!Ws [:quote :s] :!force-right-control]    ; you're
+                 [:!Wu [:quote :u] :!force-right-control]    ; we'll
+                 [:!Wv [:quote :v] :!force-right-control]]}  ; they've
         {:des "Emacs emulation apps"
          :rules [:emacs-emulation-apps
                  [:!Tm :return_or_enter]
