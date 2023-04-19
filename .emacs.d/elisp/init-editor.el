@@ -13,8 +13,8 @@
 (bind-key "M-u" #'upcase-dwim)
 (bind-key "M-l" #'downcase-dwim)
 (bind-key "M-c" #'capitalize-dwim)
-(bind-key "M-g" #'transpose-words)
 (bind-key "M-t" goto-map)
+(bind-key "M-g" #'transpose-words)
 (bind-key "s-k" #'kill-current-buffer)
 (bind-key "s-=" #'text-scale-increase)
 (bind-key "s--" #'text-scale-decrease)
@@ -187,67 +187,10 @@
                   ("#\\+BEGIN_EXAMPLE" . "#\\+END_EXAMPLE")))
     (cl-pushnew item ispell-skip-region-alist :test #'equal)))
 
-(use-package spellcheck
-  :bind (("C-c # c" . spellcheck-correct)))
-
-(defvar my-spell-fu-mode-map (make-sparse-keymap)
-  "Custom keymap for Spell Fu")
-
-;; Excluded faces Adapted from Doom's configuration:
-;; https://github.com/doomemacs/doomemacs/blob/master/modules/checkers/spell/config.el#L85
-
-(defvar my-spell-fu-excluded-faces-alist
-  '((markdown-mode
-     markdown-code-face markdown-html-attr-name-face
-     markdown-html-attr-value-face markdown-html-tag-name-face
-     markdown-inline-code-face markdown-link-face
-     markdown-markup-face markdown-plain-url-face
-     markdown-reference-face markdown-url-face)
-    (org-mode
-     org-block org-block-begin-line org-block-end-line org-code
-     org-cite org-cite-key org-date org-footnote org-formula
-     org-latex-and-related org-link org-meta-line org-property-value
-     org-ref-cite-face org-special-keyword org-tag org-todo
-     org-todo-keyword-done org-todo-keyword-habt
-     org-todo-keyword-kill org-todo-keyword-outd
-     .org-todo-keyword-todo org-todo-keyword-wait org-verbatim)
-    (latex-mode
-     font-latex-math-face font-latex-sedate-face
-     font-lock-function-name-face font-lock-keyword-face
-     font-lock-variable-name-face))
-  "Faces in certain major modes that spell-fu will not spellcheck.")
-
-(defun my-spell-fu-mode-setup ()
-  "Set `spell-fu-faces-exclude' according to
- `my-spell-fu-excluded-faces-alist'."
-  (when-let (excluded (cdr (cl-find-if #'derived-mode-p
-                                       my-spell-fu-excluded-faces-alist
-                                       :key #'car)))
-    (setq-local spell-fu-faces-exclude excluded)))
-
-(use-package spell-fu
+(use-package jinx
   :straight t
-  :hook (((text-mode prog-mode yaml-mode conf-mode) . spell-fu-mode)
-         (spell-fu-mode . my-spell-fu-mode-setup))
-  :bind (nil
-         :map my-spell-fu-mode-map
-         ("C-c # b" . spell-fu-buffer)
-         ("C-c # n" . spell-fu-goto-next-error)
-         ("C-c # p" . spell-fu-goto-previous-error)
-         ("C-c # a" . spell-fu-word-add)
-         ("C-c # d" . spell-fu-word-remove)
-         ("C-c # r" . spell-fu-word-reset)
-         :repeat-map my-spell-fu-mode-repeat-map
-         ("c" . spellcheck-correct)
-         ("n" . spell-fu-goto-next-error)
-         ("p" . spell-fu-goto-previous-error)
-         ("a" . spell-fu-word-add)
-         ("d" . spell-fu-word-remove))
-  :init
-  ;; Add a minor map for the mode
-  (cl-pushnew (cons 'spell-fu-mode my-spell-fu-mode-map)
-              minor-mode-map-alist
-              :test #'equal))
+  :hook (emacs-startup . global-jinx-mode)
+  :bind ("C-;" . jinx-correct))
 
 (use-package smartparens-config
   :straight smartparens
