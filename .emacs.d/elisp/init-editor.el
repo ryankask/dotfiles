@@ -9,14 +9,13 @@
 
 ;; Custom prefixes
 (bind-key "C-o" nil)
-(bind-key "s-h" nil)
-(bind-key "s-m" nil)
 ;; Keybindings
 (bind-key "M-u" #'upcase-dwim)
 (bind-key "M-l" #'downcase-dwim)
 (bind-key "M-c" #'capitalize-dwim)
 (bind-key "M-g" #'transpose-words)
 (bind-key "M-t" goto-map)
+(bind-key "s-k" #'kill-current-buffer)
 (bind-key "s-=" #'text-scale-increase)
 (bind-key "s--" #'text-scale-decrease)
 (bind-key "C-o e" #'eval-expression)
