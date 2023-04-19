@@ -67,6 +67,9 @@
               "value" : 0
             }
           } ],
+          "parameters" : {
+            "basic.to_if_alone_timeout_milliseconds" : 300
+          },
           "from" : {
             "key_code" : "quote",
             "modifiers" : {
