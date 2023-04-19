@@ -59,16 +59,26 @@
         "description" : "' to right control when held",
         "manipulators" : [ {
           "to_if_alone" : [ {
-            "key_code" : "quote"
+            "key_code" : "quote",
+            "halt" : true
           } ],
           "to_after_key_up" : [ {
             "set_variable" : {
-              "name" : "right-control-prefix-map",
+              "name" : "force-right-control",
               "value" : 0
             }
           } ],
+          "to_delayed_action" : {
+            "to_if_invoked" : [ {
+              "set_variable" : {
+                "name" : "force-right-control",
+                "value" : 1
+              }
+            } ]
+          },
           "parameters" : {
-            "basic.to_if_alone_timeout_milliseconds" : 300
+            "basic.to_if_alone_timeout_milliseconds" : 300,
+            "basic.to_delayed_action_delay_milliseconds" : 301
           },
           "from" : {
             "key_code" : "quote",
@@ -92,7 +102,7 @@
             "modifiers" : [ "right_control" ]
           }, {
             "set_variable" : {
-              "name" : "right-control-prefix-map",
+              "name" : "force-right-control",
               "value" : 1
             }
           } ],
@@ -109,7 +119,7 @@
             "modifiers" : [ "right_control" ]
           }, {
             "set_variable" : {
-              "name" : "right-control-prefix-map",
+              "name" : "force-right-control",
               "value" : 1
             }
           } ],
@@ -126,7 +136,7 @@
             "modifiers" : [ "right_control" ]
           }, {
             "set_variable" : {
-              "name" : "right-control-prefix-map",
+              "name" : "force-right-control",
               "value" : 1
             }
           } ],
@@ -143,7 +153,7 @@
             "modifiers" : [ "right_control" ]
           }, {
             "set_variable" : {
-              "name" : "right-control-prefix-map",
+              "name" : "force-right-control",
               "value" : 1
             }
           } ],
@@ -161,7 +171,7 @@
             "key_code" : "d"
           } ],
           "conditions" : [ {
-            "name" : "right-control-prefix-map",
+            "name" : "force-right-control",
             "value" : 1,
             "type" : "variable_unless"
           } ],
@@ -179,7 +189,7 @@
             "key_code" : "f"
           } ],
           "conditions" : [ {
-            "name" : "right-control-prefix-map",
+            "name" : "force-right-control",
             "value" : 1,
             "type" : "variable_unless"
           } ],
@@ -197,7 +207,7 @@
             "key_code" : "g"
           } ],
           "conditions" : [ {
-            "name" : "right-control-prefix-map",
+            "name" : "force-right-control",
             "value" : 1,
             "type" : "variable_unless"
           } ],
@@ -215,7 +225,7 @@
             "key_code" : "m"
           } ],
           "conditions" : [ {
-            "name" : "right-control-prefix-map",
+            "name" : "force-right-control",
             "value" : 1,
             "type" : "variable_unless"
           } ],
@@ -233,7 +243,7 @@
             "key_code" : "s"
           } ],
           "conditions" : [ {
-            "name" : "right-control-prefix-map",
+            "name" : "force-right-control",
             "value" : 1,
             "type" : "variable_unless"
           } ],
@@ -251,7 +261,7 @@
             "key_code" : "u"
           } ],
           "conditions" : [ {
-            "name" : "right-control-prefix-map",
+            "name" : "force-right-control",
             "value" : 1,
             "type" : "variable_unless"
           } ],
@@ -269,7 +279,7 @@
             "key_code" : "v"
           } ],
           "conditions" : [ {
-            "name" : "right-control-prefix-map",
+            "name" : "force-right-control",
             "value" : 1,
             "type" : "variable_unless"
           } ],
