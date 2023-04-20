@@ -64,15 +64,15 @@
           } ],
           "to_after_key_up" : [ {
             "set_variable" : {
-              "name" : "force-right-control",
+              "name" : "right-control",
               "value" : 0
             }
           } ],
           "to_delayed_action" : {
             "to_if_invoked" : [ {
               "set_variable" : {
-                "name" : "force-right-control",
-                "value" : 1
+                "name" : "right-control",
+                "value" : 2
               }
             } ]
           },
@@ -87,6 +87,11 @@
             }
           },
           "to" : [ {
+            "set_variable" : {
+              "name" : "right-control",
+              "value" : 1
+            }
+          }, {
             "key_code" : "right_control"
           } ],
           "type" : "basic"
@@ -98,13 +103,13 @@
             }
           },
           "to" : [ {
+            "set_variable" : {
+              "name" : "right-control",
+              "value" : 2
+            }
+          }, {
             "key_code" : "x",
             "modifiers" : [ "right_control" ]
-          }, {
-            "set_variable" : {
-              "name" : "force-right-control",
-              "value" : 1
-            }
           } ],
           "type" : "basic"
         }, {
@@ -115,13 +120,13 @@
             }
           },
           "to" : [ {
+            "set_variable" : {
+              "name" : "right-control",
+              "value" : 2
+            }
+          }, {
             "key_code" : "c",
             "modifiers" : [ "right_control" ]
-          }, {
-            "set_variable" : {
-              "name" : "force-right-control",
-              "value" : 1
-            }
           } ],
           "type" : "basic"
         }, {
@@ -132,13 +137,13 @@
             }
           },
           "to" : [ {
+            "set_variable" : {
+              "name" : "right-control",
+              "value" : 2
+            }
+          }, {
             "key_code" : "h",
             "modifiers" : [ "right_control" ]
-          }, {
-            "set_variable" : {
-              "name" : "force-right-control",
-              "value" : 1
-            }
           } ],
           "type" : "basic"
         }, {
@@ -149,13 +154,13 @@
             }
           },
           "to" : [ {
+            "set_variable" : {
+              "name" : "right-control",
+              "value" : 2
+            }
+          }, {
             "key_code" : "o",
             "modifiers" : [ "right_control" ]
-          }, {
-            "set_variable" : {
-              "name" : "force-right-control",
-              "value" : 1
-            }
           } ],
           "type" : "basic"
         }, {
@@ -171,9 +176,9 @@
             "key_code" : "d"
           } ],
           "conditions" : [ {
-            "name" : "force-right-control",
+            "name" : "right-control",
             "value" : 1,
-            "type" : "variable_unless"
+            "type" : "variable_if"
           } ],
           "type" : "basic"
         }, {
@@ -189,9 +194,9 @@
             "key_code" : "f"
           } ],
           "conditions" : [ {
-            "name" : "force-right-control",
+            "name" : "right-control",
             "value" : 1,
-            "type" : "variable_unless"
+            "type" : "variable_if"
           } ],
           "type" : "basic"
         }, {
@@ -207,9 +212,9 @@
             "key_code" : "g"
           } ],
           "conditions" : [ {
-            "name" : "force-right-control",
+            "name" : "right-control",
             "value" : 1,
-            "type" : "variable_unless"
+            "type" : "variable_if"
           } ],
           "type" : "basic"
         }, {
@@ -225,9 +230,9 @@
             "key_code" : "m"
           } ],
           "conditions" : [ {
-            "name" : "force-right-control",
+            "name" : "right-control",
             "value" : 1,
-            "type" : "variable_unless"
+            "type" : "variable_if"
           } ],
           "type" : "basic"
         }, {
@@ -243,9 +248,9 @@
             "key_code" : "s"
           } ],
           "conditions" : [ {
-            "name" : "force-right-control",
+            "name" : "right-control",
             "value" : 1,
-            "type" : "variable_unless"
+            "type" : "variable_if"
           } ],
           "type" : "basic"
         }, {
@@ -261,9 +266,9 @@
             "key_code" : "u"
           } ],
           "conditions" : [ {
-            "name" : "force-right-control",
+            "name" : "right-control",
             "value" : 1,
-            "type" : "variable_unless"
+            "type" : "variable_if"
           } ],
           "type" : "basic"
         }, {
@@ -279,9 +284,9 @@
             "key_code" : "v"
           } ],
           "conditions" : [ {
-            "name" : "force-right-control",
+            "name" : "right-control",
             "value" : 1,
-            "type" : "variable_unless"
+            "type" : "variable_if"
           } ],
           "type" : "basic"
         } ]
