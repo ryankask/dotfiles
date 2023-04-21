@@ -17,6 +17,8 @@
                    :delayed {:invoked ["right-control" 2]}
                    :afterup ["right-control" 0]
                    :params {:alone 300 :delay 301}}]
+                 ; Only invoke the below if in the "maybe" state
+                 [:condi ["right-control" 1]]
                  ; Activate a prefix map so the below exclusions don't take effect
                  [:!Wx [["right-control" 2] :!Wx]]
                  [:!Wc [["right-control" 2] :!Wc]]
@@ -24,13 +26,13 @@
                  [:!Wo [["right-control" 2] :!Wo]]
                  ; Exclude letters that commonly appear with apostrophes if a prefix
                  ; map isn't activated
-                 [:!Wd [:quote :d] ["right-control" 1]]    ; she's
-                 [:!Wf [:quote :f] ["right-control" 1]]    ; hasn't
-                 [:!Wg [:quote :g] ["right-control" 1]]    ; he'd
-                 [:!Wm [:quote :m] ["right-control" 1]]    ; I'm
-                 [:!Ws [:quote :s] ["right-control" 1]]    ; you're
-                 [:!Wu [:quote :u] ["right-control" 1]]    ; we'll
-                 [:!Wv [:quote :v] ["right-control" 1]]]}  ; they've
+                 [:!Wd [:quote :d]]    ; she's
+                 [:!Wf [:quote :f]]    ; hasn't
+                 [:!Wg [:quote :g]]    ; he'd
+                 [:!Wm [:quote :m]]    ; I'm
+                 [:!Ws [:quote :s]]    ; you're
+                 [:!Wu [:quote :u]]    ; we'll
+                 [:!Wv [:quote :v]]]}  ; they've
         {:des "Emacs emulation apps"
          :rules [:emacs-emulation-apps
                  [:!Tm :return_or_enter]
