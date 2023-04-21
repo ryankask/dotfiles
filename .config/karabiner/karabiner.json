@@ -111,6 +111,11 @@
             "key_code" : "x",
             "modifiers" : [ "right_control" ]
           } ],
+          "conditions" : [ {
+            "name" : "right-control",
+            "value" : 1,
+            "type" : "variable_if"
+          } ],
           "type" : "basic"
         }, {
           "from" : {
@@ -127,6 +132,11 @@
           }, {
             "key_code" : "c",
             "modifiers" : [ "right_control" ]
+          } ],
+          "conditions" : [ {
+            "name" : "right-control",
+            "value" : 1,
+            "type" : "variable_if"
           } ],
           "type" : "basic"
         }, {
@@ -145,6 +155,11 @@
             "key_code" : "h",
             "modifiers" : [ "right_control" ]
           } ],
+          "conditions" : [ {
+            "name" : "right-control",
+            "value" : 1,
+            "type" : "variable_if"
+          } ],
           "type" : "basic"
         }, {
           "from" : {
@@ -161,6 +176,11 @@
           }, {
             "key_code" : "o",
             "modifiers" : [ "right_control" ]
+          } ],
+          "conditions" : [ {
+            "name" : "right-control",
+            "value" : 1,
+            "type" : "variable_if"
           } ],
           "type" : "basic"
         }, {
