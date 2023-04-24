@@ -91,6 +91,9 @@ from a GCP release notes entry."
          :map embark-url-map
          ("g" . golink-create)))
 
+(use-package gptel
+  :straight t)
+
 (use-package helpful
   :straight t
   :bind (("C-h f" . helpful-callable)
