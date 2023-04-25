@@ -37,6 +37,17 @@
   :custom
   (css-indent-offset 2))
 
+(use-package copilot
+  :straight (:host github :repo "zerolfx/copilot.el" :files ("dist" "*.el"))
+  :hook (prog-mode . copilot-mode)
+  :bind (nil
+         :map copilot-completion-map
+         ("C-f" . copilot-accept-completion)
+         ("M-f" . copilot-accept-completion-by-word)
+         ("C-e" . copilot-accept-completion-by-line)
+         ("M-n" . copilot-next-completion)
+         ("M-p" . copilot-previous-completion)))
+
 (use-package direnv
   :straight t
   :custom
