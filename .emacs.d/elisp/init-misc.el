@@ -39,7 +39,6 @@
 
 (use-package copilot
   :straight (:host github :repo "zerolfx/copilot.el" :files ("dist" "*.el"))
-  :hook (prog-mode . copilot-mode)
   :bind (nil
          :map copilot-completion-map
          ("C-f" . copilot-accept-completion)
