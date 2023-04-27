@@ -105,6 +105,10 @@ from a GCP release notes entry."
 (use-package gptel
   :straight t)
 
+;; internal
+(use-package hcl-ts-mode
+  :mode "\\.hcl\\'")
+
 (use-package helpful
   :straight t
   :bind (("C-h f" . helpful-callable)
