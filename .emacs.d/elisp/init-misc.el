@@ -102,7 +102,8 @@ from a GCP release notes entry."
          ("g" . golink-create)))
 
 (use-package gptel
-  :straight t)
+  :straight t
+  :bind (("C-c #" . gptel)))
 
 ;; internal
 (use-package hcl-ts-mode
