@@ -77,6 +77,7 @@ brew "twilio/brew/twilio"
 brew "git-delta"
 brew "xh"
 brew "enchant"
+brew "dog"
 
 cask "1password"
 cask "adoptopenjdk"
