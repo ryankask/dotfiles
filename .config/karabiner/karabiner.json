@@ -92,7 +92,8 @@
               "value" : 1
             }
           }, {
-            "key_code" : "right_control"
+            "key_code" : "right_control",
+            "lazy" : true
           } ],
           "type" : "basic"
         }, {
