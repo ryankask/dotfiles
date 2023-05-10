@@ -53,6 +53,7 @@
 
 (use-package eglot
   :if (eq my-lsp-provider 'eglot)
+  :hook (eglot-managed-mode . my-eglot-managed-mode-hook)
   :custom
   (eglot-sync-connect 1)
   (eglot-connect-timeout 10)
