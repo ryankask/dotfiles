@@ -46,6 +46,11 @@
 
 ;; eglot
 
+(defun my-eglot-managed-mode-hook ()
+  "eglot buffer customisations"
+  (dolist (type '(eglot-note eglot-warning eglot-error))
+    (put type 'flymake-overlay-control nil)))
+
 (use-package eglot
   :if (eq my-lsp-provider 'eglot)
   :custom
