@@ -25,6 +25,7 @@ Thumbs.db
 
 .virtualenv-root
 .mypy_cache
+.venv
 
 # Redis
 
