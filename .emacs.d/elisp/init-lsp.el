@@ -56,7 +56,6 @@
   :hook (eglot-managed-mode . my-eglot-managed-mode-hook)
   :custom
   (eglot-sync-connect 1)
-  (eglot-connect-timeout 10)
   (eglot-autoshutdown t)
   (eglot-menu-string "€")
   :bind (("C-o C-s s" . eglot)
