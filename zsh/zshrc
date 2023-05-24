@@ -260,10 +260,6 @@ if (( $+commands[fzf] )); then
   fi
 fi
 
-if (( $+commands[zoxide] )); then
-  eval "$(zoxide init zsh --cmd=cd)"
-fi
-
 if (( $+commands[bat] )); then
   alias cat='nocorrect bat'
 fi
@@ -283,3 +279,7 @@ fi
 # Completion
 
 source "$DOTFILES/zsh/completion.zsh"
+
+if (( $+commands[zoxide] )); then
+  source "$DOTFILES/zsh/zoxide.zsh"
+fi
