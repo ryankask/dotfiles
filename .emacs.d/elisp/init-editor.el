@@ -56,13 +56,9 @@
 (defconst my-autosave-directory
   (expand-file-name "autosave/" user-emacs-directory))
 (make-directory my-autosave-directory t)
-(defconst my-tramp-autosave-directory
-  (expand-file-name "tramp-autosave/" user-emacs-directory))
-(make-directory my-tramp-autosave-directory t)
 (setq auto-save-default t
       auto-save-include-big-deletions t
       auto-save-list-file-prefix my-autosave-directory
-      tramp-auto-save-directory my-tramp-autosave-directory
       auto-save-file-name-transforms
       (list (list "\\`/[^/]*:\\([^/]*/\\)*\\([^/]*\\)\\'"
                   ;; Prefix tramp autosaves to prevent conflicts with local ones
@@ -280,5 +276,15 @@ Position the cursor at its beginning, according to the current mode."
          :repeat-map my-flymake-mode-repeat-map
          ("n" . flymake-goto-next-error)
          ("p" . flymake-goto-prev-error)))
+
+(use-package tramp
+  :preface
+  (defconst my-tramp-autosave-directory
+    (expand-file-name "tramp-autosave/" user-emacs-directory))
+  (make-directory my-tramp-autosave-directory t)
+  :custom
+  (tramp-auto-save-directory my-tramp-autosave-directory)
+  :config
+  (add-to-list 'tramp-remote-path 'tramp-own-remote-path))
 
 (provide 'init-editor)
