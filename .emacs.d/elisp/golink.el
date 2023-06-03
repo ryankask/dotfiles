@@ -74,10 +74,10 @@
     (golink--read-json "/")))
 
 (defun golink--short-name (link)
-  (gethash "Short" link))
+  (gethash "short" link))
 
 (defun golink--target-url (link)
-  (gethash "Long" link))
+  (gethash "long" link))
 
 (defun golink--export-by-short-name ()
   (cl-reduce
