@@ -2,7 +2,7 @@
 
 (use-package web-mode
   :straight t
-  :mode ("\\.html?\\'")
+  :mode ("\\.html?\\'" "\\.mustache\\'")
   :init
   (setq web-mode-enable-auto-pairing nil
         web-mode-markup-indent-offset 2
