@@ -21,10 +21,10 @@
 (bind-key "s--" #'text-scale-decrease)
 (bind-key "s-<" #'beginning-of-buffer)
 (bind-key "s->" #'end-of-buffer)
+(bind-key "s-," #'xref-go-back)
 (bind-key "<home>" #'beginning-of-buffer)
 (bind-key "<end>" #'end-of-buffer)
 (bind-key "C-o e" #'eval-expression)
-(bind-key "C-s-." #'xref-go-back)
 (unbind-key "<C-wheel-up>")
 (unbind-key "<C-wheel-down>")
 
