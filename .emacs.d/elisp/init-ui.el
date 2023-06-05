@@ -10,7 +10,7 @@
 (when (or (display-graphic-p) (daemonp))
   (setq my-font (font-spec :family "Menlo" :size 13))
   (set-fontset-font t 'unicode my-font)
-  (set-fontset-font t 'unicode (font-spec :family "Symbols Nerd Font" :size 13) nil 'append)
+  (set-fontset-font t 'unicode (font-spec :family "Symbols Nerd Font Mono" :size 13) nil 'append)
   (set-fontset-font t 'unicode "Noto Color Emoji" nil 'append)
   (push (cons 'font (font-xlfd-name my-font)) default-frame-alist)
   (push '(width . 102) default-frame-alist)
@@ -113,7 +113,8 @@
 
 (use-package minions
   :straight t
-  :custom (minions-mode-line-lighter "")
+  :custom
+  (minions-mode-line-lighter "󰍜")
   :bind ("C-o =" . minions-minor-modes-menu)
   :init
   (minions-mode 1))
