@@ -460,6 +460,8 @@ session."
   (vterm-max-scrollback 5000)
   (vterm-timer-delay .025)
   (vterm-toggle-scope 'project)
+  (vterm-tramp-shells '(("ssh" "/usr/bin/zsh")
+                        ("docker" "/bin/sh")))
   :bind (nil
          :map vterm-mode-map
          ("C-k" . my-vterm-send-C-k)
