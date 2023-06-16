@@ -56,6 +56,7 @@
          ("C-c TAB" . copilot-complete)
          ("C-c a" . copilot-panel-complete)
          :map copilot-completion-map
+         ("C-g" . copilot-clear-overlay)
          ("C-f" . copilot-accept-completion)
          ("M-f" . copilot-accept-completion-by-word)
          ("C-e" . copilot-accept-completion-by-line)
