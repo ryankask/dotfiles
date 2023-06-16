@@ -53,7 +53,6 @@
   :bind (nil
          :map copilot-mode-map
          ("C-c c" . copilot-complete)
-         ("C-c TAB" . copilot-complete)
          ("C-c a" . copilot-panel-complete)
          :map copilot-completion-map
          ("C-g" . copilot-clear-overlay)
