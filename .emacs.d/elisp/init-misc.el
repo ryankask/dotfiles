@@ -76,6 +76,11 @@
   :straight t
   :bind ("C-c u" . deadgrep))
 
+(use-package ediff
+  :custom
+  (ediff-window-setup-function 'ediff-setup-windows-plain)
+  (ediff-split-window-function 'split-window-horizontally))
+
 (defun my-shr-strong-tag (dom)
   "Improve the styling of a <strong> tag if it appears to come
 from a GCP release notes entry."
