@@ -1,5 +1,7 @@
 ;;; -*- lexical-binding: t; -*-
 
+(require 'cl-lib)
+
 (push '(menu-bar-lines . 0) default-frame-alist)
 (push '(tool-bar-lines . 0) default-frame-alist)
 (push '(vertical-scroll-bars) default-frame-alist)
@@ -110,6 +112,19 @@
   :bind ("C-o w" . modus-themes-toggle)
   :hook ((after-init . my-modus-themes-init)
          (modus-themes-after-load-theme . my-modus-themes-setup)))
+
+(defun my-ef-themes-get-ns-appearance ()
+  (pcase (ef-themes--current-theme)
+    ((pred (lambda (theme) (memq theme ef-themes-dark-themes))) 'dark)
+    (_ 'light)))
+
+(defun my-ef-themes-setup ()
+  (cl-flet ((my-theme-get-ns-frame-parameters #'my-ef-themes-get-ns-appearance))
+    (my-theme-configure-frames)))
+
+(use-package ef-themes
+  :straight t
+  :hook ((ef-themes-post-load-hook . my-ef-themes-setup)))
 
 (use-package minions
   :straight t
