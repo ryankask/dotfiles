@@ -114,17 +114,18 @@
          (modus-themes-after-load-theme . my-modus-themes-setup)))
 
 (defun my-ef-themes-get-ns-appearance ()
-  (pcase (ef-themes--current-theme)
-    ((pred (lambda (theme) (memq theme ef-themes-dark-themes))) 'dark)
-    (_ 'light)))
+  (cond
+   ((memq (ef-themes--current-theme) ef-themes-dark-themes) 'dark)
+   (t 'light)))
 
 (defun my-ef-themes-setup ()
-  (cl-flet ((my-theme-get-ns-frame-parameters #'my-ef-themes-get-ns-appearance))
+  (cl-letf (((symbol-function 'my-theme-get-ns-appearance)
+             #'my-ef-themes-get-ns-appearance))
     (my-theme-configure-frames)))
 
 (use-package ef-themes
   :straight t
-  :hook ((ef-themes-post-load-hook . my-ef-themes-setup)))
+  :hook (ef-themes-post-load . my-ef-themes-setup))
 
 (use-package minions
   :straight t
