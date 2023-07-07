@@ -131,7 +131,7 @@
   :straight t
   :custom
   (minions-mode-line-lighter "󰍜")
-  :bind ("C-o =" . minions-minor-modes-menu)
+  :bind ("C-c =" . minions-minor-modes-menu)
   :init
   (minions-mode 1))
 

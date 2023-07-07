@@ -52,6 +52,7 @@
   :hook (prog-mode . copilot-mode)
   :bind (nil
          :map copilot-mode-map
+         ("C-<tab>" . copilot-complete)
          ("C-c c" . copilot-complete)
          ("C-c a" . copilot-panel-complete)
          :map copilot-completion-map
