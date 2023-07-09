@@ -14,13 +14,13 @@
 (unless (or (daemonp) noninteractive)
   (setq-default inhibit-redisplay t
                 inhibit-message t)
-  (add-hook 'window-setup-hook
+  (add-hook 'after-init-hook
             (lambda ()
               (setq-default inhibit-redisplay nil
                             inhibit-message nil)
-              (when (fboundp #'my-rectangle-exec-action--last-two-thirds)
-                    (my-rectangle-exec-action--last-two-thirds))
-              (redisplay))))
+              (if (fboundp #'my-rectangle-exec-action--last-two-thirds)
+                  (my-rectangle-exec-action--last-two-thirds)
+                (redraw-frame)))))
 
 (set-language-environment "UTF-8")
 (setq default-input-method nil)
