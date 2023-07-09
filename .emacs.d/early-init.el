@@ -18,6 +18,8 @@
             (lambda ()
               (setq-default inhibit-redisplay nil
                             inhibit-message nil)
+              (when (fboundp #'my-rectangle-exec-action--last-two-thirds)
+                    (my-rectangle-exec-action--last-two-thirds))
               (redisplay))))
 
 (set-language-environment "UTF-8")

@@ -15,10 +15,7 @@
   (set-fontset-font t 'unicode my-font)
   (set-fontset-font t 'unicode (font-spec :family "Symbols Nerd Font Mono" :size 13) nil 'append)
   (set-fontset-font t 'unicode "Noto Color Emoji" nil 'append)
-  (push (cons 'font (font-xlfd-name my-font)) default-frame-alist)
-  (push '(width . 102) default-frame-alist)
-  (push '(height . 56) default-frame-alist)
-  (set-frame-position nil 604 0))
+  (push (cons 'font (font-xlfd-name my-font)) default-frame-alist))
 
 (use-package display-line-numbers
   :custom
