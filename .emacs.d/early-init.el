@@ -18,9 +18,7 @@
             (lambda ()
               (setq-default inhibit-redisplay nil
                             inhibit-message nil)
-              (if (fboundp #'my-rectangle-exec-action--last-two-thirds)
-                  (my-rectangle-exec-action--last-two-thirds)
-                (redraw-frame)))))
+              (redraw-frame))))
 
 (set-language-environment "UTF-8")
 (setq default-input-method nil)
