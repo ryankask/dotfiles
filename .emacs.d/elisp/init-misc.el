@@ -128,6 +128,8 @@ from a GCP release notes entry."
 
 (use-package gptel
   :elpaca t
+  :custom
+  (gptel-model "gpt-4")
   :bind (("C-c #" . gptel)))
 
 ;; internal
