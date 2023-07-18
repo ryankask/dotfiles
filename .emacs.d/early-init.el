@@ -14,7 +14,7 @@
 (unless (or (daemonp) noninteractive)
   (setq-default inhibit-redisplay t
                 inhibit-message t)
-  (add-hook 'after-init-hook
+  (add-hook 'elpaca-after-init-hook
             (lambda ()
               (setq-default inhibit-redisplay nil
                             inhibit-message nil)

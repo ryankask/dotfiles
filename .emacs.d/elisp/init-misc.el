@@ -10,7 +10,7 @@
   t)
 
 (use-package avy
-  :straight t
+  :elpaca t
   :bind (("C-'" . avy-goto-char-timer)
          :map goto-map
          ("l" . avy-goto-line)
@@ -26,7 +26,7 @@
   (setf (alist-get ?. avy-dispatch-alist) 'my-avy-action-embark))
 
 (use-package ace-window
-  :straight t
+  :elpaca t
   :bind (("C-o C-o" . ace-window)
          ("s-o" . ace-window))
   :custom
@@ -48,7 +48,7 @@
     (copilot-clear-overlay)))
 
 (use-package copilot
-  :straight (:host github :repo "zerolfx/copilot.el" :files ("dist" "*.el"))
+  :elpaca (:host github :repo "zerolfx/copilot.el" :files ("dist" "*.el"))
   :hook (prog-mode . copilot-mode)
   :bind (nil
          :map copilot-mode-map
@@ -67,14 +67,14 @@
   (advice-add #'copilot--post-command :override #'my-copilot-post-command))
 
 (use-package direnv
-  :straight t
+  :elpaca t
   :custom
   (direnv-always-show-summary nil)
   :init
   (direnv-mode))
 
 (use-package deadgrep
-  :straight t
+  :elpaca t
   :bind ("C-c u" . deadgrep))
 
 (use-package ediff
@@ -103,16 +103,16 @@ from a GCP release notes entry."
     (face-remap-add-relative face :height height :weight 'semi-bold)))
 
 (use-package elfeed
-  :straight t
+  :elpaca t
   :hook (elfeed-show-mode . my-elfeed-show-mode-hook)
   :bind ("C-c r" . elfeed))
 
 (use-package expand-region
-  :straight t
+  :elpaca t
   :bind ("C-=" . er/expand-region))
 
 (use-package gcmh
-  :straight t
+  :elpaca t
   :hook (emacs-startup . gcmh-mode)
   :custom
   (gcmh-idle-delay 'auto)
@@ -127,7 +127,7 @@ from a GCP release notes entry."
          ("g" . golink-create)))
 
 (use-package gptel
-  :straight t
+  :elpaca t
   :bind (("C-c #" . gptel)))
 
 ;; internal
@@ -135,7 +135,7 @@ from a GCP release notes entry."
   :mode "\\.hcl\\'")
 
 (use-package helpful
-  :straight t
+  :elpaca t
   :bind (("C-h f" . helpful-callable)
          ("C-h v" . helpful-variable)
          ("C-h k" . helpful-key)
@@ -150,7 +150,7 @@ from a GCP release notes entry."
   (js-indent-level 2))
 
 (use-package just-mode
-  :straight t
+  :elpaca t
   :defer t)
 
 (defun my-ledger-mode-hook ()
@@ -158,7 +158,7 @@ from a GCP release notes entry."
   (setq-local corfu-quit-no-match t))
 
 (use-package ledger-mode
-  :straight t
+  :elpaca t
   :defer t
   :hook
   (ledger-mode . my-ledger-mode-hook)
@@ -174,7 +174,7 @@ from a GCP release notes entry."
     (lispy-mode 1)))
 
 (use-package lispy
-  :straight t
+  :elpaca t
   :hook (emacs-lisp-mode . my-lispy-emacs-lisp-mode-hook)
   :bind (:map lispy-mode-map-lispy
               ("C-s-," . lispy-mark))
@@ -207,11 +207,11 @@ from a GCP release notes entry."
     ("z" nil)))
 
 (use-package lua-mode
-  :straight t
+  :elpaca t
   :defer t)
 
 (use-package magit
-  :straight t
+  :elpaca t
   :bind (("s-m m" . magit-status)
          ("s-m d" . magit-file-dispatch)
          ("s-m l" . magit-log)
@@ -223,13 +223,13 @@ from a GCP release notes entry."
   (magit-diff-refine-hunk t))
 
 (use-package markdown-mode
-  :straight t
+  :elpaca t
   :hook (markdown-mode . my-fill-column-setup)
   :custom
   (markdown-command "pandoc"))
 
 (use-package nix-mode
-  :straight t
+  :elpaca t
   :defer t)
 
 (defun my-org-open-line-after-meta-data ()
@@ -241,7 +241,7 @@ from a GCP release notes entry."
     (next-line -1)))
 
 (use-package org
-  :straight t
+  :elpaca t
   :bind (nil
          :map org-mode-map
          ("C-'" . nil)
@@ -358,7 +358,7 @@ use the current project."
 
 (use-package puni
   :disabled t
-  :straight t
+  :elpaca t
   :hook ((emacs-lisp-mode) . puni-disable-puni-mode)
   :bind (nil
          :map puni-mode-map
@@ -376,7 +376,7 @@ use the current project."
   (puni-global-mode))
 
 (use-package rainbow-delimiters
-  :straight t
+  :elpaca t
   :hook
   (prog-mode . rainbow-delimiters-mode-enable))
 
@@ -385,7 +385,7 @@ use the current project."
   :hook (rst-mode . my-fill-column-setup))
 
 (use-package scss-mode
-  :straight t
+  :elpaca t
   :defer t
   :custom
   (scss-compile-at-save nil))
@@ -401,9 +401,6 @@ use the current project."
     (advice-add capf :around
                 (lambda (orig)
                   (cape-wrap-properties orig :exclusive 'no)))))
-
-;; internal
-(use-package straight-helpers)
 
 (defun tempel-setup-capf ()
   (setq-local completion-at-point-functions
@@ -430,7 +427,7 @@ session."
 
 (use-package tempel
   :disabled t
-  :straight (tempel :type git :host github :repo "minad/tempel")
+  :elpaca (tempel :host github :repo "minad/tempel")
   :bind (:map tempel-map
          ("s-]" . tempel-next)
          ("s-[" . tempel-previous)
@@ -440,7 +437,7 @@ session."
   :hook ((prog-mode text-mode) . tempel-setup-capf))
 
 (use-package toml-mode
-  :straight t
+  :elpaca t
   :defer t)
 
 ;; internal
@@ -459,7 +456,7 @@ session."
   (vterm-send-key "k" nil nil t))
 
 (use-package vterm
-  :straight t
+  :elpaca t
   :hook (vterm-mode . my-vterm-mode-hook)
   :custom
   (vterm-always-compile-module t)
@@ -481,25 +478,25 @@ session."
          ("C-o C-t" . vterm-copy-mode)))
 
 (use-package vterm-toggle
-  :straight t
+  :elpaca t
   :bind ("C-o C-v" . vterm-toggle))
 
 (use-package which-key
-  :straight t
+  :elpaca t
   :custom
   (which-key-use-C-h-commands nil)
   :init
   (which-key-mode))
 
 (use-package yaml-mode
-  :straight t
+  :elpaca t
   :defer t)
 
 (defun my-yasnippet-snippet-mode-hook ()
   (setq-local require-final-newline nil))
 
 (use-package yasnippet
-  :straight t
+  :elpaca t
   :hook (snippet-mode . my-yasnippet-snippet-mode-hook)
   :custom
   (yas-snippet-dirs (list (expand-file-name "snippets/" user-emacs-directory)

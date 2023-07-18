@@ -1,15 +1,15 @@
 ;;; -*- lexical-binding: t; -*-
 
 (use-package elixir-mode
-  :straight t
+  :elpaca t
   :defer t)
 
 (use-package alchemist
-  :straight t
+  :elpaca t
   :defer t)
 
 (use-package ruby-end
-  :straight t
+  :elpaca t
   :defer t
   :init
   (add-hook 'elixir-mode-hook

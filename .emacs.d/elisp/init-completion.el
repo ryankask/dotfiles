@@ -4,7 +4,7 @@
       (nconc completion-ignored-extensions '(".DS_Store" "__pycache__/")))
 
 (use-package vertico
-  :straight (vertico :files (:defaults "extensions/*"))
+  :elpaca (vertico :files (:defaults "extensions/*"))
   :bind (:map vertico-map
          ("C-<return>" . vertico-exit-input))
   :init
@@ -33,7 +33,7 @@
   :hook (minibuffer-setup . vertico-repeat-save))
 
 (use-package orderless
-  :straight t
+  :elpaca t
   :custom (completion-styles '(orderless))
   :init
   (setq completion-category-defaults nil)
@@ -79,7 +79,7 @@
                   :mode '(vterm-mode term-mode)))))
 
 (use-package consult
-  :straight t
+  :elpaca t
   :bind (("C-s" . consult-line)
          ("C-x b" . consult-buffer)
          ("C-x 4 b" . consult-buffer-other-window)
@@ -148,14 +148,14 @@
   (add-to-list 'consult-buffer-sources 'my-consult-terminal-source 'append))
 
 (use-package consult-dir
-  :straight t
+  :elpaca t
   :bind (("C-x C-d" . consult-dir)
          :map vertico-map
          ("C-x C-d" . consult-dir)
          ("C-x C-j" . consult-dir-jump-file)))
 
 (use-package marginalia
-  :straight t
+  :elpaca t
   :bind (:map minibuffer-local-map
               ("M-A" . marginalia-cycle))
   :init
@@ -202,8 +202,8 @@ targets."
      expanded-file)))
 
 (use-package embark
-  :straight t
-  :hook (after-init . (lambda () (require 'embark)))
+  :elpaca t
+  :hook (elpaca-after-init . (lambda () (require 'embark)))
   :bind (("C-." . embark-act)
          ("s-." . embark-dwim)
          :map embark-file-map
@@ -227,11 +227,11 @@ targets."
                  (window-parameters (mode-line-format . none)))))
 
 (use-package embark-consult
-  :straight t
+  :elpaca t
   :after (embark consult))
 
 (use-package corfu
-  :straight t
+  :elpaca t
   :custom
   (corfu-auto t)
   (corfu-cycle t)
@@ -241,7 +241,7 @@ targets."
   (global-corfu-mode))
 
 (use-package cape
-  :straight t
+  :elpaca t
   :init
   (add-to-list 'completion-at-point-functions #'cape-file)
   (add-to-list 'completion-at-point-functions #'cape-dabbrev))

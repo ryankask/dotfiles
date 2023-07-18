@@ -1,7 +1,7 @@
 ;;; -*- lexical-binding: t; -*-
 
 (use-package web-mode
-  :straight t
+  :elpaca t
   :mode ("\\.html?\\'" "\\.mustache\\'")
   :init
   (setq web-mode-enable-auto-pairing nil

@@ -26,7 +26,7 @@
 
 (use-package lsp-mode
   :if (eq my-lsp-provider 'lsp-mode)
-  :straight nil
+  :elpaca nil
   :commands (lsp lsp-deferred)
   :bind (nil
          :map lsp-mode-map

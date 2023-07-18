@@ -55,7 +55,7 @@
 
 (use-package winner
   :preface (defvar winner-dont-bind-my-keys t)
-  :hook (after-init . winner-mode)
+  :hook (elpaca-after-init . winner-mode)
   :bind (:map winner-mode-map
               ("C-c [" . winner-undo)
               ("C-c ]" . winner-redo))
@@ -99,7 +99,7 @@
   (modus-themes-load-theme 'modus-vivendi))
 
 (use-package modus-themes
-  :straight t
+  :elpaca t
   :custom
   (modus-themes-custom-auto-reload nil)
   (modus-themes-bold-constructs nil)
@@ -111,7 +111,7 @@
      (border-mode-line-active bg-mode-line-active)
      (border-mode-line-inactive bg-mode-line-inactive)))
   :bind ("C-o w" . modus-themes-toggle)
-  :hook ((after-init . my-modus-themes-init)
+  :hook ((elpaca-after-init . my-modus-themes-init)
          (modus-themes-after-load-theme . my-modus-themes-setup)))
 
 (defun my-ef-themes-get-ns-appearance ()
@@ -125,11 +125,11 @@
     (my-theme-configure-frames)))
 
 (use-package ef-themes
-  :straight t
+  :elpaca t
   :hook (ef-themes-post-load . my-ef-themes-setup))
 
 (use-package minions
-  :straight t
+  :elpaca t
   :custom
   (minions-mode-line-lighter "󰍜")
   :bind ("C-c =" . minions-minor-modes-menu)
@@ -137,7 +137,7 @@
   (minions-mode 1))
 
 (use-package goggles
-  :straight t
+  :elpaca t
   :hook ((prog-mode text-mode) . goggles-mode)
   :config
   (setq-default goggles-pulse t))

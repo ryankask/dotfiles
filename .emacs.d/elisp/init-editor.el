@@ -163,7 +163,7 @@
 
 (use-package repeat-help
   :after (repeat embark)
-  :straight t
+  :elpaca t
   :custom
   (repeat-help-popup-type 'embark)
   :init
@@ -189,12 +189,12 @@
     (cl-pushnew item ispell-skip-region-alist :test #'equal)))
 
 (use-package jinx
-  :straight t
+  :elpaca t
   :hook (emacs-startup . global-jinx-mode)
   :bind ("C-;" . jinx-correct))
 
 (use-package smartparens-config
-  :straight smartparens
+  :elpaca smartparens
   :custom
   (sp-highlight-wrap-overlay nil)
   (sp-highlight-wrap-tag-overlay nil)
@@ -219,7 +219,7 @@
   (reb-re-syntax 'string))
 
 (use-package undo-fu
-  :straight t
+  :elpaca t
   :custom
   (undo-limit 400000)                   ; 400kb (default is 160kb)
   (undo-strong-limit 3000000)           ; 3mb   (default is 240kb)

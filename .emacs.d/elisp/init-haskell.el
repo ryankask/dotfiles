@@ -11,7 +11,7 @@
     (setq-local corfu-auto nil)))
 
 (use-package haskell-mode
-  :straight t
+  :elpaca t
   :custom
   (haskell-process-suggest-remove-import-lines t)
   (haskell-process-auto-import-loaded-modules t)
@@ -24,7 +24,7 @@
 
 (use-package lsp-haskell
   :if (eq my-lsp-provider 'lsp-mode)
-  :straight nil
+  :elpaca nil
   :after haskell-mode
   :hook ((haskell-mode . my-lsp-ensure)
          (haskell-liteate-mode . my-lsp-ensure)))

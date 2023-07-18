@@ -71,7 +71,7 @@ isn't found."
 
 (use-package python-pytest
   :after python
-  :straight t
+  :elpaca t
   :bind (:map python-mode-map
               ("C-o C-t" . python-pytest-dispatch))
   :config
