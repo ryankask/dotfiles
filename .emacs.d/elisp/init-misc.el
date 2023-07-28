@@ -247,6 +247,7 @@ from a GCP release notes entry."
   :bind (nil
          :map org-mode-map
          ("C-'" . nil)
+         ("C-c #" . nil)
          ("s-<return>" . org-meta-return)
          ("s-<left>" . org-metaleft)
          ("s-<right>" . org-metaright)
