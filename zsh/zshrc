@@ -164,7 +164,7 @@ alias df='df -kh'
 alias du='du -kh'
 
 # Other
-alias o='open'
+alias o="open"
 alias g="git"
 alias gitemail='git config user.email'
 alias sane="stty sane"
@@ -177,6 +177,7 @@ alias startavd='${ANDROID_HOME}/emulator/emulator -avd Pixel_3_API_28 > /dev/nul
 alias rna='node_modules/.bin/react-native run-android'
 alias rnr='adb -d reverse tcp:8081 tcp:8081'
 alias rnl='adb logcat \*:S ReactNative:V ReactNativeJS:V'
+alias ai="llm"
 
 if [[ "$OSTYPE" == darwin* ]]; then
   # OS X-specific aliases
