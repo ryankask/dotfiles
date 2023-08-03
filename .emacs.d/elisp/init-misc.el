@@ -465,7 +465,7 @@ session."
   (vterm-always-compile-module t)
   (vterm-kill-buffer-on-exit t)
   (vterm-max-scrollback 5000)
-  (vterm-timer-delay .025)
+  (vterm-timer-delay 0.025)
   (vterm-toggle-scope 'project)
   (vterm-tramp-shells '(("ssh" "/usr/bin/zsh")
                         ("docker" "/bin/sh")))
@@ -478,7 +478,11 @@ session."
          ("C-o C-u" . vterm-send-C-u)
          ("C-o C-l" . vterm-clear-scrollback)
          :map vterm-copy-mode-map
-         ("C-o C-t" . vterm-copy-mode)))
+         ("C-o C-t" . vterm-copy-mode))
+  :init
+  (add-to-list 'display-buffer-alist
+               '("\\*vterm\\*"
+                 display-buffer-below-selected)))
 
 (use-package vterm-toggle
   :elpaca t
