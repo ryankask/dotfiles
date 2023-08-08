@@ -482,7 +482,8 @@ session."
   :init
   (add-to-list 'display-buffer-alist
                '("\\*vterm\\*"
-                 display-buffer-below-selected)))
+                 display-buffer-below-selected
+                 (window-min-height . 28))))
 
 (use-package vterm-toggle
   :elpaca t
