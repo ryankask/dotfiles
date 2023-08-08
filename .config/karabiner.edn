@@ -2,8 +2,9 @@
                 :kitty ["^net\\.kovidgoyal\\.kitty$"]
                 :C-m-apps ["^com\\.google\\.Chrome$"
                            "^com\\.microsoft\\.VSCode$"]
-                :emacs-emulation-apps ["^com\\.tinyspeck\\.slackmacgap$"
-                                       "^notion\\.id"$]}
+                :emacs-emulation-apps ["^com\\.google\\.Chrome$"
+                                       "^com\\.tinyspeck\\.slackmacgap$"
+                                       "^notion\\.id$"]}
  :main [{:des "swap caps lock to left control"
          :rules [[:##caps_lock :left_control]
                  [:##left_control :caps_lock]]}
