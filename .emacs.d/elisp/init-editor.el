@@ -165,6 +165,7 @@
   :after (repeat embark)
   :elpaca t
   :custom
+  (repeat-help-key "C-h h")
   (repeat-help-popup-type 'embark)
   :init
   (repeat-help-mode))
