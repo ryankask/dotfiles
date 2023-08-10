@@ -130,7 +130,8 @@ from a GCP release notes entry."
   :elpaca t
   :custom
   (gptel-model "gpt-4")
-  :bind (("C-c #" . gptel)))
+  :bind (("C-c #" . gptel)
+         ("C-c RET" . gptel-send)))
 
 ;; internal
 (use-package hcl-ts-mode
