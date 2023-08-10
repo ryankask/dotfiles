@@ -66,6 +66,21 @@
                   "*Apropos*" "*Help*" "*cvs*" "*Buffer List*" "*Ibuffer*"
                   "*esh command on file*"))))
 
+(use-package windmove
+  :bind (("C-s-h" . windmove-left)
+         ("C-s-n" . windmove-down)
+         ("C-s-e" . windmove-up)
+         ("C-s-i" . windmove-right)
+         ("s-w h" . windmove-left)
+         ("s-w n" . windmove-down)
+         ("s-w e" . windmove-up)
+         ("s-w i" . windmove-right)
+         :repeat-map my-windmove-repeat-map
+         ("h" . windmove-left)
+         ("n" . windmove-down)
+         ("e" . windmove-up)
+         ("i" . windmove-right)))
+
 (defun my-theme-get-ns-appearance ()
   (pcase (modus-themes--current-theme)
     ('modus-operandi 'light)
