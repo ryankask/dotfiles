@@ -46,12 +46,20 @@
       '(read-only t cursor-intangible t face minibuffer-prompt))
 (setq-default cursor-in-non-selected-windows nil)
 
+(defun my-toggle-window-dedication ()
+  "Toggles window dedication in the selected window."
+  (interactive)
+  (set-window-dedicated-p
+   (selected-window)
+   (not (window-dedicated-p (selected-window)))))
+
 (use-package window
   :bind
   ("s-`" . delete-window)
   ("s-1" . delete-other-windows)
   ("s-2" . split-window-below)
-  ("s-3" . split-window-right))
+  ("s-3" . split-window-right)
+  ("s-w d" . my-toggle-window-dedication))
 
 (use-package winner
   :preface (defvar winner-dont-bind-my-keys t)
