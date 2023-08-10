@@ -42,7 +42,7 @@
 (defun my-rectangle-exec-action (name)
   "Execute Rectangle app action NAME using the open command. NAME
  must be one the values in `my-rectangle-app-actions'."
-  (interactive (list (completing-read "Action: " my-rectangle-app-actions)))
+  (interactive (list (completing-read "Action: " my-rectangle-actions)))
   (call-process
    "open" nil 0 nil "-g" (format "rectangle://execute-action?name=%s" name)))
 
