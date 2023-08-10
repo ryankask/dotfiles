@@ -86,6 +86,6 @@
     ("=" "center" my-rectangle-exec-action--center)
     ("v" "restore" my-rectangle-exec-action--restore)]])
 
-(bind-key "s-w" #'my-rectangle-dispatch)
+(bind-key "s-f" #'my-rectangle-dispatch)
 
 (provide 'init-macos)
