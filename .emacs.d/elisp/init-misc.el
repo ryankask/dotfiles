@@ -156,21 +156,6 @@ from a GCP release notes entry."
   :elpaca t
   :defer t)
 
-(defun my-ledger-mode-hook ()
-  (setq-local completion-at-point-functions (list #'my-ledger-complete-at-point))
-  (setq-local corfu-quit-no-match t))
-
-(use-package ledger-mode
-  :elpaca t
-  :defer t
-  :hook
-  (ledger-mode . my-ledger-mode-hook)
-  :custom
-  (ledger-default-date-format ledger-iso-date-format)
-  :config
-  (defalias 'my-ledger-complete-at-point
-    (cape-capf-case-fold #'ledger-complete-at-point)))
-
 (defun my-lispy-emacs-lisp-mode-hook ()
   "Enable lispy-mode in any Emacs lisp buffer except for the scratch buffer."
   (when (not (string= (buffer-name) "*scratch*"))
