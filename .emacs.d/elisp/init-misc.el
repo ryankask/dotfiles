@@ -30,7 +30,12 @@
   :bind (("C-o C-o" . ace-window)
          ("s-o" . ace-window))
   :custom
-  (aw-keys '(?n ?e ?i ?o ?t ?s ?r ?a)))
+  (aw-keys '(?n ?e ?i ?o ?t ?s ?r ?a))
+  :config
+  (pcase-dolist (`(,oldkey . ,item) '((?n ?f aw-flip-window)
+                                      (?o ?k delete-other-windows "Delete Other Windows")))
+    (assq-delete-all oldkey aw-dispatch-alist)
+    (add-to-list 'aw-dispatch-alist item)))
 
 (use-package css
   :defer t
