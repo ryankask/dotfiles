@@ -71,6 +71,10 @@
   (advice-add #'copilot-complete :before #'corfu-quit)
   (advice-add #'copilot--post-command :override #'my-copilot-post-command))
 
+(use-package csv-mode
+  :elpaca t
+  :defer t)
+
 (use-package direnv
   :elpaca t
   :custom
