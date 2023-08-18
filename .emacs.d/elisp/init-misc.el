@@ -264,6 +264,8 @@ from a GCP release notes entry."
   :custom
   (org-catch-invisible-edits 'show-and-error)
   (org-cycle-separator-lines 1)
+  (org-babel-load-languages '((emacs-lisp . t)
+                              (sql . t)))
   (org-hide-emphasis-markers t)
   (org-fontify-done-headline nil)
   (org-insert-heading-respect-content t)
