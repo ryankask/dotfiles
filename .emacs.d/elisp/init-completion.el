@@ -39,23 +39,6 @@
   (setq completion-category-defaults nil)
   (setq completion-category-overrides nil))
 
-(defun my-consult-fd-builder (input)
-  (pcase-let* ((`(,arg . ,opts) (consult--command-split input))
-               (`(,re . ,hl) (funcall consult--regexp-compiler arg 'extended t)))
-    (when re
-      (cons (append
-             (list "fd" "--color=never" "--hidden" "--full-path"
-                   (consult--join-regexps re 'extended))
-             opts)
-            hl))))
-
-(defun my-consult-fd (&optional dir initial)
-  (interactive "P")
-  (pcase-let* ((`(,prompt ,paths ,dir) (consult--directory-prompt "Fd" dir))
-               (default-directory dir))
-    (find-file
-     (consult--find prompt #'my-consult-fd-builder initial))))
-
 (defun my-consult-mdfind-builder (input)
   (pcase-let ((`(,arg . ,opts) (consult--command-split input)))
     (cons (append (list "mdfind" "-name" arg) opts) nil)))
@@ -89,7 +72,7 @@
          ("C-c h" . consult-info)
          ([remap Info-search] . consult-info)
          ("C-c n" . consult-ripgrep)
-         ("C-c e" . my-consult-fd)
+         ("C-c e" . consult-fd)
          ("C-c i" . my-consult-mdfind)
          ("C-c o" . consult-git-grep)
          ("C-c b" . consult-bookmark)
@@ -129,6 +112,7 @@
    (lambda ()
      (when-let (project (project-current))
        (car (project-roots project)))))
+  (consult-fd-args '("fd" "--color=never" "--hidden" "--full-path"))
   :init
   (setq xref-show-xrefs-function #'consult-xref
         xref-show-definitions-function #'consult-xref
