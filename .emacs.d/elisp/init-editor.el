@@ -9,6 +9,7 @@
 
 ;; Custom prefixes
 (bind-key "C-o" nil)
+(bind-key "C-z" nil)
 ;; Keybindings
 (bind-key "M-u" #'upcase-dwim)
 (bind-key "M-l" #'downcase-dwim)
