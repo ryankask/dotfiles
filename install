@@ -2,7 +2,7 @@
 
 set -eu -o pipefail
 
-DEST=$1
+DEST=${1-}
 
 if [[ -z "$DEST" ]]; then
   echo "Install destination directory required"
