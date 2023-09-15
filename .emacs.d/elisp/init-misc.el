@@ -37,7 +37,9 @@
     (assq-delete-all oldkey aw-dispatch-alist)
     (add-to-list 'aw-dispatch-alist item)))
 
-(use-package css
+(use-package css-mode
+  :preface
+  (my-try-treesit-lang 'css 'css-mode 'css-ts-mode)
   :defer t
   :custom
   (css-indent-offset 2))
@@ -85,6 +87,11 @@
 (use-package deadgrep
   :elpaca t
   :bind ("C-c u" . deadgrep))
+
+(use-package dockerfile-ts-mode
+  :if (and (fboundp 'dockerfile-ts-mode)
+           (treesit-language-available-p 'dockerfile))
+  :mode "[/\\]\\(?:Containerfile\\|Dockerfile\\)\\(?:\\.[^/\\]*\\)?\\'")
 
 (use-package ediff
   :defer t
@@ -156,10 +163,16 @@ from a GCP release notes entry."
          ("C-c C-d" . helpful-at-point)))
 
 (use-package js-mode
-  :mode ("\\.js\\'"
-         "\\.json\\'")
+  :preface
+  (my-try-treesit-lang 'javascript 'javascript-mode 'js-ts-mode)
+  :defer t
   :custom
   (js-indent-level 2))
+
+(use-package json-ts-mode
+  :if (and (fboundp 'json-ts-mode)
+           (treesit-language-available-p 'json))
+  :mode "\\.json\\'")
 
 (use-package just-mode
   :elpaca t
@@ -384,12 +397,6 @@ use the current project."
   :defer t
   :hook (rst-mode . my-fill-column-setup))
 
-(use-package scss-mode
-  :elpaca t
-  :defer t
-  :custom
-  (scss-compile-at-save nil))
-
 (use-package sh-mode
   :defer t
   :custom
@@ -436,9 +443,10 @@ session."
          ("C-s-]" . my-tempel-immediate-done-end))
   :hook ((prog-mode text-mode) . tempel-setup-capf))
 
-(use-package toml-mode
-  :elpaca t
-  :defer t)
+(use-package toml-ts-mode
+  :if (and (fboundp 'toml-ts-mode)
+           (treesit-language-available-p 'toml))
+  :mode "\\.toml\\'")
 
 ;; internal
 (use-package use-package-helpers
@@ -493,9 +501,10 @@ session."
   :init
   (which-key-mode))
 
-(use-package yaml-mode
-  :elpaca t
-  :defer t)
+(use-package yaml-ts-mode
+  :if (and (fboundp 'yaml-ts-mode)
+           (treesit-language-available-p 'yaml))
+  :mode "\\.ya?ml\\'")
 
 (defun my-yasnippet-snippet-mode-hook ()
   (setq-local require-final-newline nil))

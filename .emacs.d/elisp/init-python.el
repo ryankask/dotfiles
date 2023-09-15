@@ -63,16 +63,18 @@ isn't found."
   (my-lsp-ensure))
 
 (use-package python
-  :bind (:map python-mode-map
+  :preface
+  (my-try-treesit-lang 'python 'python-mode 'python-ts-mode)
+  :bind (:map python-base-mode-map
               ("C-c /" . my-python-debug-insert-ipdb-set-trace))
-  :hook (python-mode . my-python-mode-setup)
+  :hook (python-base-mode . my-python-mode-setup)
   :custom
   (python-fill-docstring-style 'symmetric))
 
 (use-package python-pytest
   :after python
   :elpaca t
-  :bind (:map python-mode-map
+  :bind (:map python-base-mode-map
               ("C-o C-t" . python-pytest-dispatch))
   :config
   (pcase-dolist (`(,loc . ,key) '(("t" . "a")
