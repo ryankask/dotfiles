@@ -448,6 +448,18 @@ session."
            (treesit-language-available-p 'toml))
   :mode "\\.toml\\'")
 
+(defun my-typescript-mode-hook ()
+  "Set up a Typescript base mode managed buffer"
+  (my-lsp-ensure)
+  (setq-local my-format-with-lsp nil)
+  (apheleia-mode))
+
+(use-package typescript-ts-mode
+  :if (and (fboundp 'typescript-ts-mode)
+           (treesit-language-available-p 'typescript))
+  :mode ("\\.ts\\'" ("\\.tsx\\'" . tsx-ts-mode))
+  :hook (typescript-ts-base-mode . my-typescript-mode-hook))
+
 ;; internal
 (use-package use-package-helpers
   :config
