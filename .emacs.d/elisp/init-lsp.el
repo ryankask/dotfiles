@@ -30,8 +30,7 @@
   :commands (lsp lsp-deferred)
   :bind (nil
          :map lsp-mode-map
-         ("C-o d" . lsp-describe-thing-at-point)
-         ("C-o f" . lsp-format-buffer))
+         ("C-o d" . lsp-describe-thing-at-point))
   :hook ((lsp-mode . my-lsp-mode-setup)
          (lsp-completion-mode . my-lsp-mode-setup-completion)
          (help-mode . my-lsp-help-mode-setup))
@@ -41,6 +40,7 @@
   (lsp-headerline-breadcrumb-enable nil)
   (lsp-signature-auto-activate nil)
   (lsp-signature-render-documentation nil)
+  (my-format-lsp-function #'lsp-format-buffer)
   :config
   (my-lsp-mode-update-keybindings))
 
@@ -58,9 +58,8 @@
   (eglot-sync-connect 1)
   (eglot-autoshutdown t)
   (eglot-menu-string "€")
+  (my-format-lsp-function #'eglot-format-buffer)
   :bind (("C-o C-s s" . eglot)
-         :map eglot-mode-map
-         ("C-o f" . eglot-format)
          :prefix-map my-eglot-mode-map
          :prefix "C-o C-s"
          ("v" . eglot-events-buffer)
@@ -71,6 +70,8 @@
          ("r" . eglot-rename)
          ("c" . eglot-show-workspace-configuration)
          ("q" . eglot-shutdown))
+  :init
+  (setopt  )
   :config
   (setf (alist-get 'styles (alist-get 'eglot completion-category-defaults))
         '(orderless)))
@@ -94,5 +95,11 @@
   (pcase-exhaustive my-lsp-provider
     ('lsp-mode (lsp-organize-imports))
     ('eglot (call-interactively #'eglot-code-action-organize-imports))))
+
+(defun my-lsp-enabled-in-buffer ()
+  "Return whether an LSP mode is enabled in the buffer."
+  (pcase-exhaustive my-lsp-provider
+    ('lsp-mode (bound-and-true-p lsp-mode))
+    ('eglot (bound-and-true-p eglot--managed-mode))))
 
 (provide 'init-lsp)

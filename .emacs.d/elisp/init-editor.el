@@ -301,4 +301,36 @@ Position the cursor at its beginning, according to the current mode."
              (treesit-language-available-p lang))
     (push (cons old-mode ts-mode) major-mode-remap-alist)))
 
+;; Formatting
+
+(use-package apheleia
+  :elpaca t
+  :defer t)
+
+(defcustom my-format-default-function #'apheleia-format-buffer
+  "Default format function."
+  :type 'function)
+
+(defcustom my-format-lsp-function nil
+  "Format function provided by an LSP provider"
+  :type 'function)
+
+(defvar my-format-with-lsp t
+  "If non-nil, format with LSP formatter if it's available.")
+
+(defun my-format-buffer (&optional arg)
+  "If eglot can format and LSP formatting isn't disabled, format the buffer using `eglot-format-buffer'.
+ Otherwise, use `apheleia-format-buffer'.
+
+Derived from Doom's format module"
+  (interactive "P")
+  (call-interactively
+   (if (and my-format-lsp-function
+            my-format-with-lsp
+            (my-lsp-enabled-in-buffer))
+       my-format-lsp-function
+     my-format-default-function)))
+
+(bind-key "C-o f" #'my-format-buffer)
+
 (provide 'init-editor)
