@@ -5,6 +5,14 @@
 
 ;; lsp-mode
 
+(defun my-lsp-prepare-provider--lsp-mode ()
+  "Conform to the common LSP interface for `lsp-mode'"
+  (defalias 'my-lsp-ensure #'lsp-deferred)
+  (defun my-lsp-enabled-in-buffer ()
+    (bound-and-true-p lsp-mode))
+  (defalias 'my-lsp-format #'lsp-format-buffer)
+  (defalias 'my-lsp-organize-imports #'my-lsp-organize-imports))
+
 (defun my-lsp-mode-update-keybindings ()
   (setcar (assq ?g (cdr lsp-command-map)) ?t))
 
@@ -41,10 +49,20 @@
   (lsp-signature-auto-activate nil)
   (lsp-signature-render-documentation nil)
   (my-format-lsp-function #'lsp-format-buffer)
+  :init
+  (my-lsp-prepare-provider--lsp-mode)
   :config
   (my-lsp-mode-update-keybindings))
 
 ;; eglot
+
+(defun my-lsp-prepare-provider--eglot ()
+  "Conform to the common LSP interface for `eglot'"
+  (defalias 'my-lsp-ensure #'eglot-ensure)
+  (defun my-lsp-enabled-in-buffer ()
+    (bound-and-true-p eglot--managed-mode))
+  (defalias 'my-lsp-format #'eglot-format)
+  (defalias 'my-lsp-organize-imports #'eglot-code-action-organize-imports))
 
 (defun my-eglot-managed-mode-hook ()
   "eglot buffer customisations"
@@ -71,35 +89,9 @@
          ("c" . eglot-show-workspace-configuration)
          ("q" . eglot-shutdown))
   :init
-  (setopt  )
+  (my-lsp-prepare-provider--eglot)
   :config
   (setf (alist-get 'styles (alist-get 'eglot completion-category-defaults))
         '(orderless)))
-
-;; Common interface
-
-(defun my-lsp-ensure ()
-  "Ensure an LSP session is set up for the enabled provider"
-  (pcase-exhaustive my-lsp-provider
-    ('lsp-mode (lsp-deferred))
-    ('eglot (eglot-ensure))))
-
-(defun my-lsp-format ()
-  (interactive)
-  (pcase-exhaustive my-lsp-provider
-    ('lsp-mode (lsp-format-buffer))
-    ('eglot (call-interactively #'eglot-format))))
-
-(defun my-lsp-organize-imports ()
-  (interactive)
-  (pcase-exhaustive my-lsp-provider
-    ('lsp-mode (lsp-organize-imports))
-    ('eglot (call-interactively #'eglot-code-action-organize-imports))))
-
-(defun my-lsp-enabled-in-buffer ()
-  "Return whether an LSP mode is enabled in the buffer."
-  (pcase-exhaustive my-lsp-provider
-    ('lsp-mode (bound-and-true-p lsp-mode))
-    ('eglot (bound-and-true-p eglot--managed-mode))))
 
 (provide 'init-lsp)
