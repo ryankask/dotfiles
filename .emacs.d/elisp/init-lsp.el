@@ -76,6 +76,7 @@
   (eglot-sync-connect 1)
   (eglot-autoshutdown t)
   (eglot-menu-string "€")
+  (eglot-events-buffer-size 0)
   (my-format-lsp-function #'eglot-format-buffer)
   :bind (("C-o C-s s" . eglot)
          :prefix-map my-eglot-mode-map
