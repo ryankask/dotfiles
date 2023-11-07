@@ -153,8 +153,13 @@
 
 (add-hook 'before-save-hook 'my-delete-trailing-whitespace)
 
+(add-hook 'text-mode-hook #'visual-line-mode)
+
 (defun my-fill-column-setup ()
   (setq fill-column 88))
+
+(use-package visual-fill-column
+  :elpaca t)
 
 (use-package isearch
   :bind (:map search-map
