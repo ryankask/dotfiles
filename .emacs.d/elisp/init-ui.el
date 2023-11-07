@@ -165,4 +165,7 @@
   :config
   (setq-default goggles-pulse t))
 
+(use-package visual-fill-column
+  :elpaca t)
+
 (provide 'init-ui)
