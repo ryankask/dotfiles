@@ -49,6 +49,7 @@
                     ["launch-mode" 1]]
                   [:condi :launch-mode]
                   [:a "open -b com.apple.ActivityMonitor"]
+                  [:b "open -b com.apple.iBooksX"]
                   [:c "open -b com.google.Chrome"]
                   [:d "open -b com.tinyspeck.slackmacgap"]
                   [:e "open -b org.gnu.Emacs"]

@@ -418,6 +418,19 @@
           "type" : "basic"
         }, {
           "from" : {
+            "key_code" : "b"
+          },
+          "to" : [ {
+            "shell_command" : "open -b com.apple.iBooksX"
+          } ],
+          "conditions" : [ {
+            "name" : "launch-mode",
+            "value" : 1,
+            "type" : "variable_if"
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
             "key_code" : "c"
           },
           "to" : [ {
