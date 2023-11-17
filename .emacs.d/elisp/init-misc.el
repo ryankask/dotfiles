@@ -288,6 +288,14 @@ from a GCP release notes entry."
   (org-special-ctrl-a/e t)
   (org-use-sub-superscripts "{}"))
 
+(use-package org-modern
+  :elpaca t
+  :after org
+  :custom-face
+  (org-modern-label ((t (:height 0.85))))
+  :init
+  (global-org-modern-mode))
+
 ;; Adapted from https://github.com/karthink/project-x/blob/master/project-x.el
 
 (defcustom my-project-local-identifier (list ".project" "pyproject.toml")
