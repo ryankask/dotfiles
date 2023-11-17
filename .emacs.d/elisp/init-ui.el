@@ -11,14 +11,15 @@
       scroll-bar-mode nil)
 
 (when (or (display-graphic-p) (daemonp))
-  (setq my-font (font-spec :family "SF Mono" :size 13))
-  (set-fontset-font t 'unicode my-font)
-  (set-fontset-font t 'unicode (font-spec :family "Symbols Nerd Font Mono" :size 13) nil 'append)
+  (set-face-attribute 'default nil :family "Iosevka" :height 140)
+  (set-face-attribute 'fixed-pitch nil :family "Iosevka")
+  (set-face-attribute 'fixed-pitch-serif nil :family "Iosevka Slab")
+  (set-face-attribute 'variable-pitch nil :family "Iosevka Aile")
+  (set-fontset-font t 'unicode "Symbols Nerd Font Mono" nil 'append)
   (set-fontset-font t 'unicode "Noto Color Emoji" nil 'append)
-  (push (cons 'font (font-xlfd-name my-font)) default-frame-alist)
-  (push '(width . (text-pixels . 940)) default-frame-alist)
+  (push '(width . (text-pixels . 700)) default-frame-alist)
   (push '(height . (text-pixels . 843)) default-frame-alist)
-  (set-frame-position nil 480 0))
+  (set-frame-position nil 720 0))
 
 (use-package display-line-numbers
   :custom
