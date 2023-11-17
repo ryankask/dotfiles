@@ -11,7 +11,7 @@
       scroll-bar-mode nil)
 
 (when (or (display-graphic-p) (daemonp))
-  (setq my-font (font-spec :family "Menlo" :size 13))
+  (setq my-font (font-spec :family "SF Mono" :size 13))
   (set-fontset-font t 'unicode my-font)
   (set-fontset-font t 'unicode (font-spec :family "Symbols Nerd Font Mono" :size 13) nil 'append)
   (set-fontset-font t 'unicode "Noto Color Emoji" nil 'append)
