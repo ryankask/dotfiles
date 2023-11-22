@@ -135,8 +135,7 @@
      (border-mode-line-active bg-mode-line-active)
      (border-mode-line-inactive bg-mode-line-inactive)))
   :bind ("C-o w" . modus-themes-toggle)
-  :hook ((elpaca-after-init . my-modus-themes-init)
-         (modus-themes-after-load-theme . my-modus-themes-setup)))
+  :hook ((modus-themes-after-load-theme . my-modus-themes-setup)))
 
 (defun my-ef-themes-get-ns-appearance ()
   (cond
@@ -148,9 +147,14 @@
              #'my-ef-themes-get-ns-appearance))
     (my-theme-configure-frames)))
 
+(defun my-ef-themes-init ()
+  (require 'ef-themes)
+  (ef-themes-select 'ef-maris-dark))
+
 (use-package ef-themes
   :elpaca t
-  :hook (ef-themes-post-load . my-ef-themes-setup))
+  :hook ((elpaca-after-init . my-ef-themes-init)
+         (ef-themes-post-load . my-ef-themes-setup)))
 
 (use-package minions
   :elpaca t
