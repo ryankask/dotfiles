@@ -156,6 +156,30 @@
   :hook ((elpaca-after-init . my-ef-themes-init)
          (ef-themes-post-load . my-ef-themes-setup)))
 
+(defcustom my-theme-update-external-themes t
+  "Determines whether changing a modus-theme or ef-themes theme also
+updates other software's themes like kitty."
+  :type 'boolean)
+
+(defvar my-theme-update-external-themes-ready nil)
+
+(defun my-theme-match-current-theme (current-theme)
+  (if (null my-theme-update-external-themes-ready)
+      (setq my-theme-update-external-themes-ready t)
+    (when my-theme-update-external-themes
+      (themegen-activate-kitty-theme current-theme))))
+
+(defun my-theme-match-current-modus-theme ()
+  (my-theme-match-current-theme (modus-themes--current-theme)))
+
+(defun my-theme-match-current-ef-theme ()
+  (my-theme-match-current-theme (ef-themes--current-theme)))
+
+(use-package themegen
+  :commands themegen-activate-kitty-theme
+  :hook ((modus-themes-after-load-theme . my-theme-match-current-modus-theme)
+         (ef-themes-post-load . my-theme-match-current-ef-theme)))
+
 (use-package minions
   :elpaca t
   :custom
