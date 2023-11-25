@@ -204,11 +204,9 @@ items for THEME."
   "Find and return the full shell export of `FZF_DEFAULT_OPTS'."
   (save-excursion
     (goto-char (point-min))
-    (message "in here")
     (when (re-search-forward
            "export FZF_DEFAULT_OPTS=\\\"\\(?:[^\"]\\|\n\\)+\\\""
            nil t)
-      (message "got match")
       (match-string-no-properties 0))))
 
 (defun themegen-set-fzf-default-opts-color-option (theme &optional file)
