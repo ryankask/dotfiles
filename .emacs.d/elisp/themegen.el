@@ -275,7 +275,10 @@ buffer."
            "kitty" "@" "--to" ,themegen-kitty-socket ,@args)))
 
 (defun themegen-activate-kitty-theme (theme &optional save-conf no-export-fzf-opts)
-  "Activate THEME using kitty's remote control feature. If SAVE-CONF is non-nil, it will use Kitty's theme selection mechanism to save the theme for future sessions. Otherwise, the theme will only be active for the current session.
+  "Activate THEME using kitty's remote control feature. If SAVE-CONF
+is non-nil, it will use Kitty's theme selection mechanism to save
+the theme for future sessions. Otherwise, the theme will only be
+active for the current session.
 
 If NO-EXPORT-FZF-OPTS is non-nil, `FZF_DEFAULT_OPTS' won't be
  exported in the active kitty window."
