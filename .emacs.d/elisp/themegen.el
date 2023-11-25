@@ -60,10 +60,10 @@ GET-COLOR-VALUE-FUNC function along with THEME, does not yield
 `unspecified'. If no such key is found, the function returns
 `unspecified'."
   (or (cl-some (lambda (key)
-                 (cond
-                  ((stringp key) key)
-                  (t (let ((color (funcall get-color-value-func key nil theme)))
-                       (if (eq color 'unspecified) nil color)))))
+                 (if (stringp key)
+                     key
+                   (let ((color (funcall get-color-value-func key nil theme)))
+                     (unless (eq color 'unspecified) color))))
                keys)
       'unspecified))
 
@@ -72,10 +72,10 @@ GET-COLOR-VALUE-FUNC function along with THEME, does not yield
 of theme keys and values suitable for another application."
   (let ((get-color-value-func (themegen--get-color-value-function theme)))
     (mapcar
-     (pcase-lambda (`(,kitty-key . ,theme-keys))
-       (cons kitty-key
+     (pcase-lambda (`(,conf-key . ,theme-keys))
+       (cons conf-key
              (themegen--get-theme-color theme theme-keys get-color-value-func)))
-     (or map themegen-kitty-colors-alist))))
+     map)))
 
 (defun themegen--format-config (theme map config-format)
   "Generate a config string for THEME using translation MAP and
@@ -162,6 +162,17 @@ items for THEME."
    nil
    (expand-file-name (format "%s.conf" theme) (or dir themegen-kitty-themes-dir))))
 
+(defun themegen--generate-kitty-rc-set-colors-args (theme)
+  "Generate a list of color options to send to kitty's `set-colors'
+remote control command."
+  (delq nil
+        (mapcar
+         (pcase-lambda (`(,key . ,color))
+           (unless (or (eq color 'unspecified)
+                       (equal color "background"))
+             (format "%s=%s" key color)))
+         (themegen--build-theme-values theme themegen-kitty-colors-alist))))
+
 (defun themegen-generate-kitty-themes ()
   "Generate kitty theme files for all themes available in the
  modus-themes and ef-themes collections."
@@ -200,14 +211,37 @@ items for THEME."
         (gui-set-selection 'CLIPBOARD option)
       option)))
 
-(defun themegen--extract-fzf-default-opts-export ()
-  "Find and return the full shell export of `FZF_DEFAULT_OPTS'."
+(defvar themegen-fzf-rc-file-path (expand-file-name "~/.zshrc")
+  "Path to shell rc file that contains the `FZF_DEFAULT_OPTS'
+export.")
+
+(defun themegen--find-fzf-default-opts-export ()
+  "Find and return the `FZF_DEFAULT_OPTS' export in the current
+buffer."
   (save-excursion
     (goto-char (point-min))
-    (when (re-search-forward
-           "export FZF_DEFAULT_OPTS=\\\"\\(?:[^\"]\\|\n\\)+\\\""
-           nil t)
+    (when (re-search-forward "export FZF_DEFAULT_OPTS=\\\"\\(?:[^\"]\\|\n\\)+\\\"" nil t)
       (match-string-no-properties 0))))
+
+(defun themegen--extract-fzf-default-opts-export (&optional file)
+  "Find and return the full shell export of `FZF_DEFAULT_OPTS'."
+  (with-temp-buffer
+    (insert-file-contents (expand-file-name (or file themegen-fzf-rc-file-path)))
+    (themegen--find-fzf-default-opts-export)))
+
+(defvar themegen--fzf-color-option-regexp
+  "\\(--color=\\(?:[a-z+]+:\\(?:#[A-Za-z0-9]\\{6\\}\\|-1\\)+,?\\)+\\)"
+  "Regular expression to find the FZF color option in a string.")
+
+(defun themegen--replace-fzf-color-option (export theme)
+  "Replace the --color option in EXPORT with the value for THEME."
+  (let ((option (themegen-generate-fzf-color-option theme)))
+    (with-temp-buffer
+      (insert export)
+      (goto-char (point-min))
+      (when (re-search-forward themegen--fzf-color-option-regexp nil t)
+        (replace-match option)
+        (buffer-string)))))
 
 (defun themegen-set-fzf-default-opts-color-option (theme &optional file)
   "Replace the --color option for the exported FZF_DEFAULT_OPTS
@@ -221,14 +255,11 @@ items for THEME."
     (with-temp-buffer
       (insert-file-contents rc nil nil nil t)
       (goto-char (point-min))
-      (when (re-search-forward
-             "\\(--color=\\(?:[a-z+]+:\\(?:#[A-Za-z0-9]\\{6\\}\\|-1\\)+,?\\)+\\)"
-             nil t)
+      (when (re-search-forward themegen--fzf-color-option-regexp nil t)
         (replace-match option)
         (write-file rc)
         (revert-buffer t t)
-        ;; Extract and return full export
-        (themegen--extract-fzf-default-opts-export)))))
+        (themegen--find-fzf-default-opts-export)))))
 
 ;; Activation
 
@@ -243,17 +274,24 @@ items for THEME."
          `("kitty-cmd" ,themegen-kitty-command-buffer-name
            "kitty" "@" "--to" ,themegen-kitty-socket ,@args)))
 
-(defun themegen-activate-kitty-theme (theme &optional no-export-fzf-opts)
-  "Activate THEME using kitty's remote control feature.
+(defun themegen-activate-kitty-theme (theme &optional save-conf no-export-fzf-opts)
+  "Activate THEME using kitty's remote control feature. If SAVE-CONF is non-nil, it will use Kitty's theme selection mechanism to save the theme for future sessions. Otherwise, the theme will only be active for the current session.
 
 If NO-EXPORT-FZF-OPTS is non-nil, `FZF_DEFAULT_OPTS' won't be
  exported in the active kitty window."
-  (interactive (list (themegen--select-theme) current-prefix-arg))
-  (themegen--run-kitty-command "kitten" "themes" (symbol-name theme))
-  (when-let ((not no-export-fzf-opts)
-             (var-export (themegen-set-fzf-default-opts-color-option theme)))
-    (themegen--run-kitty-command "send-text" (concat var-export ""))))
-
+  (interactive (list (themegen--select-theme) (y-or-n-p "Save? ") nil))
+  (if save-conf
+      (themegen--run-kitty-command "kitten" "themes" (symbol-name theme))
+    (apply #'themegen--run-kitty-command
+           `("set-colors" "--all"
+             ,@(themegen--generate-kitty-rc-set-colors-args theme))))
+  (when-let (((not no-export-fzf-opts))
+             (export (if save-conf
+                         (themegen-set-fzf-default-opts-color-option theme)
+                       (themegen--replace-fzf-color-option
+                        (themegen--extract-fzf-default-opts-export)
+                        theme))))
+    (themegen--run-kitty-command "send-text" (concat export ""))))
 
 (provide 'themegen)
 ;;; themegen.el ends here
