@@ -106,7 +106,7 @@ CONFIG-FORMAT is a function that takes a key and value and returns a
     ("foreground" fg-main)
     ("cursor" cursor)
     ("cursor_text_color" bg-main)
-    ("selection_foreground" fg-region)
+    ("selection_foreground" fg-region fg-main)
     ("selection_background" bg-region)
     ("macos_titlebar_color" "background")
     ;; black
@@ -286,7 +286,7 @@ If NO-EXPORT-FZF-OPTS is non-nil, `FZF_DEFAULT_OPTS' won't be
   (if save-conf
       (themegen--run-kitty-command "kitten" "themes" (symbol-name theme))
     (apply #'themegen--run-kitty-command
-           `("set-colors" "--all"
+           `("set-colors" "--all" "--configured"
              ,@(themegen--generate-kitty-rc-set-colors-args theme))))
   (when-let (((not no-export-fzf-opts))
              (export (if save-conf
