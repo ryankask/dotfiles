@@ -69,7 +69,12 @@ GET-COLOR-VALUE-FUNC function along with THEME, does not yield
 
 (defun themegen--build-theme-values (theme map)
   "Use MAP to translate the values of Prot's emacs THEME to an alist
-of theme keys and values suitable for another application."
+of theme keys and values suitable for another application.
+
+Load THEME if it hasn't yet been loaded, otherwise its palette
+won't be available."
+  (unless (memq theme custom-known-themes)
+    (load-theme theme :no-confirm :no-enable))
   (let ((get-color-value-func (themegen--get-color-value-function theme)))
     (mapcar
      (pcase-lambda (`(,conf-key . ,theme-keys))
