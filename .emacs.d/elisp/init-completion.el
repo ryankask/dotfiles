@@ -145,6 +145,13 @@
   :init
   (marginalia-mode))
 
+(use-package nerd-icons-completion
+  :elpaca t
+  :after marginalia
+  :hook (marginalia-mode . nerd-icons-completion-marginalia-setup)
+  :init
+  (nerd-icons-completion-mode))
+
 (defun embark-which-key-indicator ()
   "An embark indicator that displays keymaps using which-key.
 The which-key help message will show the type and value of the
@@ -223,6 +230,13 @@ targets."
   (tab-always-indent #'complete)
   :init
   (global-corfu-mode))
+
+(use-package nerd-icons-corfu
+  :elpaca t
+  :after corfu
+  (nerd-icons corfu)
+  :config
+  (add-to-list 'corfu-margin-formatters #'nerd-icons-corfu-formatter))
 
 (use-package cape
   :elpaca t
