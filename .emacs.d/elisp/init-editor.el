@@ -214,6 +214,7 @@
   :bind ("C-;" . jinx-correct))
 
 (use-package smartparens-config
+  :disabled t
   :elpaca smartparens
   :custom
   (sp-highlight-wrap-overlay nil)
