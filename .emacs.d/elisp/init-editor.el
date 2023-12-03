@@ -216,16 +216,14 @@
 (use-package smartparens-config
   :elpaca smartparens
   :custom
+  (sp-highlight-pair-overlay nil)
   (sp-highlight-wrap-overlay nil)
   (sp-highlight-wrap-tag-overlay nil)
   (sp-max-prefix-length 25)
   (sp-max-pair-length 4)
   :init
-  (show-paren-mode -1)
-  :config
   (smartparens-global-mode t)
-  (show-smartparens-global-mode t)
-  (setq sp-autoescape-string-quote nil))
+  (show-smartparens-global-mode t))
 
 (use-package uniquify
   :custom
