@@ -110,6 +110,11 @@
   :config
   (unbind-key "C-o" ibuffer-mode-map))
 
+(use-package nerd-icons-ibuffer
+  :elpaca t
+  :after ibuffer
+  :hook (ibuffer-mode . nerd-icons-ibuffer-mode))
+
 (use-package dired
   :bind (("C-o C-d" . dired-jump)
          :map dired-mode-map
@@ -139,6 +144,12 @@
                 "\\|^\\.ccls-cache\\'"
                 "\\|\\(?:\\.js\\)?\\.meta\\'"
                 "\\|\\.\\(?:elc\\|o\\|pyo\\|swp\\|class\\)\\'")))
+
+(use-package nerd-icons-dired
+  :elpaca t
+  :after (nerd-icons dired)
+  :hook
+  (dired-mode . nerd-icons-dired-mode))
 
 ;; get rid of trailing whitespace
 (defcustom my-should-delete-trailing-whitespace t
@@ -205,16 +216,14 @@
 (use-package smartparens-config
   :elpaca smartparens
   :custom
+  (sp-highlight-pair-overlay nil)
   (sp-highlight-wrap-overlay nil)
   (sp-highlight-wrap-tag-overlay nil)
   (sp-max-prefix-length 25)
   (sp-max-pair-length 4)
   :init
-  (show-paren-mode -1)
-  :config
   (smartparens-global-mode t)
-  (show-smartparens-global-mode t)
-  (setq sp-autoescape-string-quote nil))
+  (show-smartparens-global-mode t))
 
 (use-package uniquify
   :custom
