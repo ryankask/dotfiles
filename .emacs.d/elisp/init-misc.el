@@ -185,9 +185,13 @@ from a GCP release notes entry."
 
 (use-package lispy
   :elpaca t
-  :hook (emacs-lisp-mode . my-lispy-emacs-lisp-mode-hook)
-  :bind (:map lispy-mode-map-lispy
-              ("C-s-," . lispy-mark))
+  :hook ((emacs-lisp-mode . my-lispy-emacs-lisp-mode-hook)
+         (lispy-mode . turn-off-smartparens-mode))
+  :bind (nil
+         :map lispy-mode-map-lispy
+         ("C-s-," . lispy-mark))
+  :custom
+  (lispy-close-quotes-at-end-p t)
   :config
   ;; Colemak-friendly replacements
   ;; Note this comment from the author: https://github.com/abo-abo/lispy/issues/324#issuecomment-270357175
