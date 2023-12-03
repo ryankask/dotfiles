@@ -237,7 +237,6 @@ targets."
 (use-package nerd-icons-corfu
   :elpaca t
   :after corfu
-  (nerd-icons corfu)
   :config
   (add-to-list 'corfu-margin-formatters #'nerd-icons-corfu-formatter))
 
