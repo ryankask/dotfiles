@@ -29,7 +29,10 @@
 
 (use-package vertico-repeat
   :after vertico
-  :bind ("C-o C-r" . vertico-repeat)
+  :bind (("C-o C-r" . vertico-repeat)
+         :map vertico-map
+         ("s-p" . vertico-repeat-previous)
+         ("s-n" . vertico-repeat-next))
   :hook (minibuffer-setup . vertico-repeat-save))
 
 (use-package orderless
