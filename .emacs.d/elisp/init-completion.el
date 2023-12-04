@@ -235,7 +235,7 @@ targets."
   (global-corfu-mode))
 
 (use-package nerd-icons-corfu
-  :elpaca t
+  :elpaca (:host github :repo "LuigiPiucco/nerd-icons-corfu")
   :after corfu
   :config
   (add-to-list 'corfu-margin-formatters #'nerd-icons-corfu-formatter))
