@@ -153,7 +153,13 @@
   :after marginalia
   :hook (marginalia-mode . nerd-icons-completion-marginalia-setup)
   :init
-  (nerd-icons-completion-mode))
+  (nerd-icons-completion-mode)
+  :config
+  (push
+   (list 'dired-mode
+         'nerd-icons-sucicon "nf-custom-folder_oct"
+         :face 'nerd-icons-completion-dir-face)
+   nerd-icons-mode-icon-alist))
 
 (defun embark-which-key-indicator ()
   "An embark indicator that displays keymaps using which-key.
