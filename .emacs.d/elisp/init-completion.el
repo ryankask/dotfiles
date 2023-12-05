@@ -224,15 +224,27 @@ targets."
   :elpaca t
   :after (embark consult))
 
+(defun my-corfu-move-to-minibuffer ()
+  (interactive)
+  (when completion-in-region--data
+    (let ((completion-extra-properties corfu--extra)
+          completion-cycle-threshold completion-cycling)
+      (apply #'consult-completion-in-region completion-in-region--data))))
+
 (use-package corfu
   :elpaca t
+  :bind (nil
+         :map corfu-map
+         ("C-o m" . my-corfu-move-to-minibuffer))
   :custom
   (corfu-auto t)
   (corfu-cycle t)
   (completion-cycle-threshold 3)
   (tab-always-indent #'complete)
   :init
-  (global-corfu-mode))
+  (global-corfu-mode)
+  :config
+  (add-to-list 'corfu-continue-commands #'my-corfu-move-to-minibuffer))
 
 (use-package nerd-icons-corfu
   :elpaca (:host github :repo "LuigiPiucco/nerd-icons-corfu")
