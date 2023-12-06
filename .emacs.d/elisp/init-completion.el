@@ -156,9 +156,9 @@
   (nerd-icons-completion-mode)
   :config
   (push
-   (list 'dired-mode
-         'nerd-icons-sucicon "nf-custom-folder_oct"
-         :face 'nerd-icons-completion-dir-face)
+   '(dired-mode
+     nerd-icons-sucicon "nf-custom-folder_oct"
+     :face nerd-icons-completion-dir-face)
    nerd-icons-mode-icon-alist))
 
 (defun embark-which-key-indicator ()
