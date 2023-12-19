@@ -16,4 +16,12 @@
       (sp-with-modes '(rustic-mode)
         (sp-local-pair "{" nil :post-handlers '(("||\n[i]" "RET"))))))
 
+(with-eval-after-load 'eglot
+  (defun my-eglot-rust-analyzer-reload-workspace ()
+    "Reload the workspace managed by Rust Analyzer"
+    (interactive)
+    (jsonrpc-request (eglot--current-server-or-lose)
+                     :rust-analyzer/reloadWorkspace
+                     nil)))
+
 (provide 'init-rust)
