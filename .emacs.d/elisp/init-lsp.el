@@ -95,4 +95,12 @@
   (setf (alist-get 'styles (alist-get 'eglot completion-category-defaults))
         '(orderless)))
 
+(use-package consult-eglot
+  :if (eq my-lsp-provider 'eglot)
+  :elpaca t
+  :after (eglot consult)
+  :bind (nil
+         :map my-eglot-mode-map
+         ("C-s" . consult-eglot-symbols)))
+
 (provide 'init-lsp)
