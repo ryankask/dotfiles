@@ -1,7 +1,6 @@
 ;;; -*- lexical-binding: t; -*-
 
 (require 'cl-lib)
-(require 'transient)
 
 (push '(menu-bar-lines . 0) default-frame-alist)
 (push '(tool-bar-lines . 0) default-frame-alist)
