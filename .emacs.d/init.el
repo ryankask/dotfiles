@@ -53,15 +53,7 @@
 
 (elpaca-wait)
 
-;;; Initialization
-
-;; Base packages
-
-;; (eval-when-compile
-;;   (require 'use-package))
-;; (require 'bind-key)
-
-;; Init packages
+;;; Initialisation
 
 (use-package init-editor)
 (use-package init-ui)
