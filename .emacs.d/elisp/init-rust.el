@@ -24,4 +24,13 @@
                      :rust-analyzer/reloadWorkspace
                      nil)))
 
+(defun my-append-decimal-to-integers (start end)
+  "Append .0 to all integer literals in the region."
+  (interactive "*r")
+  (replace-regexp-in-region
+   "\\(-?[^.][[:digit:]]+\\)\\([,[:space:]]\\)"
+   "\\1.0\\2"
+   start
+   end))
+
 (provide 'init-rust)
