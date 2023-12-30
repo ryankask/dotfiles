@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: skip rust formatting
+# key: skip
+# --
+#[rustfmt::skip]
