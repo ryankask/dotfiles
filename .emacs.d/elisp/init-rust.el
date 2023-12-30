@@ -27,10 +27,12 @@
 (defun my-append-decimal-to-integers (start end)
   "Append .0 to all integer literals in the region."
   (interactive "*r")
-  (replace-regexp-in-region
-   "\\(-?[^.][[:digit:]]+\\)\\([[:space:],$]\\)"
-   "\\1.0\\2"
-   start
-   end))
+  (save-excursion
+    (goto-char start)
+    (save-restriction
+      (narrow-to-region start end)
+      (while (re-search-forward "\\(-?\\b[0-9]+\\b\\)\\([^.0-9]\\|\\'\\)" nil t)
+        (unless (eq (char-before (match-beginning 1)) ?.)
+          (replace-match "\\1.0\\2"))))))
 
 (provide 'init-rust)
