@@ -28,7 +28,7 @@
   "Append .0 to all integer literals in the region."
   (interactive "*r")
   (replace-regexp-in-region
-   "\\(-?[^.][[:digit:]]+\\)\\([,[:space:]]\\)"
+   "\\(-?[^.][[:digit:]]+\\)\\([[:space:],$]\\)"
    "\\1.0\\2"
    start
    end))
