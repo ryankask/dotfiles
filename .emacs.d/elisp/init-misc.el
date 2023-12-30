@@ -148,7 +148,14 @@ from a GCP release notes entry."
   :custom
   (gptel-model "gpt-4")
   :bind (("C-c #" . gptel)
-         ("C-c RET" . gptel-send)))
+         ("C-c RET" . gptel-send))
+  :config
+  (gptel-make-openai
+   "Mistral"
+   :header (lambda () `(("Authorization" . ,(concat "Bearer " (gptel--get-api-key)))))
+   :host "api.mistral.ai"
+   :stream t
+   :models '("mistral-medium" "mistral-small" "mistral-tiny")))
 
 ;; internal
 (use-package hcl-ts-mode
