@@ -179,6 +179,9 @@ updates other software's themes like kitty."
   :hook ((modus-themes-after-load-theme . my-theme-match-current-modus-theme)
          (ef-themes-post-load . my-theme-match-current-ef-theme)))
 
+(use-package transient
+  :elpaca t)
+
 (use-package minions
   :elpaca t
   :custom
