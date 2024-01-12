@@ -482,6 +482,13 @@ session."
   (dolist (func '(eval-last-sexp lispy-eval))
     (advice-add func :before-until #'uph-eval-last-sexp-advice)))
 
+(use-package verb
+  :elpaca t
+  :after org
+  :init
+  (with-eval-after-load 'org
+    (keymap-set org-mode-map "C-c C-r" verb-command-map)))
+
 (defun my-vterm-mode-hook ()
   (setq-local confirm-kill-processes nil))
 
