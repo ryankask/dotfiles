@@ -103,4 +103,13 @@
          :map my-eglot-mode-map
          ("C-s" . consult-eglot-symbols)))
 
+(use-package eglot-booster
+  :disabled t
+  :if (eq my-lsp-provider 'eglot)
+  :elpaca (eglot-booster :host github :repo "jdtsmith/eglot-booster")
+  :after eglot
+  :init
+  (eglot-booster-mode))
+
+
 (provide 'init-lsp)
