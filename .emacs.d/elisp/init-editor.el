@@ -165,10 +165,15 @@
 
 (add-hook 'before-save-hook 'my-delete-trailing-whitespace)
 
-(add-hook 'text-mode-hook #'visual-line-mode)
-
 (defun my-fill-column-setup ()
   (setq fill-column 88))
+
+(defun my-text-mode-setup ()
+  (visual-line-mode)
+  (remove-hook 'completion-at-point-functions #'ispell-completion-at-point t))
+
+(use-package text-mode
+  :hook (text-mode . my-text-mode-setup))
 
 (use-package visual-fill-column
   :elpaca t)
