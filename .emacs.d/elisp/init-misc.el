@@ -168,7 +168,7 @@ from a GCP release notes entry."
          ("C-h k" . helpful-key)
          ("C-h F" . helpful-function)
          ("C-h C" . helpful-command)
-         ("C-c C-d" . helpful-at-point)))
+         ("C-o C-h" . helpful-at-point)))
 
 (use-package js-mode
   :preface
