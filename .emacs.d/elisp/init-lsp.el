@@ -79,6 +79,8 @@
   (eglot-events-buffer-size 0)
   (my-format-lsp-function #'eglot-format-buffer)
   :bind (("C-o C-s s" . eglot)
+         :map eglot-mode-map
+         ("C-c ." . eglot-code-actions)
          :prefix-map my-eglot-mode-map
          :prefix "C-o C-s"
          ("v" . eglot-events-buffer)
@@ -100,6 +102,8 @@
   :elpaca t
   :after (eglot consult)
   :bind (nil
+         :map eglot-mode-map
+         ("C-c /" . consult-eglot-symbols)
          :map my-eglot-mode-map
          ("C-s" . consult-eglot-symbols)))
 
