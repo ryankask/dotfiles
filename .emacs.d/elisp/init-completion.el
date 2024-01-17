@@ -233,15 +233,23 @@ targets."
 (defun my-corfu-move-to-minibuffer ()
   (interactive)
   (when completion-in-region--data
-    (let ((completion-extra-properties corfu--extra)
+    (let ((completion-extra-properties (nth 4 completion-in-region--data))
           completion-cycle-threshold completion-cycling)
       (apply #'consult-completion-in-region completion-in-region--data))))
+
+(defun my-corfu-enable-in-minibuffer ()
+  "Enable Corfu in the minibuffer."
+  (when (local-variable-p 'completion-at-point-functions)
+    (setq-local corfu-echo-delay nil
+                corfu-popupinfo-delay nil)
+    (corfu-mode 1)))
 
 (use-package corfu
   :elpaca t
   :bind (nil
          :map corfu-map
          ("C-o m" . my-corfu-move-to-minibuffer))
+  :hook (minibuffer-setup . my-corfu-enable-in-minibuffer)
   :custom
   (corfu-auto t)
   (corfu-cycle t)
