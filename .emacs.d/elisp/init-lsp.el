@@ -80,13 +80,12 @@
   (my-format-lsp-function #'eglot-format-buffer)
   :bind (("C-o C-s s" . eglot)
          :map eglot-mode-map
-         ("C-c ." . eglot-code-actions)
+         ("C-o C-n" . eglot-code-actions)
          :prefix-map my-eglot-mode-map
          :prefix "C-o C-s"
          ("v" . eglot-events-buffer)
          ("f" . eglot-format)
          ("t" . eglot-code-actions)
-         ("C-t" . eglot-code-actions)
          ("S" . eglot-reconnect)
          ("r" . eglot-rename)
          ("c" . eglot-show-workspace-configuration)
@@ -103,9 +102,9 @@
   :after (eglot consult)
   :bind (nil
          :map eglot-mode-map
-         ("C-c /" . consult-eglot-symbols)
+         ("C-o C-k" . consult-eglot-symbols)
          :map my-eglot-mode-map
-         ("C-s" . consult-eglot-symbols)))
+         ("k" . consult-eglot-symbols)))
 
 (use-package eglot-booster
   :disabled t
