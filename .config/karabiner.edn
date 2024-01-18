@@ -5,8 +5,11 @@
                 :emacs-emulation-apps ["^com\\.google\\.Chrome$"
                                        "^com\\.tinyspeck\\.slackmacgap$"
                                        "^notion\\.id$"]}
- :main [{:des "swap caps lock to left control"
-         :rules [[:##caps_lock :left_control]
+ :main [{:des "swap caps lock to left control; post escape if pressed alone"
+         :rules [[:##caps_lock
+                 {:key :left_control :lazy true}
+                 nil
+                 {:alone :escape :params {:alone 300}}]
                  [:##left_control :caps_lock]]}
         {:des "C-m to return in more places"
          :rules [[:!Tm :return_or_enter [:C-m-apps]]]}

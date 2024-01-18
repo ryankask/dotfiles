@@ -13,8 +13,14 @@
         "basic.to_if_held_down_threshold_milliseconds" : 500
       },
       "rules" : [ {
-        "description" : "swap caps lock to left control",
+        "description" : "swap caps lock to left control; post escape if pressed alone",
         "manipulators" : [ {
+          "to_if_alone" : [ {
+            "key_code" : "escape"
+          } ],
+          "parameters" : {
+            "basic.to_if_alone_timeout_milliseconds" : 300
+          },
           "from" : {
             "key_code" : "caps_lock",
             "modifiers" : {
@@ -22,7 +28,8 @@
             }
           },
           "to" : [ {
-            "key_code" : "left_control"
+            "key_code" : "left_control",
+            "lazy" : true
           } ],
           "type" : "basic"
         }, {
