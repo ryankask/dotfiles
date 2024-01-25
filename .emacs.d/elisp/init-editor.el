@@ -180,7 +180,8 @@
 
 (use-package isearch
   :bind (:map search-map
-         ("s" . isearch-forward)))
+         ("s" . isearch-forward)
+         ("M-s" . isearch-forward)))
 
 (use-package repeat
   :init
