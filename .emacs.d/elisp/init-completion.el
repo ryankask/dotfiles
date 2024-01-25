@@ -232,10 +232,11 @@ targets."
 
 (defun my-corfu-move-to-minibuffer ()
   (interactive)
-  (when completion-in-region--data
-    (let ((completion-extra-properties (nth 4 completion-in-region--data))
-          completion-cycle-threshold completion-cycling)
-      (apply #'consult-completion-in-region completion-in-region--data))))
+  (pcase completion-in-region--data
+    (`(,beg ,end ,table ,pred ,extras)
+     (let ((completion-extra-properties extras)
+           completion-cycle-threshold completion-cycling)
+       (consult-completion-in-region beg end table pred)))))
 
 (defun my-corfu-enable-in-minibuffer ()
   "Enable Corfu in the minibuffer."
