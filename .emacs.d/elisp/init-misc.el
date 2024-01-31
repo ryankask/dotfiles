@@ -544,10 +544,15 @@ session."
   :init
   (which-key-mode))
 
+(defun my-yaml-ts-mode-setup ()
+  "Hook used for yaml-ts-mode"
+  (setq-local tab-width 2))
+
 (use-package yaml-ts-mode
   :if (and (fboundp 'yaml-ts-mode)
            (treesit-language-available-p 'yaml))
-  :mode "\\.ya?ml\\'")
+  :mode "\\.ya?ml\\'"
+  :hook (yaml-ts-mode . my-yaml-ts-mode-setup))
 
 (defun my-yasnippet-snippet-mode-hook ()
   (setq-local require-final-newline nil))
