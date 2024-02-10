@@ -13,7 +13,7 @@
         "basic.to_if_held_down_threshold_milliseconds" : 500
       },
       "rules" : [ {
-        "description" : "swap caps lock to left control",
+        "description" : "caps lock to left control",
         "manipulators" : [ {
           "from" : {
             "key_code" : "caps_lock",
@@ -25,7 +25,16 @@
             "key_code" : "left_control"
           } ],
           "type" : "basic"
-        }, {
+        } ]
+      }, {
+        "description" : "left control to custom hyper key; caps lock if alone",
+        "manipulators" : [ {
+          "to_if_alone" : [ {
+            "key_code" : "caps_lock"
+          } ],
+          "parameters" : {
+            "basic.to_if_alone_timeout_milliseconds" : 300
+          },
           "from" : {
             "key_code" : "left_control",
             "modifiers" : {
@@ -33,39 +42,8 @@
             }
           },
           "to" : [ {
-            "key_code" : "caps_lock"
-          } ],
-          "type" : "basic"
-        } ]
-      }, {
-        "description" : "shift posts escape when tapped",
-        "manipulators" : [ {
-          "to_if_alone" : [ {
-            "key_code" : "escape"
-          } ],
-          "parameters" : {
-            "basic.to_if_alone_timeout_milliseconds" : 300
-          },
-          "from" : {
-            "key_code" : "left_shift"
-          },
-          "to" : [ {
-            "key_code" : "left_shift",
-            "lazy" : true
-          } ],
-          "type" : "basic"
-        }, {
-          "to_if_alone" : [ {
-            "key_code" : "escape"
-          } ],
-          "parameters" : {
-            "basic.to_if_alone_timeout_milliseconds" : 300
-          },
-          "from" : {
-            "key_code" : "right_shift"
-          },
-          "to" : [ {
-            "key_code" : "right_shift",
+            "key_code" : "left_control",
+            "modifiers" : [ "left_command", "left_option" ],
             "lazy" : true
           } ],
           "type" : "basic"
@@ -85,6 +63,27 @@
           "conditions" : [ {
             "type" : "frontmost_application_if",
             "bundle_identifiers" : [ "^com\\.google\\.Chrome$", "^com\\.microsoft\\.VSCode$" ]
+          } ],
+          "type" : "basic"
+        } ]
+      }, {
+        "description" : "C-[ to escape in more places",
+        "manipulators" : [ {
+          "from" : {
+            "key_code" : "open_bracket",
+            "modifiers" : {
+              "mandatory" : [ "left_control" ]
+            }
+          },
+          "to" : [ {
+            "key_code" : "escape"
+          } ],
+          "conditions" : [ {
+            "type" : "frontmost_application_unless",
+            "bundle_identifiers" : [ "^org\\.gnu\\.Emacs$" ]
+          }, {
+            "type" : "frontmost_application_unless",
+            "bundle_identifiers" : [ "^net\\.kovidgoyal\\.kitty$" ]
           } ],
           "type" : "basic"
         } ]
