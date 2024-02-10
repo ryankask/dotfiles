@@ -112,7 +112,7 @@
   (unbind-key "C-o" ibuffer-mode-map))
 
 (use-package nerd-icons-ibuffer
-  :elpaca t
+  :ensure t
   :after ibuffer
   :hook (ibuffer-mode . nerd-icons-ibuffer-mode))
 
@@ -147,7 +147,7 @@
                 "\\|\\.\\(?:elc\\|o\\|pyo\\|swp\\|class\\)\\'")))
 
 (use-package nerd-icons-dired
-  :elpaca t
+  :ensure t
   :after (nerd-icons dired)
   :hook
   (dired-mode . nerd-icons-dired-mode))
@@ -176,7 +176,7 @@
   :hook (text-mode . my-text-mode-setup))
 
 (use-package visual-fill-column
-  :elpaca t)
+  :ensure t)
 
 (use-package isearch
   :bind (:map search-map
@@ -189,7 +189,7 @@
 
 (use-package repeat-help
   :after (repeat embark)
-  :elpaca t
+  :ensure t
   :custom
   (repeat-help-key "C-h h")
   (repeat-help-popup-type 'embark)
@@ -216,12 +216,12 @@
     (cl-pushnew item ispell-skip-region-alist :test #'equal)))
 
 (use-package jinx
-  :elpaca t
+  :ensure t
   :hook (emacs-startup . global-jinx-mode)
   :bind ("C-;" . jinx-correct))
 
 (use-package smartparens-config
-  :elpaca smartparens
+  :ensure smartparens
   :custom
   (sp-highlight-pair-overlay nil)
   (sp-highlight-wrap-overlay nil)
@@ -244,7 +244,7 @@
   (reb-re-syntax 'string))
 
 (use-package undo-fu
-  :elpaca t
+  :ensure t
   :custom
   (undo-limit 400000)                   ; 400kb (default is 160kb)
   (undo-strong-limit 3000000)           ; 3mb   (default is 240kb)
@@ -325,7 +325,7 @@ Position the cursor at its beginning, according to the current mode."
 ;; Formatting
 
 (use-package apheleia
-  :elpaca t
+  :ensure t
   :defer t)
 
 (defcustom my-format-default-function #'apheleia-format-buffer

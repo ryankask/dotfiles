@@ -122,7 +122,7 @@
   (modus-themes-load-theme 'modus-vivendi))
 
 (use-package modus-themes
-  :elpaca t
+  :ensure t
   :custom
   (modus-themes-custom-auto-reload nil)
   (modus-themes-bold-constructs nil)
@@ -151,7 +151,7 @@
   (ef-themes-select 'ef-maris-dark))
 
 (use-package ef-themes
-  :elpaca t
+  :ensure t
   :hook ((elpaca-after-init . my-ef-themes-init)
          (ef-themes-post-load . my-ef-themes-setup)))
 
@@ -180,10 +180,10 @@ updates other software's themes like kitty."
          (ef-themes-post-load . my-theme-match-current-ef-theme)))
 
 (use-package transient
-  :elpaca t)
+  :ensure t)
 
 (use-package minions
-  :elpaca t
+  :ensure t
   :custom
   (minions-mode-line-lighter "󰍜")
   :bind ("C-c =" . minions-minor-modes-menu)
@@ -191,7 +191,7 @@ updates other software's themes like kitty."
   (minions-mode 1))
 
 (use-package goggles
-  :elpaca t
+  :ensure t
   :hook ((prog-mode text-mode) . goggles-mode)
   :config
   (setq-default goggles-pulse t))

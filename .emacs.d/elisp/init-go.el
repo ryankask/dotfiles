@@ -11,7 +11,7 @@
   (my-lsp-ensure))
 
 (use-package go-mode
-  :elpaca t
+  :ensure t
   :bind (:map go-mode-map
               ("C-c C-r" . go-remove-unused-imports)
               ("s-h f" . godoc-at-point))

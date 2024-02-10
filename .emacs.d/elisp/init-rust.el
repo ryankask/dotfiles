@@ -5,7 +5,7 @@
   (setq-local buffer-save-without-query t))
 
 (use-package rustic
-  :elpaca t
+  :ensure t
   :bind (:map rustic-compilation-mode-map
               ("C-o" . nil))
   :hook (rustic-mode . my-rustic-mode-setup)
@@ -34,5 +34,11 @@
       (while (re-search-forward "\\(-?\\b[0-9]+\\b\\)\\([^.0-9]\\|\\'\\)" nil t)
         (unless (eq (char-before (match-beginning 1)) ?.)
           (replace-match "\\1.0\\2"))))))
+
+(defun my-remove-auto-rust-mode ()
+  "Remove `rust-mode' from `auto-mode-alist'.
+I'm not sure why it's sometimes added"
+  (interactive)
+  (setq auto-mode-alist (remove '("\\.rs\\'" . rust-mode) auto-mode-alist)))
 
 (provide 'init-rust)

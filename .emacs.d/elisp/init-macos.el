@@ -6,7 +6,7 @@
       native-comp-driver-options '("-Wl,-w"))
 
 (use-package exec-path-from-shell
-  :elpaca t
+  :ensure t
   :config
   (setq exec-path-from-shell-arguments nil
         exec-path-from-shell-variables (append exec-path-from-shell-variables

@@ -1,7 +1,7 @@
 ;;; -*- lexical-binding: t; -*-
 
 (use-package clojure-mode
-  :elpaca t
+  :ensure t
   :pin melpa-stable
   :config
   (define-clojure-indent
@@ -15,7 +15,7 @@
     (context 2)))
 
 (use-package cider
-  :elpaca t
+  :ensure t
   :pin melpa-stable)
 
 (provide 'init-clojure)

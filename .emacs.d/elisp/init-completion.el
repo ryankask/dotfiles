@@ -4,7 +4,7 @@
       (nconc completion-ignored-extensions '(".DS_Store" "__pycache__/")))
 
 (use-package vertico
-  :elpaca (vertico :files (:defaults "extensions/*"))
+  :ensure (vertico :files (:defaults "extensions/*"))
   :bind (:map vertico-map
          ("C-<return>" . vertico-exit-input))
   :init
@@ -36,7 +36,7 @@
   :hook (minibuffer-setup . vertico-repeat-save))
 
 (use-package orderless
-  :elpaca t
+  :ensure t
   :custom (completion-styles '(orderless))
   :init
   (setq completion-category-defaults nil)
@@ -65,7 +65,7 @@
                   :mode '(vterm-mode term-mode)))))
 
 (use-package consult
-  :elpaca t
+  :ensure t
   :bind (("C-s" . consult-line)
          ("C-x b" . consult-buffer)
          ("C-x 4 b" . consult-buffer-other-window)
@@ -135,21 +135,21 @@
   (add-to-list 'consult-buffer-sources 'my-consult-terminal-source 'append))
 
 (use-package consult-dir
-  :elpaca t
+  :ensure t
   :bind (("C-x C-d" . consult-dir)
          :map vertico-map
          ("C-x C-d" . consult-dir)
          ("C-x C-j" . consult-dir-jump-file)))
 
 (use-package marginalia
-  :elpaca t
+  :ensure t
   :bind (:map minibuffer-local-map
               ("M-A" . marginalia-cycle))
   :init
   (marginalia-mode))
 
 (use-package nerd-icons-completion
-  :elpaca t
+  :ensure t
   :after marginalia
   :hook (marginalia-mode . nerd-icons-completion-marginalia-setup)
   :init
@@ -202,7 +202,7 @@ targets."
      expanded-file)))
 
 (use-package embark
-  :elpaca t
+  :ensure t
   :hook (elpaca-after-init . (lambda () (require 'embark)))
   :bind (("C-." . embark-act)
          ("s-." . embark-dwim)
@@ -227,7 +227,7 @@ targets."
                  (window-parameters (mode-line-format . none)))))
 
 (use-package embark-consult
-  :elpaca t
+  :ensure t
   :after (embark consult))
 
 (defun my-corfu-move-to-minibuffer ()
@@ -246,7 +246,7 @@ targets."
     (corfu-mode 1)))
 
 (use-package corfu
-  :elpaca t
+  :ensure t
   :bind (nil
          :map corfu-map
          ("C-o m" . my-corfu-move-to-minibuffer))
@@ -262,13 +262,13 @@ targets."
   (add-to-list 'corfu-continue-commands #'my-corfu-move-to-minibuffer))
 
 (use-package nerd-icons-corfu
-  :elpaca (:host github :repo "LuigiPiucco/nerd-icons-corfu")
+  :ensure (:host github :repo "LuigiPiucco/nerd-icons-corfu")
   :after corfu
   :config
   (add-to-list 'corfu-margin-formatters #'nerd-icons-corfu-formatter))
 
 (use-package cape
-  :elpaca t
+  :ensure t
   :init
   (add-to-list 'completion-at-point-functions #'cape-file)
   (add-to-list 'completion-at-point-functions #'cape-dabbrev))

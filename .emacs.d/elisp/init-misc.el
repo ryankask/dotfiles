@@ -10,7 +10,7 @@
   t)
 
 (use-package avy
-  :elpaca t
+  :ensure t
   :bind (("C-'" . avy-goto-char-timer)
          :map goto-map
          ("l" . avy-goto-line)
@@ -26,7 +26,7 @@
   (setf (alist-get ?. avy-dispatch-alist) 'my-avy-action-embark))
 
 (use-package ace-window
-  :elpaca t
+  :ensure t
   :bind (("C-o C-o" . ace-window)
          ("s-o" . ace-window))
   :custom
@@ -56,7 +56,7 @@
 
 (use-package copilot
   :disabled t
-  :elpaca (:host github :repo "zerolfx/copilot.el" :files ("dist" "*.el"))
+  :ensure (:host github :repo "zerolfx/copilot.el" :files ("dist" "*.el"))
   :hook (prog-mode . copilot-mode)
   :bind (nil
          :map copilot-mode-map
@@ -75,18 +75,18 @@
   (advice-add #'copilot--post-command :override #'my-copilot-post-command))
 
 (use-package csv-mode
-  :elpaca t
+  :ensure t
   :defer t)
 
 (use-package direnv
-  :elpaca t
+  :ensure t
   :custom
   (direnv-always-show-summary nil)
   :init
   (direnv-mode))
 
 (use-package deadgrep
-  :elpaca t
+  :ensure t
   :bind ("C-c u" . deadgrep))
 
 (use-package dockerfile-ts-mode
@@ -120,16 +120,16 @@ from a GCP release notes entry."
     (face-remap-add-relative face :height height :weight 'semi-bold)))
 
 (use-package elfeed
-  :elpaca t
+  :ensure t
   :hook (elfeed-show-mode . my-elfeed-show-mode-hook)
   :bind ("C-c r" . elfeed))
 
 (use-package expand-region
-  :elpaca t
+  :ensure t
   :bind ("C-=" . er/expand-region))
 
 (use-package gcmh
-  :elpaca t
+  :ensure t
   :hook (emacs-startup . gcmh-mode)
   :custom
   (gcmh-idle-delay 'auto)
@@ -144,7 +144,7 @@ from a GCP release notes entry."
          ("g" . golink-create)))
 
 (use-package gptel
-  :elpaca t
+  :ensure t
   :custom
   (gptel-model "gpt-4")
   :bind (("C-c #" . gptel)
@@ -170,7 +170,7 @@ from a GCP release notes entry."
   :mode "\\.hcl\\'")
 
 (use-package helpful
-  :elpaca t
+  :ensure t
   :bind (("C-h f" . helpful-callable)
          ("C-h v" . helpful-variable)
          ("C-h k" . helpful-key)
@@ -191,7 +191,7 @@ from a GCP release notes entry."
   :mode "\\.json\\'")
 
 (use-package just-mode
-  :elpaca t
+  :ensure t
   :defer t)
 
 (defun my-lispy-emacs-lisp-mode-hook ()
@@ -200,7 +200,7 @@ from a GCP release notes entry."
     (lispy-mode 1)))
 
 (use-package lispy
-  :elpaca t
+  :ensure t
   :hook ((emacs-lisp-mode . my-lispy-emacs-lisp-mode-hook)
          (lispy-mode . turn-off-smartparens-mode))
   :bind (nil
@@ -237,11 +237,11 @@ from a GCP release notes entry."
     ("z" nil)))
 
 (use-package lua-mode
-  :elpaca t
+  :ensure t
   :defer t)
 
 (use-package magit
-  :elpaca t
+  :ensure t
   :bind (("s-m m" . magit-status)
          ("s-m d" . magit-file-dispatch)
          ("s-m l" . magit-log)
@@ -253,7 +253,7 @@ from a GCP release notes entry."
   (magit-diff-refine-hunk t))
 
 (use-package markdown-mode
-  :elpaca t
+  :ensure t
   :hook (markdown-mode . my-fill-column-setup)
   :custom
   (markdown-command "pandoc"))
@@ -267,7 +267,7 @@ from a GCP release notes entry."
     (next-line -1)))
 
 (use-package org
-  :elpaca t
+  :ensure t
   :bind (nil
          :map org-mode-map
          ("C-'" . nil)
@@ -305,7 +305,7 @@ from a GCP release notes entry."
   (org-use-sub-superscripts "{}"))
 
 (use-package org-modern
-  :elpaca t
+  :ensure t
   :after org
   :custom-face
   (org-modern-label ((t (:height 0.85))))
@@ -395,7 +395,7 @@ use the current project."
 
 (use-package puni
   :disabled t
-  :elpaca t
+  :ensure t
   :hook ((emacs-lisp-mode) . puni-disable-puni-mode)
   :bind (nil
          :map puni-mode-map
@@ -413,7 +413,7 @@ use the current project."
   (puni-global-mode))
 
 (use-package rainbow-delimiters
-  :elpaca t
+  :ensure t
   :hook
   (prog-mode . rainbow-delimiters-mode-enable))
 
@@ -458,7 +458,7 @@ session."
 
 (use-package tempel
   :disabled t
-  :elpaca (tempel :host github :repo "minad/tempel")
+  :ensure (tempel :host github :repo "minad/tempel")
   :bind (:map tempel-map
          ("s-]" . tempel-next)
          ("s-[" . tempel-previous)
@@ -491,7 +491,7 @@ session."
     (advice-add func :before-until #'uph-eval-last-sexp-advice)))
 
 (use-package verb
-  :elpaca t
+  :ensure t
   :after org
   :init
   (with-eval-after-load 'org
@@ -507,7 +507,7 @@ session."
   (vterm-send-key "k" nil nil t))
 
 (use-package vterm
-  :elpaca t
+  :ensure t
   :hook (vterm-mode . my-vterm-mode-hook)
   :custom
   (vterm-always-compile-module t)
@@ -534,11 +534,11 @@ session."
                  (window-min-height . 28))))
 
 (use-package vterm-toggle
-  :elpaca t
+  :ensure t
   :bind ("C-o C-v" . vterm-toggle))
 
 (use-package which-key
-  :elpaca t
+  :ensure t
   :custom
   (which-key-use-C-h-commands nil)
   :init
@@ -558,7 +558,7 @@ session."
   (setq-local require-final-newline nil))
 
 (use-package yasnippet
-  :elpaca t
+  :ensure t
   :hook (snippet-mode . my-yasnippet-snippet-mode-hook)
   :custom
   (yas-snippet-dirs (list (expand-file-name "snippets/" user-emacs-directory)

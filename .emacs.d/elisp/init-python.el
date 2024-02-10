@@ -73,7 +73,7 @@ isn't found."
 
 (use-package python-pytest
   :after python
-  :elpaca t
+  :ensure t
   :bind (:map python-base-mode-map
               ("C-o C-t" . python-pytest-dispatch))
   :config

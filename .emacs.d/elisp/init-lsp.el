@@ -34,7 +34,7 @@
 
 (use-package lsp-mode
   :if (eq my-lsp-provider 'lsp-mode)
-  :elpaca nil
+  :ensure nil
   :commands (lsp lsp-deferred)
   :bind (nil
          :map lsp-mode-map
@@ -98,7 +98,7 @@
 
 (use-package consult-eglot
   :if (eq my-lsp-provider 'eglot)
-  :elpaca t
+  :ensure t
   :after (eglot consult)
   :bind (nil
          :map eglot-mode-map
@@ -109,7 +109,7 @@
 (use-package eglot-booster
   :disabled t
   :if (eq my-lsp-provider 'eglot)
-  :elpaca (eglot-booster :host github :repo "jdtsmith/eglot-booster")
+  :ensure (eglot-booster :host github :repo "jdtsmith/eglot-booster")
   :after eglot
   :init
   (eglot-booster-mode))
