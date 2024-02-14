@@ -562,7 +562,7 @@ session."
   :hook (snippet-mode . my-yasnippet-snippet-mode-hook)
   :custom
   (yas-snippet-dirs (list (expand-file-name "snippets/" user-emacs-directory)
-                          "~/iCloud/config/emacs/snippets"))
+                          (expand-file-name "cloud/snippets" user-emacs-directory)))
   :init
   (yas-global-mode 1))
 

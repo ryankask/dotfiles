@@ -70,7 +70,21 @@
 
 ;; Customisations
 
-(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+(defun my-host-custom-file-name ()
+  "Return custom filename for current host or nil if host cannot
+ be determined."
+  (when-let ((hostname (car (split-string (system-name) "\\."))))
+    (concat hostname ".el")))
 
-(when (file-exists-p custom-file)
-  (add-hook 'elpaca-after-init-hook (lambda () (load custom-file 'noerror))))
+(defun my-load-host-custom-file ()
+  "Load host-specific custom file if it exists."
+  (setq custom-file
+        (expand-file-name
+         (concat "cloud/custom/"
+                 (or (my-host-custom-file-name)
+                     (format "unknown-%s.el" system-type)))
+         user-emacs-directory))
+  (when (file-exists-p custom-file)
+    (load custom-file 'noerror)))
+
+(add-hook 'elpaca-after-init-hook #'my-load-host-custom-file)
