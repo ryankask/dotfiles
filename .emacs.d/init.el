@@ -67,6 +67,7 @@
 (use-package init-rust)
 (use-package init-haskell)
 (use-package init-web)
+(use-package init-ai)
 
 ;; Customisations
 
