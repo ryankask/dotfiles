@@ -30,6 +30,10 @@
               "Open-Orca/Mistral-7B-OpenOrca"
               "codellama/CodeLlama-34b-Instruct-hf"
               "HuggingFaceH4/zephyr-7b-beta"
-              "google/gemma-7b-it")))
+              "google/gemma-7b-it"))
+
+  (gptel-make-anthropic "Claude"
+    :stream t
+    :key 'gptel-api-key))
 
 (provide 'init-ai)
