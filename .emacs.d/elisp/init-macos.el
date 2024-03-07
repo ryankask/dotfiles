@@ -29,7 +29,7 @@
 
 (elpaca nil
   (with-eval-after-load 'embark
-    (keymap-set embark-identifier-map "f" #'my-dict-app-lookup-word-at-point)))
+    (bind-key "f" #'my-dict-app-lookup-word-at-point embark-identifier-map)))
 
 ;; Rectangle app helpers
 
