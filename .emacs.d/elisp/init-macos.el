@@ -13,6 +13,24 @@
                                                (list "GOPATH" "DOTFILES")))
   (exec-path-from-shell-initialize))
 
+;; Dictionary.app integration
+
+(defun my-dict-app-lookup-word (word)
+  "Lookup WORD in macOS's Dictionary.app."
+  (interactive "sWord: ")
+  (start-process "dictionary.app" nil "open"
+                 (url-encode-url (concat "dict://" word))))
+
+(defun my-dict-app-lookup-word-at-point ()
+  "Query macOS's Dictionary.App using the current word at point."
+  (interactive)
+  (when-let ((word (word-at-point t)))
+    (my-dict-app-lookup-word word)))
+
+(elpaca nil
+  (with-eval-after-load 'embark
+    (keymap-set embark-identifier-map "f" #'my-dict-app-lookup-word-at-point)))
+
 ;; Rectangle app helpers
 
 (defconst my-rectangle-actions
