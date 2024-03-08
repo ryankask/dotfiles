@@ -201,6 +201,10 @@ fi
 
 # Python
 
+if [[ -s "$HOME/.rye/env" ]]; then
+  source "$HOME/.rye/env"
+fi
+
 function pyclean() {
   local places=${*:-'.'}
   find $places -type f -name "*.py[co]" -delete
