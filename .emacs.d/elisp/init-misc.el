@@ -236,6 +236,10 @@ from a GCP release notes entry."
   :custom
   (markdown-command "pandoc"))
 
+(use-package nix-mode
+  :ensure t
+  :defer t)
+
 (defun my-org-open-line-after-meta-data ()
   "Open a new line after the the following metadata."
   (interactive)
