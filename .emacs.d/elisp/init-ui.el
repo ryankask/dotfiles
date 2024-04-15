@@ -122,7 +122,7 @@
   (modus-themes-load-theme 'modus-vivendi))
 
 (use-package modus-themes
-  :ensure t
+  :ensure (:host github :repo "protesilaos/modus-themes")
   :custom
   (modus-themes-custom-auto-reload nil)
   (modus-themes-bold-constructs nil)
@@ -151,7 +151,7 @@
   (ef-themes-select 'ef-maris-dark))
 
 (use-package ef-themes
-  :ensure t
+  :ensure (:host github :repo "protesilaos/ef-themes")
   :hook ((elpaca-after-init . my-ef-themes-init)
          (ef-themes-post-load . my-ef-themes-setup)))
 
