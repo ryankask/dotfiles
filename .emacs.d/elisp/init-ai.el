@@ -17,19 +17,13 @@
     :host "api.endpoints.anyscale.com"
     :key 'gptel-api-key
     :stream t
-    :models '("meta-llama/Llama-2-7b-chat-hf"
+    :models '("mistralai/Mixtral-8x7B-Instruct-v0.1"
               "mistralai/Mistral-7B-Instruct-v0.1"
-              "meta-llama/Llama-2-13b-chat-hf"
-              "meta-llama/Llama-2-70b-chat-hf"
-              "mistralai/Mixtral-8x7B-Instruct-v0.1"
-              "BAAI/bge-large-en-v1.5"
-              "thenlper/gte-large"
-              "mlabonne/NeuralHermes-2.5-Mistral-7B"
-              "Meta-Llama/Llama-Guard-7b"
+              "meta-llama/Llama-3-8b-chat-hf"
+              "meta-llama/Llama-3-70b-chat-hf"
               "codellama/CodeLlama-70b-Instruct-hf"
-              "Open-Orca/Mistral-7B-OpenOrca"
-              "codellama/CodeLlama-34b-Instruct-hf"
-              "HuggingFaceH4/zephyr-7b-beta"
+              "mistralai/Mixtral-8x22B-Instruct-v0.1"
+              "mlabonne/NeuralHermes-2.5-Mistral-7B"
               "google/gemma-7b-it"))
 
   (gptel-make-anthropic "Claude"
