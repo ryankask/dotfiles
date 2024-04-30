@@ -63,7 +63,6 @@ brew "nmap"
 brew "openblas"
 brew "pandoc"
 brew "pinentry-mac"
-brew "pipx"
 brew "poetry"
 brew "postgresql@15", link: true
 brew "prettier"
