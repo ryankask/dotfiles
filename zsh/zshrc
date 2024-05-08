@@ -246,7 +246,7 @@ if (( $+commands[starship] )); then
 fi
 
 if (( $+commands[fzf] )); then
-  export FZF_DEFAULT_OPTS="--height=40% --reverse --info=inline-right \
+  export FZF_DEFAULT_OPTS="--height=40% --reverse --info=inline-right --highlight-line \
 --prompt='❯ ' --pointer='❯' --marker='❯' \
 --bind=ctrl-j:accept,ctrl-k:kill-line,ctrl-v:page-down,alt-v:page-up \
 --color=fg:#eaedef,bg:#131c2b,hl:#12b4ff,fg+:#eaedef,bg+:#204358,hl+:#12b4ff,info:#70a0ff,border:#595a63,prompt:#70a0ff,pointer:#70a0ff,marker:#70a0ff,spinner:#eaa4a4,header:#969faf,gutter:-1"
