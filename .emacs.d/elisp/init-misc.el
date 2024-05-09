@@ -249,7 +249,7 @@ from a GCP release notes entry."
     (next-line -1)))
 
 (use-package org
-  :ensure t
+  :ensure (:tag "release_9.6.29" :pin t)
   :bind (nil
          :map org-mode-map
          ("C-'" . nil)
@@ -440,7 +440,7 @@ session."
 
 (use-package tempel
   :disabled t
-  :ensure (tempel :host github :repo "minad/tempel")
+  :ensure (:host github :repo "minad/tempel")
   :bind (:map tempel-map
          ("s-]" . tempel-next)
          ("s-[" . tempel-previous)

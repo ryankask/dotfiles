@@ -109,7 +109,7 @@
 (use-package eglot-booster
   :disabled t
   :if (eq my-lsp-provider 'eglot)
-  :ensure (eglot-booster :host github :repo "jdtsmith/eglot-booster")
+  :ensure (:host github :repo "jdtsmith/eglot-booster")
   :after eglot
   :init
   (eglot-booster-mode))
