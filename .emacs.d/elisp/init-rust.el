@@ -5,7 +5,7 @@
   (setq-local buffer-save-without-query t))
 
 (use-package rustic
-  :ensure t
+  :ensure (:host github :repo "emacs-rustic/rustic")
   :bind (:map rustic-compilation-mode-map
               ("C-o" . nil))
   :hook (rustic-mode . my-rustic-mode-setup)
