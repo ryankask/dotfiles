@@ -3,7 +3,7 @@
 (use-package gptel
   :ensure t
   :custom
-  (gptel-model "gpt-4")
+  (gptel-model "gpt-4o")
   :bind (("C-c #" . gptel)
          ("C-c RET" . gptel-send))
   :config
