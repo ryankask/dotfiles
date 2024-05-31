@@ -134,14 +134,10 @@
   (dired-omit-verbose nil)
   :config
   (setq dired-omit-files
-        (concat dired-omit-files
-                "\\|^.DS_Store\\'"
+        (concat "\\`[.]?#\\|\\`[.][.]?\\'"
+                "\\|^.\\(?:_.+\\|DS_Store\\)\\'"
                 "\\|^.project\\(?:ile\\)?\\'"
-                "\\|^.\\(svn\\|git\\)\\'"
-                "\\|^.ccls-cache\\'"
-                "\\|^\\.DS_Store\\'"
-                "\\|^\\.project\\(?:ile\\)?\\'"
-                "\\|^\\.\\(?:svn\\|git\\)\\'"
+                "\\|^\\.\\(?:|svn\\|git\\)\\'"
                 "\\|^\\.ccls-cache\\'"
                 "\\|\\(?:\\.js\\)?\\.meta\\'"
                 "\\|\\.\\(?:elc\\|o\\|pyo\\|swp\\|class\\)\\'")))
