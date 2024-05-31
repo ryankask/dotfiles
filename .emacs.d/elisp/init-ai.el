@@ -11,7 +11,11 @@
     :host "api.mistral.ai"
     :key 'gptel-api-key
     :stream t
-    :models '("mistral-large-latest" "mistral-medium" "mistral-small" "mistral-tiny"))
+    :models '("mistral-large-latest"
+              "mistral-medium-latest"
+              "mistral-small-latest"
+              "mistral-tiny"
+              "codestral-latest"))
 
   (gptel-make-openai "Anyscale"
     :host "api.endpoints.anyscale.com"
