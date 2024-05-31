@@ -62,4 +62,5 @@
                   [:f "open -b net.kovidgoyal.kitty"]
                   [:m "open -b com.spotify.client"]
                   [:v "open -b com.apple.finder"]
-                  [:w "open -b com.apple.iCal"]]}]}
+                  [:w "open -b com.apple.iCal"]
+                  [:tab "open alfred://runtrigger/com.alfredapp.vitor.windowswitcher/list_windows"]]}]}
