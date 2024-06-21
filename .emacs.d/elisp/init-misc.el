@@ -236,6 +236,11 @@ from a GCP release notes entry."
   :custom
   (markdown-command "pandoc"))
 
+(use-package mermaid-ts-mode
+  :if (treesit-language-available-p 'mermaid)
+  :mode "\\.mmd\\'"
+  :ensure (:host github :repo "JonathanHope/mermaid-ts-mode" :files ("mermaid-ts-mode.el")))
+
 (use-package nix-mode
   :ensure t
   :defer t)
