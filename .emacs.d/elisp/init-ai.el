@@ -34,4 +34,10 @@
     :stream t
     :key 'gptel-api-key))
 
+(use-package gptel-quick
+  :ensure (:host github :repo "karthink/gptel-quick")
+  :init
+  (with-eval-after-load 'embark
+    (bind-key "/" #'gptel-quick embark-general-map)))
+
 (provide 'init-ai)
