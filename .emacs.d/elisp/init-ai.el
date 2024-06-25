@@ -32,7 +32,10 @@
 
   (gptel-make-anthropic "Claude"
     :stream t
-    :key 'gptel-api-key))
+    :key 'gptel-api-key)
+
+  (setq gptel-backend (alist-get "Claude" gptel--known-backends nil nil #'equal)
+        gptel-model "claude-3-5-sonnet-20240620"))
 
 (use-package gptel-quick
   :ensure (:host github :repo "karthink/gptel-quick")
