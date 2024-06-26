@@ -199,6 +199,12 @@ if [[ "$INSIDE_EMACS" == "vterm" ]]; then
   alias clear='vterm_printf "51;Evterm-clear-scrollback";tput clear'
 fi
 
+# mise
+
+if (( $+commands[mise] )); then
+  eval "$(mise activate zsh)"
+fi
+
 # Python
 
 if [[ -s "$HOME/.rye/env" ]]; then
