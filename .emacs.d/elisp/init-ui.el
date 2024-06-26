@@ -196,4 +196,7 @@ updates other software's themes like kitty."
   :config
   (setq-default goggles-pulse t))
 
+(use-package posframe
+  :ensure t)
+
 (provide 'init-ui)
