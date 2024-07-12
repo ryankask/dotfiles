@@ -37,10 +37,10 @@
 
 (use-package orderless
   :ensure t
-  :custom (completion-styles '(orderless))
-  :init
-  (setq completion-category-defaults nil)
-  (setq completion-category-overrides nil))
+  :custom
+  (completion-styles '(orderless))
+  (completion-category-defaults nil)
+  (completion-category-overrides nil))
 
 (defun my-consult-mdfind-builder (input)
   (pcase-let ((`(,arg . ,opts) (consult--command-split input)))
@@ -208,11 +208,12 @@ targets."
          ("s-." . embark-dwim)
          :map embark-file-map
          ("X" . my-open-file-in-finder))
-  :custom (embark-indicators '(embark-which-key-indicator
-                               embark-highlight-indicator
-                               embark-isearch-highlight-indicator))
+  :custom
+  (embark-indicators '(embark-which-key-indicator
+                       embark-highlight-indicator
+                       embark-isearch-highlight-indicator))
+  (prefix-help-command #'embark-prefix-help-command)
   :init
-  (setq prefix-help-command #'embark-prefix-help-command)
   (with-eval-after-load 'which-key
     ;; Prevent which-key from resetting prefix-help-command when it's
     ;; disabled/re-enabled (eg by Magit)
