@@ -256,7 +256,8 @@ targets."
   (corfu-auto t)
   (corfu-cycle t)
   (completion-cycle-threshold 3)
-  (tab-always-indent #'complete)
+  (tab-always-indent 'complete)
+  (text-mode-ispell-word-completion nil)
   :init
   (global-corfu-mode)
   :config
