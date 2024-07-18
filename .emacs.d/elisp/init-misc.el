@@ -525,7 +525,6 @@ session."
   :bind ("C-o C-v" . vterm-toggle))
 
 (use-package which-key
-  :ensure t
   :custom
   (which-key-use-C-h-commands nil)
   :init
