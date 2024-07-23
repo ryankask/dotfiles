@@ -279,6 +279,7 @@ from a GCP release notes entry."
   :hook (org-mode . my-fill-column-setup)
   :custom
   (org-catch-invisible-edits 'show-and-error)
+  (org-blank-before-new-entry '((heading . nil) (plain-list-item . auto)))
   (org-cycle-separator-lines 1)
   (org-babel-load-languages '((emacs-lisp . t)
                               (sql . t)))
