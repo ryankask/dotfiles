@@ -260,6 +260,16 @@
     :global t)
   (undo-fu-mode))
 
+(defun my-insert-newline-below (n)
+  "Insert a newline after the current line without moving the cursor.
+With arg N, insert N newlines."
+  (interactive "*p")
+  (save-excursion
+    (end-of-line)
+    (newline n)))
+
+(bind-key "s-y" #'my-insert-newline-below)
+
 ;;; From crux.el: https://github.com/bbatsov/crux/blob/master/crux.el
 
 (defun crux-smart-open-line-above ()
