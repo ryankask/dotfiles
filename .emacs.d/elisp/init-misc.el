@@ -279,6 +279,7 @@ from a GCP release notes entry."
          ("n" . org-next-visible-heading))
   :hook (org-mode . my-fill-column-setup)
   :custom
+  (org-export-backends '(ascii md html icalendar))
   (org-catch-invisible-edits 'show-and-error)
   (org-blank-before-new-entry '((heading . nil) (plain-list-item . auto)))
   (org-cycle-separator-lines 1)
