@@ -198,6 +198,7 @@ from a GCP release notes entry."
   (lispy-define-key lispy-mode-map "k" 'lispy-eval)
   (lispy-define-key lispy-mode-map "y" 'lispy-tab)
   (lispy-define-key lispy-mode-map "l" 'lispy-occur)
+  (lispy-define-key lispy-mode-map "v" 'lispy-mark-car)
 
   (lispy-defverb
    "other"
