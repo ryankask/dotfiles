@@ -14,7 +14,16 @@
   :config
   (if (fboundp 'sp-local-pair)
       (sp-with-modes '(rustic-mode)
-        (sp-local-pair "{" nil :post-handlers '(("||\n[i]" "RET"))))))
+        (sp-local-pair "{" nil :post-handlers '(("||\n[i]" "RET")))))
+
+  ;; Remove rust-mode from `auto-mode-alist' after Elpaca fetches
+  ;; packages. This prevents rust-mode's autoload from overriding
+  ;; rustic-mode for Rust files.
+  (let ((entry '("\\.rs\\'" . rust-mode)))
+    (add-hook 'elpaca-post-queue-hook
+              (lambda ()
+                (when (member entry auto-mode-alist)
+                  (setq auto-mode-alist (remove entry auto-mode-alist)))))))
 
 (with-eval-after-load 'eglot
   (defun my-eglot-rust-analyzer-reload-workspace ()
@@ -34,11 +43,5 @@
       (while (re-search-forward "\\(-?\\b[0-9]+\\b\\)\\([^.0-9]\\|\\'\\)" nil t)
         (unless (eq (char-before (match-beginning 1)) ?.)
           (replace-match "\\1.0\\2"))))))
-
-(defun my-remove-auto-rust-mode ()
-  "Remove `rust-mode' from `auto-mode-alist'.
-I'm not sure why it's sometimes added"
-  (interactive)
-  (setq auto-mode-alist (remove '("\\.rs\\'" . rust-mode) auto-mode-alist)))
 
 (provide 'init-rust)
