@@ -26,6 +26,11 @@
                   (setq auto-mode-alist (remove entry auto-mode-alist)))))))
 
 (with-eval-after-load 'eglot
+  (setopt eglot-workspace-configuration
+          (plist-put eglot-workspace-configuration
+                     :rust-analyzer
+                     '(:check (:command "clippy"))))
+
   (defun my-eglot-rust-analyzer-reload-workspace ()
     "Reload the workspace managed by Rust Analyzer"
     (interactive)
