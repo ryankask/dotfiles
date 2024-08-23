@@ -295,6 +295,14 @@ Position the cursor at its beginning, according to the current mode."
 (bind-key "s-i" 'crux-smart-open-line-above)
 
 (use-package eldoc
+  :preface
+  (defun my-toggle-eldoc-doc-buffer ()
+    "Toggle display of the ElDoc documentation buffer"
+    (interactive)
+    (if-let ((win (get-buffer-window eldoc--doc-buffer)))
+        (quit-window nil win)
+      (eldoc-doc-buffer t)))
+  :bind ("s-\\" . my-toggle-eldoc-doc-buffer)
   :custom
   (eldoc-echo-area-use-multiline-p nil))
 
