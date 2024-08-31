@@ -37,7 +37,16 @@
     :key 'gptel-api-key)
 
   (setq gptel-backend (alist-get "Claude" gptel--known-backends nil nil #'equal)
-        gptel-model "claude-3-5-sonnet-20240620"))
+        gptel-model "claude-3-5-sonnet-20240620")
+
+  (defun my-eglot-strip-mode-suffix-advice (mode-sym)
+    (pcase mode-sym
+      ('rustic-mode "Rust")
+      (_ nil)))
+
+  (advice-add #'gptel--strip-mode-suffix
+              :before-until
+              #'my-eglot-strip-mode-suffix-advice))
 
 (use-package gptel-quick
   :ensure (:host github :repo "karthink/gptel-quick")
