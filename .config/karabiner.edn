@@ -60,6 +60,7 @@
                   [:d "open -b com.tinyspeck.slackmacgap"]
                   [:e "open -b org.gnu.Emacs"]
                   [:f "open -b net.kovidgoyal.kitty"]
+                  [:g "open -b com.apple.Dictionary"]
                   [:m "open -b com.spotify.client"]
                   [:v "open -b com.apple.finder"]
                   [:w "open -b com.apple.iCal"]
