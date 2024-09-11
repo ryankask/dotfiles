@@ -14,12 +14,16 @@ fi
 # Add zsh-completions to $fpath.
 fpath=(${0:h}/external/zsh-completions/src $fpath)
 
-# Add completion for keg-only brewed curl when available.
-if (( $+commands[brew] )) \
-      && [[ -d "${curl_prefix::="$(brew --prefix 2> /dev/null)"/opt/curl}" ]]; then
-  fpath=($curl_prefix/share/zsh/site-functions $fpath)
+# Add completion for keg-only brewed curl on macOS when available.
+if (( $+commands[brew] )); then
+  brew_prefix=${BREW_PREFIX:-${HOMEBREW_REPOSITORY:-$commands[brew]:A:h:h}}
+  # $HOMEBREW_PREFIX defaults to $HOMEBREW_REPOSITORY but is explicitly set to
+  # /usr/local when $HOMEBREW_REPOSITORY is /usr/local/Homebrew.
+  # https://github.com/Homebrew/brew/blob/2a850e02d8f2dedcad7164c2f4b95d340a7200bb/bin/brew#L66-L69
+  [[ $brew_prefix == '/usr/local/Homebrew' ]] && brew_prefix=$brew_prefix:h
+  fpath=($brew_prefix/opt/curl/share/zsh/site-functions(/N) $fpath)
+  unset brew_prefix
 fi
-unset curl_prefix
 
 #
 # Options
@@ -75,7 +79,8 @@ zstyle ':completion:*:default' list-prompt '%S%M matches%s'
 zstyle ':completion::complete:*' use-cache on
 zstyle ':completion::complete:*' cache-path "${XDG_CACHE_HOME:-$HOME/.cache}/zsh/zcompcache"
 
-zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+# Case-insensitive (all), partial-word, and then substring completion.
+zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}' 'm:{[:upper:]}={[:lower:]}'  'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 unsetopt CASE_GLOB
 
 # Group matches and describe.
