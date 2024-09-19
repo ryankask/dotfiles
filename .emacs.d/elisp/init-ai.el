@@ -3,9 +3,9 @@
 (use-package gptel
   :ensure t
   :custom
-  (gptel-model "gpt-4o")
   :bind (("C-c #" . gptel)
-         ("C-c RET" . gptel-send))
+         ("C-c RET" . gptel-send)
+         ("C-c a" . gptel-add))
   :config
   (gptel-make-openai "Mistral"
     :host "api.mistral.ai"
