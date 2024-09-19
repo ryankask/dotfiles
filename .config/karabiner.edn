@@ -53,6 +53,12 @@
                            :uorder :insensitive
                            :afterup {:set ["launch-mode" 0]}}}
                     ["launch-mode" 1]]
+                  [{:sim [:z :x]
+                    :simo {:interrupt true
+                           :dorder :insensitive
+                           :uorder :insensitive
+                           :afterup {:set ["launch-mode" 0]}}}
+                    ["launch-mode" 1]]
                   [:condi :launch-mode]
                   [:a "open -b com.apple.ActivityMonitor"]
                   [:b "open -b com.apple.iBooksX"]
@@ -64,4 +70,5 @@
                   [:m "open -b com.spotify.client"]
                   [:v "open -b com.apple.finder"]
                   [:w "open -b com.apple.iCal"]
+                  [:semicolon "open -b com.kagi.kagimacOS"]
                   [:tab "open alfred://runtrigger/com.alfredapp.vitor.windowswitcher/list_windows"]]}]}

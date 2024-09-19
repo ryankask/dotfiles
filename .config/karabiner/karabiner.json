@@ -432,6 +432,33 @@
           "type" : "basic"
         }, {
           "from" : {
+            "simultaneous" : [ {
+              "key_code" : "z"
+            }, {
+              "key_code" : "x"
+            } ],
+            "simultaneous_options" : {
+              "detect_key_down_uninterruptedly" : true,
+              "key_down_order" : "insensitive",
+              "key_up_order" : "insensitive",
+              "key_up_when" : "any",
+              "to_after_key_up" : [ {
+                "set_variable" : {
+                  "name" : "launch-mode",
+                  "value" : 0
+                }
+              } ]
+            }
+          },
+          "to" : [ {
+            "set_variable" : {
+              "name" : "launch-mode",
+              "value" : 1
+            }
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
             "key_code" : "a"
           },
           "to" : [ {
@@ -553,6 +580,19 @@
           },
           "to" : [ {
             "shell_command" : "open -b com.apple.iCal"
+          } ],
+          "conditions" : [ {
+            "name" : "launch-mode",
+            "value" : 1,
+            "type" : "variable_if"
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "semicolon"
+          },
+          "to" : [ {
+            "shell_command" : "open -b com.kagi.kagimacOS"
           } ],
           "conditions" : [ {
             "name" : "launch-mode",
