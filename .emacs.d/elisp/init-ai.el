@@ -2,7 +2,6 @@
 
 (use-package gptel
   :ensure t
-  :custom
   :bind (("C-c #" . gptel)
          ("C-c RET" . gptel-send)
          ("C-c a" . gptel-add))
@@ -21,8 +20,8 @@
     :stream t
     :key 'gptel-api-key)
 
-  (setq gptel-backend (alist-get "Claude" gptel--known-backends nil nil #'equal)
-        gptel-model "claude-3-5-sonnet-20240620")
+  (setopt gptel-backend (alist-get "Claude" gptel--known-backends nil nil #'equal)
+          gptel-model "claude-3-5-sonnet-20240620")
 
   (defun my-eglot-strip-mode-suffix-advice (mode-sym)
     (pcase mode-sym
