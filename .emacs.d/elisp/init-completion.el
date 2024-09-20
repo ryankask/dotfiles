@@ -97,8 +97,7 @@
          ("d" . consult-find)
          ("g" . consult-grep)
          ("G" . consult-git-grep)
-         ("L" . consult-line-multi)
-         ("m" . consult-multi-occur)
+         ("m" . consult-line-multi)
          ("k" . consult-keep-lines)
          ("u" . consult-focus-lines)
          ("e" . consult-isearch-history)
@@ -106,7 +105,7 @@
          ("M-e" . consult-isearch-history) ;; orig. isearch-edit-string
          ("M-s e" . consult-isearch-history) ;; orig. isearch-edit-string
          ("M-s l" . consult-line)
-         ("M-s L" . consult-line-multi)
+         ("M-s m" . consult-line-multi)
          :map minibuffer-local-map
          ("M-s" . consult-history)
          ("M-r" . consult-history))
