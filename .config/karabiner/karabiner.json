@@ -352,7 +352,7 @@
           } ],
           "conditions" : [ {
             "type" : "frontmost_application_if",
-            "bundle_identifiers" : [ "^com\\.google\\.Chrome$", "^com\\.tinyspeck\\.slackmacgap$", "^notion\\.id$" ]
+            "bundle_identifiers" : [ "^com\\.google\\.Chrome$", "^com\\.tinyspeck\\.slackmacgap$", "^notion\\.id$", "^com\\.kagi\\.kagimacOS$" ]
           } ],
           "type" : "basic"
         }, {
@@ -367,7 +367,7 @@
           } ],
           "conditions" : [ {
             "type" : "frontmost_application_if",
-            "bundle_identifiers" : [ "^com\\.google\\.Chrome$", "^com\\.tinyspeck\\.slackmacgap$", "^notion\\.id$" ]
+            "bundle_identifiers" : [ "^com\\.google\\.Chrome$", "^com\\.tinyspeck\\.slackmacgap$", "^notion\\.id$", "^com\\.kagi\\.kagimacOS$" ]
           } ],
           "type" : "basic"
         }, {
@@ -382,7 +382,7 @@
           } ],
           "conditions" : [ {
             "type" : "frontmost_application_if",
-            "bundle_identifiers" : [ "^com\\.google\\.Chrome$", "^com\\.tinyspeck\\.slackmacgap$", "^notion\\.id$" ]
+            "bundle_identifiers" : [ "^com\\.google\\.Chrome$", "^com\\.tinyspeck\\.slackmacgap$", "^notion\\.id$", "^com\\.kagi\\.kagimacOS$" ]
           } ],
           "type" : "basic"
         }, {
@@ -397,7 +397,7 @@
           } ],
           "conditions" : [ {
             "type" : "frontmost_application_if",
-            "bundle_identifiers" : [ "^com\\.google\\.Chrome$", "^com\\.tinyspeck\\.slackmacgap$", "^notion\\.id$" ]
+            "bundle_identifiers" : [ "^com\\.google\\.Chrome$", "^com\\.tinyspeck\\.slackmacgap$", "^notion\\.id$", "^com\\.kagi\\.kagimacOS$" ]
           } ],
           "type" : "basic"
         } ]
