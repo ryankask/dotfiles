@@ -1,16 +1,25 @@
 ;;; early-init.el -*- lexical-binding: t; -*-
 ;; Copied from https://github.com/hlissner/doom-emacs/blob/develop/early-init.el
 
-;; Emacs HEAD (27+) introduces early-init.el, which is run before init.el,
-;; before package and UI initialization happens.
+;; Performance optimisations adopted from Doom Emacs.
+;; TODO: Measure and verify the impact of these enhancements.
 
 (setq gc-cons-threshold most-positive-fixnum
       package-enable-at-startup nil
       native-comp-async-report-warnings-errors nil
       load-prefer-newer noninteractive
       frame-inhibit-implied-resize t
-      read-process-output-max (* 1024 1024))
+      bidi-inhibit-bpa t
+      highlight-nonselected-windows nil
+      fast-but-imprecise-scrolling t
+      read-process-output-max (* 64 1024)
+      redisplay-skip-fontification-on-input t)
 
+(setq-default bidi-display-reordering 'left-to-right
+              bidi-paragraph-direction 'left-to-right
+              cursor-in-non-selected-windows nil)
+
+;; This *does* make a big difference
 (unless (or (daemonp) noninteractive)
   (setq-default inhibit-redisplay t
                 inhibit-message t)
