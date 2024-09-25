@@ -553,6 +553,19 @@
             "key_code" : "m"
           },
           "to" : [ {
+            "shell_command" : "open -b com.microsoft.Outlook"
+          } ],
+          "conditions" : [ {
+            "name" : "launch-mode",
+            "value" : 1,
+            "type" : "variable_if"
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "r"
+          },
+          "to" : [ {
             "shell_command" : "open -b com.spotify.client"
           } ],
           "conditions" : [ {
