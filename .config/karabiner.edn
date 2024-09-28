@@ -5,7 +5,8 @@
                 :emacs-emulation-apps ["^com\\.google\\.Chrome$"
                                        "^com\\.tinyspeck\\.slackmacgap$"
                                        "^notion\\.id$"
-                                       "^com\\.kagi\\.kagimacOS$"]}
+                                       "^com\\.kagi\\.kagimacOS$"
+                                       "^com\\.microsoft\\.Outlook$"]}
  :main [{:des "caps lock to left control"
          :rules [[:##caps_lock :left_control]]}
         {:des "left control to custom hyper key; caps lock if alone"
