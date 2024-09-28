@@ -150,6 +150,12 @@
                 ],
                 "to_if_alone": [
                   {
+                    "set_variable": {
+                      "name": "right-control",
+                      "value": 0
+                    }
+                  },
+                  {
                     "halt": true,
                     "key_code": "quote"
                   }
@@ -174,8 +180,8 @@
                   }
                 ],
                 "parameters": {
-                  "basic.to_if_alone_timeout_milliseconds": 300,
-                  "basic.to_delayed_action_delay_milliseconds": 301
+                  "basic.to_if_alone_timeout_milliseconds": 180,
+                  "basic.to_delayed_action_delay_milliseconds": 181
                 }
               },
               {

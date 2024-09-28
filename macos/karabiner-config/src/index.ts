@@ -58,12 +58,15 @@ writeToProfile("Default", [
         toSetVar("right-control", 1),
         toKey("right_control", undefined, { lazy: true }),
       ])
-      .toIfAlone("'", undefined, { halt: true })
+      .toIfAlone([
+        toSetVar("right-control", 0),
+        toKey("'", undefined, { halt: true }),
+      ])
       .toDelayedAction(toSetVar("right-control", 2), [])
       .toAfterKeyUp(toSetVar("right-control", 0))
       .parameters({
-        "basic.to_if_alone_timeout_milliseconds": 300,
-        "basic.to_delayed_action_delay_milliseconds": 301,
+        "basic.to_if_alone_timeout_milliseconds": 180,
+        "basic.to_delayed_action_delay_milliseconds": 181,
       }),
     withCondition(ifVar("right-control", 1))([
       // Activate a prefix map so the below exclusions don't take
