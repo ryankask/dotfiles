@@ -115,7 +115,7 @@ function appLauncherLayer(): Rule {
       e: toApp("Emacs"),
       f: toApp("Kitty"),
       g: toApp("Dictionary"),
-      m: toApp("Outlook"),
+      m: toApp("Microsoft Outlook"),
       r: toApp("Spotify"),
       v: toApp("Finder"),
       w: toApp("Calendar"),
