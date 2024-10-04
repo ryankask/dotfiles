@@ -223,9 +223,10 @@ from a GCP release notes entry."
     ("e" lispy-knight-up)
     ("z" nil)))
 
-(use-package lua-mode
-  :ensure t
-  :defer t)
+(use-package lua-ts-mode
+  :if (and (fboundp 'lua-ts-mode)
+           (treesit-language-available-p 'lua))
+  :mode "\\.lua\\'")
 
 (use-package magit
   :ensure t

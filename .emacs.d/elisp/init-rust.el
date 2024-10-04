@@ -4,8 +4,14 @@
   (subword-mode +1)
   (setq-local buffer-save-without-query t))
 
+(use-package rust-mode
+  :ensure t
+  :defer t
+  :custom (rust-mode-treesitter-derive t))
+
 (use-package rustic
   :ensure (:host github :repo "emacs-rustic/rustic")
+  :after rust-mode
   :bind (:map rustic-compilation-mode-map
               ("C-o" . nil))
   :hook (rustic-mode . my-rustic-mode-setup)

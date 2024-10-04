@@ -336,6 +336,34 @@ Position the cursor at its beginning, according to the current mode."
              (treesit-language-available-p lang))
     (push (cons old-mode ts-mode) major-mode-remap-alist)))
 
+(defun my-treesit-update-lanague-grammars ()
+  "Upgrade the language grammars for all items in
+ `treesit-language-source-alist'"
+  (interactive)
+  (dolist (item treesit-language-source-alist)
+    (treesit-install-language-grammar (car item))))
+
+(use-package treesit
+  :init
+  (setq treesit-language-source-alist
+        '((css "https://github.com/tree-sitter/tree-sitter-css")
+          (dockerfile "https://github.com/camdencheek/tree-sitter-dockerfile")
+          (elisp "https://github.com/Wilfred/tree-sitter-elisp")
+          (go "https://github.com/tree-sitter/tree-sitter-go")
+          (hcl "https://github.com/tree-sitter-grammars/tree-sitter-hcl")
+          (html "https://github.com/tree-sitter/tree-sitter-html")
+          (javascript "https://github.com/tree-sitter/tree-sitter-javascript")
+          (json "https://github.com/tree-sitter/tree-sitter-json")
+          (lua "https://github.com/tree-sitter-grammars/tree-sitter-lua")
+          (make "https://github.com/tree-sitter-grammars/tree-sitter-make")
+          (mermaid "https://github.com/monaqa/tree-sitter-mermaid")
+          (python "https://github.com/tree-sitter/tree-sitter-python")
+          (rust "https://github.com/tree-sitter/tree-sitter-rust")
+          (toml "https://github.com/tree-sitter-grammars/tree-sitter-toml")
+          (tsx "https://github.com/tree-sitter/tree-sitter-typescript" nil "tsx/src")
+          (typescript "https://github.com/tree-sitter/tree-sitter-typescript" nil "typescript/src")
+          (yaml "https://github.com/tree-sitter-grammars/tree-sitter-yaml"))))
+
 ;; Formatting
 
 (use-package apheleia
