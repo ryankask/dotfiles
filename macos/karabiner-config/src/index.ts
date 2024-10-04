@@ -102,6 +102,14 @@ writeToProfile("Default", [
       })((k, v) => map(k, "control").to(v)),
     ]),
   ]),
+  rule("Outlook tweaks", ifApp(Apps.OUTLOOK)).manipulators([
+    map("a", ["control"]).to("left_arrow", ["command"]), // C-a
+    map("k", ["control"]).to("right_arrow", ["command"]), // C-e
+    map("e", ["control"]).to("right_arrow"), // C-f
+    map("b", ["control"]).to("left_arrow"), // C-b
+    map("e", ["option"]).to("right_arrow", ["option"]), // M-f
+    map("b", ["option"]).to("left_arrow", ["option"]), // M-b
+  ]),
   appLauncherLayer(),
 ]);
 
