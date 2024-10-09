@@ -3,6 +3,7 @@
 (use-package gptel
   :ensure t
   :bind (("C-c #" . gptel)
+         ("C-#" . gptel)
          ("C-c RET" . gptel-send)
          ("C-c a" . gptel-add))
   :config
