@@ -534,7 +534,6 @@ session."
 
 (use-package vterm-toggle
   :ensure t
-  :after vterm
   :bind ("C-o C-v" . vterm-toggle))
 
 (use-package which-key
