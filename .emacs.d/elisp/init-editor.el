@@ -20,6 +20,7 @@
 (bind-key "s-k" #'kill-current-buffer)
 (bind-key "s-c" (cond ((fboundp 'ns-copy-including-secondary) #'ns-copy-including-secondary)
                       (t #'kill-ring-save)))
+(bind-key "s-s" #'scratch-buffer)
 (bind-key "s-v" #'yank)
 (bind-key "s-=" #'text-scale-increase)
 (bind-key "s--" #'text-scale-decrease)
