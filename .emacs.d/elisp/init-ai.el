@@ -11,18 +11,18 @@
     :host "api.mistral.ai"
     :key 'gptel-api-key
     :stream t
-    :models '("mistral-large-latest"
-              "mistral-medium-latest"
-              "mistral-small-latest"
-              "mistral-tiny"
-              "codestral-latest"))
+    :models '(mistral-large-latest
+              mistral-medium-latest
+              mistral-small-latest
+              mistral-tiny
+              codestral-latest))
 
   (gptel-make-anthropic "Claude"
     :stream t
     :key 'gptel-api-key)
 
   (setopt gptel-backend (alist-get "Claude" gptel--known-backends nil nil #'equal)
-          gptel-model "claude-3-5-sonnet-20240620")
+          gptel-model 'claude-3-5-sonnet-20241022)
 
   (defun my-eglot-strip-mode-suffix-advice (mode-sym)
     (pcase mode-sym
