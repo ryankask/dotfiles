@@ -20,7 +20,7 @@ isn't found."
 
 (defun my-pytest-project-name-adapter (project-name)
   "If a custom project root is available, append its base name to the project name."
-  (if-let ((subproject-root (my-pytest-locate-custom-project-root)))
+  (if-let* ((subproject-root (my-pytest-locate-custom-project-root)))
       (format "%s:%s"
               project-name
               (file-name-nondirectory (directory-file-name subproject-root)))
@@ -54,7 +54,7 @@ isn't found."
 
 (defun my-pytest-select-tmux-pane ()
   (interactive)
-  (when-let (pane (my-tmux-select-pane))
+  (when-let* ((pane (my-tmux-select-pane)))
     (setq my-pytest-tmux-target-pane pane)
     (message "Selected pane: %s" my-pytest-tmux-target-pane)))
 

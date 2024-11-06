@@ -293,12 +293,12 @@ If NO-EXPORT-FZF-OPTS is non-nil, `FZF_DEFAULT_OPTS' won't be
     (apply #'themegen--run-kitty-command
            `("set-colors" "--all" "--configured"
              ,@(themegen--generate-kitty-rc-set-colors-args theme))))
-  (when-let (((not no-export-fzf-opts))
-             (export (if save-conf
-                         (themegen-set-fzf-default-opts-color-option theme)
-                       (themegen--replace-fzf-color-option
-                        (themegen--extract-fzf-default-opts-export)
-                        theme))))
+  (when-let* (((not no-export-fzf-opts))
+              (export (if save-conf
+                          (themegen-set-fzf-default-opts-color-option theme)
+                        (themegen--replace-fzf-color-option
+                         (themegen--extract-fzf-default-opts-export)
+                         theme))))
     (themegen--run-kitty-command "send-text" (concat export ""))))
 
 (provide 'themegen)

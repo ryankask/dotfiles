@@ -24,7 +24,7 @@
 (defun my-dict-app-lookup-word-at-point ()
   "Query macOS's Dictionary.App using the current word at point."
   (interactive)
-  (when-let ((word (word-at-point t)))
+  (when-let* ((word (word-at-point t)))
     (my-dict-app-lookup-word word)))
 
 (add-hook

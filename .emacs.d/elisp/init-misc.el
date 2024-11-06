@@ -111,8 +111,8 @@
 (defun my-shr-strong-tag (dom)
   "Improve the styling of a <strong> tag if it appears to come
 from a GCP release notes entry."
-  (if-let ((class (dom-attr dom 'class))
-           ((string-match-p "\\brelease-note-product-title\\b" class)))
+  (if-let* ((class (dom-attr dom 'class))
+            ((string-match-p "\\brelease-note-product-title\\b" class)))
       (shr-tag-h2 dom)
     (shr-tag-strong dom)))
 
@@ -347,12 +347,12 @@ find projects."
 (defun my-project-try-local (dir)
   "Determine if DIR is a non-VC project.
 DIR must include a .project file to be considered a project."
-  (when-let (((my-project--use-local))
-             (root (if (listp my-project-local-identifier)
-                       (seq-some (lambda (n)
-                                   (locate-dominating-file dir n))
-                                 my-project-local-identifier)
-                     (locate-dominating-file dir my-project-local-identifier))))
+  (when-let* (((my-project--use-local))
+              (root (if (listp my-project-local-identifier)
+                        (seq-some (lambda (n)
+                                    (locate-dominating-file dir n))
+                                  my-project-local-identifier)
+                      (locate-dominating-file dir my-project-local-identifier))))
     (cons 'local root)))
 
 (defun my-project-get-relative-path (path &optional project)
@@ -365,8 +365,8 @@ use the current project."
   "Copy PATH relative to the current project's path to the
  kill ring. If PATH is nil, use `buffer-file-name'."
   (interactive)
-  (when-let ((path (or path buffer-file-name))
-             (rel-path (my-project-get-relative-path path)))
+  (when-let* ((path (or path buffer-file-name))
+              (rel-path (my-project-get-relative-path path)))
     (message "%s" rel-path)
     (kill-new rel-path)))
 
@@ -374,7 +374,7 @@ use the current project."
   "Copy the project relative path of the current line of a dired
  buffer to the kill ring."
   (interactive)
-  (when-let ((path (dired-get-filename)))
+  (when-let* ((path (dired-get-filename)))
     (my-copy-project-relative-path-as-kill path)))
 
 (use-package project
@@ -441,7 +441,7 @@ use the current project."
   "If required, move to the beginning of the first field and then
 finish the session."
   (interactive)
-  (when-let (pos (tempel--beginning))
+  (when-let* ((pos (tempel--beginning)))
     (when (> (point) pos)
       (goto-char pos))
     (tempel-done)))
@@ -450,7 +450,7 @@ finish the session."
   "If required, move to the last field and then finish the
 session."
   (interactive)
-  (when-let (pos (tempel--end))
+  (when-let* ((pos (tempel--end)))
     (when (< (point) pos)
       (goto-char pos))
     (tempel-done)))

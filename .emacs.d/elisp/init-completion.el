@@ -112,7 +112,7 @@
   :custom
   (consult-project-root-function
    (lambda ()
-     (when-let (project (project-current))
+     (when-let* ((project (project-current)))
        (car (project-roots project)))))
   (consult-fd-args '("fd" "--color=never" "--hidden" "--full-path"))
   :init

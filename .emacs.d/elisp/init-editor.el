@@ -300,7 +300,7 @@ Position the cursor at its beginning, according to the current mode."
   (defun my-toggle-eldoc-doc-buffer ()
     "Toggle display of the ElDoc documentation buffer"
     (interactive)
-    (if-let ((win (get-buffer-window eldoc--doc-buffer)))
+    (if-let* ((win (get-buffer-window eldoc--doc-buffer)))
         (quit-window nil win)
       (eldoc-doc-buffer t)))
   :bind ("s-\\" . my-toggle-eldoc-doc-buffer)
