@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: indent
+# key: <in
+# --
+#+startup: indent$0
