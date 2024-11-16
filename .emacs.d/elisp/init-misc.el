@@ -1,5 +1,8 @@
 ;;; Load miscellaneous packages -*- lexical-binding: t; -*-
 
+(use-package 1password
+  :commands (1p-item-get 1p-read))
+
 (defun my-avy-action-embark (pt)
   (unwind-protect
       (save-excursion
@@ -306,6 +309,8 @@ from a GCP release notes entry."
 (use-package org-modern
   :ensure t
   :after org
+  :custom
+  (org-modern-table nil)
   :custom-face
   (org-modern-label ((t (:height 0.85))))
   :init
