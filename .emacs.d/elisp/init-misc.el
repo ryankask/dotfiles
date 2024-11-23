@@ -267,7 +267,7 @@ from a GCP release notes entry."
     (next-line -1)))
 
 (use-package org
-  :ensure (:tag "release_9.7.5" :pin t)
+  :ensure (:tag "release_9.7.16" :pin t)
   :bind (nil
          :map org-mode-map
          ("C-'" . nil)
