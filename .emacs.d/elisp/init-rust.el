@@ -6,8 +6,7 @@
 
 (use-package rust-mode
   :ensure t
-  :defer t
-  :custom (rust-mode-treesitter-derive t))
+  :defer t)
 
 (use-package rustic
   :ensure (:host github :repo "emacs-rustic/rustic")
