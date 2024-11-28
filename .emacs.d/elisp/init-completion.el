@@ -249,11 +249,13 @@ targets."
   :ensure t
   :bind (nil
          :map corfu-map
-         ("C-o m" . my-corfu-move-to-minibuffer))
+         ("C-h" . corfu-info-documentation)
+         ("C-," . my-corfu-move-to-minibuffer))
   :hook (minibuffer-setup . my-corfu-enable-in-minibuffer)
   :custom
   (corfu-auto t)
   (corfu-cycle t)
+  (corfu-min-width 20)
   (completion-cycle-threshold 3)
   (tab-always-indent 'complete)
   (text-mode-ispell-word-completion nil)
