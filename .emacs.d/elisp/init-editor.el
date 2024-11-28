@@ -118,11 +118,13 @@
   :hook (ibuffer-mode . nerd-icons-ibuffer-mode))
 
 (use-package dired
+  :hook (dired-mode . hl-line-mode)
   :bind (("C-o C-d" . dired-jump)
          :map dired-mode-map
          ("C-o" . nil)
          ("r" . dired-up-directory))
   :custom
+  (delete-by-moving-to-trash t)
   (dired-listing-switches "-aBhl -v --group-directories-first")
   (dired-recursive-copies 'always)
   (dired-recursive-deletes 'top)
@@ -143,11 +145,26 @@
                 "\\|\\(?:\\.js\\)?\\.meta\\'"
                 "\\|\\.\\(?:elc\\|o\\|pyo\\|swp\\|class\\)\\'")))
 
+(use-package dired-subtree
+  :ensure t
+  :after dired
+  :bind (nil
+         :map dired-mode-map
+         ("<tab>" . dired-subtree-toggle)
+         ("TAB" . dired-subtree-toggle)
+         ("<backtab>" . dired-subtree-remove)
+         ("S-TAB" . dired-subtree-remove))
+  :custom
+  (dired-subtree-use-backgrounds nil))
+
 (use-package nerd-icons-dired
   :ensure t
   :after (nerd-icons dired)
   :hook
-  (dired-mode . nerd-icons-dired-mode))
+  (dired-mode . nerd-icons-dired-mode)
+  :init
+  (with-eval-after-load 'dired-subtree
+    (advice-add 'dired-subtree-remove :around #'nerd-icons-dired--refresh-advice)))
 
 ;; get rid of trailing whitespace
 (defcustom my-should-delete-trailing-whitespace t
