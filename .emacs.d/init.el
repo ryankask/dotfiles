@@ -87,7 +87,6 @@
                  (or (my-host-custom-file-name)
                      (format "unknown-%s.el" system-type)))
          user-emacs-directory))
-  (when (file-exists-p custom-file)
-    (load custom-file 'noerror)))
+  (load custom-file 'noerror))
 
 (add-hook 'elpaca-after-init-hook #'my-load-host-custom-file)
