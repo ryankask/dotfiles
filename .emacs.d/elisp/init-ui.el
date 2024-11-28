@@ -148,7 +148,7 @@
 
 (defun my-ef-themes-init ()
   (require 'ef-themes)
-  (ef-themes-select 'ef-maris-dark))
+  (ef-themes-select 'ef-dream))
 
 (use-package ef-themes
   :ensure (:host github :repo "protesilaos/ef-themes")
