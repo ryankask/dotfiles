@@ -150,10 +150,8 @@
   :after dired
   :bind (nil
          :map dired-mode-map
-         ("<tab>" . dired-subtree-toggle)
-         ("TAB" . dired-subtree-toggle)
-         ("<backtab>" . dired-subtree-remove)
-         ("S-TAB" . dired-subtree-remove))
+         ("e" . dired-subtree-toggle)
+         ("E" . dired-subtree-remove))
   :custom
   (dired-subtree-use-backgrounds nil))
 
