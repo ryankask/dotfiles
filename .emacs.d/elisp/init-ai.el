@@ -2,10 +2,17 @@
 
 (use-package gptel
   :ensure t
-  :bind (("C-c #" . gptel)
-         ("C-#" . gptel)
+  :bind (("C-#" . gptel)
          ("C-c RET" . gptel-send)
-         ("C-c a" . gptel-add))
+         :prefix-map my-gptel-prefix-map
+         :prefix "s-t"
+         ("t" . gptel)
+         ("a" . gptel-add)
+         ("f" . gptel-add-file)
+         ("m" . gptel-menu)
+         ("r" . gptel-rewrite)
+         ("p" . gptel-system-prompt)
+         ("z" . gptel-abort))
   :config
   (gptel-make-openai "Mistral"
     :host "api.mistral.ai"
@@ -35,6 +42,7 @@
 
 (use-package gptel-quick
   :ensure (:host github :repo "karthink/gptel-quick")
+  :bind (("s-t q" . gptel-quick))
   :init
   (with-eval-after-load 'embark
     (bind-key "/" #'gptel-quick embark-general-map)))
