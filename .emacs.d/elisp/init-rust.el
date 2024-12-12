@@ -8,6 +8,15 @@
   :ensure t
   :defer t)
 
+(defun my-remove-rust-mode-from-auto-mode-alist ()
+  "Remove rust-mode from `auto-mode-alist' after Elpaca fetches packages.
+
+This prevents rust-mode's autoload from overriding rustic-mode for Rust
+files."
+  (let ((entry '("\\.rs\\'" . rust-mode)))
+    (when (member entry auto-mode-alist)
+      (setq auto-mode-alist (remove entry auto-mode-alist)))))
+
 (use-package rustic
   :ensure (:host github :repo "emacs-rustic/rustic")
   :after rust-mode
@@ -21,14 +30,8 @@
       (sp-with-modes '(rustic-mode)
         (sp-local-pair "{" nil :post-handlers '(("||\n[i]" "RET")))))
 
-  ;; Remove rust-mode from `auto-mode-alist' after Elpaca fetches
-  ;; packages. This prevents rust-mode's autoload from overriding
-  ;; rustic-mode for Rust files.
-  (let ((entry '("\\.rs\\'" . rust-mode)))
-    (add-hook 'elpaca-post-queue-hook
-              (lambda ()
-                (when (member entry auto-mode-alist)
-                  (setq auto-mode-alist (remove entry auto-mode-alist)))))))
+  (add-hook 'elpaca-post-queue-hook
+            #'my-remove-rust-mode-from-auto-mode-alist))
 
 (with-eval-after-load 'eglot
   (setopt eglot-workspace-configuration
