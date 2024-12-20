@@ -88,6 +88,20 @@
   :init
   (direnv-mode))
 
+(use-package disproject
+  :ensure (:host github :repo "aurtzy/disproject")
+  :after project
+  :bind (("s-p" . disproject-dispatch)
+         :map ctl-x-map
+         ("p" . disproject-dispatch))
+  :custom
+  (disproject-find-line-command #'consult-line-multi)
+  (disproject-switch-to-buffer-command #'consult-buffer)
+  :config
+  (transient-replace-suffix 'disproject-dispatch '(-3 -1)
+    ["Extra"
+     ("w" "Kill path" my-copy-project-relative-path-as-kill)]))
+
 (use-package deadgrep
   :ensure t
   :bind ("C-c u" . deadgrep))
@@ -314,7 +328,6 @@ use the current project."
   (interactive)
   (when-let* ((path (or path buffer-file-name))
               (rel-path (my-project-get-relative-path path)))
-    (message "%s" rel-path)
     (kill-new rel-path)))
 
 (defun my-dired-copy-project-relative-path-as-kill ()
@@ -325,7 +338,6 @@ use the current project."
     (my-copy-project-relative-path-as-kill path)))
 
 (use-package project
-  :bind-keymap ("s-p" . project-prefix-map)
   :bind (nil
          :map project-prefix-map
          ("w" . my-copy-project-relative-path-as-kill))
