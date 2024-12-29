@@ -28,6 +28,17 @@
     :stream t
     :key 'gptel-api-key)
 
+  (gptel-make-openai "OpenRouter"
+    :host "openrouter.ai"
+    :endpoint "/api/v1/chat/completions"
+    :stream t
+    :key 'gptel-api-key
+    :models '(deepseek/deepseek-chat
+              meta-llama/llama-3.3-70b-instruct
+              qwen/qwen-2.5-72b-instruct
+              amazon/nova-pro-v1
+              x-ai/grok-2-1212))
+
   (setopt gptel-backend (alist-get "Claude" gptel--known-backends nil nil #'equal)
           gptel-model 'claude-3-5-sonnet-20241022)
 
