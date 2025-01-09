@@ -277,6 +277,16 @@
     :global t)
   (undo-fu-mode))
 
+(defun my-insert-newline-above (n)
+  "Insert a newline before the current line without moving the cursor.
+With arg N, insert N newlines."
+  (interactive "*p")
+  (save-excursion
+    (beginning-of-line)
+    (newline n)))
+
+(bind-key "s-Y" #'my-insert-newline-above)
+
 (defun my-insert-newline-below (n)
   "Insert a newline after the current line without moving the cursor.
 With arg N, insert N newlines."
