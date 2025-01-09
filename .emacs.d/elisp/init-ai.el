@@ -14,8 +14,7 @@
          ("o p" . gptel-org-set-properties)
          ("p" . gptel-system-prompt)
          ("r" . gptel-rewrite)
-         ("z" . gptel-abort)
-         ("s-t" . gptel-send))
+         ("z" . gptel-abort))
   :config
   (gptel-make-openai "Mistral"
     :host "api.mistral.ai"

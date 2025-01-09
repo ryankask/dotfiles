@@ -15,6 +15,7 @@
          ("C-'" . nil)
          ("C-#" . nil)
          ("C-c #" . nil)
+         ("C-c RET" . nil)
          ("s-<return>" . org-meta-return)
          ("s-<left>" . org-metaleft)
          ("s-[" . org-metaleft)
