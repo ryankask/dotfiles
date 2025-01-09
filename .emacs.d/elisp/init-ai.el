@@ -10,9 +10,12 @@
          ("a" . gptel-add)
          ("f" . gptel-add-file)
          ("m" . gptel-menu)
-         ("r" . gptel-rewrite)
+         ("o t" . gptel-org-set-topic)
+         ("o p" . gptel-org-set-properties)
          ("p" . gptel-system-prompt)
-         ("z" . gptel-abort))
+         ("r" . gptel-rewrite)
+         ("z" . gptel-abort)
+         ("s-t" . gptel-send))
   :config
   (gptel-make-openai "Mistral"
     :host "api.mistral.ai"
