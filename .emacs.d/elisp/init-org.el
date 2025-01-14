@@ -8,29 +8,6 @@
   (while (org-previous-line-empty-p)
     (next-line -1)))
 
-(defun my-org--should-add-blank-link (&optional element)
-  "Return non-nil if the point is at an isolated paragraph.
-
-This is a section or paragraph whose parent is a section."
-  (let* ((element (or element (org-element-at-point-no-context)))
-         (type (org-element-type element)))
-    (or (eq type 'section)
-        (and (eq type 'paragraph)
-             (eq (org-element-type (org-element-parent element)) 'section)))))
-
-(defun my-org-insert-heading ()
-  "Insert a new heading.
-
-Insert a newline before the new headline if the current subtree contains
-text besides the headline itself."
-  (interactive)
-  (let* ((level (or (org-current-level) 1)))
-    (goto-char (line-end-position))
-    (org-end-of-subtree)
-    (when (my-org--should-add-blank-link)
-      (insert "\n"))
-    (insert "\n" (make-string level ?*) " ")))
-
 (use-package org
   :ensure (:tag "release_9.7.16" :pin t)
   :bind (nil
@@ -39,7 +16,6 @@ text besides the headline itself."
          ("C-#" . nil)
          ("C-c #" . nil)
          ("C-c RET" . nil)
-         ("C-<return>" . my-org-insert-heading)
          ("s-<return>" . org-meta-return)
          ("s-<left>" . org-metaleft)
          ("s-[" . org-metaleft)
