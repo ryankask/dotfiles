@@ -3,6 +3,10 @@ layout_virtualenv() {
   source ${venv_path}/bin/activate
 }
 
+layout_venv() {
+  source .venv/bin/activate
+}
+
 layout_virtualenvwrapper() {
   local venv_path="${WORKON_HOME:=$HOME/.virtualenvs}/$1"
   layout_virtualenv $venv_path
