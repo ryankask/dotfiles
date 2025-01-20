@@ -81,13 +81,6 @@
   :ensure t
   :defer t)
 
-(use-package direnv
-  :ensure t
-  :custom
-  (direnv-always-show-summary nil)
-  :init
-  (direnv-mode))
-
 (use-package disproject
   :ensure (:host github :repo "aurtzy/disproject")
   :after project
@@ -162,6 +155,12 @@ If MAX-AGE is nil, default to 15 minutes."
   :ensure t
   :hook (elfeed-show-mode . my-elfeed-show-mode-hook)
   :bind ("C-o u f" . my-elfeed))
+
+(use-package envrc
+  :ensure t
+  :hook (elpaca-after-init . envrc-global-mode)
+  :config
+  (bind-key "C-o v" envrc-command-map 'envrc-mode-map))
 
 (use-package expand-region
   :ensure t
