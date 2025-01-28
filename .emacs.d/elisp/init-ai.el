@@ -35,7 +35,8 @@
     :endpoint "/api/v1/chat/completions"
     :stream t
     :key 'gptel-api-key
-    :models '(deepseek/deepseek-chat
+    :models '(deepseek/deepseek-r1
+              deepseek/deepseek-chat
               meta-llama/llama-3.3-70b-instruct
               qwen/qwen-2.5-72b-instruct
               amazon/nova-pro-v1
