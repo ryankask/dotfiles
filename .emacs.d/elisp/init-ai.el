@@ -1,11 +1,16 @@
 ;;; -*- lexical-binding: t; -*-
 
+(defun my-gptel-context-remove-all ()
+  (interactive)
+  (gptel-context-remove-all))
+
 (use-package gptel
   :ensure t
   :bind (("C-#" . gptel)
          ("C-c RET" . gptel-send)
          :prefix-map my-gptel-prefix-map
          :prefix "s-t"
+         ("D" . gptel-context-remove-all)
          ("t" . gptel)
          ("a" . gptel-add)
          ("f" . gptel-add-file)
