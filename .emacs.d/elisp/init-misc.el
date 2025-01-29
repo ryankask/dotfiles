@@ -40,6 +40,25 @@
     (assq-delete-all oldkey aw-dispatch-alist)
     (add-to-list 'aw-dispatch-alist item)))
 
+(use-package casual
+  :ensure t
+  :init
+  (with-eval-after-load 'calc
+    (bind-key "s-h" #'casual-calc-tmenu 'calc-mode-map))
+
+  (with-eval-after-load 'calc-alg
+    (bind-key "s-h" #'casual-calc-tmenu 'calc-alg-map))
+
+  (with-eval-after-load 'info
+    (bind-key "s-h" #'casual-info-tmenu 'Info-mode-map))
+
+  (with-eval-after-load 'isearch
+    (bind-key "s-h" #'casual-info-tmenu 'isearch-mode-map))
+
+  (with-eval-after-load 're-builder
+    (bind-key "s-h" #'casual-re-builder-tmenu 'reb-mode-map)
+    (bind-key "s-h" #'casual-re-builder-tmenu 'reb-lisp-mode-map)))
+
 (use-package css-mode
   :preface
   (my-try-treesit-lang 'css 'css-mode 'css-ts-mode)
