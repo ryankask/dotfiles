@@ -154,7 +154,7 @@ If MAX-AGE is nil, default to 15 minutes."
 (use-package elfeed
   :ensure t
   :hook (elfeed-show-mode . my-elfeed-show-mode-hook)
-  :bind ("C-o u f" . my-elfeed))
+  :bind ("C-o y" . my-elfeed))
 
 (use-package envrc
   :ensure t

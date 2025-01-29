@@ -30,7 +30,7 @@
 (bind-key "<home>" #'beginning-of-buffer)
 (bind-key "<end>" #'end-of-buffer)
 (bind-key "C-o e" #'eval-expression)
-(bind-key "C-o u p" #'elpaca-fetch-all)
+(bind-key "C-o p" #'elpaca-fetch-all)
 (unbind-key "<C-wheel-up>")
 (unbind-key "<C-wheel-down>")
 
