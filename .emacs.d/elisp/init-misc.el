@@ -53,7 +53,7 @@
     (bind-key "s-h" #'casual-info-tmenu 'Info-mode-map))
 
   (with-eval-after-load 'isearch
-    (bind-key "s-h" #'casual-info-tmenu 'isearch-mode-map))
+    (bind-key "s-h" #'casual-isearch-tmenu 'isearch-mode-map))
 
   (with-eval-after-load 're-builder
     (bind-key "s-h" #'casual-re-builder-tmenu 'reb-mode-map)
