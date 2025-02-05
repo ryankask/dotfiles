@@ -42,22 +42,41 @@
 
 (use-package casual
   :ensure t
-  :init
-  (with-eval-after-load 'calc
-    (bind-key "s-h" #'casual-calc-tmenu 'calc-mode-map))
+  :defer t)
 
-  (with-eval-after-load 'calc-alg
-    (bind-key "s-h" #'casual-calc-tmenu 'calc-alg-map))
+(use-package casual-calc
+  :after calc
+  :bind (nil
+         :map calc-mode-map
+         ("s-h" . casual-calc-tmenu)
+         :map calc-alg-map
+         ("s-h" . casual-calc-tmenu)))
 
-  (with-eval-after-load 'info
-    (bind-key "s-h" #'casual-info-tmenu 'Info-mode-map))
+(use-package casual-calendar
+  :after calendar
+  :bind (nil
+         :map calendar-mode-map
+         ("s-h" . casual-calendar-tmenu)))
 
-  (with-eval-after-load 'isearch
-    (bind-key "s-h" #'casual-isearch-tmenu 'isearch-mode-map))
+(use-package casual-info
+  :after info
+  :bind (nil
+         :map Info-mode-map
+         ("s-h" . casual-info-tmenu)))
 
-  (with-eval-after-load 're-builder
-    (bind-key "s-h" #'casual-re-builder-tmenu 'reb-mode-map)
-    (bind-key "s-h" #'casual-re-builder-tmenu 'reb-lisp-mode-map)))
+(use-package casual-isearch
+  :after isearch
+  :bind (nil
+         :map isearch-mode-map
+         ("s-h" . casual-info-tmenu)))
+
+(use-package casual-re-builder
+  :after re-builder
+  :bind (nil
+         :map reb-mode-map
+         ("s-h" . casual-re-builder-tmenu)
+         :map reb-lisp-mode-map
+         ("s-h" . casual-re-builder-tmenu)))
 
 (use-package css-mode
   :preface
