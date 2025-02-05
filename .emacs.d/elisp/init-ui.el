@@ -61,19 +61,6 @@
   ("s-3" . split-window-right)
   ("s-w d" . my-toggle-window-dedication))
 
-(use-package winner
-  :preface (defvar winner-dont-bind-my-keys t)
-  :hook (elpaca-after-init . winner-mode)
-  :bind (:map winner-mode-map
-              ("C-c [" . winner-undo)
-              ("C-c ]" . winner-redo))
-  :config
-  (setq winner-boring-buffers
-        (append winner-boring-buffers
-                '("*Compile-Log*" "*inferior-lisp*" "*Fuzzy Completions*"
-                  "*Apropos*" "*Help*" "*cvs*" "*Buffer List*" "*Ibuffer*"
-                  "*esh command on file*"))))
-
 (use-package windmove
   :bind (("C-s-h" . windmove-left)
          ("C-s-n" . windmove-down)
@@ -88,6 +75,15 @@
          ("n" . windmove-down)
          ("e" . windmove-up)
          ("i" . windmove-right)))
+
+(use-package tab-bar
+  :hook (elpaca-after-init . tab-bar-history-mode)
+  :custom
+  (tab-bar-history-limit 100)
+  :bind (("M-s-ESC" . tab-bar-history-back)
+         ("C-M-s-]" . tab-bar-history-forward)
+         ("C-c <left>" . nil)
+         ("C-c <right>" . nil)))
 
 (defun my-theme-get-ns-appearance ()
   (pcase (modus-themes--current-theme)
