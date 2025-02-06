@@ -3,59 +3,6 @@
 (defconst my-lsp-provider 'eglot
   "LSP implementation to use")
 
-;; lsp-mode
-
-(defun my-lsp-prepare-provider--lsp-mode ()
-  "Conform to the common LSP interface for `lsp-mode'"
-  (defalias 'my-lsp-ensure #'lsp-deferred)
-  (defun my-lsp-enabled-in-buffer ()
-    (bound-and-true-p lsp-mode))
-  (defalias 'my-lsp-format #'lsp-format-buffer)
-  (defalias 'my-lsp-organize-imports #'my-lsp-organize-imports))
-
-(defun my-lsp-mode-update-keybindings ()
-  (setcar (assq ?g (cdr lsp-command-map)) ?t))
-
-(defun my-lsp-mode-setup ()
-  ;; Optimisations - copied from Doom Emacs
-  (setq-local gcmh-high-cons-threshold (* 2 (default-value 'gcmh-high-cons-threshold)))
-  (lsp-enable-which-key-integration))
-
-(defun my-lsp-mode-setup-completion ()
-  (setf (alist-get 'styles (alist-get 'lsp-capf completion-category-defaults))
-        '(orderless))
-  (when (fboundp 'tempel-expand)
-    (tempel-setup-capf)))
-
-(defun my-lsp-help-mode-setup ()
-  "Customize faces for the lsp-help buffer"
-  (when (string= (buffer-name) "*lsp-help*")
-    (face-remap-add-relative 'nobreak-space :underline nil)))
-
-(use-package lsp-mode
-  :if (eq my-lsp-provider 'lsp-mode)
-  :ensure nil
-  :commands (lsp lsp-deferred)
-  :bind (nil
-         :map lsp-mode-map
-         ("C-o d" . lsp-describe-thing-at-point))
-  :hook ((lsp-mode . my-lsp-mode-setup)
-         (lsp-completion-mode . my-lsp-mode-setup-completion)
-         (help-mode . my-lsp-help-mode-setup))
-  :custom
-  (lsp-completion-provider :none)
-  (lsp-enable-snippet nil)
-  (lsp-headerline-breadcrumb-enable nil)
-  (lsp-signature-auto-activate nil)
-  (lsp-signature-render-documentation nil)
-  (my-format-lsp-function #'lsp-format-buffer)
-  :init
-  (my-lsp-prepare-provider--lsp-mode)
-  :config
-  (my-lsp-mode-update-keybindings))
-
-;; eglot
-
 (defun my-lsp-prepare-provider--eglot ()
   "Conform to the common LSP interface for `eglot'"
   (defalias 'my-lsp-ensure #'eglot-ensure)
