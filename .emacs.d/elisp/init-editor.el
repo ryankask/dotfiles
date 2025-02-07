@@ -395,7 +395,10 @@ Position the cursor at its beginning, according to the current mode."
 
 (use-package apheleia
   :ensure t
-  :defer t)
+  :defer t
+  :config
+  (setf (alist-get 'python-mode apheleia-mode-alist)
+        '(ruff-isort ruff)))
 
 (defcustom my-format-default-function #'apheleia-format-buffer
   "Default format function."
