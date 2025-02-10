@@ -125,9 +125,8 @@ function appLauncherLayer(): Rule {
       g: toApp("Dictionary"),
       m: toApp("Microsoft Outlook"),
       r: toApp("Spotify"),
+      s: toApp("Orion"),
       v: toApp("Finder"),
-      w: toApp("Calendar"),
-      semicolon: toApp("Orion"),
       tab: to$(
         "open alfred://runtrigger/com.alfredapp.vitor.windowswitcher/list_windows",
       ),
