@@ -44,6 +44,12 @@
   :ensure t
   :defer t)
 
+(use-package casual-bookmarks
+  :after bookmark
+  :bind (nil
+         :map bookmark-bmenu-mode-map
+         ("s-h" . casual-bookmarks-tmenu)))
+
 (use-package casual-calc
   :after calc
   :bind (nil
@@ -57,6 +63,28 @@
   :bind (nil
          :map calendar-mode-map
          ("s-h" . casual-calendar-tmenu)))
+
+(use-package casual-dired
+  :after dired
+  :bind (nil
+         :map dired-mode-map
+         ("s-h" . casual-dired-tmenu)
+         ("s" . casual-dired-sort-by-tmenu)
+         ("/" . casual-dired-search-replace-tmenu)))
+
+(use-package casual-ibuffer
+  :after ibuffer
+  :bind (nil
+         :map ibuffer-mode-map
+         ("s-h" . casual-ibuffer-tmenu)
+         ("F" . casual-ibuffer-filter-tmenu)
+         ("s" . casual-ibuffer-sortby-tmenu)))
+
+(use-package casual-image
+  :after image
+  :bind (nil
+         :map image-mode-map
+         ("s-h" . casual-image-tmenu)))
 
 (use-package casual-info
   :after info
