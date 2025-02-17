@@ -109,6 +109,7 @@
   (recentf-mode))
 
 (use-package ibuffer
+  :hook (ibuffer-mode . hl-line-mode)
   :bind ("C-x C-b" . ibuffer)
   :config
   (unbind-key "C-o" ibuffer-mode-map))
