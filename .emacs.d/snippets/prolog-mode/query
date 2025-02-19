@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: query
+# key: e
+# --
+?- $0
