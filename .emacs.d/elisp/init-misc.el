@@ -157,7 +157,7 @@
   (disproject-find-line-command #'consult-line-multi)
   (disproject-switch-to-buffer-command #'consult-buffer)
   :config
-  (transient-replace-suffix 'disproject-dispatch '(-3 -1)
+  (transient-append-suffix 'disproject-dispatch '(-2 -1)
     ["Extra"
      ("w" "Kill path" my-copy-project-relative-path-as-kill)]))
 
