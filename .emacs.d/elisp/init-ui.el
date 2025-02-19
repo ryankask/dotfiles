@@ -2,14 +2,7 @@
 
 (require 'cl-lib)
 
-(push '(menu-bar-lines . 0) default-frame-alist)
-(push '(tool-bar-lines . 0) default-frame-alist)
-(push '(vertical-scroll-bars) default-frame-alist)
-(setq menu-bar-mode nil
-      tool-bar-mode nil
-      scroll-bar-mode nil)
-
-(when (or (display-graphic-p) (daemonp))
+(unless noninteractive
   (set-face-attribute 'default nil :family "Iosevka" :height 140)
   (set-face-attribute 'fixed-pitch nil :family "Iosevka")
   (set-face-attribute 'fixed-pitch-serif nil :family "Iosevka Slab")

@@ -349,6 +349,7 @@ Position the cursor at its beginning, according to the current mode."
   (defconst my-tramp-autosave-directory
     (expand-file-name "tramp-autosave/" user-emacs-directory))
   (make-directory my-tramp-autosave-directory t)
+  :defer t
   :custom
   (tramp-auto-save-directory my-tramp-autosave-directory)
   :config
