@@ -170,14 +170,6 @@
            (treesit-language-available-p 'dockerfile))
   :mode "[/\\]\\(?:Containerfile\\|Dockerfile\\)\\(?:\\.[^/\\]*\\)?\\'")
 
-(use-package dumb-jump
-  :ensure t
-  :custom
-  (dumb-jump-default-project "~/src")
-  (dumb-jump-force-searcher 'rg)
-  :init
-  (add-hook 'xref-backend-functions #'dumb-jump-xref-activate))
-
 (use-package ediff
   :defer t
   :custom
