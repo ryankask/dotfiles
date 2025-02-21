@@ -8,7 +8,7 @@
   (set-face-attribute 'fixed-pitch-serif nil :family "Iosevka Slab")
   (set-face-attribute 'variable-pitch nil :family "Iosevka Aile")
   (set-fontset-font t 'unicode "Symbols Nerd Font Mono" nil 'append)
-  (set-fontset-font t 'unicode "Noto Color Emoji" nil 'append)
+  (set-fontset-font t 'emoji "Noto Color Emoji" nil 'append)
   (push '(width . (text-pixels . 700)) default-frame-alist)
   (push '(height . (text-pixels . 843)) default-frame-alist)
   (set-frame-position nil 720 0))
