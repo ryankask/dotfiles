@@ -236,6 +236,8 @@ targets."
          ("M-p" . completion-preview-prev-candidate))
   :hook
   (minibuffer-setup . my-completion-preview-enable-in-minibuffer)
+  :custom
+  (completion-preview-idle-delay 0.175)
   :init
   (global-completion-preview-mode)
   :config
