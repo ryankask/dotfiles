@@ -230,6 +230,7 @@ targets."
   :after (embark consult))
 
 (use-package completion-preview
+  :disabled t
   :bind (nil
          :map completion-preview-active-mode-map
          ("M-n" . completion-preview-next-candidate)
@@ -280,12 +281,14 @@ When the popup is hidden, re-enable the mode if it was previously
   :ensure t
   :bind (nil
          :map corfu-map
-         ("SPC" . corfu-insert-separator)
+         ;; ("SPC" . corfu-insert-separator)
          ("C-h" . corfu-info-documentation)
          ("C-," . my-corfu-move-to-minibuffer))
   :hook ((minibuffer-setup . my-corfu-enable-in-minibuffer)
-         (completion-in-region-mode . my-corfu--completion-in-region-mode-hook))
+         ;; (completion-in-region-mode . my-corfu--completion-in-region-mode-hook)
+         )
   :custom
+  (corfu-auto t)
   (corfu-cycle t)
   (corfu-min-width 20)
   (completion-cycle-threshold 3)
