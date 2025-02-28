@@ -13,31 +13,24 @@
   (push '(height . (text-pixels . 843)) default-frame-alist)
   (set-frame-position nil 720 0))
 
-(use-package display-line-numbers
-  :custom
-  (display-line-numbers-grow-only t)
-  :hook ((prog-mode text-mode conf-mode) . display-line-numbers-mode))
-
 ;; mode line settings
 (column-number-mode t)
 (size-indication-mode t)
 
-;; Most of these are from doom-start.el
-(setq idle-update-delay 1.0
-      inhibit-startup-message t
-      use-dialog-box nil
-      highlight-nonselected-windows nil
-      redisplay-skip-fontification-on-input t
+;; Most of these are from doom-ui.el
+(setq confirm-kill-emacs 'yes-or-no-p
+      ring-bell-function #'ignore
+      visible-bell nil
       frame-resize-pixelwise t
       window-resize-pixelwise nil
-      initial-scratch-message nil
-      use-short-answers t
-      confirm-kill-emacs 'yes-or-no-p
+      use-dialog-box nil
       enable-recursive-minibuffers t
+      use-short-answers t
       ;; Do not allow the cursor in the minibuffer prompt
       minibuffer-prompt-properties
-      '(read-only t cursor-intangible t face minibuffer-prompt))
-(setq-default cursor-in-non-selected-windows nil)
+      '(read-only t intangible t cursor-intangible t face minibuffer-prompt))
+
+(add-hook 'minibuffer-setup-hook #'cursor-intangible-mode)
 
 (defun my-toggle-window-dedication ()
   "Toggles window dedication in the selected window."
@@ -77,6 +70,11 @@
          ("C-M-s-]" . tab-bar-history-forward)
          ("C-c <left>" . nil)
          ("C-c <right>" . nil)))
+
+(use-package display-line-numbers
+  :custom
+  (display-line-numbers-grow-only t)
+  :hook ((prog-mode text-mode conf-mode) . display-line-numbers-mode))
 
 (defun my-theme-get-ns-appearance ()
   (pcase (modus-themes--current-theme)
@@ -167,6 +165,12 @@ updates other software's themes like kitty."
   :commands themegen-activate-kitty-theme
   :hook ((modus-themes-after-load-theme . my-theme-match-current-modus-theme)
          (ef-themes-post-load . my-theme-match-current-ef-theme)))
+
+(use-package which-key
+  :custom
+  (which-key-use-C-h-commands nil)
+  :init
+  (which-key-mode))
 
 (use-package transient
   :ensure t)

@@ -566,12 +566,6 @@ session."
   :ensure t
   :bind ("C-o C-v" . vterm-toggle))
 
-(use-package which-key
-  :custom
-  (which-key-use-C-h-commands nil)
-  :init
-  (which-key-mode))
-
 (defun my-yaml-ts-mode-setup ()
   "Hook used for yaml-ts-mode"
   (setq-local tab-width 2))
