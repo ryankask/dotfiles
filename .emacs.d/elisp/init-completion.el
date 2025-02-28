@@ -229,21 +229,6 @@ targets."
   :ensure t
   :after (embark consult))
 
-(use-package completion-preview
-  :bind (nil
-         :map completion-preview-active-mode-map
-         ("M-n" . completion-preview-next-candidate)
-         ("M-p" . completion-preview-prev-candidate))
-  :hook
-  (minibuffer-setup . my-completion-preview-enable-in-minibuffer)
-  :custom
-  (completion-preview-idle-delay 0.175)
-  :init
-  (global-completion-preview-mode)
-  :config
-  (with-eval-after-load 'org
-    (push #'org-self-insert-command completion-preview-commands)))
-
 (defun my-corfu-move-to-minibuffer ()
   (interactive)
   (pcase completion-in-region--data
@@ -259,37 +244,20 @@ targets."
                 corfu-popupinfo-delay nil)
     (corfu-mode 1)))
 
-(defvar my-corfu--re-enable-completion-preview nil
-  "Store whether completion-preview-mode should be re-enabled after
- Corfu finishes displaying.")
-
-(defun my-corfu--completion-in-region-mode-hook ()
-  "Disable `completion-preview-mode' when a Corfu popup is displayed.
-When the popup is hidden, re-enable the mode if it was previously
- enabled."
-  (if completion-in-region-mode
-      (progn
-        (when (bound-and-true-p completion-preview-mode)
-          (setq my-corfu--re-enable-completion-preview t)
-          (completion-preview-mode -1)))
-    (when my-corfu--re-enable-completion-preview
-      (setq my-corfu--re-enable-completion-preview nil)
-      (completion-preview-mode))))
-
 (use-package corfu
   :ensure t
   :bind (nil
          :map corfu-map
-         ("SPC" . corfu-insert-separator)
          ("C-h" . corfu-info-documentation)
          ("C-," . my-corfu-move-to-minibuffer))
-  :hook ((minibuffer-setup . my-corfu-enable-in-minibuffer)
-         (completion-in-region-mode . my-corfu--completion-in-region-mode-hook))
+  :hook (minibuffer-setup . my-corfu-enable-in-minibuffer)
   :custom
+  (corfu-auto t)
   (corfu-cycle t)
   (corfu-min-width 20)
   (completion-cycle-threshold 3)
   (tab-always-indent 'complete)
+  (text-mode-ispell-word-completion nil)
   :init
   (global-corfu-mode)
   :config
@@ -306,10 +274,5 @@ When the popup is hidden, re-enable the mode if it was previously
   :init
   (add-hook 'completion-at-point-functions #'cape-file)
   (add-hook 'completion-at-point-functions #'cape-dabbrev))
-
-(defun my-completion-preview-enable-in-minibuffer ()
-  "Enable completion preview in the minibuffer."
-  (when (local-variable-p 'completion-at-point-functions)
-    (completion-preview-mode 1)))
 
 (provide 'init-completion)

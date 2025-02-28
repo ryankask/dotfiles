@@ -183,12 +183,11 @@
   (setq fill-column 88))
 
 (defun my-text-mode-setup ()
-  (visual-line-mode))
+  (visual-line-mode)
+  (remove-hook 'completion-at-point-functions #'ispell-completion-at-point t))
 
 (use-package text-mode
-  :hook (text-mode . my-text-mode-setup)
-  :custom
-  (text-mode-ispell-word-completion nil))
+  :hook (text-mode . my-text-mode-setup))
 
 (use-package visual-fill-column
   :ensure t)
