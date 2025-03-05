@@ -33,6 +33,8 @@
 (bind-key "C-o p" #'elpaca-fetch-all)
 (unbind-key "<C-wheel-up>")
 (unbind-key "<C-wheel-down>")
+(dotimes (i 12)
+  (unbind-key (format "<f%d>" (+ i 1))))
 
 (put 'narrow-to-region 'disabled nil)
 
