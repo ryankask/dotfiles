@@ -121,7 +121,7 @@
             ]
           },
           {
-            "description": "C-' → right control",
+            "description": "' → right control",
             "manipulators": [
               {
                 "type": "basic",
@@ -491,6 +491,71 @@
                     "type": "variable_if",
                     "name": "right-control",
                     "value": 1
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "description": "Emacs: tap shift to send C-g",
+            "manipulators": [
+              {
+                "type": "basic",
+                "from": {
+                  "key_code": "left_shift"
+                },
+                "to": [
+                  {
+                    "key_code": "left_shift"
+                  }
+                ],
+                "to_if_alone": [
+                  {
+                    "key_code": "t",
+                    "modifiers": [
+                      "left_control"
+                    ]
+                  }
+                ],
+                "parameters": {
+                  "basic.to_if_alone_timeout_milliseconds": 180
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^org\\.gnu\\.Emacs$"
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "key_code": "right_shift"
+                },
+                "to": [
+                  {
+                    "key_code": "right_shift"
+                  }
+                ],
+                "to_if_alone": [
+                  {
+                    "key_code": "t",
+                    "modifiers": [
+                      "right_control"
+                    ]
+                  }
+                ],
+                "parameters": {
+                  "basic.to_if_alone_timeout_milliseconds": 180
+                },
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^org\\.gnu\\.Emacs$"
+                    ]
                   }
                 ]
               }
