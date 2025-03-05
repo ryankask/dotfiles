@@ -45,7 +45,7 @@ writeToProfile("Default", [
   rule("C-[ → escape", ifApp([Apps.EMACS, Apps.KITTY]).unless()).manipulators([
     map("[", ["left_control", "right_control"]).to("escape"),
   ]),
-  rule("C-' → right control").manipulators([
+  rule("' → right control").manipulators([
     map("'", {
       optional: [
         "left_command",
