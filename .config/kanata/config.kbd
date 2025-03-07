@@ -1,19 +1,53 @@
 ;; -*- mode: lisp; -*-
 
-(defsrc
-  esc
-  grv 1 2 3 4 5 6 7 8 9 0 - = bspc
-  tab q w e r t y u i o p [ ]
-  caps a s d f g h j k l scln ' \ ret
-  lsft 102d z x c v b n m , . / rsft
-  lctl lmet lalt spc ralt rctl up
-                          left down right)
+;; Linux
 
-(deflayer default
-  _
-  _ _ _ _ _ _ _ _ _ _ _ _ _ _
-  _ _ _ f p g j l u y scln _ _
-  lctl _ r s t d _ n e i o _ _ _
-  _ _ _ _ _ _ _ k _ _ _ _ _
-  _ lalt lmet spc rmet ralt _
-                          _ _ _)
+(platform (linux)
+ (defsrc
+   esc
+   grv 1 2 3 4 5 6 7 8 9 0 - = bspc
+   tab q w e r t y u i o p [ ]
+   caps a s d f g h j k l scln ' \ ret
+   lsft 102d z x c v b n m , . / rsft
+   lctl lmet lalt spc ralt rctl
+   up left down right))
+
+(platform (linux)
+ (deflayer
+   default
+   _
+   _ _ _ _ _ _ _ _ _ _ _ _ _ _
+   _ _ _ f p g j l u y scln _ _
+   lctl _ r s t d _ n e i o _ _ _
+   _ _ _ _ _ _ _ k _ _ _ _ _
+   _ lalt lmet spc rmet ralt
+   _ _ _ _))
+
+;; macOS
+
+(platform (macos)
+  (defcfg
+    process-unmapped-keys yes))
+
+(platform (macos)
+  (defvar
+    tap-time 150
+    hold-time 200))
+
+(platform (macos)
+ (defsrc))
+
+(platform (macos)
+ (deflayermap (default-layer)
+   f1 (fork f1 lrld (lmet rmet))
+   caps lctl
+   grv 102d
+   102d grv
+   a (tap-hold $tap-time $hold-time a lmet)
+   s (tap-hold $tap-time $hold-time s lalt)
+   d (tap-hold $tap-time $hold-time d lsft)
+   f (tap-hold $tap-time $hold-time f lctl)
+   j (tap-hold $tap-time $hold-time j rctl)
+   k (tap-hold $tap-time $hold-time k rsft)
+   l (tap-hold $tap-time $hold-time l ralt)
+   scln (tap-hold $tap-time $hold-time scln rmet)))
