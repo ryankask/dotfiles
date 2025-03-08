@@ -68,32 +68,7 @@
                   "key_code": "m",
                   "modifiers": {
                     "mandatory": [
-                      "left_control"
-                    ]
-                  }
-                },
-                "to": [
-                  {
-                    "key_code": "return_or_enter"
-                  }
-                ],
-                "conditions": [
-                  {
-                    "type": "frontmost_application_if",
-                    "bundle_identifiers": [
-                      "^com\\.google\\.Chrome$",
-                      "^com\\.microsoft\\.VSCode$"
-                    ]
-                  }
-                ]
-              },
-              {
-                "type": "basic",
-                "from": {
-                  "key_code": "m",
-                  "modifiers": {
-                    "mandatory": [
-                      "right_control"
+                      "control"
                     ]
                   }
                 },
@@ -123,7 +98,7 @@
                   "key_code": "open_bracket",
                   "modifiers": {
                     "mandatory": [
-                      "left_control"
+                      "control"
                     ]
                   }
                 },

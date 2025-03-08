@@ -41,11 +41,10 @@ writeToProfile("Default", [
       }),
   ]),
   rule("C-m → return", ifApp([Apps.CHROME, Apps.VSCODE])).manipulators([
-    map("m", ["left_control"]).to("return_or_enter"),
-    map("m", ["right_control"]).to("return_or_enter"),
+    map("m", ["control"]).to("return_or_enter"),
   ]),
   rule("C-[ → escape", ifApp([Apps.EMACS, Apps.KITTY]).unless()).manipulators([
-    map("[", ["left_control"]).to("escape"),
+    map("[", ["control"]).to("escape"),
   ]),
   rule("' → right control").manipulators([
     map("'", {
