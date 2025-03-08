@@ -129,8 +129,7 @@
                 },
                 "to": [
                   {
-                    "key_code": "escape",
-                    "modifiers": []
+                    "key_code": "escape"
                   }
                 ],
                 "conditions": [
@@ -612,7 +611,8 @@
                       "^com\\.tinyspeck\\.slackmacgap$",
                       "^notion\\.id$",
                       "^com\\.kagi\\.kagimacOS$",
-                      "^com\\.microsoft\\.Outlook$"
+                      "^com\\.microsoft\\.Outlook$",
+                      "^com.spotify.client$"
                     ]
                   }
                 ]
@@ -640,7 +640,8 @@
                       "^com\\.tinyspeck\\.slackmacgap$",
                       "^notion\\.id$",
                       "^com\\.kagi\\.kagimacOS$",
-                      "^com\\.microsoft\\.Outlook$"
+                      "^com\\.microsoft\\.Outlook$",
+                      "^com.spotify.client$"
                     ]
                   }
                 ]
@@ -668,7 +669,8 @@
                       "^com\\.tinyspeck\\.slackmacgap$",
                       "^notion\\.id$",
                       "^com\\.kagi\\.kagimacOS$",
-                      "^com\\.microsoft\\.Outlook$"
+                      "^com\\.microsoft\\.Outlook$",
+                      "^com.spotify.client$"
                     ]
                   }
                 ]
@@ -696,7 +698,8 @@
                       "^com\\.tinyspeck\\.slackmacgap$",
                       "^notion\\.id$",
                       "^com\\.kagi\\.kagimacOS$",
-                      "^com\\.microsoft\\.Outlook$"
+                      "^com\\.microsoft\\.Outlook$",
+                      "^com.spotify.client$"
                     ]
                   }
                 ]

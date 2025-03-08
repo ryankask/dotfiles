@@ -25,6 +25,7 @@ const Apps = {
   NOTION: /^notion\.id$/,
   ORION: /^com\.kagi\.kagimacOS$/,
   OUTLOOK: /^com\.microsoft\.Outlook$/,
+  SPOTIFY: /^com.spotify.client$/,
 } as const;
 
 writeToProfile("Default", [
@@ -107,7 +108,14 @@ writeToProfile("Default", [
   ]),
   rule("Emacs emulation").manipulators([
     withCondition(
-      ifApp([Apps.CHROME, Apps.SLACK, Apps.NOTION, Apps.ORION, Apps.OUTLOOK]),
+      ifApp([
+        Apps.CHROME,
+        Apps.SLACK,
+        Apps.NOTION,
+        Apps.ORION,
+        Apps.OUTLOOK,
+        Apps.SPOTIFY,
+      ]),
     )([
       withMapper<FromKeyParam, ToKeyParam>({
         m: "return_or_enter",
