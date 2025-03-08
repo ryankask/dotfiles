@@ -48,12 +48,7 @@ writeToProfile("Default", [
   ]),
   rule("' → right control").manipulators([
     map("'", {
-      optional: [
-        "left_command",
-        "left_option",
-        "right_command",
-        "right_option",
-      ],
+      optional: ["command", "option"],
     })
       .to([
         toSetVar("right-control", 1),
