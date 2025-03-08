@@ -34,16 +34,17 @@ writeToProfile("Default", [
   rule("left control → hyper; caps lock if alone").manipulators([
     map("left_control", "optionalAny")
       .to(toKey("left_control", ["command", "option"], { lazy: true }))
-      .toIfAlone("caps_lock")
+      .toIfAlone("caps_lock", undefined, { hold_down_milliseconds: 100 })
       .parameters({
         "basic.to_if_alone_timeout_milliseconds": 300,
       }),
   ]),
   rule("C-m → return", ifApp([Apps.CHROME, Apps.VSCODE])).manipulators([
-    map("m", ["left_control", "right_control"]).to("return_or_enter"),
+    map("m", ["left_control"]).to("return_or_enter"),
+    map("m", ["right_control"]).to("return_or_enter"),
   ]),
   rule("C-[ → escape", ifApp([Apps.EMACS, Apps.KITTY]).unless()).manipulators([
-    map("[", ["left_control", "right_control"]).to("escape"),
+    map("[", ["left_control"]).to("escape"),
   ]),
   rule("' → right control").manipulators([
     map("'", {
@@ -129,6 +130,9 @@ writeToProfile("Default", [
 
 function appLauncherLayer(): Rule {
   let rule = duoLayer(",", ".", "launch-app")
+    .description("Open App")
+    .leaderMode({ escape: ["comma", "period", "escape"] })
+    .notification()
     .manipulators({
       a: toApp("Activity Monitor"),
       b: toApp("Books"),

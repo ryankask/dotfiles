@@ -49,6 +49,7 @@
                 ],
                 "to_if_alone": [
                   {
+                    "hold_down_milliseconds": 100,
                     "key_code": "caps_lock"
                   }
                 ],
@@ -67,7 +68,31 @@
                   "key_code": "m",
                   "modifiers": {
                     "mandatory": [
-                      "left_control",
+                      "left_control"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "return_or_enter"
+                  }
+                ],
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^com\\.google\\.Chrome$",
+                      "^com\\.microsoft\\.VSCode$"
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "key_code": "m",
+                  "modifiers": {
+                    "mandatory": [
                       "right_control"
                     ]
                   }
@@ -98,14 +123,14 @@
                   "key_code": "open_bracket",
                   "modifiers": {
                     "mandatory": [
-                      "left_control",
-                      "right_control"
+                      "left_control"
                     ]
                   }
                 },
                 "to": [
                   {
-                    "key_code": "escape"
+                    "key_code": "escape",
+                    "modifiers": []
                   }
                 ],
                 "conditions": [
@@ -840,7 +865,7 @@
             ]
           },
           {
-            "description": "DuoLayer launch-app",
+            "description": "Open App",
             "manipulators": [
               {
                 "type": "basic",
@@ -854,14 +879,7 @@
                     }
                   ],
                   "simultaneous_options": {
-                    "to_after_key_up": [
-                      {
-                        "set_variable": {
-                          "name": "launch-app",
-                          "value": 0
-                        }
-                      }
-                    ]
+                    "to_after_key_up": []
                   },
                   "modifiers": {
                     "optional": [
@@ -877,6 +895,12 @@
                     "set_variable": {
                       "name": "launch-app",
                       "value": 1
+                    }
+                  },
+                  {
+                    "set_notification_message": {
+                      "id": "duo-layer-launch-app",
+                      "text": "Open App"
                     }
                   }
                 ],
@@ -900,14 +924,7 @@
                     }
                   ],
                   "simultaneous_options": {
-                    "to_after_key_up": [
-                      {
-                        "set_variable": {
-                          "name": "launch-app",
-                          "value": 0
-                        }
-                      }
-                    ]
+                    "to_after_key_up": []
                   },
                   "modifiers": {
                     "optional": [
@@ -923,6 +940,12 @@
                     "set_variable": {
                       "name": "launch-app",
                       "value": 1
+                    }
+                  },
+                  {
+                    "set_notification_message": {
+                      "id": "duo-layer-launch-app",
+                      "text": "Open App"
                     }
                   }
                 ],
@@ -942,6 +965,18 @@
                 "to": [
                   {
                     "shell_command": "open -a \"Activity Monitor\".app"
+                  },
+                  {
+                    "set_variable": {
+                      "name": "launch-app",
+                      "value": 0
+                    }
+                  },
+                  {
+                    "set_notification_message": {
+                      "id": "duo-layer-launch-app",
+                      "text": ""
+                    }
                   }
                 ],
                 "conditions": [
@@ -960,6 +995,18 @@
                 "to": [
                   {
                     "shell_command": "open -a \"Books\".app"
+                  },
+                  {
+                    "set_variable": {
+                      "name": "launch-app",
+                      "value": 0
+                    }
+                  },
+                  {
+                    "set_notification_message": {
+                      "id": "duo-layer-launch-app",
+                      "text": ""
+                    }
                   }
                 ],
                 "conditions": [
@@ -978,6 +1025,18 @@
                 "to": [
                   {
                     "shell_command": "open -a \"Google Chrome\".app"
+                  },
+                  {
+                    "set_variable": {
+                      "name": "launch-app",
+                      "value": 0
+                    }
+                  },
+                  {
+                    "set_notification_message": {
+                      "id": "duo-layer-launch-app",
+                      "text": ""
+                    }
                   }
                 ],
                 "conditions": [
@@ -996,6 +1055,18 @@
                 "to": [
                   {
                     "shell_command": "open -a \"Slack\".app"
+                  },
+                  {
+                    "set_variable": {
+                      "name": "launch-app",
+                      "value": 0
+                    }
+                  },
+                  {
+                    "set_notification_message": {
+                      "id": "duo-layer-launch-app",
+                      "text": ""
+                    }
                   }
                 ],
                 "conditions": [
@@ -1014,6 +1085,18 @@
                 "to": [
                   {
                     "shell_command": "open -a \"Emacs\".app"
+                  },
+                  {
+                    "set_variable": {
+                      "name": "launch-app",
+                      "value": 0
+                    }
+                  },
+                  {
+                    "set_notification_message": {
+                      "id": "duo-layer-launch-app",
+                      "text": ""
+                    }
                   }
                 ],
                 "conditions": [
@@ -1032,6 +1115,18 @@
                 "to": [
                   {
                     "shell_command": "open -a \"Kitty\".app"
+                  },
+                  {
+                    "set_variable": {
+                      "name": "launch-app",
+                      "value": 0
+                    }
+                  },
+                  {
+                    "set_notification_message": {
+                      "id": "duo-layer-launch-app",
+                      "text": ""
+                    }
                   }
                 ],
                 "conditions": [
@@ -1050,6 +1145,18 @@
                 "to": [
                   {
                     "shell_command": "open -a \"Dictionary\".app"
+                  },
+                  {
+                    "set_variable": {
+                      "name": "launch-app",
+                      "value": 0
+                    }
+                  },
+                  {
+                    "set_notification_message": {
+                      "id": "duo-layer-launch-app",
+                      "text": ""
+                    }
                   }
                 ],
                 "conditions": [
@@ -1068,6 +1175,18 @@
                 "to": [
                   {
                     "shell_command": "open -a \"Microsoft Outlook\".app"
+                  },
+                  {
+                    "set_variable": {
+                      "name": "launch-app",
+                      "value": 0
+                    }
+                  },
+                  {
+                    "set_notification_message": {
+                      "id": "duo-layer-launch-app",
+                      "text": ""
+                    }
                   }
                 ],
                 "conditions": [
@@ -1086,6 +1205,18 @@
                 "to": [
                   {
                     "shell_command": "open -a \"Spotify\".app"
+                  },
+                  {
+                    "set_variable": {
+                      "name": "launch-app",
+                      "value": 0
+                    }
+                  },
+                  {
+                    "set_notification_message": {
+                      "id": "duo-layer-launch-app",
+                      "text": ""
+                    }
                   }
                 ],
                 "conditions": [
@@ -1104,6 +1235,18 @@
                 "to": [
                   {
                     "shell_command": "open -a \"Orion\".app"
+                  },
+                  {
+                    "set_variable": {
+                      "name": "launch-app",
+                      "value": 0
+                    }
+                  },
+                  {
+                    "set_notification_message": {
+                      "id": "duo-layer-launch-app",
+                      "text": ""
+                    }
                   }
                 ],
                 "conditions": [
@@ -1122,6 +1265,18 @@
                 "to": [
                   {
                     "shell_command": "open -a \"Finder\".app"
+                  },
+                  {
+                    "set_variable": {
+                      "name": "launch-app",
+                      "value": 0
+                    }
+                  },
+                  {
+                    "set_notification_message": {
+                      "id": "duo-layer-launch-app",
+                      "text": ""
+                    }
                   }
                 ],
                 "conditions": [
@@ -1140,6 +1295,18 @@
                 "to": [
                   {
                     "shell_command": "open alfred://runtrigger/com.alfredapp.vitor.windowswitcher/list_windows"
+                  },
+                  {
+                    "set_variable": {
+                      "name": "launch-app",
+                      "value": 0
+                    }
+                  },
+                  {
+                    "set_notification_message": {
+                      "id": "duo-layer-launch-app",
+                      "text": ""
+                    }
                   }
                 ],
                 "conditions": [
@@ -1147,6 +1314,87 @@
                     "type": "variable_if",
                     "name": "launch-app",
                     "value": 1
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "key_code": "comma"
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "launch-app",
+                    "value": 1
+                  }
+                ],
+                "to": [
+                  {
+                    "set_variable": {
+                      "name": "launch-app",
+                      "value": 0
+                    }
+                  },
+                  {
+                    "set_notification_message": {
+                      "id": "duo-layer-launch-app",
+                      "text": ""
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "key_code": "period"
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "launch-app",
+                    "value": 1
+                  }
+                ],
+                "to": [
+                  {
+                    "set_variable": {
+                      "name": "launch-app",
+                      "value": 0
+                    }
+                  },
+                  {
+                    "set_notification_message": {
+                      "id": "duo-layer-launch-app",
+                      "text": ""
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "key_code": "escape"
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "launch-app",
+                    "value": 1
+                  }
+                ],
+                "to": [
+                  {
+                    "set_variable": {
+                      "name": "launch-app",
+                      "value": 0
+                    }
+                  },
+                  {
+                    "set_notification_message": {
+                      "id": "duo-layer-launch-app",
+                      "text": ""
+                    }
                   }
                 ]
               }
