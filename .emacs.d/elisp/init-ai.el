@@ -10,10 +10,10 @@
          ("C-c RET" . gptel-send)
          :prefix-map my-gptel-prefix-map
          :prefix "s-t"
-         ("D" . gptel-context-remove-all)
          ("t" . gptel)
          ("a" . gptel-add)
          ("f" . gptel-add-file)
+         ("d" . gptel-context-remove-all)
          ("m" . gptel-menu)
          ("o t" . gptel-org-set-topic)
          ("o p" . gptel-org-set-properties)
@@ -65,5 +65,13 @@
   :init
   (with-eval-after-load 'embark
     (bind-key "/" #'gptel-quick embark-general-map)))
+
+(use-package aidermacs
+  :ensure (:host github :repo "MatthewZMD/aidermacs")
+  :bind (("s-a" . aidermacs-transient-menu))
+  :custom
+  (aidermacs-backend 'vterm)
+  :config
+  (aidermacs-setup-minor-mode))
 
 (provide 'init-ai)
