@@ -35,6 +35,8 @@
          ("t" . eglot-code-actions)
          ("S" . eglot-reconnect)
          ("r" . eglot-rename)
+         ("l" . eglot-show-call-hierarchy)
+         ("y" . eglot-show-type-hierarchy)
          ("c" . eglot-show-workspace-configuration)
          ("q" . eglot-shutdown))
   :init
