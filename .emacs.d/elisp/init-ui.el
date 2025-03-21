@@ -106,7 +106,7 @@
 
 (defun my-modus-themes-init ()
   (require 'modus-themes)
-  (modus-themes-load-theme 'modus-vivendi))
+  (modus-themes-load-theme 'modus-operandi))
 
 (use-package modus-themes
   :ensure (:host github :repo "protesilaos/modus-themes")
@@ -121,7 +121,8 @@
      (border-mode-line-active bg-mode-line-active)
      (border-mode-line-inactive bg-mode-line-inactive)))
   :bind ("C-o w" . modus-themes-toggle)
-  :hook ((modus-themes-after-load-theme . my-modus-themes-setup)))
+  :hook ((elpaca-after-init . my-modus-themes-init)
+         (modus-themes-after-load-theme . my-modus-themes-setup)))
 
 (defun my-ef-themes-get-ns-appearance ()
   (cond
@@ -139,8 +140,7 @@
 
 (use-package ef-themes
   :ensure (:host github :repo "protesilaos/ef-themes")
-  :hook ((elpaca-after-init . my-ef-themes-init)
-         (ef-themes-post-load . my-ef-themes-setup)))
+  :hook ((ef-themes-post-load . my-ef-themes-setup)))
 
 (defcustom my-theme-update-external-themes t
   "Determines whether changing a modus-theme or ef-themes theme also
