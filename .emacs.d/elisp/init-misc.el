@@ -147,6 +147,25 @@
   :ensure t
   :defer t)
 
+(use-package denote
+  :ensure t
+  :hook (dired-mode . denote-dired-mode)
+  :bind (nil
+         :prefix-map my-denote-map
+         :prefix "C-o n"
+         ("n" . denote)
+         ("r" . denote-rename-file)
+         ("i" . denote-link)
+         ("b" . denote-backlinks)
+         ("d" . denote-dired)
+         ("g" . denote-grep))
+  :custom
+  (denote-directory (expand-file-name "~/Sync/notes"))
+  (denote-known-keywords '("home" "work" "tech"))
+  (denote-save-buffer-after-creation t)
+  :config
+  (denote-rename-buffer-mode 1))
+
 (use-package disproject
   :ensure (:host github :repo "aurtzy/disproject")
   :after project
