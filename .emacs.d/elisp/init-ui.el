@@ -77,10 +77,12 @@
   :hook ((prog-mode text-mode conf-mode) . display-line-numbers-mode))
 
 (defun my-theme-get-ns-appearance ()
-  (pcase (modus-themes--current-theme)
-    ('modus-operandi 'light)
-    ('modus-vivendi 'dark)
-    (theme (error "'%s' is not a Modus theme" theme))))
+  (when-let* ((theme (modus-themes--current-theme))
+              (theme-name (symbol-name theme)))
+    (cond
+     ((string-prefix-p "modus-operandi" theme-name) 'light)
+     ((string-prefix-p "modus-vivendi" theme-name) 'dark)
+     (t (error "'%s' is not a Modus theme" theme)))))
 
 (defun my-theme-get-ns-frame-parameters ()
   `((ns-transparent-titlebar . t)
