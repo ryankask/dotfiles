@@ -42,7 +42,8 @@
     :key 'gptel-api-key
     :models '(deepseek/deepseek-r1
               deepseek/deepseek-chat
-              meta-llama/llama-3.3-70b-instruct
+              meta-llama/llama-4-scout
+              meta-llama/llama-4-maverick
               qwen/qwen-2.5-72b-instruct
               amazon/nova-pro-v1
               x-ai/grok-2-1212))
