@@ -25,7 +25,7 @@
    '((consult-line buffer)
      (embark-prefix-help-command buffer)))
   (vertico-multiform-categories
-   '((jinx grid (vertico-grid-annotate . 20) (vertico-count .4))))
+   '((jinx grid (vertico-grid-annotate . 20) (vertico-count . 4))))
   :init
   (vertico-multiform-mode))
 
