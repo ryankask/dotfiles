@@ -29,6 +29,7 @@
 /straight/*
 !/straight/versions/
 /tramp
+/tramp-autosave
 /transient
 /tree-sitter
 bookmarks
