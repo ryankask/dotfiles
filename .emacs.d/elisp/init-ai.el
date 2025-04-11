@@ -41,12 +41,12 @@
     :stream t
     :key 'gptel-api-key
     :models '(deepseek/deepseek-r1
-              deepseek/deepseek-chat
+              deepseek/deepseek-chat-v3-0324
               meta-llama/llama-4-scout
               meta-llama/llama-4-maverick
               qwen/qwen-2.5-72b-instruct
               amazon/nova-pro-v1
-              x-ai/grok-2-1212))
+              x-ai/grok-3-beta))
 
   (setopt gptel-backend (alist-get "Claude" gptel--known-backends nil nil #'equal)
           gptel-model 'claude-3-7-sonnet-20250219)
