@@ -42,6 +42,8 @@
     :key 'gptel-api-key
     :models '(deepseek/deepseek-r1
               deepseek/deepseek-chat-v3-0324
+              google/gemini-2.5-pro-preview-03-25
+              google/gemini-2.5-flash-preview
               meta-llama/llama-4-scout
               meta-llama/llama-4-maverick
               qwen/qwen-2.5-72b-instruct
