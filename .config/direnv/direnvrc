@@ -37,9 +37,7 @@ layout_poetry() {
     | tr -d '='
   )
   local venv_prefix="${sanitized_project_name}-${hashed_pwd}"
-  local venv_dir="$HOME/Library/Caches/pypoetry/virtualenvs"
-  local python_minor_version=$(awk -F '[ ="]+' -v pattern="\\\[$venv_prefix\\\]" '$0 ~ pattern { getline; print $2 }' ${venv_dir}/envs.toml)
-  local venv_path="${venv_dir}/${venv_prefix}-py${python_minor_version}"
+  local venv_path="$(fd --type d --max-depth 1 $venv_prefix $HOME/Library/Caches/pypoetry/virtualenvs)"
   layout_virtualenv $venv_path
   export POETRY_ACTIVE=1
 }
