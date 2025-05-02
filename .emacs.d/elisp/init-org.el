@@ -53,7 +53,10 @@
   (org-log-into-drawer t)
   (org-pretty-entities t)
   (org-special-ctrl-a/e t)
-  (org-use-sub-superscripts "{}"))
+  (org-use-sub-superscripts "{}")
+  :config
+  (add-to-list 'org-src-lang-modes '("json" . json-ts))
+  (add-to-list 'org-src-lang-modes '("yaml" . yaml-ts)))
 
 (use-package org-modern
   :ensure t
