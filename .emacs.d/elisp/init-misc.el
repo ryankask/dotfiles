@@ -178,7 +178,7 @@
   :config
   (transient-append-suffix 'disproject-dispatch '(-2 -1)
     ["Extra"
-     ("w" "Kill path" my-copy-project-relative-path-as-kill)]))
+     ("W" "Kill path" my-copy-project-relative-path-as-kill)]))
 
 (use-package deadgrep
   :ensure t
