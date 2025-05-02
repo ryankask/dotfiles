@@ -46,7 +46,7 @@
               google/gemini-2.5-flash-preview
               meta-llama/llama-4-scout
               meta-llama/llama-4-maverick
-              qwen/qwen-2.5-72b-instruct
+              Qwen/Qwen3-235B-A22B
               amazon/nova-pro-v1
               x-ai/grok-3-beta))
 
