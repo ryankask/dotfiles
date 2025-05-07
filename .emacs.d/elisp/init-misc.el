@@ -523,11 +523,9 @@ session."
 
 (use-package verb
   :ensure t
-  :defer t
   :after org
   :init
-  (with-eval-after-load 'org
-    (keymap-set org-mode-map "C-c C-r" verb-command-map)))
+  (keymap-set org-mode-map "C-c C-r" verb-command-map))
 
 (defun my-vterm-mode-hook ()
   (setq-local confirm-kill-processes nil))
