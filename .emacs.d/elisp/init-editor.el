@@ -263,11 +263,12 @@
 
 (use-package undo-fu
   :ensure t
+  :hook (elpaca-after-init . undo-fu-mode)
   :custom
-  (undo-limit 400000)                   ; 400kb (default is 160kb)
-  (undo-strong-limit 3000000)           ; 3mb   (default is 240kb)
-  (undo-outer-limit 48000000)           ; 48mb  (default is 24mb)
-  :init
+  (undo-limit 256000)                   ; 256kb (default is 160kb)
+  (undo-strong-limit 2000000)           ; 2mb   (default is 240kb)
+  (undo-outer-limit 36000000)           ; 36mb  (default is 24mb)
+  :config
   (define-minor-mode undo-fu-mode
     "Enables `undo-fu' for the current session."
     :keymap (let ((map (make-sparse-keymap)))
@@ -279,8 +280,7 @@
               (keymap-set map "C-M-_" #'undo-fu-only-redo-all)
               map)
     :init-value nil
-    :global t)
-  (undo-fu-mode))
+    :global t))
 
 (defun my-insert-newline-above (n)
   "Insert a newline before the current line without moving the cursor.
@@ -355,7 +355,14 @@ Position the cursor at its beginning, according to the current mode."
   (make-directory my-tramp-autosave-directory t)
   :defer t
   :custom
+  (remote-file-name-inhibit-cache 60)
   (tramp-auto-save-directory my-tramp-autosave-directory)
+  (tramp-completion-reread-directory-timeout 60)
+  (tramp-default-method "ssh")
+  (tramp-verbose 1)
+  (vc-ignore-dir-regexp (format "%s\\|%s"
+                                vc-ignore-dir-regexp
+                                tramp-file-name-regexp))
   :config
   (add-to-list 'tramp-remote-path 'tramp-own-remote-path))
 
