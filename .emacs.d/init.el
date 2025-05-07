@@ -51,6 +51,7 @@
 (elpaca `(,@elpaca-order))
 
 (elpaca elpaca-use-package
+  (setopt use-package-compute-statistics nil)
   (elpaca-use-package-mode))
 
 (elpaca-wait)
