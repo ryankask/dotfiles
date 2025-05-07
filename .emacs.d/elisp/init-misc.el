@@ -443,25 +443,6 @@ use the current project."
     (bind-key "W" #'my-dired-copy-project-relative-path-as-kill
               dired-mode-map)))
 
-(use-package puni
-  :disabled t
-  :ensure t
-  :hook ((emacs-lisp-mode) . puni-disable-puni-mode)
-  :bind (nil
-         :map puni-mode-map
-         ("C-s-t" . puni-syntactic-forward-punct)
-         ("C-s-s" . puni-syntactic-backward-punct)
-         :repeat-map puni-mode-repeat-map
-         ("f" . puni-forward-sexp)
-         ("b" . puni-backward-sexp)
-         ("a" . puni-beginning-of-sexp)
-         ("e" . puni-end-of-sexp)
-         ("t" . puni-syntactic-forward-punct)
-         ("s" . puni-syntactic-backward-punct)
-         ("T" . puni-syntactic-backward-punct))
-  :init
-  (puni-global-mode))
-
 (use-package rainbow-delimiters
   :ensure t
   :hook
