@@ -98,17 +98,17 @@
     (recentf-save-list)))
 
 (use-package recentf
-  :init
-  (setq recentf-auto-cleanup 'never
-        recentf-auto-save-timer (run-with-idle-timer 300 t 'my-recentf-save-list)
-        recentf-exclude (list (format "\\`%s\\(?:elpa\\|backups\\)/"
-                                      (expand-file-name user-emacs-directory))
-                              "recentf\\'"
-                              "COMMIT_EDITMSG\\'")
-        recentf-max-menu-items 15
-        recentf-max-saved-items 1000
-        recentf-save-file (expand-file-name "recentf" user-emacs-directory))
-  (recentf-mode))
+  :hook ((elpaca-after-init . recentf-mode)
+         (kill-emacs . recentf-cleanup))
+  :custom
+  (recentf-auto-cleanup (if (daemonp) 300 'never))
+  (recentf-exclude (list (format "\\`%s\\(?:elpa\\|backups\\)/"
+                                 (expand-file-name user-emacs-directory))
+                         "recentf\\'"
+                         "COMMIT_EDITMSG\\'"))
+  (recentf-max-menu-items 15)
+  (recentf-max-saved-items 1000)
+  (recentf-save-file (expand-file-name "recentf" user-emacs-directory)))
 
 (use-package ibuffer
   :hook (ibuffer-mode . hl-line-mode)
@@ -223,6 +223,7 @@
   (save-abbrevs 'silently))
 
 (use-package ispell
+  :defer t
   :custom
   (ispell-program-name "aspell")
   (ispell-extra-args '("--sug-mode=ultra"))
@@ -239,15 +240,14 @@
 
 (use-package smartparens-config
   :ensure smartparens
+  :hook ((elpaca-after-init . smartparens-global-mode)
+         (elpaca-after-init . show-smartparens-global-mode))
   :custom
   (sp-highlight-pair-overlay nil)
   (sp-highlight-wrap-overlay nil)
   (sp-highlight-wrap-tag-overlay nil)
   (sp-max-prefix-length 25)
-  (sp-max-pair-length 4)
-  :init
-  (smartparens-global-mode t)
-  (show-smartparens-global-mode t))
+  (sp-max-pair-length 4))
 
 (use-package uniquify
   :custom
@@ -257,6 +257,7 @@
   (uniquify-ignore-buffers-re "^\\*"))
 
 (use-package re-builder
+  :defer t
   :custom
   (reb-re-syntax 'string))
 

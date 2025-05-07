@@ -542,6 +542,7 @@ session."
 
 (use-package verb
   :ensure t
+  :defer t
   :after org
   :init
   (with-eval-after-load 'org
@@ -602,11 +603,10 @@ session."
 
 (use-package yasnippet
   :ensure t
-  :hook (snippet-mode . my-yasnippet-snippet-mode-hook)
+  :hook ((elpaca-after-init . yas-global-mode)
+         (snippet-mode . my-yasnippet-snippet-mode-hook))
   :custom
   (yas-snippet-dirs (list (expand-file-name "snippets/" user-emacs-directory)
-                          (expand-file-name "cloud/snippets" user-emacs-directory)))
-  :init
-  (yas-global-mode 1))
+                          (expand-file-name "cloud/snippets" user-emacs-directory))))
 
 (provide 'init-misc)

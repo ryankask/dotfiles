@@ -5,10 +5,10 @@
 
 (use-package vertico
   :ensure (vertico :files (:defaults "extensions/*"))
-  :bind (:map vertico-map
+  :bind (nil
+         :map vertico-map
          ("C-<return>" . vertico-exit-input))
-  :init
-  (vertico-mode))
+  :hook (elpaca-after-init . vertico-mode))
 
 (use-package vertico-directory
   :after vertico
@@ -143,17 +143,16 @@
 
 (use-package marginalia
   :ensure t
-  :bind (:map minibuffer-local-map
-              ("M-A" . marginalia-cycle))
-  :init
-  (marginalia-mode))
+  :hook (elpaca-after-init . marginalia-mode)
+  :bind (nil
+         :map minibuffer-local-map
+         ("M-A" . marginalia-cycle)))
 
 (use-package nerd-icons-completion
   :ensure t
   :after marginalia
-  :hook (marginalia-mode . nerd-icons-completion-marginalia-setup)
-  :init
-  (nerd-icons-completion-mode)
+  :hook ((elpaca-after-init . nerd-icons-completion-mode)
+         (marginalia-mode . nerd-icons-completion-marginalia-setup))
   :config
   (push
    '(dired-mode
@@ -286,7 +285,8 @@ When the popup is hidden, re-enable the mode if it was previously
          ;; ("SPC" . corfu-insert-separator)
          ("C-h" . corfu-info-documentation)
          ("C-," . my-corfu-move-to-minibuffer))
-  :hook ((minibuffer-setup . my-corfu-enable-in-minibuffer)
+  :hook ((elpaca-after-init . global-corfu-mode)
+         (minibuffer-setup . my-corfu-enable-in-minibuffer)
          ;; (completion-in-region-mode . my-corfu--completion-in-region-mode-hook)
          )
   :custom
@@ -295,8 +295,6 @@ When the popup is hidden, re-enable the mode if it was previously
   (corfu-min-width 20)
   (completion-cycle-threshold 3)
   (tab-always-indent 'complete)
-  :init
-  (global-corfu-mode)
   :config
   (add-to-list 'corfu-continue-commands #'my-corfu-move-to-minibuffer))
 
