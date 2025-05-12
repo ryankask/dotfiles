@@ -108,6 +108,7 @@
 
 (defun my-modus-themes-init ()
   (require 'modus-themes)
+  ;; Default theme:
   (modus-themes-load-theme 'modus-operandi))
 
 (use-package modus-themes
