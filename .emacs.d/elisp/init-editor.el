@@ -410,8 +410,10 @@ Position the cursor at its beginning, according to the current mode."
   :ensure t
   :defer t
   :config
-  (setf (alist-get 'python-mode apheleia-mode-alist)
-        '(ruff-isort ruff)))
+  (setf (alist-get 'sqlfluff apheleia-formatters)
+        '("sqlfluff" "format" "--stdin-filename" filepath "-"))
+  (setf (alist-get 'python-mode apheleia-mode-alist) '(ruff-isort ruff)
+        (alist-get 'sql-mode apheleia-mode-alist) '(sqlfluff)))
 
 (defcustom my-format-default-function #'apheleia-format-buffer
   "Default format function."
