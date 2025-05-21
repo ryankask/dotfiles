@@ -238,6 +238,7 @@ If MAX-AGE is nil, default to 15 minutes."
   :hook (elpaca-after-init . envrc-global-mode)
   :custom
   (envrc-remote t)
+  (envrc-show-summary-in-minibuffer nil)
   :config
   (bind-key "C-o v" envrc-command-map 'envrc-mode-map))
 
