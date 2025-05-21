@@ -55,7 +55,7 @@ path=(
   $HOME/.ghcup/bin
   /opt/local/google-cloud-sdk/bin
   $BREW_PREFIX/opt/coreutils/libexec/gnubin
-  $BREW_PREFIX/bin
+  $BREW_PREFIX/{bin,sbin}
   /usr/local/{bin,sbin}
   $path
 )
@@ -68,6 +68,3 @@ path=(
 # Mouse-wheel scrolling has been disabled by -X (disable screen clearing).
 # Remove -X and -F (exit if the content fits on one screen) to enable it.
 export LESS='-F -g -i -M -R -S -w -X -z-4'
-
-# Added by OrbStack: command-line tools and integration
-# source ~/.orbstack/shell/init.zsh 2>/dev/null || :
