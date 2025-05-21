@@ -145,6 +145,24 @@
   :ensure (:host github :repo "protesilaos/ef-themes")
   :hook ((ef-themes-post-load . my-ef-themes-setup)))
 
+(defun my-doric-themes-get-ns-appearance ()
+  (cond
+   ((memq (doric-themes--current-theme) doric-themes-dark-themes) 'dark)
+   (t 'light)))
+
+(defun my-doric-themes-setup ()
+  (cl-letf (((symbol-function 'my-theme-get-ns-appearance)
+             #'my-doric-themes-get-ns-appearance))
+    (my-theme-configure-frames)))
+
+(defun my-doric-themes-init ()
+  (require 'doric-themes)
+  (doric-themes-select 'doric-light))
+
+(use-package doric-themes
+  :ensure (:host github :repo "protesilaos/doric-themes")
+  :hook ((doric-themes-post-load . my-doric-themes-setup)))
+
 (defcustom my-theme-update-external-themes t
   "Determines whether changing a modus-theme or ef-themes theme also
 updates other software's themes like kitty."
