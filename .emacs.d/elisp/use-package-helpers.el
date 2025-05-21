@@ -37,11 +37,11 @@
                  return (string= (match-string 1) "custom")))))
 
 (defun uph-custom-eval-last-sexp ()
-  "Eval setq on the preceding sexp in a :custom section. Return
+  "Eval setopt on the preceding sexp in a :custom section. Return
 nil if the user isn't in a :custom section."
   (interactive)
   (when-let* ((expr (and (uph--in-custom-section-p)
-                         `(setq ,@(elisp--preceding-sexp)))))
+                         `(setopt ,@(elisp--preceding-sexp)))))
     (message (format "Evaluating `%S`" expr))
     (eval expr)
     t))
