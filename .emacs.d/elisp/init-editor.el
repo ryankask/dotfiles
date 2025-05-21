@@ -409,6 +409,8 @@ Position the cursor at its beginning, according to the current mode."
 (use-package apheleia
   :ensure t
   :defer t
+  :custom
+  (apheleia-remote-algorithm 'local)
   :config
   (setf (alist-get 'sqlfluff apheleia-formatters)
         '("sqlfluff" "format" "--stdin-filename" filepath "-"))
