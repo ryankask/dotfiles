@@ -52,7 +52,7 @@
               x-ai/grok-3-beta))
 
   (setopt gptel-backend (alist-get "Claude" gptel--known-backends nil nil #'equal)
-          gptel-model 'claude-3-7-sonnet-20250219)
+          gptel-model 'claude-sonnet-4-20250514)
 
   (defun my-eglot-strip-mode-suffix-advice (mode-sym)
     (pcase mode-sym
