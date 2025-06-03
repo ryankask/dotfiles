@@ -49,7 +49,7 @@
   (json-parse-string (apply #'1p--run args)))
 
 (defun 1p-item-get (name &optional fields vault)
-  "Get an item form 1Password by NAME.
+  "Get an item from 1Password by NAME.
 
 NAME can be an item's name, ID, or a share link. FIELDS is an alist
  where the key is either the symbol `label' or `type' and the value is a
@@ -71,7 +71,7 @@ NAME can be an item's name, ID, or a share link. FIELDS is an alist
 (memoize #'1p-item-get "1 hour")
 
 (defun 1p-read (ref)
-  "Read the value form REF from 1Password given the secret reference."
+  "Read the value from REF from 1Password given the secret reference."
   (interactive)
   (1p--run "read" "--no-newline" ref))
 
