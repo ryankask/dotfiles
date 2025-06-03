@@ -21,6 +21,8 @@
          ("r" . gptel-rewrite)
          ("z" . gptel-abort))
   :config
+  ;; Models
+
   (gptel-make-openai "Mistral"
     :host "api.mistral.ai"
     :key 'gptel-api-key
@@ -54,6 +56,17 @@
   (setopt gptel-backend (alist-get "Claude" gptel--known-backends nil nil #'equal)
           gptel-model 'claude-sonnet-4-20250514)
 
+  ;; Presets
+
+  (gptel-make-preset 'rust
+    :system "You are an expert Rust programmer operating in emacs. Respond concisely.")
+
+  (gptel-make-preset 'search
+    :pre (lambda () (gptel-mcp-connect '("kagi")))
+    :tools '("kagi_search_fetch"))
+
+  ;; Other
+
   (defun my-eglot-strip-mode-suffix-advice (mode-sym)
     (pcase mode-sym
       ('rustic-mode "Rust")
@@ -65,7 +78,8 @@
 
 (use-package gptel-quick
   :ensure (:host github :repo "karthink/gptel-quick")
-  :bind (("s-t q" . gptel-quick))
+  :bind (nil
+         ("s-t q" . gptel-quick))
   :init
   (with-eval-after-load 'embark
     (bind-key "/" #'gptel-quick embark-general-map)))
@@ -77,5 +91,25 @@
   (aidermacs-backend 'vterm)
   :config
   (aidermacs-setup-minor-mode))
+
+(use-package mcp
+  :ensure t
+  :bind (nil
+         ("s-t h" . mcp-hub))
+  :custom
+  (mcp-hub-servers
+   `(("git"
+      :command "uvx"
+      :args ("mcp-server-git"))
+     ("time"
+      :command "uvx"
+      :args ("mcp-server-time" "--local-timezone=Europe/London"))
+     ("kagi"
+      :command "uvx"
+      :args ("kagimcp")
+      :env (:KAGI_API_KEY ,(1p-read "op://Private/Kagi/api-key"))))))
+
+(use-package gptel-integrations
+  :after (gptel mcp))
 
 (provide 'init-ai)
