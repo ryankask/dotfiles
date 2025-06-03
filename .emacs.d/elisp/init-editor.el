@@ -282,6 +282,10 @@
     :init-value nil
     :global t))
 
+(use-package vundo
+  :ensure t
+  :bind ("C-c z" . vundo))
+
 (defun my-insert-newline-above (n)
   "Insert a newline before the current line without moving the cursor.
 With arg N, insert N newlines."
