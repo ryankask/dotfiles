@@ -38,6 +38,29 @@
 
 (put 'narrow-to-region 'disabled nil)
 
+(defun my-keyboard-quit (&optional interactive)
+  "Do-What-I-Mean behaviour for a general `keyboard-quit'.
+
+Adapted from crux and doom"
+  (interactive (list 'interactive))
+  (let ((inhibit-quit t))
+    (cond
+     ;; quit the minibuffer if open.
+     ((minibuffer-window-active-p (minibuffer-window))
+      (when interactive
+        (setq this-command 'abort-recursive-edit))
+      (abort-recursive-edit))
+     ;; don't abort macros
+     ((or defining-kbd-macro executing-kbd-macro)
+      nil)
+     ;; default
+     (t
+      (unwind-protect (keyboard-quit)
+        (when interactive
+          (setq this-command 'keyboard-quit)))))))
+
+(bind-key [remap keyboard-quit] #'my-keyboard-quit)
+
 ;; Buffers
 
 (setq my-protected-buffers '("*scratch*" "*Messages*"))
