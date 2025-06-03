@@ -1,13 +1,11 @@
 import {
   duoLayer,
-  FromKeyParam,
   ifApp,
   ifVar,
   map,
   rule,
   toKey,
   to$,
-  ToKeyParam,
   toSetVar,
   withCondition,
   withMapper,
@@ -39,9 +37,6 @@ writeToProfile("Default", [
       .parameters({
         "basic.to_if_alone_timeout_milliseconds": 300,
       }),
-  ]),
-  rule("C-m → return", ifApp([Apps.CHROME, Apps.VSCODE])).manipulators([
-    map("m", ["control"]).to("return_or_enter"),
   ]),
   rule("C-[ → escape", ifApp([Apps.EMACS, Apps.KITTY]).unless()).manipulators([
     map("[", ["control"]).to("escape"),
@@ -111,12 +106,10 @@ writeToProfile("Default", [
         Apps.SPOTIFY,
       ]),
     )([
-      withMapper<FromKeyParam, ToKeyParam>({
-        m: "return_or_enter",
-        r: "up_arrow",
-        j: "down_arrow",
-        t: "escape",
-      })((k, v) => map(k, "control").to(v)),
+      map("m", "left_control").to("return_or_enter"),
+      map("r", "control").to("up_arrow"),
+      map("j", "control").to("down_arrow"),
+      map("t", "control").to("escape"),
     ]),
   ]),
   rule("Outlook tweaks", ifApp(Apps.OUTLOOK)).manipulators([

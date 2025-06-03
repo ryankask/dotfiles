@@ -60,36 +60,6 @@
             ]
           },
           {
-            "description": "C-m → return",
-            "manipulators": [
-              {
-                "type": "basic",
-                "from": {
-                  "key_code": "m",
-                  "modifiers": {
-                    "mandatory": [
-                      "control"
-                    ]
-                  }
-                },
-                "to": [
-                  {
-                    "key_code": "return_or_enter"
-                  }
-                ],
-                "conditions": [
-                  {
-                    "type": "frontmost_application_if",
-                    "bundle_identifiers": [
-                      "^com\\.google\\.Chrome$",
-                      "^com\\.microsoft\\.VSCode$"
-                    ]
-                  }
-                ]
-              }
-            ]
-          },
-          {
             "description": "C-[ → escape",
             "manipulators": [
               {
@@ -567,7 +537,7 @@
                   "key_code": "m",
                   "modifiers": {
                     "mandatory": [
-                      "control"
+                      "left_control"
                     ]
                   }
                 },
