@@ -1,4 +1,5 @@
 /application-template
+/config.json
 /contexts
 /scan
 /.buildNodeID
