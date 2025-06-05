@@ -393,6 +393,10 @@ Position the cursor at its beginning, according to the current mode."
   :config
   (add-to-list 'tramp-remote-path 'tramp-own-remote-path))
 
+(use-package compile
+  :hook (compilation-filter . ansi-color-compilation-filter)
+  :bind ("C-o C-c" . recompile))
+
 ;; Tree-sitter
 
 (defun my-try-treesit-lang (lang old-mode ts-mode)
