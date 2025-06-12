@@ -125,7 +125,8 @@ Adapted from crux and doom"
          (kill-emacs . recentf-cleanup))
   :custom
   (recentf-auto-cleanup (if (daemonp) 300 'never))
-  (recentf-exclude (list (format "\\`%s\\(?:elpa\\|backups\\)/"
+  (recentf-exclude (list "^/\\(?:ssh\\|su\\|sudo\\)?:"
+                         (format "\\`%s\\(?:elpa\\|backups\\)/"
                                  (expand-file-name user-emacs-directory))
                          "recentf\\'"
                          "COMMIT_EDITMSG\\'"))
