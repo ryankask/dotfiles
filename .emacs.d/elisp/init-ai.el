@@ -42,16 +42,12 @@
     :endpoint "/api/v1/chat/completions"
     :stream t
     :key 'gptel-api-key
-    :models '(deepseek/deepseek-r1
-              deepseek/deepseek-chat-v3-0324
+    :models '(deepseek/deepseek-r1-0528
               google/gemini-2.5-pro-preview
               google/gemini-2.5-flash-preview-05-20
               google/gemini-2.5-flash-preview-05-20:thinking
               meta-llama/llama-4-scout
-              meta-llama/llama-4-maverick
-              Qwen/Qwen3-235B-A22B
-              amazon/nova-pro-v1
-              x-ai/grok-3-beta))
+              meta-llama/llama-4-maverick))
 
   (setopt gptel-backend (alist-get "Claude" gptel--known-backends nil nil #'equal)
           gptel-model 'claude-sonnet-4-20250514)
