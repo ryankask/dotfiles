@@ -61,7 +61,11 @@ if [[ $_comp_path(#qNmh-20) ]]; then
   compinit -C -d "$_comp_path"
 else
   mkdir -p "$_comp_path:h"
-  compinit ${WORK_DEVICE:+-u} ${WORK_DEVICE:--i} -d "$_comp_path"
+  if [[ -n $WORK_DEVICE ]]; then
+    compinit -u -d "$_comp_path"
+  else
+    compinit -i -d "$_comp_path"
+  fi
   # Keep $_comp_path younger than cache time even if it isn't regenerated.
   touch "$_comp_path"
 fi
