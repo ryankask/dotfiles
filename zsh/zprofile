@@ -38,6 +38,9 @@ export DOTFILES="${${(%):-%x}:A:h:h}"
 export GOPATH="$HOME/Projects/go"
 if [[ $CPUTYPE == "arm64" ]]; then
   export BREW_PREFIX="/opt/homebrew"
+  if [[ -d "/opt/workbrew" ]]; then
+    export WORK_DEVICE=1
+  fi
 else
   export BREW_PREFIX="/usr/local"
 fi
@@ -54,6 +57,7 @@ path=(
   $HOME/.cabal/bin
   $HOME/.ghcup/bin
   /opt/local/google-cloud-sdk/bin
+  ${WORK_DEVICE:+/opt/workbrew/bin}
   $BREW_PREFIX/opt/coreutils/libexec/gnubin
   $BREW_PREFIX/{bin,sbin}
   /usr/local/{bin,sbin}
