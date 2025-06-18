@@ -259,8 +259,13 @@ Adapted from crux and doom"
 
 (use-package jinx
   :ensure t
+  :after repeat
   :hook (emacs-startup . global-jinx-mode)
-  :bind ("C-;" . jinx-correct))
+  :bind (nil
+         ("C-;" . jinx-correct)
+         ("M-$" . jinx-correct)
+         :map jinx-correct-map
+         ("C-;" . jinx-previous)))
 
 (use-package smartparens-config
   :ensure smartparens
