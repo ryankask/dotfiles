@@ -96,7 +96,7 @@
   :after isearch
   :bind (nil
          :map isearch-mode-map
-         ("s-h" . casual-info-tmenu)))
+         ("s-h" . casual-isearch-tmenu)))
 
 (use-package casual-re-builder
   :after re-builder
