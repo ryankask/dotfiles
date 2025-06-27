@@ -50,17 +50,22 @@
               meta-llama/llama-4-scout
               meta-llama/llama-4-maverick))
 
+  (gptel-make-ollama "Ollama"
+    :host "localhost:11434"
+    :stream t
+    :models '(gemma3n:latest))
+
   (setopt gptel-backend (alist-get "Claude" gptel--known-backends nil nil #'equal)
-          gptel-model 'claude-sonnet-4-20250514)
+          gptel-model 'claude-opus-4-20250514)
 
   ;; Presets
 
   (gptel-make-preset 'rust
-    :system "You are an expert Rust programmer operating in emacs. Respond concisely.")
+                     :system "You are an expert Rust programmer operating in emacs. Respond concisely.")
 
   (gptel-make-preset 'search
-    :pre (lambda () (gptel-mcp-connect '("kagi")))
-    :tools '("kagi_search_fetch"))
+                     :pre (lambda () (gptel-mcp-connect '("kagi")))
+                     :tools '("kagi_search_fetch"))
 
   ;; Other
 
