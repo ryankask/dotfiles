@@ -348,7 +348,8 @@ If MAX-AGE is nil, default to 15 minutes."
   :hook (git-commit-setup . git-commit-turn-on-flyspell)
   :custom
   (magit-define-global-key-bindings nil)
-  (magit-diff-refine-hunk t))
+  (magit-diff-refine-hunk t)
+  (magit-tramp-pipe-stty-settings 'pty))
 
 (use-package markdown-mode
   :ensure t

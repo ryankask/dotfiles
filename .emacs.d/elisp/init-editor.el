@@ -389,14 +389,24 @@ Position the cursor at its beginning, according to the current mode."
   :defer t
   :custom
   (remote-file-name-inhibit-cache 60)
+  (remote-file-name-inhibit-locks t)
   (tramp-auto-save-directory my-tramp-autosave-directory)
   (tramp-completion-reread-directory-timeout 60)
+  (tramp-copy-size-limit (* 1024 1024))
   (tramp-default-method "ssh")
   (tramp-verbose 1)
   (vc-ignore-dir-regexp (format "%s\\|%s"
                                 vc-ignore-dir-regexp
                                 tramp-file-name-regexp))
   :config
+  (connection-local-set-profile-variables
+   'remote-direct-async-process
+   '((tramp-direct-async-process . t)))
+
+  (connection-local-set-profiles
+   '(:application tramp :protocol "ssh")
+   'remote-direct-async-process)
+
   (add-to-list 'tramp-remote-path 'tramp-own-remote-path))
 
 (use-package compile
