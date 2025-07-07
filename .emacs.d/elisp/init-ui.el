@@ -187,12 +187,6 @@ updates other software's themes like kitty."
   :hook ((modus-themes-after-load-theme . my-theme-match-current-modus-theme)
          (ef-themes-post-load . my-theme-match-current-ef-theme)))
 
-(use-package which-key
-  :custom
-  (which-key-use-C-h-commands nil)
-  :init
-  (which-key-mode))
-
 (use-package transient
   :ensure t)
 
