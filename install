@@ -30,6 +30,7 @@ files=(
   ".config/karabiner" ""
   ".config/karabiner.edn" ""
   ".config/kitty" ""
+  ".config/opencode" ""
   ".config/starship.toml" ""
   ".docker" ""
   ".ghc/ghci.conf" "ghc/ghci.conf"
