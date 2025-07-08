@@ -20,6 +20,8 @@
          ("p" . gptel-system-prompt)
          ("r" . gptel-rewrite)
          ("z" . gptel-abort))
+  :custom
+  (gptel-track-media t)
   :config
   ;; Models
 
@@ -61,11 +63,11 @@
   ;; Presets
 
   (gptel-make-preset 'rust
-                     :system "You are an expert Rust programmer operating in emacs. Respond concisely.")
+    :system "You are an expert Rust programmer operating in emacs. Respond concisely.")
 
   (gptel-make-preset 'search
-                     :pre (lambda () (gptel-mcp-connect '("kagi")))
-                     :tools '("kagi_search_fetch"))
+    :pre (lambda () (gptel-mcp-connect '("kagi")))
+    :tools '("kagi_search_fetch"))
 
   ;; Other
 
