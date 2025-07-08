@@ -154,6 +154,7 @@
          :prefix-map my-denote-map
          :prefix "C-o n"
          ("n" . denote)
+         ("f" . denote-open-or-create-with-command)
          ("r" . denote-rename-file)
          ("i" . denote-link)
          ("b" . denote-backlinks)
