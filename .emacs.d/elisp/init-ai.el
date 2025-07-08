@@ -58,7 +58,7 @@
     :models '(gemma3n:latest))
 
   (setopt gptel-backend (alist-get "Claude" gptel--known-backends nil nil #'equal)
-          gptel-model 'claude-opus-4-20250514)
+          gptel-model 'claude-sonnet-4-20250514)
 
   ;; Presets
 
