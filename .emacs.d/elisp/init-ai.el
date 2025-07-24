@@ -46,7 +46,6 @@
     :key 'gptel-api-key
     :models '(google/gemini-2.5-pro
               google/gemini-2.5-flash
-              google/gemini-2.5-flash-preview-05-20:thinking
               google/gemini-2.5-flash-lite
               meta-llama/llama-4-scout
               meta-llama/llama-4-maverick
