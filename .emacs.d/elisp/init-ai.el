@@ -47,10 +47,7 @@
     :models '(google/gemini-2.5-pro
               google/gemini-2.5-flash
               google/gemini-2.5-flash-lite
-              meta-llama/llama-4-scout
-              meta-llama/llama-4-maverick
-              moonshotai/kimi-k2
-              qwen/qwen3-coder))
+              moonshotai/kimi-k2))
 
   (gptel-make-ollama "Ollama"
     :host "localhost:11434"
