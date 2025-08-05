@@ -8,6 +8,18 @@
   (while (org-previous-line-empty-p)
     (next-line -1)))
 
+(defun my-org-insert-people-meeting-headline (&optional date)
+  "Insert a new headline above the child subtree with DATE"
+  (interactive)
+  (org-back-to-heading)
+  (org-fold-show-children)
+  (org-next-visible-heading 1)
+  (org-insert-heading)
+  (org-move-subtree-up)
+  (insert (or date (format-time-string "%Y-%m-%d")))
+  (org-return)
+  (insert "- "))
+
 (use-package org
   :ensure (:tag "release_9.7.16" :pin t)
   :bind (nil
@@ -30,6 +42,7 @@
          ("M-t o" . consult-org-heading)
          ("C-s-<return>" . my-org-open-line-after-meta-data)
          ("s-RET" . my-org-open-line-after-meta-data)
+         ("C-c m" . my-org-insert-people-meeting-headline)
          :repeat-map my-org-motion-repeat-map
          :exit
          ("j" . org-goto)
