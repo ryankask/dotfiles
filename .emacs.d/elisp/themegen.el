@@ -105,7 +105,7 @@ CONFIG-FORMAT is a function that takes a key and value and returns a
   "Default directory to store generated kitty themes.")
 
 (defvar themegen-kitty-theme-metadata
-  "## author: Protesilaos Stavrou\n## license: GNU GPLv3"
+  "## author: Ryan Kaskel\n## license: GNU GPLv3\n## blurb: Powered by Protesilaos Stavrou's emacs themes"
   "Default metadata for kitty themes")
 
 (defvar themegen-kitty-colors-alist
