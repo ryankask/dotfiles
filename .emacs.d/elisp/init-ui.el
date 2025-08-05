@@ -145,6 +145,26 @@
   :ensure (:host github :repo "protesilaos/ef-themes")
   :hook ((ef-themes-post-load . my-ef-themes-setup)))
 
+(defun my-doric-themes--retrieve-palette-value (color palette)
+  "eturn COLOR from PALETTE."
+  (let ((value (car (alist-get color palette))))
+    (cond
+     ((or (stringp value)
+          (eq value 'unspecified))
+      value)
+     ((and (symbolp value) value)
+      (my-doric-themes--retrieve-palette-value value palette))
+     (t
+      'unspecified))))
+
+(defun my-doric-themes-get-color-value (color &optional overrides theme)
+  "return color value of named COLOR for current Doric theme."
+  (if-let* ((theme (or theme (doric-themes--current-theme)))
+            (palette (symbol-value (intern (format "%s-palette" theme))))
+            (value (my-doric-themes--retrieve-palette-value color palette)))
+      value
+    'unspecified))
+
 (defun my-doric-themes-get-ns-appearance ()
   (cond
    ((memq (doric-themes--current-theme) doric-themes-dark-themes) 'dark)
@@ -170,22 +190,20 @@ updates other software's themes like kitty."
 
 (defvar my-theme-update-external-themes-ready nil)
 
-(defun my-theme-match-current-theme (current-theme)
+(defun my-theme-match-theme (theme)
   (if (null my-theme-update-external-themes-ready)
       (setq my-theme-update-external-themes-ready t)
     (when my-theme-update-external-themes
-      (themegen-activate-kitty-theme current-theme))))
-
-(defun my-theme-match-current-modus-theme ()
-  (my-theme-match-current-theme (modus-themes--current-theme)))
-
-(defun my-theme-match-current-ef-theme ()
-  (my-theme-match-current-theme (ef-themes--current-theme)))
+      (themegen-activate-kitty-theme theme))))
 
 (use-package themegen
   :commands themegen-activate-kitty-theme
-  :hook ((modus-themes-after-load-theme . my-theme-match-current-modus-theme)
-         (ef-themes-post-load . my-theme-match-current-ef-theme)))
+  :hook ((modus-themes-after-load-theme
+          . (lambda () (my-theme-match-theme (modus-themes--current-theme))))
+         (ef-themes-post-load
+          . (lambda () (my-theme-match-theme (ef-themes--current-theme))))
+         (doric-themes-post-load
+          . (lambda () (my-theme-match-theme (doric-themes--current-theme))))))
 
 (use-package transient
   :ensure t)

@@ -28,9 +28,10 @@
 (require 'cl-lib)
 (require 'modus-themes)
 (require 'ef-themes)
+(require 'doric-themes)
 
 (defvar themegen-all-themes
-  (append modus-themes-collection ef-themes-collection)
+  (append modus-themes-collection ef-themes-collection doric-themes-collection)
   "List of all of Prot's themes")
 
 (defvar themegen--select-theme-history nil
@@ -52,6 +53,7 @@ values for THEME."
     (cond
      ((string-prefix-p "modus-" theme-name) #'modus-themes-get-color-value)
      ((string-prefix-p "ef-" theme-name) #'ef-themes-get-color-value)
+     ((string-prefix-p "doric-" theme-name) #'my-doric-themes-get-color-value)
      (t (error "unknown theme type: %s" theme-name)))))
 
 (defun themegen--get-theme-color (theme keys get-color-value-func)
@@ -111,37 +113,37 @@ CONFIG-FORMAT is a function that takes a key and value and returns a
     ("foreground" fg-main)
     ("cursor" cursor)
     ("cursor_text_color" bg-main)
-    ("selection_foreground" fg-region fg-main)
-    ("selection_background" bg-region)
+    ("selection_foreground" fg-region fg-shadow-intense fg-main)
+    ("selection_background" bg-region bg-shadow-intense)
     ("macos_titlebar_color" "background")
     ;; black
     ("color0" "#000000")
     ;; light black
     ("color8" "#595959")
     ;; red
-    ("color1" red)
+    ("color1" red fg-faint-red)
     ;; light red
-    ("color9" red-warmer)
+    ("color9" red-warmer fg-faint-red)
     ;; green
-    ("color2" green)
+    ("color2" green fg-faint-green)
     ;; light green
-    ("color2" green-cooler)
+    ("color2" green-cooler fg-faint-green)
     ;; yellow
-    ("color3" yellow)
+    ("color3" yellow fg-faint-yellow)
     ;; light yellow
-    ("color11" yellow-warmer)
+    ("color11" yellow-warmer fg-faint-yellow)
     ;; blue
-    ("color4" blue)
+    ("color4" blue fg-faint-blue)
     ;; light blue
-    ("color12" blue-warmer)
+    ("color12" blue-warmer fg-faint-blue)
     ;; magenta
-    ("color5" magenta)
+    ("color5" magenta fg-faint-magenta)
     ;; light magenta
-    ("color13" magenta-cooler)
+    ("color13" magenta-cooler fg-faint-magenta)
     ;; cyan
-    ("color6" cyan)
+    ("color6" cyan fg-faint-cyan)
     ;; light cyan
-    ("color14" cyan-cooler)
+    ("color14" cyan-cooler fg-faint-cyan)
     ;; light grey
     ("color7" "#a6a6a6")
     ;; dark grey
@@ -190,16 +192,16 @@ remote control command."
 (defvar themegen-fzf-colors-alist
   '(("fg" fg-main)
     ("bg" bg-main)
-    ("hl" accent-0)
+    ("hl" accent-0 fg-accent)
     ("fg+" fg-main)
-    ("bg+" bg-completion)
-    ("hl+" accent-0)
-    ("info" fg-prompt prompt)
+    ("bg+" bg-completion bg-shadow-intense)
+    ("hl+" accent-0 fg-accent)
+    ("info" fg-prompt prompt fg-accent)
     ("border" border)
-    ("prompt" fg-prompt prompt)
-    ("pointer" fg-prompt prompt)
-    ("marker" fg-prompt prompt)
-    ("spinner" comment)
+    ("prompt" fg-prompt prompt fg-accent)
+    ("pointer" fg-prompt prompt fg-accent)
+    ("marker" fg-prompt prompt fg-accent)
+    ("spinner" comment fg-accent)
     ("header" fg-dim)
     ("gutter" "-1"))
   "Map of fzf color keys to the colours of the Modus/EF theme palettes.")
