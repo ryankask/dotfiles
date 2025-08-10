@@ -121,29 +121,29 @@ CONFIG-FORMAT is a function that takes a key and value and returns a
     ;; light black
     ("color8" "#595959")
     ;; red
-    ("color1" red fg-faint-red)
+    ("color1" red fg-red)
     ;; light red
-    ("color9" red-warmer fg-faint-red)
+    ("color9" red-warmer fg-red)
     ;; green
-    ("color2" green fg-faint-green)
+    ("color2" green fg-green)
     ;; light green
-    ("color2" green-cooler fg-faint-green)
+    ("color2" green-cooler fg-green)
     ;; yellow
-    ("color3" yellow fg-faint-yellow)
+    ("color3" yellow fg-yellow)
     ;; light yellow
-    ("color11" yellow-warmer fg-faint-yellow)
+    ("color11" yellow-warmer fg-yellow)
     ;; blue
-    ("color4" blue fg-faint-blue)
+    ("color4" blue fg-blue)
     ;; light blue
-    ("color12" blue-warmer fg-faint-blue)
+    ("color12" blue-warmer fg-blue)
     ;; magenta
-    ("color5" magenta fg-faint-magenta)
+    ("color5" magenta fg-magenta)
     ;; light magenta
-    ("color13" magenta-cooler fg-faint-magenta)
+    ("color13" magenta-cooler fg-magenta)
     ;; cyan
-    ("color6" cyan fg-faint-cyan)
+    ("color6" cyan fg-cyan)
     ;; light cyan
-    ("color14" cyan-cooler fg-faint-cyan)
+    ("color14" cyan-cooler fg-cyan)
     ;; light grey
     ("color7" "#a6a6a6")
     ;; dark grey
