@@ -1,7 +1,8 @@
 ;;; -*- lexical-binding: t; -*-
 
 (defun my-rustic-mode-setup ()
-  (subword-mode +1)
+  (abbrev-mode 1)
+  (subword-mode 1)
   (setq-local buffer-save-without-query t))
 
 (use-package rust-mode
