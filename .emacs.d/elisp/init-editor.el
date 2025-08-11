@@ -267,16 +267,17 @@ Adapted from crux and doom"
          :map jinx-correct-map
          ("C-;" . jinx-previous)))
 
-(use-package smartparens-config
-  :ensure smartparens
-  :hook ((elpaca-after-init . smartparens-global-mode)
-         (elpaca-after-init . show-smartparens-global-mode))
+(use-package smartparens
+  :ensure t
+  :hook (elpaca-after-init . smartparens-global-mode)
   :custom
   (sp-highlight-pair-overlay nil)
   (sp-highlight-wrap-overlay nil)
   (sp-highlight-wrap-tag-overlay nil)
   (sp-max-prefix-length 25)
-  (sp-max-pair-length 4))
+  (sp-max-pair-length 4)
+  :config
+  (require 'smartparens-config))
 
 (use-package uniquify
   :custom
