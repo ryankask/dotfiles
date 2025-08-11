@@ -6,7 +6,7 @@
 
 (defun my-go-mode-setup ()
   "Hook to run when go-mode is enabled"
-  (subword-mode +1)
+  (subword-mode 1)
   (add-hook 'before-save-hook #'my-go-mode-before-save)
   (my-lsp-ensure))
 
