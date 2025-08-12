@@ -267,7 +267,11 @@ Adapted from crux and doom"
          :map jinx-correct-map
          ("C-;" . jinx-previous)))
 
+(use-package elec-pair
+  :hook (elpaca-after-init . electric-pair-mode))
+
 (use-package smartparens
+  :disabled t
   :ensure t
   :hook (elpaca-after-init . smartparens-global-mode)
   :custom

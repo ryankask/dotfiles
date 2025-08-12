@@ -298,8 +298,7 @@ If MAX-AGE is nil, default to 15 minutes."
 
 (use-package lispy
   :ensure t
-  :hook ((emacs-lisp-mode . my-lispy-emacs-lisp-mode-hook)
-         (lispy-mode . turn-off-smartparens-mode))
+  :hook (emacs-lisp-mode . my-lispy-emacs-lisp-mode-hook)
   :bind (nil
          :map lispy-mode-map-lispy
          ("C-s-," . lispy-mark))
