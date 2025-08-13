@@ -1,0 +1,13 @@
+;; -*- coding: utf-8; lexical-binding: t -*-
+(define-abbrev-table 'global-abbrev-table
+  '(
+    ("ar" "→" nil :count 0)
+    ("lar" "←" nil :count 0)
+   ))
+
+(define-abbrev-table 'rustic-mode-abbrev-table
+  '(
+    ("ft" "=>" nil :count 0)
+    ("rt" "->" nil :count 0)
+   ))
+

@@ -244,7 +244,16 @@ Adapted from crux and doom"
 (use-package abbrev
   :hook (text-mode . abbrev-mode)
   :custom
-  (save-abbrevs 'silently))
+  (save-abbrevs 'silently)
+  :config
+  (defun my-abbrev-get (symbol propname)
+    "Always return 0 for the `:count' PROPNAME, otherwise get the value.
+This allows abbrev_defs to be saved in a VCS without constantly changing."
+    (cond
+     ((eq propname :count) 0)
+     (t (get symbol propname))))
+
+  (defalias 'abbrev-get #'my-abbrev-get))
 
 (use-package ispell
   :defer t
