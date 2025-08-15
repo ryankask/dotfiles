@@ -85,14 +85,6 @@
   (with-eval-after-load 'embark
     (bind-key "/" #'gptel-quick embark-general-map)))
 
-(use-package aidermacs
-  :ensure (:host github :repo "MatthewZMD/aidermacs")
-  :bind (("s-a" . aidermacs-transient-menu))
-  :custom
-  (aidermacs-backend 'vterm)
-  :config
-  (aidermacs-setup-minor-mode))
-
 (use-package mcp
   :ensure t
   :bind (nil
