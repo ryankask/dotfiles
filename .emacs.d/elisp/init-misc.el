@@ -586,6 +586,15 @@ session."
          (snippet-mode . my-yasnippet-snippet-mode-hook))
   :custom
   (yas-snippet-dirs (list (expand-file-name "snippets/" user-emacs-directory)
-                          (expand-file-name "cloud/snippets" user-emacs-directory))))
+                          (expand-file-name "cloud/snippets" user-emacs-directory)))
+  :init
+  (setopt yas-alias-to-yas/prefix-p nil))
+
+(defun my-yasnippet-capf-install ()
+  (add-to-list 'completion-at-point-functions #'yasnippet-capf))
+
+(use-package yasnippet-capf
+  :ensure t
+  :after yasnippet)
 
 (provide 'init-misc)

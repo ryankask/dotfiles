@@ -3,7 +3,8 @@
 (defun my-rustic-mode-setup ()
   (abbrev-mode 1)
   (subword-mode 1)
-  (setq-local buffer-save-without-query t))
+  (setq-local buffer-save-without-query t)
+  (my-yasnippet-capf-install))
 
 (use-package rust-mode
   :ensure t
