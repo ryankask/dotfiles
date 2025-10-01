@@ -112,7 +112,10 @@
   (modus-themes-load-theme 'modus-operandi))
 
 (use-package modus-themes
-  :ensure (:host github :repo "protesilaos/modus-themes")
+  :ensure (:host github
+           :repo "protesilaos/modus-themes"
+           :tag "4.8.1"
+           :depth 1)
   :custom
   (modus-themes-custom-auto-reload nil)
   (modus-themes-bold-constructs nil)
@@ -142,7 +145,10 @@
   (ef-themes-select 'ef-dream))
 
 (use-package ef-themes
-  :ensure (:host github :repo "protesilaos/ef-themes")
+  :ensure (:host github
+           :repo "protesilaos/ef-themes"
+           :tag "1.11.0"
+           :depth 1)
   :hook ((ef-themes-post-load . my-ef-themes-setup)))
 
 (defun my-doric-themes--retrieve-palette-value (color palette)
