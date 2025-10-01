@@ -54,8 +54,7 @@
     :stream t
     :models '(gemma3n:latest gpt-oss:20b))
 
-  (setopt gptel-backend (alist-get "Claude" gptel--known-backends nil nil #'equal)
-          gptel-model 'claude-sonnet-4-20250514)
+  (setopt gptel-model 'gpt-5)
 
   ;; Presets
 
