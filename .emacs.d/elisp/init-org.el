@@ -21,7 +21,7 @@
   (insert "- "))
 
 (use-package org
-  :ensure (:tag "release_9.7.16" :pin t)
+  :ensure (:tag "release_9.7.34")
   :bind (nil
          :map org-mode-map
          ("C-'" . nil)
