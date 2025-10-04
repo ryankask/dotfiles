@@ -77,12 +77,14 @@
   :hook ((prog-mode text-mode conf-mode) . display-line-numbers-mode))
 
 (defun my-theme-get-ns-appearance ()
-  (when-let* ((theme (modus-themes--current-theme))
+  (when-let* ((theme (modus-themes-get-current-theme))
               (theme-name (symbol-name theme)))
     (cond
      ((string-prefix-p "modus-operandi" theme-name) 'light)
      ((string-prefix-p "modus-vivendi" theme-name) 'dark)
-     (t (error "'%s' is not a Modus theme" theme)))))
+     ((string-prefix-p "ef-" theme-name)
+      (if (memq theme-name ef-themes-dark-themes) 'dark 'light))
+     (t (error "'%s' is not a Modus platform theme" theme)))))
 
 (defun my-theme-get-ns-frame-parameters ()
   `((ns-transparent-titlebar . t)
@@ -112,10 +114,7 @@
   (modus-themes-load-theme 'modus-operandi))
 
 (use-package modus-themes
-  :ensure (:host github
-           :repo "protesilaos/modus-themes"
-           :tag "4.8.1"
-           :depth 1)
+  :ensure (:host github :repo "protesilaos/modus-themes" :depth 1)
   :custom
   (modus-themes-custom-auto-reload nil)
   (modus-themes-bold-constructs nil)
@@ -127,29 +126,13 @@
      (border-mode-line-active bg-mode-line-active)
      (border-mode-line-inactive bg-mode-line-inactive)))
   :bind ("C-o w" . modus-themes-toggle)
-  :hook ((elpaca-after-init . my-modus-themes-init)
+  :hook ((elpaca-after-init . modus-themes-include-derivatives-mode)
+         (elpaca-after-init . my-modus-themes-init)
          (modus-themes-after-load-theme . my-modus-themes-setup)))
 
-(defun my-ef-themes-get-ns-appearance ()
-  (cond
-   ((memq (ef-themes--current-theme) ef-themes-dark-themes) 'dark)
-   (t 'light)))
-
-(defun my-ef-themes-setup ()
-  (cl-letf (((symbol-function 'my-theme-get-ns-appearance)
-             #'my-ef-themes-get-ns-appearance))
-    (my-theme-configure-frames)))
-
-(defun my-ef-themes-init ()
-  (require 'ef-themes)
-  (ef-themes-select 'ef-dream))
-
 (use-package ef-themes
-  :ensure (:host github
-           :repo "protesilaos/ef-themes"
-           :tag "1.11.0"
-           :depth 1)
-  :hook ((ef-themes-post-load . my-ef-themes-setup)))
+  :after modus-themes
+  :ensure (:host github :repo "protesilaos/ef-themes" :depth 1))
 
 (defun my-doric-themes--retrieve-palette-value (color palette)
   "eturn COLOR from PALETTE."
@@ -186,7 +169,7 @@
   (doric-themes-select 'doric-light))
 
 (use-package doric-themes
-  :ensure (:host github :repo "protesilaos/doric-themes")
+  :ensure (:host github :repo "protesilaos/doric-themes" :depth 1)
   :hook ((doric-themes-post-load . my-doric-themes-setup)))
 
 (defcustom my-theme-update-external-themes t
@@ -194,20 +177,14 @@
 updates other software's themes like kitty."
   :type 'boolean)
 
-(defvar my-theme-update-external-themes-ready nil)
-
 (defun my-theme-match-theme (theme)
-  (if (null my-theme-update-external-themes-ready)
-      (setq my-theme-update-external-themes-ready t)
-    (when my-theme-update-external-themes
-      (themegen-activate-kitty-theme theme))))
+  (when my-theme-update-external-themes
+    (themegen-activate-kitty-theme theme)))
 
 (use-package themegen
   :commands themegen-activate-kitty-theme
   :hook ((modus-themes-after-load-theme
-          . (lambda () (my-theme-match-theme (modus-themes--current-theme))))
-         (ef-themes-post-load
-          . (lambda () (my-theme-match-theme (ef-themes--current-theme))))
+          . (lambda () (my-theme-match-theme (modus-themes-get-current-theme))))
          (doric-themes-post-load
           . (lambda () (my-theme-match-theme (doric-themes--current-theme))))))
 

@@ -51,8 +51,8 @@
 values for THEME."
   (let ((theme-name (symbol-name theme)))
     (cond
-     ((string-prefix-p "modus-" theme-name) #'modus-themes-get-color-value)
-     ((string-prefix-p "ef-" theme-name) #'ef-themes-get-color-value)
+     ((or (string-prefix-p "modus-" theme-name)
+          (string-prefix-p "ef-" theme-name)) #'modus-themes-get-color-value)
      ((string-prefix-p "doric-" theme-name) #'my-doric-themes-get-color-value)
      (t (error "unknown theme type: %s" theme-name)))))
 
@@ -113,8 +113,8 @@ CONFIG-FORMAT is a function that takes a key and value and returns a
     ("foreground" fg-main)
     ("cursor" cursor)
     ("cursor_text_color" bg-main)
-    ("selection_foreground" fg-region fg-shadow-intense fg-main)
-    ("selection_background" bg-region bg-shadow-intense)
+    ("selection_foreground" fg-region fg-main)
+    ("selection_background" bg-region)
     ("macos_titlebar_color" "background")
     ;; black
     ("color0" "#000000")
