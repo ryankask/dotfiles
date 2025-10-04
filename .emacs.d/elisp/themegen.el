@@ -49,12 +49,10 @@
 (defun themegen--get-color-value-function (theme)
   "Determine which function to use to map named colours to hex
 values for THEME."
-  (let ((theme-name (symbol-name theme)))
-    (cond
-     ((or (string-prefix-p "modus-" theme-name)
-          (string-prefix-p "ef-" theme-name)) #'modus-themes-get-color-value)
-     ((string-prefix-p "doric-" theme-name) #'my-doric-themes-get-color-value)
-     (t (error "unknown theme type: %s" theme-name)))))
+  (cond
+   ((modus-themes-known-p theme) #'modus-themes-get-color-value)
+   ((string-prefix-p "doric-" (symbol-name theme)) #'my-doric-themes-get-color-value)
+   (t (error "unknown theme type: %s" theme-name))))
 
 (defun themegen--get-theme-color (theme keys get-color-value-func)
   "Return the first key in KEYS that, when passed to the
@@ -113,8 +111,8 @@ CONFIG-FORMAT is a function that takes a key and value and returns a
     ("foreground" fg-main)
     ("cursor" cursor)
     ("cursor_text_color" bg-main)
-    ("selection_foreground" fg-region fg-main)
-    ("selection_background" bg-region)
+    ("selection_foreground" fg-region fg-shadow-intense fg-main)
+    ("selection_background" bg-region bg-shadow-intense)
     ("macos_titlebar_color" "background")
     ;; black
     ("color0" "#000000")
@@ -196,11 +194,11 @@ remote control command."
     ("fg+" fg-main)
     ("bg+" bg-completion bg-shadow-intense)
     ("hl+" accent-0 fg-accent)
-    ("info" fg-prompt prompt fg-accent)
+    ("info" fg-prompt fg-accent)
     ("border" border)
-    ("prompt" fg-prompt prompt fg-accent)
-    ("pointer" fg-prompt prompt fg-accent)
-    ("marker" fg-prompt prompt fg-accent)
+    ("prompt" fg-prompt fg-accent)
+    ("pointer" fg-prompt fg-accent)
+    ("marker" fg-prompt fg-accent)
     ("spinner" comment fg-accent)
     ("header" fg-dim)
     ("gutter" "-1"))
