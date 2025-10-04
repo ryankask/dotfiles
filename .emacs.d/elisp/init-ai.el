@@ -25,19 +25,15 @@
   :config
   ;; Models
 
-  (gptel-make-openai "Mistral"
-    :host "api.mistral.ai"
-    :key 'gptel-api-key
-    :stream t
-    :models '(mistral-large-latest
-              mistral-medium-latest
-              mistral-small-latest
-              mistral-tiny
-              codestral-latest))
-
   (gptel-make-anthropic "Claude"
     :stream t
     :key 'gptel-api-key)
+
+  (gptel-make-anthropic "Claude-thinking"
+    :stream t
+    :key 'gptel-api-key
+    :request-params '(:thinking (:type "enabled" :budget_tokens 2048)
+                                :max_tokens 4096))
 
   (gptel-make-openai "OpenRouter"
     :host "openrouter.ai"
@@ -54,9 +50,13 @@
     :stream t
     :models '(gemma3n:latest gpt-oss:20b))
 
-  (setopt gptel-model 'gpt-5)
+  (setopt gptel-backend (alist-get "Claude" gptel--known-backends nil nil #'equal)
+          gptel-model 'claude-sonnet-4-5-20250929)
 
   ;; Presets
+
+  (gptel-make-preset 'think
+    :backend "Claude-thinking")
 
   (gptel-make-preset 'rust
     :system "You are an expert Rust programmer operating in emacs. Respond concisely.")
