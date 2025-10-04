@@ -113,22 +113,30 @@
   ;; Default theme:
   (modus-themes-load-theme 'modus-operandi))
 
+(defvar my-modus-themes-common-palette-overrides
+  '((bg-region bg-lavender)
+    (fg-region unspecified)
+    (bg-paren-match bg-magenta-intense)
+    (border-mode-line-active bg-mode-line-active)
+    (border-mode-line-inactive bg-mode-line-inactive))
+  "Overrides to set for each core modus theme")
+
 (use-package modus-themes
   :ensure (:host github :repo "protesilaos/modus-themes" :depth 1)
   :custom
   (modus-themes-custom-auto-reload nil)
   (modus-themes-bold-constructs nil)
   (modus-themes-italic-constructs t)
-  (modus-themes-common-palette-overrides
-   `((bg-region bg-lavender)
-     (fg-region unspecified)
-     (bg-paren-match bg-magenta-intense)
-     (border-mode-line-active bg-mode-line-active)
-     (border-mode-line-inactive bg-mode-line-inactive)))
   :bind ("C-o w" . modus-themes-toggle)
   :hook ((elpaca-after-init . modus-themes-include-derivatives-mode)
          (elpaca-after-init . my-modus-themes-init)
-         (modus-themes-after-load-theme . my-modus-themes-setup)))
+         (modus-themes-after-load-theme . my-modus-themes-setup))
+  :config
+  (apply #'custom-set-variables
+         (mapcar (lambda (theme)
+                   `(,(intern (format "%s-palette-overrides" theme))
+                     ',my-modus-themes-common-palette-overrides))
+                 (modus-themes-get-all-known-themes 'modus-themes))))
 
 (use-package ef-themes
   :after modus-themes
