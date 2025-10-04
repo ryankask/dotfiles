@@ -143,7 +143,7 @@
   :ensure (:host github :repo "protesilaos/ef-themes" :depth 1))
 
 (defun my-doric-themes--retrieve-palette-value (color palette)
-  "eturn COLOR from PALETTE."
+  "Return COLOR from PALETTE."
   (let ((value (car (alist-get color palette))))
     (cond
      ((or (stringp value)
@@ -155,7 +155,7 @@
       'unspecified))))
 
 (defun my-doric-themes-get-color-value (color &optional overrides theme)
-  "return color value of named COLOR for current Doric theme."
+  "Return color value of named COLOR for current Doric theme."
   (if-let* ((theme (or theme (doric-themes--current-theme)))
             (palette (symbol-value (intern (format "%s-palette" theme))))
             (value (my-doric-themes--retrieve-palette-value color palette)))
