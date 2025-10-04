@@ -46,11 +46,18 @@
     nil t nil
     'themegen--select-theme-history)))
 
+(defun themegen--modus-themes-get-color-value (&rest args)
+  "Call `modus-themes-get-color-value' with `modus-themes--activate'
+temporarily disabled."
+  (cl-letf (((symbol-function 'modus-themes--activate)
+             (lambda (&rest _args))))
+    (apply #'modus-themes-get-color-value args)))
+
 (defun themegen--get-color-value-function (theme)
   "Determine which function to use to map named colours to hex
 values for THEME."
   (cond
-   ((modus-themes-known-p theme) #'modus-themes-get-color-value)
+   ((modus-themes-known-p theme) #'themegen--modus-themes-get-color-value)
    ((string-prefix-p "doric-" (symbol-name theme)) #'my-doric-themes-get-color-value)
    (t (error "unknown theme type: %s" theme-name))))
 
@@ -73,7 +80,7 @@ of theme keys and values suitable for another application.
 
 Load THEME if it hasn't yet been loaded, otherwise its palette
 won't be available."
-  (unless (memq theme custom-known-themes)
+  (unless (and (custom-theme-p theme) (get theme 'theme-settings))
     (load-theme theme :no-confirm :no-enable))
   (let ((get-color-value-func (themegen--get-color-value-function theme)))
     (mapcar
