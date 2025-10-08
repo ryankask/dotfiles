@@ -185,9 +185,14 @@
 updates other software's themes like kitty."
   :type 'boolean)
 
+(defvar my-theme-update-external-themes-ready nil
+  "Ensure that emacs only sends theme updates after loading.")
+
 (defun my-theme-match-theme (theme)
-  (when my-theme-update-external-themes
-    (themegen-activate-kitty-theme theme)))
+  (if (null my-theme-update-external-themes-ready)
+      (setq my-theme-update-external-themes-ready t)
+    (when my-theme-update-external-themes
+      (themegen-activate-kitty-theme theme))))
 
 (use-package themegen
   :commands themegen-activate-kitty-theme
