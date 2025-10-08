@@ -262,10 +262,6 @@ If MAX-AGE is nil, default to 15 minutes."
          :map embark-url-map
          ("g" . golink-create)))
 
-;; internal
-(use-package hcl-ts-mode
-  :mode "\\.hcl\\'")
-
 (use-package helpful
   :ensure t
   :bind (("C-h f" . helpful-callable)
