@@ -3,6 +3,9 @@
 (setq user-full-name "Ryan Kaskel"
       user-mail-address "dev@ryankaskel.com")
 
+(defvar my-device-type 'personal
+  "Type of device: 'personal (default) or 'work.")
+
 ;;; Paths
 
 (defconst my-elisp-dir (concat user-emacs-directory "elisp"))

@@ -45,6 +45,18 @@
               google/gemini-2.5-flash-lite
               moonshotai/kimi-k2))
 
+  (when (eq my-device-type 'work)
+    (gptel-make-openai "OpenRouter-work"
+      :host "openrouter.ai"
+      :endpoint "/api/v1/chat/completions"
+      :stream t
+      :key (lambda () (1p-read "op://Private/OpenRouter/work-api-key"))
+      :models '(openai/gpt-5
+                anthropic/claude-sonnet-4.5
+                anthropic/claude-haiku-4.5
+                google/gemini-2.5-pro
+                google/gemini-2.5-flash)))
+
   (gptel-make-ollama "Ollama"
     :host "localhost:11434"
     :stream t
