@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: Type::new(...);
+# key: new
+# --
+${1:Type}::new(${2:args})
