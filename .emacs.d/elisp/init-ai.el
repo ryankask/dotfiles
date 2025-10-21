@@ -20,8 +20,10 @@
          ("p" . gptel-system-prompt)
          ("r" . gptel-rewrite)
          ("z" . gptel-abort))
+  :hook ((gptel-mode . gptel-highlight-mode))
   :custom
   (gptel-track-media t)
+  (gptel-highlight-methods '(fringe))
   :config
   ;; Models
 
