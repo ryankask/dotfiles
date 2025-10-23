@@ -52,7 +52,7 @@ defaults write com.apple.Finder FXPreferredViewStyle -string "Nlsv"
 defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
 
 # Show the ~/Library folder.
-chflags nohidden ~/Library && xattr -d com.apple.FinderInfo ~/Library
+chflags nohidden ~/Library
 
 #-----
 # Dock
@@ -82,13 +82,6 @@ defaults write com.apple.dock autohide -bool true
 # Don’t show recent applications in Dock
 defaults write com.apple.dock show-recents -bool false
 
-#---------
-# Terminal
-#---------
-
-# Don’t display the annoying prompt when quitting iTerm
-defaults write com.googlecode.iterm2 PromptOnQuit -bool false
-
 #-------
 # Screen
 #-------
@@ -104,7 +97,7 @@ defaults write com.apple.screencapture type -string "png"
 #-------
 
 # Enable the Develop menu and the Web Inspector in Safari
-defaults write com.apple.Safari IncludeDevelopMenu -bool true
+defaults write com.apple.Safari.SandboxBroker ShowDevelopMenu -bool true
 
 #--------------
 # Google Chrome
