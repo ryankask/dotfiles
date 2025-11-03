@@ -836,6 +836,13 @@
                 "parameters": {
                   "basic.simultaneous_threshold_milliseconds": 200
                 },
+                "conditions": [
+                  {
+                    "type": "variable_unless",
+                    "name": "launch-app",
+                    "value": 1
+                  }
+                ],
                 "to": [
                   {
                     "set_variable": {
@@ -848,13 +855,6 @@
                       "id": "duo-layer-launch-app",
                       "text": "Open App"
                     }
-                  }
-                ],
-                "conditions": [
-                  {
-                    "type": "variable_unless",
-                    "name": "launch-app",
-                    "value": 1
                   }
                 ]
               },
@@ -881,6 +881,13 @@
                 "parameters": {
                   "basic.simultaneous_threshold_milliseconds": 200
                 },
+                "conditions": [
+                  {
+                    "type": "variable_unless",
+                    "name": "launch-app",
+                    "value": 1
+                  }
+                ],
                 "to": [
                   {
                     "set_variable": {
@@ -893,13 +900,6 @@
                       "id": "duo-layer-launch-app",
                       "text": "Open App"
                     }
-                  }
-                ],
-                "conditions": [
-                  {
-                    "type": "variable_unless",
-                    "name": "launch-app",
-                    "value": 1
                   }
                 ]
               },
