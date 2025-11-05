@@ -108,3 +108,10 @@ defaults write com.google.Chrome AppleEnableSwipeNavigateWithScrolls -bool false
 
 # Disable the all too sensitive backswipe on Magic Mouse
 defaults write com.google.Chrome AppleEnableMouseSwipeNavigateWithScrolls -bool false
+
+#------
+# Emacs
+#------
+
+# Disable menu-bar-mode
+defaults write org.gnu.Emacs Menus NO
