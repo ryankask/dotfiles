@@ -65,6 +65,7 @@
 (use-package init-ui)
 (use-package init-macos
   :if (eq system-type 'darwin))
+(use-package init-ai)
 (use-package init-misc)
 (use-package init-org)
 (use-package init-completion)
@@ -75,7 +76,7 @@
 (use-package init-haskell)
 (use-package init-logic)
 (use-package init-web)
-(use-package init-ai)
+
 
 ;; Customisations
 
