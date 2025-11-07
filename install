@@ -44,7 +44,6 @@ files=(
   ".zprofile" "zsh/zprofile"
   ".zshenv" "zsh/zshenv"
   ".zshrc" "zsh/zshrc"
-  "Library/Application Support/pip" "pip"
 )
 
 for reldest reltarget in "${(@kv)files}"; do
