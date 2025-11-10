@@ -287,6 +287,12 @@ If MAX-AGE is nil, default to 15 minutes."
   :ensure t
   :defer t)
 
+(use-package lex
+  :bind (nil
+         :prefix-map my-lex-map
+         :prefix "C-c l"
+         ("a" . lex-alternatives)))
+
 (defun my-lispy-emacs-lisp-mode-hook ()
   "Enable lispy-mode in any Emacs lisp buffer except for the scratch buffer."
   (when (not (string= (buffer-name) "*scratch*"))
