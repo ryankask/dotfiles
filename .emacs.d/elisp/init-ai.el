@@ -53,11 +53,13 @@
       :endpoint "/api/v1/chat/completions"
       :stream t
       :key (lambda () (1p-read "op://Private/OpenRouter/work-api-key"))
-      :models '(openai/gpt-5
+      :models '(openai/gpt-5.1
+                openai/gpt-5.1-chat
                 anthropic/claude-sonnet-4.5
                 anthropic/claude-haiku-4.5
                 google/gemini-2.5-pro
-                google/gemini-2.5-flash)))
+                google/gemini-2.5-flash
+                google/gemini-3-pro-preview)))
 
   (gptel-make-ollama "Ollama"
     :host "localhost:11434"
