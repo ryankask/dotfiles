@@ -115,3 +115,8 @@ defaults write com.google.Chrome AppleEnableMouseSwipeNavigateWithScrolls -bool 
 
 # Disable menu-bar-mode
 defaults write org.gnu.Emacs Menus NO
+
+#----------
+# Rectangle
+#----------
+defaults write com.knollsoft.Rectangle almostMaximizeHeight -float 1
