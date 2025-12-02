@@ -45,7 +45,9 @@
     :models '(google/gemini-2.5-pro
               google/gemini-2.5-flash
               google/gemini-2.5-flash-lite
-              moonshotai/kimi-k2))
+              google/gemini-3-pro-preview
+              moonshotai/kimi-k2
+              deepseek/deepseek-v3.2))
 
   (when (eq my-device-type 'work)
     (gptel-make-openai "OpenRouter-work"
@@ -55,11 +57,13 @@
       :key (lambda () (1p-read "op://Private/OpenRouter/work-api-key"))
       :models '(openai/gpt-5.1
                 openai/gpt-5.1-chat
+                anthropic/claude-opus-4.5
                 anthropic/claude-sonnet-4.5
                 anthropic/claude-haiku-4.5
                 google/gemini-2.5-pro
                 google/gemini-2.5-flash
-                google/gemini-3-pro-preview)))
+                google/gemini-3-pro-preview
+                deepseek/deepseek-v3.2)))
 
   (gptel-make-ollama "Ollama"
     :host "localhost:11434"
