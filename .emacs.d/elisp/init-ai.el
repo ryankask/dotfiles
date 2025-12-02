@@ -62,8 +62,7 @@
                 anthropic/claude-haiku-4.5
                 google/gemini-2.5-pro
                 google/gemini-2.5-flash
-                google/gemini-3-pro-preview
-                deepseek/deepseek-v3.2)))
+                google/gemini-3-pro-preview)))
 
   (gptel-make-ollama "Ollama"
     :host "localhost:11434"
