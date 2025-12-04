@@ -64,6 +64,12 @@
          :map calendar-mode-map
          ("s-h" . casual-calendar-tmenu)))
 
+(use-package casual-csv
+  :after csv-mode
+  :bind (nil
+         :map csv-mode-map
+         ("s-h" . casual-csv-tmenu)))
+
 (use-package casual-dired
   :after dired
   :bind (nil
@@ -145,7 +151,10 @@
 
 (use-package csv-mode
   :ensure t
-  :defer t)
+  :hook ((csv-mode . (lambda ()
+                       (visual-line-mode -1)))
+         (csv-mode . csv-guess-set-separator)
+         (csv-mode . csv-align-mode)))
 
 (use-package denote
   :ensure t
