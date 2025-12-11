@@ -51,7 +51,10 @@ case "$(uname -s)" in
   Linux)
     # add Linux-specific files here, e.g.
     files+=(
+      ".config/DankMaterialShell" ""
+      ".config/environment.d" ""
       ".config/kanata" ""
+      ".config/niri" ""
       ".config/systemd/user/kanata.service" ".config/kanata/kanata.service"
       ".config/xkb" ""
     )
