@@ -25,14 +25,9 @@ files=(
   ".config/emacs" ".emacs.d"
   ".config/git" ""
   ".config/fd" ""
-  ".config/kanata" ""
-  ".config/systemd/user/kanata.service" ".config/kanata/kanata.service"
-  ".config/karabiner" ""
-  ".config/karabiner.edn" ""
   ".config/kitty" ""
   ".config/nano" ""
   ".config/opencode" ""
-  ".config/sshsync" ""
   ".config/starship.toml" ""
   ".ghc/ghci.conf" "ghc/ghci.conf"
   ".inputrc" ""
@@ -44,6 +39,25 @@ files=(
   ".zshenv" "zsh/zshenv"
   ".zshrc" "zsh/zshrc"
 )
+
+# OS detection
+case "$(uname -s)" in
+  Darwin)
+    files+=(
+      ".config/karabiner" ""
+      ".config/karabiner.edn" ""
+    )
+    ;;
+  Linux)
+    # add Linux-specific files here, e.g.
+    files+=(
+      ".config/kanata" ""
+      ".config/systemd/user/kanata.service" ".config/kanata/kanata.service"
+      ".config/xkb" ""
+    )
+    ;;
+esac
+
 
 for reldest reltarget in "${(@kv)files}"; do
   dest="${DEST}/${reldest}"
