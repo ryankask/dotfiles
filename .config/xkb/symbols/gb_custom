@@ -18,6 +18,6 @@ xkb_symbols "colemak_pl" {
     key <AB02> { [            x,            X,          zacute,           Zacute ] };
     key <AB03> { [            c,            C,          cacute,           Cacute ] };
 
-    include "level3(ralt_switch)"
+    include "level3(ralt_alt)"
     include "ctrl(swapcaps)"
 };
