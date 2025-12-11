@@ -19,7 +19,13 @@
          ("o p" . gptel-org-set-properties)
          ("p" . gptel-system-prompt)
          ("r" . gptel-rewrite)
-         ("z" . gptel-abort))
+         ("z" . gptel-abort)
+         :map gptel-mode-map
+         ("M-n" . gptel-end-of-response)
+         ("M-p" . gptel-beginning-of-response)
+         :repeat-map my-gptel-mode-repeat-map
+         ("n" . gptel-end-of-response)
+         ("p" . gptel-beginning-of-response))
   :hook ((gptel-mode . gptel-highlight-mode))
   :custom
   (gptel-track-media t)
