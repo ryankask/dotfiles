@@ -36,3 +36,5 @@ docker-compose.override.yaml
 
 # Tools
 *.envrc
+
+**/.claude/settings.local.json
