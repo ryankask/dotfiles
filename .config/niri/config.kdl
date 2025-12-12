@@ -159,16 +159,16 @@ debug {
 }
 recent-windows {
     binds {
-        Alt+Tab {
+        Mod+Tab {
             next-window scope="output"
         }
-        Alt+Shift+Tab {
+        Mod+Shift+Tab {
             previous-window scope="output"
         }
-        Alt+grave {
+        Mod+grave {
             next-window filter="app-id"
         }
-        Alt+Shift+grave {
+        Mod+Shift+grave {
             previous-window filter="app-id"
         }
     }
