@@ -23,7 +23,7 @@ binds {
     Mod+Alt+L hotkey-overlay-title="Lock Screen" {
         spawn "dms" "ipc" "call" "lock" "lock"
     }
-    Mod+Shift+E {
+    Mod+Shift+Q {
         quit
     }
     Ctrl+Alt+Delete hotkey-overlay-title="Task Manager" {
@@ -53,7 +53,7 @@ binds {
     Mod+Q repeat=false {
         close-window
     }
-    Mod+F {
+    Mod+Alt+F {
         maximize-column
     }
     Mod+Shift+F {
@@ -65,7 +65,7 @@ binds {
     Mod+Shift+V {
         switch-focus-between-floating-and-tiling
     }
-    Mod+W {
+    Mod+Shift+W {
         toggle-column-tabbed-display
     }
     // === Focus Navigation ===
@@ -84,13 +84,13 @@ binds {
     Mod+H {
         focus-column-left
     }
-    Mod+J {
+    Mod+N {
         focus-window-down
     }
-    Mod+K {
+    Mod+E {
         focus-window-up
     }
-    Mod+L {
+    Mod+I {
         focus-column-right
     }
     // === Window Movement ===
@@ -109,13 +109,13 @@ binds {
     Mod+Shift+H {
         move-column-left
     }
-    Mod+Shift+J {
+    Mod+Shift+N {
         move-window-down
     }
-    Mod+Shift+K {
+    Mod+Shift+E {
         move-window-up
     }
-    Mod+Shift+L {
+    Mod+Shift+I {
         move-column-right
     }
     // === Column Navigation ===
@@ -131,52 +131,6 @@ binds {
     Mod+Ctrl+End {
         move-column-to-last
     }
-    // === Monitor Navigation ===
-    Mod+Ctrl+Left {
-        focus-monitor-left
-    }
-    //Mod+Ctrl+Down  { focus-monitor-down; }
-    //Mod+Ctrl+Up    { focus-monitor-up; }
-    Mod+Ctrl+Right {
-        focus-monitor-right
-    }
-    Mod+Ctrl+H {
-        focus-monitor-left
-    }
-    Mod+Ctrl+J {
-        focus-monitor-down
-    }
-    Mod+Ctrl+K {
-        focus-monitor-up
-    }
-    Mod+Ctrl+L {
-        focus-monitor-right
-    }
-    // === Move to Monitor ===
-    Mod+Shift+Ctrl+Left {
-        move-column-to-monitor-left
-    }
-    Mod+Shift+Ctrl+Down {
-        move-column-to-monitor-down
-    }
-    Mod+Shift+Ctrl+Up {
-        move-column-to-monitor-up
-    }
-    Mod+Shift+Ctrl+Right {
-        move-column-to-monitor-right
-    }
-    Mod+Shift+Ctrl+H {
-        move-column-to-monitor-left
-    }
-    Mod+Shift+Ctrl+J {
-        move-column-to-monitor-down
-    }
-    Mod+Shift+Ctrl+K {
-        move-column-to-monitor-up
-    }
-    Mod+Shift+Ctrl+L {
-        move-column-to-monitor-right
-    }
     // === Workspace Navigation ===
     Mod+Page_Down {
         focus-workspace-down
@@ -184,10 +138,10 @@ binds {
     Mod+Page_Up {
         focus-workspace-up
     }
-    Mod+U {
+    Mod+L {
         focus-workspace-down
     }
-    Mod+I {
+    Mod+U {
         focus-workspace-up
     }
     Mod+Ctrl+Down {
@@ -196,10 +150,10 @@ binds {
     Mod+Ctrl+Up {
         move-column-to-workspace-up
     }
-    Mod+Ctrl+U {
+    Mod+Ctrl+L {
         move-column-to-workspace-down
     }
-    Mod+Ctrl+I {
+    Mod+Ctrl+U {
         move-column-to-workspace-up
     }
     // === Move Workspaces ===
@@ -209,10 +163,10 @@ binds {
     Mod+Shift+Page_Up {
         move-workspace-up
     }
-    Mod+Shift+U {
+    Mod+Shift+L {
         move-workspace-down
     }
-    Mod+Shift+I {
+    Mod+Shift+U {
         move-workspace-up
     }
     // === Mouse Wheel Navigation ===
@@ -279,17 +233,17 @@ binds {
         move-column-to-workspace 4
     }
     // === Column Management ===
-    Mod+Alt+BracketLeft {
+    Mod+Shift+BracketLeft {
         consume-or-expel-window-left
     }
-    Mod+Alt+BracketRight {
+    Mod+Shift+BracketRight {
         consume-or-expel-window-right
     }
     Mod+Alt+Period {
         expel-window-from-column
     }
     // === Sizing & Layout ===
-    Mod+R {
+    Mod+Alt+R {
         switch-preset-column-width
     }
     Mod+Shift+R {
@@ -301,7 +255,7 @@ binds {
     Mod+Ctrl+F {
         expand-column-to-available-width
     }
-    Mod+C {
+    Mod+Alt+C {
         center-column
     }
     Mod+Ctrl+C {
