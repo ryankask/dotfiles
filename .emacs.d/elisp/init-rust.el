@@ -28,10 +28,6 @@ files."
   :custom
   (rustic-lsp-client my-lsp-provider)
   :config
-  (if (fboundp 'sp-local-pair)
-      (sp-with-modes '(rustic-mode)
-        (sp-local-pair "{" nil :post-handlers '(("||\n[i]" "RET")))))
-
   (add-hook 'elpaca-post-queue-hook
             #'my-remove-rust-mode-from-auto-mode-alist))
 

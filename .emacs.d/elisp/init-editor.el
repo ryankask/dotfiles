@@ -279,19 +279,6 @@ This allows abbrev_defs to be saved in a VCS without constantly changing."
 (use-package elec-pair
   :hook (elpaca-after-init . electric-pair-mode))
 
-(use-package smartparens
-  :disabled t
-  :ensure t
-  :hook (elpaca-after-init . smartparens-global-mode)
-  :custom
-  (sp-highlight-pair-overlay nil)
-  (sp-highlight-wrap-overlay nil)
-  (sp-highlight-wrap-tag-overlay nil)
-  (sp-max-prefix-length 25)
-  (sp-max-pair-length 4)
-  :config
-  (require 'smartparens-config))
-
 (use-package uniquify
   :custom
   (uniquify-buffer-name-style 'forward)
