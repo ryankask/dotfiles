@@ -28,6 +28,7 @@ files=(
   ".config/kitty" ""
   ".config/nano" ""
   ".config/opencode" ""
+  ".config/rassumfrassum" ""
   ".config/starship.toml" ""
   ".ghc/ghci.conf" "ghc/ghci.conf"
   ".inputrc" ""

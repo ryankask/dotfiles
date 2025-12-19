@@ -5,6 +5,11 @@
     ("lar" "←" nil :count 0)
    ))
 
+(define-abbrev-table 'python-base-mode-abbrev-table
+  '(
+    ("rt" "->" nil :count 0)
+   ))
+
 (define-abbrev-table 'rustic-mode-abbrev-table
   '(
     ("ft" "=>" nil :count 0)

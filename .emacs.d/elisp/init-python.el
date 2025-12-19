@@ -69,7 +69,10 @@ isn't found."
               ("C-c /" . my-python-debug-insert-ipdb-set-trace))
   :hook (python-base-mode . my-python-mode-setup)
   :custom
-  (python-fill-docstring-style 'symmetric))
+  (python-fill-docstring-style 'symmetric)
+  :init
+  (with-eval-after-load 'eglot
+    (push '((python-mode python-ts-mode) "rass" "python") eglot-server-programs)))
 
 (use-package python-pytest
   :after python
