@@ -68,8 +68,7 @@
 (defun golink--create (short-name target-url)
   (let ((url-request-method "POST")
         (url-request-extra-headers
-         '(("content-type" . "application/x-www-form-urlencoded")
-           ("sec-fetch-site" . "same-origin")))
+         '(("content-type" . "application/x-www-form-urlencoded")))
         (url-request-data (golink--request-data `(("short" . ,short-name)
                                                   ("long" . ,target-url)))))
     (golink--read-json "/")))
