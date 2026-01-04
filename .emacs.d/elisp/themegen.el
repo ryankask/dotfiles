@@ -98,8 +98,7 @@ CONFIG-FORMAT is a function that takes a key and value and returns a
 ;; Kitty
 
 (defvar themegen-kitty-themes-dir
-  (expand-file-name ".config/kitty/themes"
-                    (or (getenv "DOTFILES") (error "DOTFILES env var not found")))
+  "~/Projects/dotfiles/.config/kitty/themes"
   "Default directory to store generated kitty themes.")
 
 (defvar themegen-kitty-theme-metadata
