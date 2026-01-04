@@ -1,0 +1,4 @@
+patches:
+  - ns-win:
+      url: "https://raw.githubusercontent.com/ryankask/homebrew-emacs-plus/bef980e0cd2aa1ffc81f9e1f8cb5681f22469d7c/patches/emacs-30/ns-win.patch"
+      sha256: 4829dfa8c447b714e010457f2da6b217be98bf53d454802c253bb6ae9da41038

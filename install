@@ -45,6 +45,7 @@ files=(
 case "$(uname -s)" in
   Darwin)
     files+=(
+      ".config/emacs-plus" ""
       ".config/karabiner" ""
       ".config/karabiner.edn" ""
     )
