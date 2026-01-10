@@ -50,11 +50,6 @@
   "privacyShowScreenShareIcon": false,
   "controlCenterWidgets": [
     {
-      "id": "volumeSlider",
-      "enabled": true,
-      "width": 50
-    },
-    {
       "id": "brightnessSlider",
       "enabled": true,
       "width": 50
@@ -80,12 +75,22 @@
       "width": 50
     },
     {
+      "id": "darkMode",
+      "enabled": true,
+      "width": 50
+    },
+    {
+      "id": "volumeSlider",
+      "enabled": true,
+      "width": 50
+    },
+    {
       "id": "nightMode",
       "enabled": true,
       "width": 50
     },
     {
-      "id": "darkMode",
+      "id": "battery",
       "enabled": true,
       "width": 50
     }
