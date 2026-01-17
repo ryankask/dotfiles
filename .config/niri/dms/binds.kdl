@@ -235,6 +235,7 @@ binds {
     }
     Mod+Shift+BracketRight {
         consume-or-expel-window-right
+
     }
     Mod+Alt+Period {
         expel-window-from-column
