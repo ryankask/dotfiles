@@ -53,7 +53,7 @@
               google/gemini-2.5-flash-lite
               google/gemini-3-pro-preview
               google/gemini-3-flash-preview
-              moonshotai/kimi-k2
+              moonshotai/kimi-k2.5
               deepseek/deepseek-v3.2))
 
   (when (eq my-device-type 'work)
