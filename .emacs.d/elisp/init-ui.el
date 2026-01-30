@@ -83,7 +83,7 @@
      ((string-prefix-p "modus-operandi" theme-name) 'light)
      ((string-prefix-p "modus-vivendi" theme-name) 'dark)
      ((string-prefix-p "ef-" theme-name)
-      (if (memq theme-name ef-themes-dark-themes) 'dark 'light))
+      (if (memq theme ef-themes-dark-themes) 'dark 'light))
      (t (error "'%s' is not a Modus platform theme" theme)))))
 
 (defun my-theme-get-ns-frame-parameters ()
