@@ -450,6 +450,7 @@ Position the cursor at its beginning, according to the current mode."
           (toml "https://github.com/tree-sitter-grammars/tree-sitter-toml")
           (tsx "https://github.com/tree-sitter/tree-sitter-typescript" nil "tsx/src")
           (typescript "https://github.com/tree-sitter/tree-sitter-typescript" nil "typescript/src")
+          (typst "https://github.com/uben0/tree-sitter-typst")
           (yaml "https://github.com/tree-sitter-grammars/tree-sitter-yaml"))))
 
 ;; Formatting

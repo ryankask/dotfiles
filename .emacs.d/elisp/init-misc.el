@@ -529,6 +529,45 @@ session."
   :mode ("\\.ts\\'" ("\\.tsx\\'" . tsx-ts-mode))
   :hook (typescript-ts-base-mode . my-typescript-mode-hook))
 
+(use-package typst-ts-mode
+  :ensure (:type git :host codeberg :repo "meow_king/typst-ts-mode" :branch "main")
+  :custom
+  (typst-ts-indent-offset 2)
+  :bind (nil
+         :map typst-ts-mode-map
+         ("C-c C-c" . typst-ts-tmenu))
+  :config
+  (with-eval-after-load 'consult-imenu
+    (setq consult-imenu-config
+          (append consult-imenu-config
+                  '((typst-ts-mode :topLevel "Headings" :types
+                                   ((?h "Headings" typst-ts-markup-header-face)
+                                    (?f "Functions" font-lock-function-name-face)))))))
+  (with-eval-after-load 'jinx
+    (add-to-list
+     'jinx-exclude-faces
+     '(typst-ts-mode
+       font-lock-warning-face font-lock-function-name-face font-lock-function-call-face
+       font-lock-variable-name-face font-lock-variable-use-face font-lock-keyword-face
+       font-lock-comment-delimiter-face font-lock-type-face font-lock-constant-face
+       font-lock-builtin-face font-lock-preprocessor-face
+       font-lock-negation-char-face font-lock-escape-face font-lock-number-face
+       font-lock-operator-face font-lock-property-use-face font-lock-punctuation-face
+       font-lock-bracket-face font-lock-delimiter-face font-lock-misc-punctuation-face
+       typst-ts-markup-item-indicator-face typst-ts-markup-term-indicator-face
+       typst-ts-markup-rawspan-indicator-face typst-ts-markup-rawspan-blob-face
+       typst-ts-markup-rawblock-indicator-face typst-ts-markup-rawblock-lang-face
+       typst-ts-markup-rawblock-blob-face
+       typst-ts-error-face typst-ts-shorthand-face typst-ts-markup-linebreak-face
+       typst-ts-markup-quote-face typst-ts-markup-url-face typst-ts-math-indicator-face)))
+  (with-eval-after-load 'eglot
+    (add-to-list
+     'eglot-server-programs
+     `((typst-ts-mode) .
+       ,(eglot-alternatives `(,typst-ts-lsp-download-path
+                              "tinymist"
+                              "typst-lsp"))))))
+
 ;; internal
 (use-package use-package-helpers
   :config
