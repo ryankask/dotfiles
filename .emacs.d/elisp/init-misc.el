@@ -561,12 +561,7 @@ session."
        typst-ts-error-face typst-ts-shorthand-face typst-ts-markup-linebreak-face
        typst-ts-markup-quote-face typst-ts-markup-url-face typst-ts-math-indicator-face)))
   (with-eval-after-load 'eglot
-    (add-to-list
-     'eglot-server-programs
-     `((typst-ts-mode) .
-       ,(eglot-alternatives `(,typst-ts-lsp-download-path
-                              "tinymist"
-                              "typst-lsp"))))))
+    (add-to-list 'eglot-server-programs '((typst-ts-mode) "tinymist"))))
 
 ;; internal
 (use-package use-package-helpers
