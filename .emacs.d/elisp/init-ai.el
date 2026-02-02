@@ -131,4 +131,9 @@
 (use-package gptel-integrations
   :after (gptel mcp))
 
+(use-package gptel-agent
+  :ensure t
+  :config
+  (gptel-agent-update))
+
 (provide 'init-ai)
