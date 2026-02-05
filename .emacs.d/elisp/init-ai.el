@@ -94,14 +94,20 @@
 
   ;; Other
 
-  (defun my-eglot-strip-mode-suffix-advice (mode-sym)
-    (pcase mode-sym
-      ('rustic-mode "Rust")
-      (_ nil)))
+  ;; from https://github.com/karthink/.emacs.d/blob/master/lisp/setup-gptel.el#L89
+  (defun my-gptel-remove-headings (beg end)
+    (when (derived-mode-p 'org-mode)
+      (save-excursion
+        (goto-char beg)
+        (while (re-search-forward org-heading-regexp end t)
+          (forward-line 0)
+          (delete-char (1+ (length (match-string 1))))
+          (insert-and-inherit "*")
+          (end-of-line)
+          (skip-chars-backward " \t\r")
+          (insert-and-inherit "*")))))
 
-  (advice-add #'gptel--strip-mode-suffix
-              :before-until
-              #'my-eglot-strip-mode-suffix-advice))
+  (add-hook 'gptel-post-response-functions #'my/gptel-remove-headings))
 
 (use-package gptel-quick
   :ensure (:host github :repo "karthink/gptel-quick")
