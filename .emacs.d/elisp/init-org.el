@@ -21,7 +21,7 @@
   (insert "- "))
 
 (use-package org
-  :ensure (:tag "release_9.7.34")
+  :ensure (:tag "release_9.7.39")
   :bind (nil
          :map org-mode-map
          ("C-'" . nil)
@@ -78,7 +78,7 @@
   (org-modern-table nil)
   :custom-face
   (org-modern-label ((t (:height 0.85))))
-  :init
+  :config
   (global-org-modern-mode))
 
 (provide 'init-org)
