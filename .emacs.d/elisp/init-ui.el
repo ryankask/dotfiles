@@ -105,8 +105,14 @@
     (my-theme-update-all-frame-titlebars frame-parameters)
     (my-theme-update-frame-defaults frame-parameters)))
 
+(defun my-modus-themes-customise-faces ()
+  (modus-themes-with-colors
+    (custom-set-faces
+     `(gptel-response-highlight ((,c :background ,bg-hl-line))))))
+
 (defun my-modus-themes-setup ()
-  (my-theme-configure-frames))
+  (my-theme-configure-frames)
+  (my-modus-themes-customise-faces))
 
 (defun my-modus-themes-init ()
   (require 'modus-themes)
