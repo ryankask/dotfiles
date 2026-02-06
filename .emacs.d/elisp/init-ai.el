@@ -64,7 +64,7 @@
       :key (lambda () (1p-read "op://Private/OpenRouter/work-api-key"))
       :models '(openai/gpt-5.2
                 openai/gpt-5.2-chat
-                anthropic/claude-opus-4.5
+                anthropic/claude-opus-4.6
                 anthropic/claude-sonnet-4.5
                 anthropic/claude-haiku-4.5
                 google/gemini-2.5-pro
