@@ -107,7 +107,7 @@
           (skip-chars-backward " \t\r")
           (insert-and-inherit "*")))))
 
-  (add-hook 'gptel-post-response-functions #'my/gptel-remove-headings))
+  (add-hook 'gptel-post-response-functions #'my-gptel-remove-headings))
 
 (use-package gptel-quick
   :ensure (:host github :repo "karthink/gptel-quick")
