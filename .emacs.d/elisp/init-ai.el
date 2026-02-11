@@ -139,6 +139,7 @@
 
 (use-package gptel-agent
   :ensure t
+  :defer t
   :config
   (gptel-agent-update))
 
