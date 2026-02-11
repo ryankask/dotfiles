@@ -1,5 +1,10 @@
 ;;; -*- lexical-binding: t; -*-
 
+(defun my-org-mode-setup ()
+  "Hook that runs when org-mode loads."
+  (setq-local tab-width 8)
+  (my-fill-column-setup))
+
 (defun my-org-open-line-after-meta-data ()
   "Open a new line after the the following metadata."
   (interactive)
@@ -52,7 +57,7 @@
          ("f" . org-forward-heading-same-level)
          ("p" . org-previous-visible-heading)
          ("n" . org-next-visible-heading))
-  :hook (org-mode . my-fill-column-setup)
+  :hook (org-mode . my-org-mode-setup)
   :custom
   (org-export-backends '(ascii md html icalendar))
   (org-catch-invisible-edits 'show-and-error)
