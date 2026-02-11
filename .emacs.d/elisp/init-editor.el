@@ -424,7 +424,7 @@ Position the cursor at its beginning, according to the current mode."
              (treesit-language-available-p lang))
     (push (cons old-mode ts-mode) major-mode-remap-alist)))
 
-(defun my-treesit-update-lanague-grammars ()
+(defun my-treesit-update-language-grammars ()
   "Upgrade the language grammars for all items in
  `treesit-language-source-alist'"
   (interactive)
