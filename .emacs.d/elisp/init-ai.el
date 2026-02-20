@@ -48,13 +48,13 @@
     :endpoint "/api/v1/chat/completions"
     :stream t
     :key 'gptel-api-key
-    :models '(google/gemini-2.5-pro
-              google/gemini-2.5-flash
-              google/gemini-2.5-flash-lite
-              google/gemini-3-pro-preview
+    :models '(google/gemini-2.5-flash-lite
               google/gemini-3-flash-preview
+              google/gemini-3.1-pro-preview
+              minimax/minimax-m2.5
               moonshotai/kimi-k2.5
-              deepseek/deepseek-v3.2))
+              deepseek/deepseek-v3.2
+              z-ai/glm-5))
 
   (when (eq my-device-type 'work)
     (gptel-make-openai "OpenRouter-work"
@@ -65,7 +65,7 @@
       :models '(openai/gpt-5.2
                 openai/gpt-5.2-chat
                 anthropic/claude-opus-4.6
-                anthropic/claude-sonnet-4.5
+                anthropic/claude-sonnet-4.6
                 anthropic/claude-haiku-4.5
                 google/gemini-2.5-pro
                 google/gemini-2.5-flash
