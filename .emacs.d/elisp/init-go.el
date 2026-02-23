@@ -12,9 +12,6 @@
 
 (use-package go-mode
   :ensure t
-  :bind (:map go-mode-map
-              ("C-c C-r" . go-remove-unused-imports)
-              ("s-h f" . godoc-at-point))
   :hook ((go-mode . my-go-mode-setup)))
 
 (provide 'init-go)
