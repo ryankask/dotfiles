@@ -104,6 +104,14 @@
          :map isearch-mode-map
          ("s-h" . casual-isearch-tmenu)))
 
+(use-package casual-org
+  :after org
+  :bind (nil
+         :map org-mode-map
+         ("s-h" . casual-org-tmenu)
+         :map org-table-fedit-map
+         ("s-h" . casual-org-table-fedit-tmenu)))
+
 (use-package casual-re-builder
   :after re-builder
   :bind (nil
