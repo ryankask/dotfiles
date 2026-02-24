@@ -26,7 +26,7 @@
   (insert "- "))
 
 (use-package org
-  :ensure (:tag "release_9.7.39")
+  :ensure (:host github :repo "elpa-mirrors/org-mode" :tag "release_9.8" :depth 1)
   :bind (nil
          :map org-mode-map
          ("C-'" . nil)
@@ -47,16 +47,7 @@
          ("M-t o" . consult-org-heading)
          ("C-s-<return>" . my-org-open-line-after-meta-data)
          ("s-RET" . my-org-open-line-after-meta-data)
-         ("C-c m" . my-org-insert-people-meeting-headline)
-         :repeat-map my-org-motion-repeat-map
-         :exit
-         ("j" . org-goto)
-         :continue
-         ("u" . outline-up-heading)
-         ("b" . org-backward-heading-same-level)
-         ("f" . org-forward-heading-same-level)
-         ("p" . org-previous-visible-heading)
-         ("n" . org-next-visible-heading))
+         ("C-c m" . my-org-insert-people-meeting-headline))
   :hook (org-mode . my-org-mode-setup)
   :custom
   (org-export-backends '(ascii md html icalendar))
