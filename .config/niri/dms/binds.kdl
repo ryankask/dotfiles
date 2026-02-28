@@ -273,13 +273,13 @@ binds {
         set-window-height "+10%"
     }
     // === Screenshots ===
-    XF86Launch1 {
+    Mod+F12 {
         screenshot
     }
-    Ctrl+XF86Launch1 {
+    Mod+F10 {
         screenshot-screen
     }
-    Alt+XF86Launch1 {
+    Mod+F11 {
         screenshot-window
     }
     Print {
