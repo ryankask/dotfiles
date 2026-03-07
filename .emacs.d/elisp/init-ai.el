@@ -33,6 +33,10 @@
   :config
   ;; Models
 
+  (gptel-make-openai "OpenAI"
+    :stream t
+    :key 'gptel-api-key)
+
   (gptel-make-anthropic "Claude"
     :stream t
     :key 'gptel-api-key)
