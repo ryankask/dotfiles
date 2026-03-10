@@ -60,6 +60,7 @@ isn't found."
 
 (defun my-python-mode-setup ()
   "Hook to run when python-mode is enabled"
+  (abbrev-mode 1)
   (my-lsp-ensure))
 
 (use-package python
