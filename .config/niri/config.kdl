@@ -42,7 +42,7 @@ layout {
  inactive-color "#d0d0d0"
  urgent-color "#cc4444"
  }
-    shadow {
+     shadow {
         softness 30
         spread 5
         offset x=0 y=5
