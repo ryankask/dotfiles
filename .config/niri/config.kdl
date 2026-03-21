@@ -169,9 +169,7 @@ recent-windows {
         }
     }
 }
-switch-events {
-    lid-close { spawn "dms" "ipc" "call" "lock" "lock"; }
-}
+
 // Include dms files
 include "dms/colors.kdl"
 include "dms/layout.kdl"
