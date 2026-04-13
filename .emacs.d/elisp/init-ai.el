@@ -28,6 +28,7 @@
          ("p" . gptel-beginning-of-response))
   :hook ((gptel-mode . gptel-highlight-mode))
   :custom
+  (gptel-curl-extra-args '("-N"))
   (gptel-track-media t)
   (gptel-highlight-methods '(fringe))
   :config
