@@ -3,6 +3,7 @@
   "model": "synthetic/hf:zai-org/glm-5.1",
   "autoshare": false,
   "autoupdate": true,
+  "plugin": ["superpowers@git+https://github.com/obra/superpowers.git"],
   "provider": {
     "synthetic": {
       "models": {
@@ -18,12 +19,8 @@
           "structured_output": true,
           "temperature": true,
           "modalities": {
-            "input": [
-              "text"
-            ],
-            "output": [
-              "text"
-            ]
+            "input": ["text"],
+            "output": ["text"]
           },
           "open_weights": true,
           "cost": {
