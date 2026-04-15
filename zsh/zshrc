@@ -107,7 +107,7 @@ alias mv='mvi'
 alias cp='cpi'
 alias ln='lni'
 
-if [[ -z "$LS_COLORS" ]]; then
+if [[ -z "$LS_COLORS" ]] && (( $+commands[dircolors] )); then
   eval "$(dircolors --sh)"
 fi
 alias ls="${aliases[ls]:-ls} --group-directories-first --color=auto --hyperlink=auto"
@@ -147,9 +147,9 @@ alias sane="stty sane"
 alias ai="llm"
 
 if [[ "$OSTYPE" == darwin* ]]; then
-  # OS X-specific aliases
-  alias find="$BREW_PREFIX/bin/gfind"
-  alias xargs="$BREW_PREFIX/bin/gxargs"
+  # macOS-specific aliases
+  alias find="noglob $BREW_PREFIX/bin/gfind"
+  alias xargs="noglob $BREW_PREFIX/bin/gxargs"
 
   PG_DIR="$BREW_PREFIX/var/postgres"
   alias pg_start="pg_ctl -D $PG_DIR -l $PG_DIR/server.log start"
@@ -174,22 +174,9 @@ fi
 
 # Python
 
-function pyclean() {
-  local places=${*:-'.'}
-  find $places -type f -name "*.py[co]" -delete
-  find $places -type d -name "__pycache__" -delete
-  find $places -type d -name ".mypy_cache" -delete
-}
-
 export PIP_REQUIRE_VIRTUALENV=true
 export PIPX_HOME="$HOME/.local/pipx"
 export VIRTUAL_ENV_DISABLE_PROMPT=1
-
-# npm
-
-if [[ -s "$HOME/.nvm/nvm.sh" ]]; then
-  source "$HOME/.nvm/nvm.sh" --no-use
-fi
 
 # Misc
 
