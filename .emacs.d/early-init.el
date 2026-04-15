@@ -19,10 +19,6 @@
 
 (setq load-path-filter-function #'load-path-filter-cache-directory-files)
 
-;;  Silence obsoletion warnings about (if|when)-let in >=31.
-(put 'if-let 'byte-obsolete-info nil)
-(put 'when-let 'byte-obsolete-info nil)
-
 (unless noninteractive
   ;; doomemacs/lisp/doom.el
   (setq frame-inhibit-implied-resize t
