@@ -124,7 +124,7 @@ CONFIG-FORMAT is a function that takes a key and value and returns a
     ;; green
     ("color2" green fg-green)
     ;; light green
-    ("color2" green-cooler fg-green)
+    ("color10" green-cooler fg-green)
     ;; yellow
     ("color3" yellow fg-yellow)
     ;; light yellow
