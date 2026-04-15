@@ -52,7 +52,7 @@ values for THEME."
   (cond
    ((modus-themes-known-p theme) #'modus-themes-get-color-value)
    ((string-prefix-p "doric-" (symbol-name theme)) #'my-doric-themes-get-color-value)
-   (t (error "unknown theme type: %s" theme-name))))
+   (t (error "unknown theme type: %s" theme))))
 
 (defun themegen--get-theme-color (theme keys get-color-value-func)
   "Return the first key in KEYS that, when passed to the

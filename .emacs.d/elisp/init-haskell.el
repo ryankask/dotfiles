@@ -27,6 +27,6 @@
   :ensure nil
   :after haskell-mode
   :hook ((haskell-mode . my-lsp-ensure)
-         (haskell-liteate-mode . my-lsp-ensure)))
+         (haskell-literate-mode . my-lsp-ensure)))
 
 (provide 'init-haskell)
