@@ -67,19 +67,35 @@ GET-COLOR-VALUE-FUNC function along with THEME, does not yield
                keys)
       'unspecified))
 
+(defun themegen--theme-dark-p (theme get-color-value-func)
+  "Return non-nil if THEME has a dark background."
+  (modus-themes-color-dark-p
+   (themegen--get-theme-color theme '(bg-main) get-color-value-func)))
+
 (defun themegen--build-theme-values (theme map)
   "Use MAP to translate the values of Prot's emacs THEME to an alist
 of theme keys and values suitable for another application.
 
 Load THEME if it hasn't yet been loaded, otherwise its palette
-won't be available."
+won't be available.
+
+Entries in MAP can use a conditional format:
+  (\"key\" :dark (bg-main) :light (fg-main))
+This selects different palette keys depending on whether the theme
+has a dark or light background."
   (unless (and (custom-theme-p theme) (get theme 'theme-settings))
     (load-theme theme :no-confirm :no-enable))
-  (let ((get-color-value-func (themegen--get-color-value-function theme)))
+  (let* ((get-color-value-func (themegen--get-color-value-function theme))
+         (dark-p (themegen--theme-dark-p theme get-color-value-func)))
     (mapcar
      (pcase-lambda (`(,conf-key . ,theme-keys))
        (cons conf-key
-             (themegen--get-theme-color theme theme-keys get-color-value-func)))
+             (themegen--get-theme-color
+              theme
+              (if (memq :dark theme-keys)
+                  (if dark-p (plist-get theme-keys :dark) (plist-get theme-keys :light))
+                theme-keys)
+              get-color-value-func)))
      map)))
 
 (defun themegen--format-config (theme map config-format)
@@ -110,13 +126,21 @@ CONFIG-FORMAT is a function that takes a key and value and returns a
     ("foreground" fg-main)
     ("cursor" cursor)
     ("cursor_text_color" bg-main)
-    ("selection_foreground" fg-region fg-shadow-intense fg-main)
-    ("selection_background" bg-region bg-shadow-intense)
+    ("url_color" blue fg-blue)
+    ("active_border_color" fg-dim fg-shadow-subtle)
+    ("inactive_border_color" bg-dim bg-shadow-subtle)
+    ("bell_border_color" yellow-cooler fg-yellow)
+    ;; ("active_tab_foreground" green fg-green)
+    ;; ("active_tab_background" bg-dim bg-shadow-subtle)
+    ;; ("inactive_tab_foreground" fg-dim fg-shadow-subtle)
+    ;; ("inactive_tab_background" bg-main)
+    ("selection_foreground" bg-main)
+    ("selection_background" fg-main)
     ("macos_titlebar_color" "background")
     ;; black
-    ("color0" "#000000")
+    ("color0" :dark (bg-main) :light (fg-main))
     ;; light black
-    ("color8" "#595959")
+    ("color8" :dark (bg-dim bg-shadow-subtle) :light (fg-dim fg-shadow-subtle))
     ;; red
     ("color1" red fg-red)
     ;; light red
@@ -124,11 +148,11 @@ CONFIG-FORMAT is a function that takes a key and value and returns a
     ;; green
     ("color2" green fg-green)
     ;; light green
-    ("color10" green-cooler fg-green)
+    ("color10" green-warmer fg-green)
     ;; yellow
     ("color3" yellow fg-yellow)
     ;; light yellow
-    ("color11" yellow-warmer fg-yellow)
+    ("color11" yellow-cooler fg-yellow)
     ;; blue
     ("color4" blue fg-blue)
     ;; light blue
@@ -141,10 +165,10 @@ CONFIG-FORMAT is a function that takes a key and value and returns a
     ("color6" cyan fg-cyan)
     ;; light cyan
     ("color14" cyan-cooler fg-cyan)
-    ;; light grey
-    ("color7" "#a6a6a6")
-    ;; dark grey
-    ("color15" "#ffffff"))
+    ;; white
+    ("color7" :dark (fg-dim fg-shadow-subtle) :light (bg-dim bg-shadow-subtle))
+    ;; bright white
+    ("color15" :dark (fg-main) :light (bg-main)))
   "Map kitty theme keys to the colours of the Modus/EF theme palettes.")
 
 (defun themegen--format-kitty-config (theme)
