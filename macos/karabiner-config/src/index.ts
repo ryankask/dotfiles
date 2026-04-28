@@ -119,7 +119,7 @@ function appLauncherLayer(): Rule {
   let rule = duoLayer(",", ".", "launch-app")
     .description("Open App")
     .leaderMode({ escape: ["comma", "period", "escape"] })
-    .notification()
+    //.notification()
     .manipulators({
       a: toApp("Activity Monitor"),
       b: toApp("Books"),
