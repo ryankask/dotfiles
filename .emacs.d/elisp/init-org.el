@@ -26,7 +26,7 @@
   (insert "- "))
 
 (use-package org
-  :ensure (:host github :repo "elpa-mirrors/org-mode" :tag "release_9.8" :depth 1)
+  :ensure (:host github :repo "elpa-mirrors/org-mode" :tag "release_9.8.3" :depth 1)
   :bind (nil
          :map org-mode-map
          ("C-'" . nil)
