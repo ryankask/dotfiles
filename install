@@ -18,8 +18,13 @@ TARGET_PREFIX=${0:a:h}
 
 typeset -A files
 
+if [[ -f "${TARGET_PREFIX}/.gitmodules" ]]; then
+  git -C "$TARGET_PREFIX" submodule update --init --recursive
+fi
+
 files=(
   # Destination file: symlink target
+  ".claude/skills" "ai/skills"
   ".config/alacritty" ""
   ".config/direnv/direnvrc" ""
   ".config/emacs" ".emacs.d"

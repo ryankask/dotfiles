@@ -1,3 +1,6 @@
 [submodule "zsh/external/zsh-completions"]
 	path = zsh/external/zsh-completions
 	url = https://github.com/zsh-users/zsh-completions.git
+[submodule "ai/skills"]
+	path = ai/skills
+	url = git@github.com:ryankask/skills.git
