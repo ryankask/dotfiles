@@ -31,7 +31,10 @@ writeToProfile("Default", [
     map("caps_lock", "optionalAny").to("left_control"),
   ]),
   rule("left control → hyper; caps lock if alone").manipulators([
-    map("left_control", "optionalAny")
+    map({
+      key_code: "left_control",
+      modifiers: { optional: ["caps_lock"] },
+    })
       .to(toKey("left_control", ["command", "option"], { lazy: true }))
       .toIfAlone("caps_lock", undefined, { hold_down_milliseconds: 100 })
       .parameters({

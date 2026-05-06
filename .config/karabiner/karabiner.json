@@ -25,7 +25,7 @@
             ]
           },
           {
-            "description": "left control → hyper; caps lock if alone",
+            "description": "left control → hyper; caps lock if alone; plain ctrl if fn is pressed",
             "manipulators": [
               {
                 "type": "basic",
@@ -33,7 +33,7 @@
                   "key_code": "left_control",
                   "modifiers": {
                     "optional": [
-                      "any"
+                      "caps_lock"
                     ]
                   }
                 },
@@ -44,6 +44,23 @@
                     "modifiers": [
                       "command",
                       "option"
+                    ]
+                  }
+                ],
+                "to_if_other_key_pressed": [
+                  {
+                    "other_keys": [
+                      {
+                        "key_code": "fn",
+                        "modifiers": {
+                          "optional": ["any"]
+                        }
+                      }
+                    ],
+                    "to": [
+                      {
+                        "key_code": "left_control"
+                      }
                     ]
                   }
                 ],
