@@ -317,7 +317,7 @@ If MAX-AGE is nil, default to 15 minutes."
     (lispy-mode 1)))
 
 (use-package lispy
-  :ensure t
+  :ensure (:host github :repo "enzuru/lispy")
   :hook (emacs-lisp-mode . my-lispy-emacs-lisp-mode-hook)
   :bind (nil
          :map lispy-mode-map-lispy
