@@ -53,7 +53,9 @@
                       {
                         "key_code": "fn",
                         "modifiers": {
-                          "optional": ["any"]
+                          "optional": [
+                            "any"
+                          ]
                         }
                       }
                     ],

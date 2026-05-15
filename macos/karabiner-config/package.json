@@ -7,8 +7,10 @@
   },
   "devDependencies": {
     "@types/node": "^22.13.1",
-    "karabiner.ts": "latest",
     "tsx": "^4.19.2",
     "typescript": "^5.7.3"
+  },
+  "dependencies": {
+    "karabiner.ts": "^1.37.0"
   }
 }
