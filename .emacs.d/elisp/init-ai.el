@@ -52,13 +52,9 @@
     :endpoint "/api/v1/chat/completions"
     :stream t
     :key 'gptel-api-key
-    :models '(google/gemini-2.5-flash-lite
-              google/gemini-3-flash-preview
-              google/gemini-3.1-pro-preview
-              minimax/minimax-m2.5
-              moonshotai/kimi-k2.5
-              deepseek/deepseek-v3.2
-              z-ai/glm-5))
+    :models '(~google/gemini-flash-latest
+              ~google/gemini-pro-latest
+              ~moonshotai/kimi-latest))
 
   (when (eq my-device-type 'work)
     (gptel-make-openai "OpenRouter-work"
@@ -66,15 +62,18 @@
       :endpoint "/api/v1/chat/completions"
       :stream t
       :key (lambda () (1p-read "op://Private/OpenRouter/work-api-key"))
-      :models '(openai/gpt-5.2
-                openai/gpt-5.2-chat
-                anthropic/claude-opus-4.6
-                anthropic/claude-sonnet-4.6
-                anthropic/claude-haiku-4.5
-                google/gemini-2.5-pro
-                google/gemini-2.5-flash
-                google/gemini-3-pro-preview
-                google/gemini-3-flash-preview)))
+      :models '(anthropic/claude-opus-4.6
+                anthropic/claude-opus-4.7
+                openai/gpt-5.4
+                openai/gpt-5.5
+                ;; Latest model aliases from OpenRouter
+                ~anthropic/claude-haiku-latest
+                ~anthropic/claude-sonnet-latest
+                ~anthropic/claude-opus-latest
+                ~openai/gpt-latest
+                ~openai/gpt-mini-latest
+                ~google/gemini-flash-latest
+                ~google/gemini-pro-latest)))
 
   (gptel-make-ollama "Ollama"
     :host "localhost:11434"
