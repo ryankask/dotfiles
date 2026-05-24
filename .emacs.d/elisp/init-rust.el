@@ -4,7 +4,10 @@
   (abbrev-mode 1)
   (subword-mode 1)
   (setq-local buffer-save-without-query t)
-  (my-yasnippet-capf-install))
+  (my-yasnippet-capf-install)
+  (setq eglot-workspace-configuration
+        '(:rust-analyzer (:check (:command "clippy"))))
+  (my-lsp-ensure))
 
 (use-package rust-mode
   :ensure t
@@ -26,23 +29,10 @@ files."
               ("C-o" . nil))
   :hook (rustic-mode . my-rustic-mode-setup)
   :custom
-  (rustic-lsp-client my-lsp-provider)
+  (rustic-lsp-setup-p nil)
   :config
   (add-hook 'elpaca-post-queue-hook
             #'my-remove-rust-mode-from-auto-mode-alist))
-
-(with-eval-after-load 'eglot
-  (setopt eglot-workspace-configuration
-          (plist-put eglot-workspace-configuration
-                     :rust-analyzer
-                     '(:check (:command "clippy"))))
-
-  (defun my-eglot-rust-analyzer-reload-workspace ()
-    "Reload the workspace managed by Rust Analyzer"
-    (interactive)
-    (jsonrpc-request (eglot--current-server-or-lose)
-                     :rust-analyzer/reloadWorkspace
-                     nil)))
 
 (defun my-append-decimal-to-integers (start end)
   "Append .0 to all integer literals in the region."
