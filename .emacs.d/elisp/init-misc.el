@@ -120,6 +120,15 @@
          :map reb-lisp-mode-map
          ("s-h" . casual-re-builder-tmenu)))
 
+(defun my-c-ts-mode-hook ()
+  (setq-local eglot-ignored-server-capabilities
+              '(:documentOnTypeFormattingProvider))
+  (my-lsp-ensure))
+
+(use-package c-ts-mode
+  :mode "\\.\\(c\\|h\\)\\'"
+  :hook (c-ts-mode . my-c-ts-mode-hook))
+
 (use-package css-mode
   :preface
   (my-try-treesit-lang 'css 'css-mode 'css-ts-mode)
