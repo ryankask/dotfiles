@@ -64,14 +64,13 @@ isn't found."
   (my-lsp-ensure))
 
 (use-package python
-  :preface
-  (my-try-treesit-lang 'python 'python-mode 'python-ts-mode)
   :bind (:map python-base-mode-map
               ("C-c /" . my-python-debug-insert-ipdb-set-trace))
   :hook (python-base-mode . my-python-mode-setup)
   :custom
   (python-fill-docstring-style 'symmetric)
   :init
+  (add-to-list 'major-mode-remap-alist '(python-mode . python-ts-mode))
   (with-eval-after-load 'eglot
     (push '((python-mode python-ts-mode) "rass" "python") eglot-server-programs)))
 

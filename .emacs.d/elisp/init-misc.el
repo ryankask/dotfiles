@@ -126,15 +126,17 @@
   (my-lsp-ensure))
 
 (use-package c-ts-mode
-  :mode "\\.\\(c\\|h\\)\\'"
-  :hook (c-ts-mode . my-c-ts-mode-hook))
+  :defer t
+  :hook (c-ts-mode . my-c-ts-mode-hook)
+  :init
+  (add-to-list 'major-mode-remap-alist '(c-mode . c-ts-mode)))
 
 (use-package css-mode
-  :preface
-  (my-try-treesit-lang 'css 'css-mode 'css-ts-mode)
   :defer t
   :custom
-  (css-indent-offset 2))
+  (css-indent-offset 2)
+  :init
+  (add-to-list 'major-mode-remap-alist '(css-mode . css-ts-mode)))
 
 (defun my-copilot-post-command ()
   "Clear the overlay"
@@ -212,8 +214,6 @@
   :bind ("C-c u" . deadgrep))
 
 (use-package dockerfile-ts-mode
-  :if (and (fboundp 'dockerfile-ts-mode)
-           (treesit-language-available-p 'dockerfile))
   :mode "[/\\]\\(?:Containerfile\\|Dockerfile\\)\\(?:\\.[^/\\]*\\)?\\'")
 
 (use-package ediff
@@ -299,16 +299,16 @@ If MAX-AGE is nil, default to 15 minutes."
          ("C-o C-h" . helpful-at-point)))
 
 (use-package js-mode
-  :preface
-  (my-try-treesit-lang 'javascript 'javascript-mode 'js-ts-mode)
   :defer t
   :custom
-  (js-indent-level 2))
+  (js-indent-level 2)
+  :init
+  (add-to-list 'major-mode-remap-alist '(javascript-mode . js-ts-mode)))
 
 (use-package json-ts-mode
-  :if (and (fboundp 'json-ts-mode)
-           (treesit-language-available-p 'json))
-  :mode "\\.json\\'")
+  :defer t
+  :init
+  (add-to-list 'major-mode-remap-alist '(js-json-mode . json-ts-mode)))
 
 (use-package just-mode
   :ensure t
@@ -363,9 +363,9 @@ If MAX-AGE is nil, default to 15 minutes."
     ("z" nil)))
 
 (use-package lua-ts-mode
-  :if (and (fboundp 'lua-ts-mode)
-           (treesit-language-available-p 'lua))
-  :mode "\\.lua\\'")
+  :defer t
+  :init
+  (add-to-list 'major-mode-remap-alist '(lua-mode . lua-ts-mode)))
 
 (use-package magit
   :ensure t
@@ -387,7 +387,6 @@ If MAX-AGE is nil, default to 15 minutes."
   (markdown-command "pandoc"))
 
 (use-package mermaid-ts-mode
-  :if (treesit-language-available-p 'mermaid)
   :mode "\\.mmd\\'"
   :ensure (:host github :repo "JonathanHope/mermaid-ts-mode" :files ("mermaid-ts-mode.el")))
 
@@ -530,9 +529,9 @@ session."
   :hook ((prog-mode text-mode) . tempel-setup-capf))
 
 (use-package toml-ts-mode
-  :if (and (fboundp 'toml-ts-mode)
-           (treesit-language-available-p 'toml))
-  :mode "\\.toml\\'")
+  :defer t
+  :init
+  (add-to-list 'major-mode-remap-alist '(conf-toml-mode . toml-ts-mode)))
 
 (defun my-typescript-mode-hook ()
   "Set up a Typescript base mode managed buffer"
@@ -541,9 +540,6 @@ session."
   (apheleia-mode))
 
 (use-package typescript-ts-mode
-  :if (and (fboundp 'typescript-ts-mode)
-           (treesit-language-available-p 'typescript))
-  :mode ("\\.ts\\'" ("\\.tsx\\'" . tsx-ts-mode))
   :hook (typescript-ts-base-mode . my-typescript-mode-hook))
 
 (use-package typst-ts-mode
@@ -635,9 +631,6 @@ session."
   (setq-local tab-width 2))
 
 (use-package yaml-ts-mode
-  :if (and (fboundp 'yaml-ts-mode)
-           (treesit-language-available-p 'yaml))
-  :mode "\\.ya?ml\\'"
   :hook (yaml-ts-mode . my-yaml-ts-mode-setup))
 
 (defun my-yasnippet-snippet-mode-hook ()
