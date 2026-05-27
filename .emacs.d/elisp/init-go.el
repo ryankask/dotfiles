@@ -1,14 +1,14 @@
 ;;; -*- lexical-binding: t; -*-
 
 (defun my-go-mode-before-save ()
-  (my-lsp-format)
-  (my-lsp-organize-imports))
+  (eglot-format-buffer)
+  (eglot-code-action-organize-imports))
 
 (defun my-go-mode-setup ()
   "Hook to run when go-mode is enabled"
   (subword-mode 1)
   (add-hook 'before-save-hook #'my-go-mode-before-save nil t)
-  (my-lsp-ensure))
+  (eglot-ensure))
 
 (use-package go-mode
   :ensure t

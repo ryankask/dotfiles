@@ -1,7 +1,7 @@
 ;;; -*- lexical-binding: t; -*-
 
 (defun my-haskell-mode-setup ()
-  (my-lsp-ensure)
+  (eglot-ensure)
   (interactive-haskell-mode)
   (subword-mode 1))
 
@@ -20,13 +20,5 @@
          (haskell-interactive-mode . my-haskell-interactive-mode-setup))
   :init
   (add-to-list 'completion-ignored-extensions ".hi"))
-
-
-(use-package lsp-haskell
-  :if (eq my-lsp-provider 'lsp-mode)
-  :ensure nil
-  :after haskell-mode
-  :hook ((haskell-mode . my-lsp-ensure)
-         (haskell-literate-mode . my-lsp-ensure)))
 
 (provide 'init-haskell)

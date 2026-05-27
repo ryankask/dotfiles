@@ -535,7 +535,7 @@ session."
 
 (defun my-typescript-mode-hook ()
   "Set up a Typescript base mode managed buffer"
-  (my-lsp-ensure)
+  (eglot-ensure)
   (setq-local my-format-with-lsp nil)
   (apheleia-mode))
 

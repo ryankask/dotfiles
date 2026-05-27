@@ -462,7 +462,7 @@ Position the cursor at its beginning, according to the current mode."
   "Default format function."
   :type 'function)
 
-(defcustom my-format-lsp-function nil
+(defcustom my-format-lsp-function #'eglot-format-buffer
   "Format function provided by an LSP provider"
   :type 'function)
 
@@ -478,7 +478,7 @@ Derived from Doom's format module"
   (call-interactively
    (if (and my-format-lsp-function
             my-format-with-lsp
-            (my-lsp-enabled-in-buffer))
+            (bound-and-true-p eglot--managed-mode))
        my-format-lsp-function
      my-format-default-function)))
 

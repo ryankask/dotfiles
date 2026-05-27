@@ -61,7 +61,7 @@ isn't found."
 (defun my-python-mode-setup ()
   "Hook to run when python-mode is enabled"
   (abbrev-mode 1)
-  (my-lsp-ensure))
+  (eglot-ensure))
 
 (use-package python
   :bind (:map python-base-mode-map
