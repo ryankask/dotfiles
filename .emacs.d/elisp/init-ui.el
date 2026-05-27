@@ -201,7 +201,7 @@ updates other software's themes like kitty."
       (themegen-activate-kitty-theme theme))))
 
 (use-package themegen
-  :commands themegen-activate-kitty-theme
+  :commands (themegen-activate-kitty-theme themegen-generate-kitty-themes)
   :hook ((modus-themes-after-load-theme
           . (lambda () (my-theme-match-theme (modus-themes-get-current-theme))))
          (doric-themes-post-load
