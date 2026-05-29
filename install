@@ -57,10 +57,9 @@ case "$(uname -s)" in
     ;;
   Linux)
     files+=(
-      ".config/DankMaterialShell" ""
-      ".config/environment.d" ""
       ".config/kanata" ""
       ".config/niri" ""
+      ".config/swaylock" ""
       ".config/systemd/user/kanata.service" ".config/kanata/kanata.service"
       ".config/xkb" ""
     )
