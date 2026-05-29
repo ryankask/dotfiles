@@ -1,11 +1,3 @@
-config-notification {
-    disable-failed
-}
-gestures {
-    hot-corners {
-        off
-    }
-}
 input {
     keyboard {
         xkb {
@@ -16,165 +8,190 @@ input {
     }
     touchpad {
         natural-scroll
-    }
-    mouse {
-
-    }
-    trackpoint {
-
+        dwt
     }
 }
+
 layout {
-    background-color "transparent"
+    gaps 8
     center-focused-column "never"
+    background-color "transparent"
     preset-column-widths {
         proportion 0.33333
         proportion 0.5
         proportion 0.66667
     }
-    default-column-width {
-        proportion 0.5
+    default-column-width { proportion 0.5; }
+    focus-ring {
+        width 4
+        active-color "#7fc8ff"
+        inactive-color "#505050"
     }
     border {
         off
-        width 4
-        active-color "#707070"
- inactive-color "#d0d0d0"
- urgent-color "#cc4444"
- }
-     shadow {
-        softness 30
-        spread 5
-        offset x=0 y=5
-        color "#0007"
     }
     struts {
-
+        left 0
+        right 0
+        top 0
+        bottom 0
     }
 }
+
 layer-rule {
-    match namespace="^quickshell$"
+    match namespace="^wallpaper$"
     place-within-backdrop true
 }
+
+spawn-at-startup "mako"
+spawn-at-startup "waybar"
+spawn-at-startup "bash" "-c" "wl-paste --watch cliphist store &"
+spawn-at-startup "swaybg" "-i" "/home/ryan/Pictures/wallpaper/paintings/Skaters at Giverny - Claude Monet 1899.jpg" "-m" "fill"
+spawn-at-startup "swayidle" "-w" "timeout" "601" "niri msg action power-off-monitors" "timeout" "600" "swaylock -f" "before-sleep" "swaylock -f"
+
+animations {}
+
 overview {
     workspace-shadow {
         off
     }
 }
-spawn-at-startup "bash" "-c" "wl-paste --watch cliphist store &"
+
+config-notification {
+    disable-failed
+}
+
 environment {
     XDG_CURRENT_DESKTOP "niri"
 }
-hotkey-overlay {
-    skip-at-startup
-}
-prefer-no-csd
-screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
-animations {
-    workspace-switch {
-        spring damping-ratio=0.8 stiffness=523 epsilon=0.0001
-    }
-    window-open {
-        duration-ms 150
-        curve "ease-out-expo"
-    }
-    window-close {
-        duration-ms 150
-        curve "ease-out-quad"
-    }
-    horizontal-view-movement {
-        spring damping-ratio=0.85 stiffness=423 epsilon=0.0001
-    }
-    window-movement {
-        spring damping-ratio=0.75 stiffness=323 epsilon=0.0001
-    }
-    window-resize {
-        spring damping-ratio=0.85 stiffness=423 epsilon=0.0001
-    }
-    config-notification-open-close {
-        spring damping-ratio=0.65 stiffness=923 epsilon=0.001
-    }
-    screenshot-ui-open {
-        duration-ms 200
-        curve "ease-out-quad"
-    }
-    overview-open-close {
-        spring damping-ratio=0.85 stiffness=800 epsilon=0.0001
-    }
-}
-window-rule {
-    match app-id="^org\\.wezfurlong\\.wezterm$"
-    default-column-width {
 
-    }
-}
 window-rule {
-    match app-id="^org\\.gnome\\."
-    draw-border-with-background false
-    geometry-corner-radius 12
+    geometry-corner-radius 10
     clip-to-geometry true
 }
+
 window-rule {
-    match app-id="^gnome-control-center$"
-    match app-id="^pavucontrol$"
-    match app-id="^nm-connection-editor$"
-    default-column-width {
-        proportion 0.5
-    }
-    open-floating false
-}
-window-rule {
-    match app-id="^gnome-calculator$"
-    match app-id="^galculator$"
-    match app-id="^blueman-manager$"
-    match app-id="^org\\.gnome\\.Nautilus$"
-    match app-id="^steam$"
     match app-id="^xdg-desktop-portal$"
     open-floating true
 }
+
 window-rule {
-    match app-id="^org\\.wezfurlong\\.wezterm$"
-    match app-id="Alacritty"
-    match app-id="zen"
-    match app-id="com.mitchellh.ghostty"
     match app-id="kitty"
     draw-border-with-background false
 }
-window-rule {
-    match app-id="firefox$" title="^Picture-in-Picture$"
-    match app-id="zoom"
-    open-floating true
+
+screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+prefer-no-csd
+
+hotkey-overlay {
+    skip-at-startup
 }
-// Open dms windows as floating by default
-window-rule {
-    match app-id="org.quickshell$"
-    open-floating true
-}
-debug {
-    honor-xdg-activation-with-invalid-serial
-}
-recent-windows {
-    binds {
-        Mod+Tab {
-            next-window scope="output"
-        }
-        Mod+Shift+Tab {
-            previous-window scope="output"
-        }
-        Mod+grave {
-            next-window filter="app-id"
-        }
-        Mod+Shift+grave {
-            previous-window filter="app-id"
-        }
+
+gestures {
+    hot-corners {
+        off
     }
 }
 
-// Include dms files
-include "dms/colors.kdl"
-include "dms/layout.kdl"
-include "dms/alttab.kdl"
-include "dms/binds.kdl"
-include "dms/cursor.kdl"
-include "dms/windowrules.kdl"
-include "dms/outputs.kdl"
+binds {
+    // System & Overview
+    Mod+D repeat=false { toggle-overview; }
+    Mod+Shift+Slash { show-hotkey-overlay; }
+    Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
+    Mod+Shift+P { power-off-monitors; }
+
+    // Applications
+    Mod+Ctrl+T { spawn "kitty"; }
+    Mod+Space { spawn "fuzzel"; }
+    Mod+V {
+        spawn-sh "cliphist list | fuzzel --dmenu --config $NIRICONF/fuzzel/clipboard.ini | cliphist decode | wl-copy"
+    }
+    Mod+Alt+L { spawn "swaylock"; }
+    Mod+Shift+Q { quit; }
+
+    // Controls
+    XF86AudioRaiseVolume allow-when-locked=true {
+        spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.05+";
+    }
+    XF86AudioLowerVolume allow-when-locked=true {
+        spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.05-";
+    }
+    XF86AudioMute allow-when-locked=true {
+        spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle";
+    }
+    XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "set" "+5%"; }
+    XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "set" "5%-"; }
+
+    // Windows & Columns
+    Mod+Q repeat=false { close-window; }
+    Mod+Alt+F { maximize-column; }
+    Mod+Shift+F { fullscreen-window; }
+    Mod+Shift+T { toggle-window-floating; }
+    Mod+Shift+V { switch-focus-between-floating-and-tiling; }
+    Mod+Shift+W { toggle-column-tabbed-display; }
+    Mod+Left { focus-column-left; }
+    Mod+Down { focus-window-down; }
+    Mod+Up { focus-window-up; }
+    Mod+Right { focus-column-right; }
+    Mod+H { focus-column-left; }
+    Mod+N { focus-window-down; }
+    Mod+E { focus-window-up; }
+    Mod+I { focus-column-right; }
+    Mod+Shift+Left { move-column-left; }
+    Mod+Shift+Down { move-window-down; }
+    Mod+Shift+Up { move-window-up; }
+    Mod+Shift+Right { move-column-right; }
+    Mod+Shift+H { move-column-left; }
+    Mod+Shift+N { move-window-down; }
+    Mod+Shift+E { move-window-up; }
+    Mod+Shift+I { move-column-right; }
+    Mod+Home { focus-column-first; }
+    Mod+End { focus-column-last; }
+    Mod+Ctrl+Home { move-column-to-first; }
+    Mod+Ctrl+End { move-column-to-last; }
+    Mod+Shift+BracketLeft { consume-or-expel-window-left; }
+    Mod+Shift+BracketRight { consume-or-expel-window-right; }
+    Mod+Alt+Period { expel-window-from-column; }
+
+    // Workspaces
+    Mod+Page_Down { focus-workspace-down; }
+    Mod+Page_Up { focus-workspace-up; }
+    Mod+L { focus-workspace-down; }
+    Mod+U { focus-workspace-up; }
+    Mod+Ctrl+Down { move-column-to-workspace-down; }
+    Mod+Ctrl+Up { move-column-to-workspace-up; }
+    Mod+Ctrl+L { move-column-to-workspace-down; }
+    Mod+Ctrl+U { move-column-to-workspace-up; }
+    Mod+Shift+Page_Down { move-workspace-down; }
+    Mod+Shift+Page_Up { move-workspace-up; }
+    Mod+Shift+L { move-workspace-down; }
+    Mod+Shift+U { move-workspace-up; }
+    Mod+Alt+1 { focus-workspace 1; }
+    Mod+Alt+2 { focus-workspace 2; }
+    Mod+Alt+3 { focus-workspace 3; }
+    Mod+Alt+4 { focus-workspace 4; }
+    Mod+Shift+1 { move-column-to-workspace 1; }
+    Mod+Shift+2 { move-column-to-workspace 2; }
+    Mod+Shift+3 { move-column-to-workspace 3; }
+    Mod+Shift+4 { move-column-to-workspace 4; }
+
+    // Sizing & layout
+    Mod+Alt+R { switch-preset-column-width; }
+    Mod+Shift+R { switch-preset-window-height; }
+    Mod+Ctrl+R { reset-window-height; }
+    Mod+Ctrl+F { expand-column-to-available-width; }
+    Mod+Alt+C { center-column; }
+    Mod+Ctrl+C { center-visible-columns; }
+    Mod+Alt+Minus { set-column-width "-10%"; }
+    Mod+Alt+Equal { set-column-width "+10%"; }
+    Mod+Shift+Minus { set-window-height "-10%"; }
+    Mod+Shift+Equal { set-window-height "+10%"; }
+
+    // Screenshots
+    Mod+F12 { screenshot; }
+    Mod+F10 { screenshot-screen; }
+    Mod+F11 { screenshot-window; }
+    Print { screenshot; }
+    Ctrl+Print { screenshot-screen; }
+    Alt+Print { screenshot-window; }
+}
