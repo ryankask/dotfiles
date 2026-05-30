@@ -205,7 +205,7 @@
 			"shutdown": "shutdown",
 			"reboot": "reboot",
 			"suspend": "systemctl suspend",
-			"hibernate": "systemctl hibernate"
+			"lock": "swaylock -f"
 		}
     }
 }
