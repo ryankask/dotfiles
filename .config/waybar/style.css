@@ -26,22 +26,25 @@ button:hover {
 }
 
 #workspaces button {
-    padding: 0 8px;
+    padding: 0 10px;
     background-color: transparent;
-    color: #eeeeee;
+    color: #888888;
+    border-bottom: 2px solid transparent;
 }
 
 #workspaces button:hover {
-    background: rgba(255, 255, 255, 0.05);
+    color: #eeeeee;
 }
 
 #workspaces button.focused,
 #workspaces button.active {
-    border-bottom: 2px solid #81a1c1;
+    color: #eeeeee;
+    border-bottom: 2px solid #7fc8ff;
 }
 
 #workspaces button.urgent {
     background-color: rgba(235, 77, 75, 0.3);
+    color: #eeeeee;
 }
 
 #mode {
