@@ -1,3 +1,43 @@
+# General
 ignore-empty-password
 show-failed-attempts
 show-keyboard-layout
+font=Iosevka
+
+# Wallpaper
+image=/home/ryan/Pictures/wallpaper/paintings/Skaters at Giverny - Claude Monet 1899.jpg
+scaling=fill
+
+# Background color (fallback / behind image)
+color=1e1e1eff
+
+# Indicator styling
+indicator-radius=80
+indicator-thickness=8
+
+# Inside colors (the circle background)
+inside-color=2e2e2eff
+inside-ver-color=2e2e2eff
+inside-wrong-color=2e2e2eff
+inside-clear-color=2e2e2eff
+
+# Ring colors (the outer border)
+ring-color=555555ff
+ring-ver-color=7fc8ffff
+ring-wrong-color=eb4d4bff
+ring-clear-color=7fc8ffff
+
+# Line colors (separator between inside and ring) - hidden
+line-color=00000000
+line-ver-color=00000000
+line-wrong-color=00000000
+line-clear-color=00000000
+
+# Text colors
+text-color=eeeeeeff
+text-ver-color=eeeeeeff
+text-wrong-color=eeeeeeff
+text-clear-color=eeeeeeff
+
+# Key highlight
+key-hl-color=7fc8ffff
