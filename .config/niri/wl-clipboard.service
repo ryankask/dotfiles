@@ -1,0 +1,9 @@
+[Unit]
+Description=Clipboard manager (wl-paste + cliphist)
+PartOf=graphical-session.target
+After=graphical-session.target
+PartOf=graphical-session.target
+
+[Service]
+ExecStart=/usr/bin/wl-paste --watch cliphist store
+Restart=on-failure

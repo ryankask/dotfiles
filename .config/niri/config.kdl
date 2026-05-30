@@ -43,12 +43,6 @@ layer-rule {
     place-within-backdrop true
 }
 
-spawn-at-startup "mako"
-spawn-at-startup "waybar"
-spawn-at-startup "bash" "-c" "wl-paste --watch cliphist store &"
-spawn-at-startup "swaybg" "-i" "/home/ryan/Pictures/wallpaper/paintings/Skaters at Giverny - Claude Monet 1899.jpg" "-m" "fill"
-spawn-at-startup "swayidle" "-w" "timeout" "601" "niri msg action power-off-monitors" "timeout" "600" "swaylock -f" "before-sleep" "swaylock -f"
-
 animations {}
 
 overview {

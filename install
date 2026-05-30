@@ -61,6 +61,9 @@ case "$(uname -s)" in
       ".config/niri" ""
       ".config/swaylock" ""
       ".config/systemd/user/kanata.service" ".config/kanata/kanata.service"
+      ".config/systemd/user/swaybg.service" ".config/niri/swaybg.service"
+      ".config/systemd/user/swayidle.service" ".config/niri/swayidle.service"
+      ".config/systemd/user/wl-clipboard.service" ".config/niri/wl-clipboard.service"
       ".config/waybar" ""
       ".config/xkb" ""
     )

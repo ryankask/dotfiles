@@ -1,0 +1,50 @@
+# niri
+
+## Arch packages
+
+```
+pacman -S niri pipewire pipewire-alsa pipewire-pulse wireplumber xdg-desktop-portal-gtk gnome-keyring swaybg swayidle swaylock fuzzel cliphist wl-clipboard brightnessctl waybar mako
+```
+
+| Package | Purpose |
+|---------|---------|
+| pipewire | audio/video |
+| pipewire-alsa | ALSA compatibility |
+| pipewire-pulse | PulseAudio compatibility |
+| wireplumber | session manager for pipewire |
+| xdg-desktop-portal-gtk | default fallback portal (file pickers, etc.) |
+| gnome-keyring | Secret portal (password storage) |
+| niri | scrollable-tiling Wayland compositor |
+| swaybg | wallpaper |
+| swayidle | idle timeout (screen off, lock) |
+| swaylock | screen locker |
+| fuzzel | app launcher + clipboard menu |
+| cliphist | clipboard history storage |
+| wl-clipboard | wl-paste/wl-copy (clipboard integration) |
+| brightnessctl | backlight control |
+| waybar | status bar |
+| mako | notifications |
+
+## Post-install
+
+Start the pipewire services (only needed once):
+
+```
+systemctl --user start pipewire wireplumber pipewire-pulse
+```
+
+## systemd user services
+
+Symlinked from this directory into `~/.config/systemd/user/` by the install script:
+
+- `swaybg.service` — wallpaper
+- `swayidle.service` — idle management (lock + screen off)
+- `wl-clipboard.service` — clipboard watcher (`wl-paste --watch cliphist store`)
+
+Wired into niri with:
+
+```
+systemctl --user add-wants niri.service swaybg.service
+systemctl --user add-wants niri.service swayidle.service
+systemctl --user add-wants niri.service wl-clipboard.service
+```
