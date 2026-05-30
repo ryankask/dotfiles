@@ -57,6 +57,7 @@ case "$(uname -s)" in
     ;;
   Linux)
     files+=(
+      ".config/fuzzel" ""
       ".config/kanata" ""
       ".config/niri" ""
       ".config/swaylock" ""

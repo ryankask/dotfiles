@@ -98,7 +98,7 @@ binds {
     Mod+Ctrl+T { spawn "kitty"; }
     Mod+Space { spawn "fuzzel"; }
     Mod+V {
-        spawn-sh "cliphist list | fuzzel --dmenu --config $NIRICONF/fuzzel/clipboard.ini | cliphist decode | wl-copy"
+        spawn-sh "cliphist list | fuzzel --dmenu --width=64 | cliphist decode | wl-copy"
     }
     Mod+Alt+L { spawn "swaylock"; }
     Mod+Shift+Q { quit; }
