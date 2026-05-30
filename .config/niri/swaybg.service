@@ -4,5 +4,5 @@ After=graphical-session.target
 Requisite=graphical-session.target
 
 [Service]
-ExecStart=/usr/bin/swaybg -m fill -i "%h/Pictures/wallpaper/paintings/Skaters at Giverny - Claude Monet 1899.jpg"
+ExecStart=/usr/bin/swaybg -m fill -i "%h/Pictures/wallpaper/paintings/Haystacks end of Summer Claude Monet 1891.jpg"
 Restart=on-failure
