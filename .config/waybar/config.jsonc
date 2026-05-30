@@ -28,7 +28,8 @@
         "format": "{value}"
     },
     "niri/window": {
-        "format": "{title}"
+        "format": "{title}",
+        "max-length": 50
     },
     "cpu": {
         "format": "󰍛 {usage}%",
