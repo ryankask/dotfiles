@@ -62,11 +62,7 @@
       :endpoint "/api/v1/chat/completions"
       :stream t
       :key (lambda () (1p-read "op://Private/OpenRouter/work-api-key"))
-      :models '(anthropic/claude-opus-4.6
-                anthropic/claude-opus-4.7
-                openai/gpt-5.4
-                openai/gpt-5.5
-                ;; Latest model aliases from OpenRouter
+      :models '(;; Latest model aliases from OpenRouter
                 ~anthropic/claude-haiku-latest
                 ~anthropic/claude-sonnet-latest
                 ~anthropic/claude-opus-latest
