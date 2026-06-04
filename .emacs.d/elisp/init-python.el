@@ -72,7 +72,13 @@ isn't found."
   :init
   (add-to-list 'major-mode-remap-alist '(python-mode . python-ts-mode))
   (with-eval-after-load 'eglot
-    (push '((python-mode python-ts-mode) "rass" "python") eglot-server-programs)))
+    (add-to-list 'eglot-server-programs
+                 '((python-mode python-ts-mode)
+                   "rass"
+                   "python"
+                   :initializationOptions
+                   (:settings (:fixAll :json-false
+                               :organizeImports :json-false))))))
 
 (use-package python-pytest
   :after python
