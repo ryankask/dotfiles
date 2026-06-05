@@ -26,20 +26,19 @@ button:hover {
 }
 
 #workspaces button {
-    padding: 0 10px;
+    padding: 0 8px;
     background-color: transparent;
     color: #888888;
-    border-bottom: 2px solid transparent;
+    border-bottom: none;
 }
 
 #workspaces button:hover {
-    color: #eeeeee;
+    color: #aaaaaa;
 }
 
 #workspaces button.focused,
 #workspaces button.active {
     color: #eeeeee;
-    border-bottom: 2px solid #7fc8ff;
 }
 
 #workspaces button.urgent {
