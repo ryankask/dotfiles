@@ -77,8 +77,11 @@ isn't found."
                    "rass"
                    "python"
                    :initializationOptions
-                   (:settings (:fixAll :json-false
-                               :organizeImports :json-false))))))
+                   (:rass
+                    (:ruff
+                     (:settings
+                      (:fixAll :json-false
+                       :organizeImports :json-false))))))))
 
 (use-package python-pytest
   :after python
