@@ -123,9 +123,7 @@
 (use-package css-mode
   :defer t
   :custom
-  (css-indent-offset 2)
-  :init
-  (add-to-list 'major-mode-remap-alist '(css-mode . css-ts-mode)))
+  (css-indent-offset 2))
 
 (defun my-copilot-post-command ()
   "Clear the overlay"
@@ -290,14 +288,10 @@ If MAX-AGE is nil, default to 15 minutes."
 (use-package js-mode
   :defer t
   :custom
-  (js-indent-level 2)
-  :init
-  (add-to-list 'major-mode-remap-alist '(javascript-mode . js-ts-mode)))
+  (js-indent-level 2))
 
 (use-package json-ts-mode
-  :defer t
-  :init
-  (add-to-list 'major-mode-remap-alist '(js-json-mode . json-ts-mode)))
+  :defer t)
 
 (use-package just-mode
   :ensure t
@@ -352,9 +346,7 @@ If MAX-AGE is nil, default to 15 minutes."
     ("z" nil)))
 
 (use-package lua-ts-mode
-  :defer t
-  :init
-  (add-to-list 'major-mode-remap-alist '(lua-mode . lua-ts-mode)))
+  :defer t)
 
 (use-package magit
   :ensure t
@@ -518,9 +510,7 @@ session."
   :hook ((prog-mode text-mode) . tempel-setup-capf))
 
 (use-package toml-ts-mode
-  :defer t
-  :init
-  (add-to-list 'major-mode-remap-alist '(conf-toml-mode . toml-ts-mode)))
+  :defer t)
 
 (defun my-typescript-mode-hook ()
   "Set up a Typescript base mode managed buffer"

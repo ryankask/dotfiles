@@ -47,8 +47,6 @@ Add this to `c-ts-mode-hook'."
 
 (use-package c-ts-mode
   :defer t
-  :hook (c-ts-mode . my-c-ts-mode-hook)
-  :init
-  (add-to-list 'major-mode-remap-alist '(c-mode . c-ts-mode)))
+  :hook (c-ts-mode . my-c-ts-mode-hook))
 
 (provide 'init-c)

@@ -70,7 +70,6 @@ isn't found."
   :custom
   (python-fill-docstring-style 'symmetric)
   :init
-  (add-to-list 'major-mode-remap-alist '(python-mode . python-ts-mode))
   (with-eval-after-load 'eglot
     (add-to-list 'eglot-server-programs
                  '((python-mode python-ts-mode)
