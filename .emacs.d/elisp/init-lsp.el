@@ -12,6 +12,7 @@
   (eglot-autoshutdown t)
   (eglot-menu-string "€")
   (eglot-events-buffer-size 0)
+  (eglot-documentation-renderer 'markdown-ts-view-mode)
   :bind (("C-o C-s s" . eglot)
          :map eglot-mode-map
          ("C-o C-n" . eglot-code-actions)
