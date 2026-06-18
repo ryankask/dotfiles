@@ -7,7 +7,7 @@
   (my-yasnippet-capf-install)
   (setq eglot-workspace-configuration
         '(:rust-analyzer (:check (:command "clippy"))))
-  (my-lsp-ensure))
+  (eglot-ensure))
 
 (use-package rust-mode
   :ensure t
