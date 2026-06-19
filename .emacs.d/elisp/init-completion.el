@@ -67,7 +67,7 @@
                  (consult--buffer-query
                   :as #'buffer-name
                   :sort 'visibility
-                  :mode '(vterm-mode term-mode)))))
+                  :mode '(ghostel-mode vterm-mode term-mode)))))
 
 (use-package consult
   :ensure t

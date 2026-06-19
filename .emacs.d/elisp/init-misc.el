@@ -191,8 +191,11 @@
   :custom
   (disproject-find-line-command #'consult-line-multi)
   (disproject-switch-to-buffer-command #'consult-buffer)
+  (disproject-shell-command #'ghostel-project)
   :config
-  (transient-append-suffix 'disproject-dispatch '(-2 -1)
+  (transient-append-suffix 'disproject-dispatch '(2 0 5)
+    '("S" "Shell list" ghostel-project-list-buffers))
+  (transient-append-suffix 'disproject-dispatch '(2 -1)
     ["Extra"
      ("W" "Kill path" my-copy-project-relative-path-as-kill)]))
 
@@ -275,6 +278,41 @@ If MAX-AGE is nil, default to 15 minutes."
   :bind (("C-o g" . golink-open)
          :map embark-url-map
          ("g" . golink-create)))
+
+(use-package ghostel
+  :ensure t
+  :bind (("C-o C-v" . ghostel-project)
+         :map ghostel-mode-map
+         ("C-o C-t" . ghostel-copy-mode)
+         ("C-c C-j" . nil)
+         ("C-c C-o" . ghostel-semi-char-mode)
+         :map ghostel-semi-char-mode-map
+         ("C-k" . my-ghostel-send-C-k-and-kill)
+         ("C-s" . consult-line))
+  :config
+  (defun my-ghostel-send-C-k-and-kill ()
+    "Send `C-k' to ghostel.
+Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
+    (interactive)
+    (kill-ring-save (point) (line-end-position))
+    (ghostel-send-key "k" "ctrl"))
+
+  (setopt ghostel-keymap-exceptions (append '("C-o") ghostel-keymap-exceptions))
+  (add-to-list 'ghostel-eval-cmds '("magit-status-setup-buffer" magit-status-setup-buffer))
+  (add-to-list 'display-buffer-alist
+               '("\\*.*-ghostel\\*"
+                 (display-buffer-reuse-window display-buffer-below-selected)
+                 (window-min-height . 28))))
+
+
+(use-package ghostel-eshell
+  :hook (eshell-load . ghostel-eshell-visual-command-mode))
+
+(use-package ghostel-compile
+  :hook (after-elpaca-init . ghostel-compile-global-mode))
+
+(use-package ghostel-comint
+  :hook (after-elpaca-init . ghostel-comint-global-mode))
 
 (use-package helpful
   :ensure t
@@ -567,16 +605,8 @@ session."
   :init
   (keymap-set org-mode-map "C-c C-r" verb-command-map))
 
-(defun my-vterm-mode-hook ()
-  (setq-local confirm-kill-processes nil))
-
-(defun my-vterm-send-C-k ()
-  "Send `C-k' to libvterm."
-  (interactive)
-  (kill-ring-save (point) (vterm-end-of-line))
-  (vterm-send-key "k" nil nil t))
-
 (use-package vterm
+  :disabled t
   :ensure t
   :hook (vterm-mode . my-vterm-mode-hook)
   :custom
@@ -595,13 +625,23 @@ session."
          ("C-o C-l" . vterm-clear-scrollback)
          :map vterm-copy-mode-map
          ("C-o C-t" . vterm-copy-mode))
-  :init
+  :config
   (add-to-list 'display-buffer-alist
                '("\\*vterm\\*"
                  (display-buffer-reuse-window display-buffer-below-selected)
-                 (window-min-height . 28))))
+                 (window-min-height . 28)))
+
+  (defun my-vterm-mode-hook ()
+    (setq-local confirm-kill-processes nil))
+
+  (defun my-vterm-send-C-k ()
+    "Send `C-k' to libvterm."
+    (interactive)
+    (kill-ring-save (point) (vterm-end-of-line))
+    (vterm-send-key "k" nil nil t)))
 
 (use-package vterm-toggle
+  :disabled t
   :ensure t
   :bind ("C-o C-v" . vterm-toggle))
 
