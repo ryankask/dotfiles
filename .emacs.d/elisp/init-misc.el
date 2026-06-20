@@ -304,16 +304,6 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
                  (display-buffer-reuse-window display-buffer-below-selected)
                  (window-min-height . 28))))
 
-
-(use-package ghostel-eshell
-  :hook (eshell-load . ghostel-eshell-visual-command-mode))
-
-(use-package ghostel-compile
-  :hook (after-elpaca-init . ghostel-compile-global-mode))
-
-(use-package ghostel-comint
-  :hook (after-elpaca-init . ghostel-comint-global-mode))
-
 (use-package helpful
   :ensure t
   :bind (("C-h f" . helpful-callable)
