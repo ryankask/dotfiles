@@ -415,7 +415,11 @@ You can specify a single filename or a list of names."
               (and (listp x)
                    (cl-every #'stringp x)))))
 
-(defcustom my-project-local-commands (list #'vterm-toggle)
+(defcustom my-project-local-commands
+  (list
+   #'vterm-toggle
+   #'ghostel-project
+   #'ghostel-project-list-buffers)
   "List of commands that should use local identifiers as project
 markers."
   :type '(list function))
