@@ -230,5 +230,5 @@ fi
 source "$DOTFILES/zsh/completion.zsh"
 
 if (( $+commands[zoxide] )); then
-  eval "${$(zoxide init zsh --cmd=cd):s#_files -/#_cd#}"
+  eval "${$(_ZO_DOCTOR=0 zoxide init zsh --cmd=cd):s#_files -/#_cd#}"
 fi
