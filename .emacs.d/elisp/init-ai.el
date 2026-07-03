@@ -77,7 +77,7 @@
     :models '(gemma3n:latest gpt-oss:20b))
 
   (setopt gptel-backend (alist-get "Claude" gptel--known-backends nil nil #'equal)
-          gptel-model 'claude-sonnet-4-6)
+          gptel-model 'claude-sonnet-5)
 
   ;; Presets
 
