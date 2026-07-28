@@ -1,6 +1,6 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "model": "synthetic/hf:zai-org/GLM-5.2",
+  "model": "synthetic/hf:moonshotai/Kimi-K3",
   "autoshare": false,
   "autoupdate": true,
   "plugin": [
