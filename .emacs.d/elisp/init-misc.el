@@ -473,14 +473,17 @@ use the current project."
     (my-copy-project-relative-path-as-kill path)))
 
 (use-package project
+  :custom
+  (project-vc-extra-root-markers (list ".project" "pyproject.toml"))
   :bind (nil
          :map project-prefix-map
          ("w" . my-copy-project-relative-path-as-kill))
   :config
-  (add-hook 'project-find-functions 'my-project-try-local -10)
-  (cl-defmethod project-root ((project (head local)))
-    "Return root directory of current PROJECT."
-    (cdr project))
+  ;;  Temporarily disable the backend to see if it's still needed
+  ;; (add-hook 'project-find-functions 'my-project-try-local -10)
+  ;; (cl-defmethod project-root ((project (head local)))
+  ;;   "Return root directory of current PROJECT."
+  ;;   (cdr project))
 
   (with-eval-after-load 'dired
     (bind-key "W" #'my-dired-copy-project-relative-path-as-kill
