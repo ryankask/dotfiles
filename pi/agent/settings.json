@@ -14,13 +14,15 @@
     "npm:pi-web-access",
     "npm:@benvargas/pi-synthetic-provider"
   ],
+  "editorPaddingX": 1,
   "autocompleteMaxVisible": 7,
-  "quietStartup": true  ,
+  "quietStartup": true,
   "npmCommand": [
     "mise",
     "exec",
     "node@24",
     "--",
     "npm"
-  ]
+  ],
+  "hideThinkingBlock": true
 }
