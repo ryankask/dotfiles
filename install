@@ -38,6 +38,7 @@ files=(
   ".ghc/ghci.conf" "ghc/ghci.conf"
   ".inputrc" ""
   ".pg_format" ""
+  ".pi" "pi"
   ".psqlrc" "postgres/psqlrc"
   ".tmux.conf" ""
   ".zlogin" "zsh/zlogin"

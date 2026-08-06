@@ -1,0 +1,20 @@
+# Ignore everything, then re-include an allowlist
+/*
+
+!/.gitignore
+
+!/agent/
+/agent/*
+!/agent/settings.json
+!/agent/keybindings.json
+!/agent/models.json
+
+!/agent/extensions/
+!/agent/skills/
+!/agent/prompts/
+!/agent/themes/
+
+!/agent/AGENTS.md
+!/agent/CLAUDE.md
+!/agent/SYSTEM.md
+!/agent/APPEND_SYSTEM.md

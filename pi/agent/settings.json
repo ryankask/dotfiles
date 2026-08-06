@@ -1,0 +1,20 @@
+{
+  "lastChangelogVersion": "0.83.0",
+  "theme": "light",
+  "npmCommand": [
+    "mise",
+    "exec",
+    "node@24",
+    "--",
+    "npm"
+  ],
+  "packages": [
+    "npm:pi-web-access",
+    "npm:@benvargas/pi-synthetic-provider"
+  ],
+  "defaultProvider": "synthetic",
+  "defaultModel": "hf:moonshotai/Kimi-K3",
+  "defaultThinkingLevel": "xhigh",
+  "autocompleteMaxVisible": 7,
+  "quietStartup": true
+}
