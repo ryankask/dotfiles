@@ -324,5 +324,298 @@ If NO-EXPORT-FZF-OPTS is non-nil, `FZF_DEFAULT_OPTS' won't be
                          theme))))
     (themegen--run-kitty-command "send-text" (concat export ""))))
 
+;; Pi
+
+(require 'json)
+
+(defvar themegen-pi-themes-dir
+  (expand-file-name "~/.pi/agent/themes/")
+  "Directory where generated Pi themes are written.")
+
+(defvar themegen-pi-themes
+  (delete-dups
+   (append modus-themes-collection
+           ef-themes-collection
+           doric-themes-collection))
+  "Modus, Ef, and Doric themes exported for Pi.")
+
+(defvar themegen-pi-schema-url
+  "https://raw.githubusercontent.com/earendil-works/pi/main/packages/coding-agent/src/modes/interactive/theme/theme-schema.json"
+  "Schema URL written into generated Pi themes.")
+
+(defconst themegen-pi-modus-colors-alist
+  '(("accent" accent-0)
+    ("border" border)
+    ("borderAccent" accent-0)
+    ("borderMuted" bg-inactive bg-dim)
+    ("success" prose-done green info)
+    ("error" err red)
+    ("warning" warning yellow-warmer)
+    ("muted" fg-dim comment)
+    ("dim" fg-dim)
+    ("text" fg-main)
+    ("thinkingText" fg-dim comment)
+
+    ("selectedBg" bg-active bg-completion)
+    ("userMessageBg" bg-alt bg-dim)
+    ("userMessageText" fg-main)
+    ("customMessageBg" bg-completion bg-alt bg-dim)
+    ("customMessageText" fg-main)
+    ("customMessageLabel" accent-1 accent-0)
+    ("toolPendingBg" bg-warning bg-hl-line bg-dim)
+    ("toolSuccessBg" bg-info bg-hl-line bg-dim)
+    ("toolErrorBg" bg-err bg-hl-line bg-dim)
+    ("toolTitle" fg-main)
+    ("toolOutput" fg-dim comment)
+
+    ("mdHeading" rainbow-0 accent-0)
+    ("mdLink" fg-link blue)
+    ("mdLinkUrl" fg-dim)
+    ("mdCode" fg-prose-code constant cyan)
+    ("mdCodeBlock" fg-main)
+    ("mdCodeBlockBorder" border)
+    ("mdQuote" fg-dim)
+    ("mdQuoteBorder" border)
+    ("mdHr" border)
+    ("mdListBullet" rainbow-1 accent-0)
+
+    ("toolDiffAdded" fg-added green)
+    ("toolDiffRemoved" fg-removed red)
+    ("toolDiffContext" fg-dim)
+
+    ("syntaxComment" comment)
+    ("syntaxKeyword" keyword)
+    ("syntaxFunction" fnname)
+    ("syntaxVariable" variable)
+    ("syntaxString" string)
+    ("syntaxNumber" constant number)
+    ("syntaxType" type)
+    ("syntaxOperator" operator)
+    ("syntaxPunctuation" punctuation)
+
+    ("thinkingOff" fg-dim)
+    ("thinkingMinimal" border)
+    ("thinkingLow" blue)
+    ("thinkingMedium" cyan)
+    ("thinkingHigh" magenta)
+    ("thinkingXhigh" red-warmer)
+    ("thinkingMax" red-intense red-warmer)
+    ("bashMode" success green warning))
+  "Map Pi colors to Modus and Ef palette entries.")
+
+(defconst themegen-pi-doric-colors-alist
+  '(("accent" cursor fg-accent)
+    ("border" border)
+    ("borderAccent" fg-accent)
+    ("borderMuted" fg-shadow-subtle)
+    ("success" fg-green)
+    ("error" fg-red)
+    ("warning" fg-yellow)
+    ("muted" fg-shadow-subtle)
+    ("dim" fg-shadow-subtle)
+    ("text" fg-main)
+    ("thinkingText" fg-shadow-subtle)
+
+    ("selectedBg" bg-neutral)
+    ("userMessageBg" bg-shadow-subtle)
+    ("userMessageText" fg-main)
+    ("customMessageBg" bg-accent)
+    ("customMessageText" fg-main)
+    ("customMessageLabel" fg-accent)
+    ("toolPendingBg" bg-shadow-subtle)
+    ("toolSuccessBg" bg-green)
+    ("toolErrorBg" bg-red)
+    ("toolTitle" fg-main)
+    ("toolOutput" fg-shadow-subtle)
+
+    ("mdHeading" fg-accent)
+    ("mdLink" fg-blue)
+    ("mdLinkUrl" fg-shadow-subtle)
+    ("mdCode" fg-cyan)
+    ("mdCodeBlock" fg-main)
+    ("mdCodeBlockBorder" border)
+    ("mdQuote" fg-shadow-subtle)
+    ("mdQuoteBorder" border)
+    ("mdHr" border)
+    ("mdListBullet" fg-accent)
+
+    ("toolDiffAdded" fg-green)
+    ("toolDiffRemoved" fg-red)
+    ("toolDiffContext" fg-shadow-subtle)
+
+    ("syntaxComment" fg-accent)
+    ("syntaxKeyword" fg-main)
+    ("syntaxFunction" fg-shadow-intense)
+    ("syntaxVariable" fg-main)
+    ("syntaxString" fg-shadow-subtle)
+    ("syntaxNumber" fg-main)
+    ("syntaxType" fg-shadow-intense)
+    ("syntaxOperator" fg-main)
+    ("syntaxPunctuation" fg-main)
+
+    ("thinkingOff" fg-shadow-subtle)
+    ("thinkingMinimal" border)
+    ("thinkingLow" fg-blue)
+    ("thinkingMedium" fg-cyan)
+    ("thinkingHigh" fg-magenta)
+    ("thinkingXhigh" fg-red)
+    ("thinkingMax" fg-yellow)
+    ("bashMode" fg-yellow))
+  "Map Pi colors to Doric palette entries.")
+
+(defun themegen--pi-retrieve-palette-value (color palette)
+  "Resolve COLOR from PALETTE.
+Return `unspecified' when COLOR is not present or cannot be resolved."
+  (let ((value (car (alist-get color palette))))
+    (cond
+     ((null value) 'unspecified)
+     ((stringp value) value)
+     ((eq value 'unspecified) value)
+     ((symbolp value)
+      (themegen--pi-retrieve-palette-value value palette))
+     (t 'unspecified))))
+
+(defun themegen--pi-get-color (palette keys theme)
+  "Return the first resolvable color in KEYS from PALETTE for THEME."
+  (or
+   (cl-loop
+    for key in keys
+    for value = (themegen--pi-retrieve-palette-value key palette)
+    unless (eq value 'unspecified)
+    return value)
+   (error "No usable Pi color for %S in theme `%s'" keys theme)))
+
+(defun themegen--pi-theme-family (theme)
+  "Return the palette family for THEME."
+  (cond
+   ((memq theme doric-themes-collection) 'doric)
+   ((memq theme modus-themes-collection) 'modus)
+   ((memq theme ef-themes-collection) 'ef)
+   (t (error "Theme `%s' is not a Pi theme" theme))))
+
+(defun themegen--pi-get-doric-palette (theme)
+  "Return the palette for Doric THEME."
+  (let ((palette-symbol (intern (format "%s-palette" theme))))
+    (unless (boundp palette-symbol)
+      (load-theme theme :no-confirm :no-enable))
+    (if (boundp palette-symbol)
+        (symbol-value palette-symbol)
+      (error "No palette found for Doric theme `%s'" theme))))
+
+(defun themegen--pi-get-palette (theme)
+  "Return the palette for THEME."
+  (pcase (themegen--pi-theme-family theme)
+    ('doric (themegen--pi-get-doric-palette theme))
+    ((or 'modus 'ef)
+     (or (modus-themes-get-theme-palette theme)
+         (error "No palette found for theme `%s'" theme)))))
+
+(defun themegen--pi-color-map (theme palette)
+  "Return the Pi color alist for THEME and PALETTE."
+  (let ((map (if (eq (themegen--pi-theme-family theme) 'doric)
+                 themegen-pi-doric-colors-alist
+               themegen-pi-modus-colors-alist)))
+    (mapcar
+     (lambda (entry)
+       (cons (car entry)
+             (themegen--pi-get-color palette (cdr entry) theme)))
+     map)))
+
+(defun themegen--format-pi-config (theme)
+  "Return the JSON Pi theme for THEME."
+  (let* ((family (themegen--pi-theme-family theme))
+         (palette (themegen--pi-get-palette theme))
+         (color-map (themegen--pi-color-map theme palette))
+         (get (lambda (keys)
+                (themegen--pi-get-color palette keys theme)))
+         (object
+          `(("$schema" . ,themegen-pi-schema-url)
+            ("name" . ,(symbol-name theme))
+            ("colors" . ,color-map)
+            ("export"
+             . (("pageBg" . ,(funcall get '(bg-main)))
+                ("cardBg" . ,(funcall get
+                                      (if (eq family 'doric)
+                                          '(bg-neutral bg-shadow-subtle)
+                                        '(bg-alt bg-dim))))
+                ("infoBg" . ,(funcall get
+                                      (if (eq family 'doric)
+                                          '(bg-yellow bg-shadow-subtle)
+                                        '(bg-warning bg-hl-line bg-dim)))))))))
+    (let ((json-encoding-pretty-print t))
+      (concat (json-encode object) "\n"))))
+
+(defun themegen--save-pi-theme-file (theme &optional dir)
+  "Write THEME's Pi JSON file to DIR."
+  (let ((directory (file-name-as-directory
+                    (expand-file-name (or dir themegen-pi-themes-dir)))))
+    (make-directory directory t)
+    (write-region
+     (themegen--format-pi-config theme)
+     nil
+     (expand-file-name (format "%s.json" theme) directory)
+     nil
+     'silent)))
+
+(defun themegen--select-pi-theme (&optional prompt)
+  "Prompt for a theme among `themegen-pi-themes'."
+  (intern
+   (completing-read
+    (or prompt "Select Pi theme: ")
+    themegen-pi-themes
+    nil t nil
+    'themegen--select-theme-history)))
+
+(defun themegen-generate-pi-themes ()
+  "Generate Pi JSON themes for Modus, Ef, and Doric."
+  (interactive)
+  (dolist (theme themegen-pi-themes)
+    (themegen--save-pi-theme-file theme))
+  (message "Generated %d Pi themes in %s"
+           (length themegen-pi-themes)
+           (expand-file-name themegen-pi-themes-dir)))
+
+(defun themegen-generate-pi-theme (theme)
+  "Generate one selected Pi THEME."
+  (interactive (list (themegen--select-pi-theme)))
+  (themegen--save-pi-theme-file theme)
+  (message "Generated Pi theme `%s' in %s"
+           theme
+           (expand-file-name themegen-pi-themes-dir)))
+
+(defun themegen-check-pi-themes ()
+  "Check that all generated Pi themes are present and valid JSON."
+  (interactive)
+  (let ((directory (file-name-as-directory
+                    (expand-file-name themegen-pi-themes-dir)))
+        (errors nil))
+    (dolist (theme themegen-pi-themes)
+      (let ((file (expand-file-name (format "%s.json" theme) directory)))
+        (cond
+         ((not (file-readable-p file))
+          (push (format "%s: missing file" theme) errors))
+         (t
+          (condition-case err
+              (let* ((json-object-type 'alist)
+                     (json-array-type 'list)
+                     (json-key-type 'string)
+                     (data (json-read-file file))
+                     (colors (cdr (assoc "colors" data)))
+                     (expected (mapcar #'car themegen-pi-modus-colors-alist))
+                     (missing (cl-set-difference
+                               expected
+                               (mapcar #'car colors)
+                               :test #'string=)))
+                (when missing
+                  (push (format "%s: missing colors %S" theme missing) errors)))
+            (error
+             (push (format "%s: %s" theme (error-message-string err)) errors)))))))
+    (if errors
+        (error "Pi theme checks failed:\n%s"
+               (mapconcat #'identity (nreverse errors) "\n"))
+      (message "Checked %d Pi themes in %s"
+               (length themegen-pi-themes)
+               directory))))
+
 (provide 'themegen)
 ;;; themegen.el ends here
