@@ -377,7 +377,7 @@ If NO-EXPORT-FZF-OPTS is non-nil, `FZF_DEFAULT_OPTS' won't be
     ("mdQuote" fg-dim)
     ("mdQuoteBorder" border)
     ("mdHr" border)
-    ("mdListBullet" rainbow-1 accent-0)
+    ("mdListBullet" fg-dim)
 
     ("toolDiffAdded" fg-added green)
     ("toolDiffRemoved" fg-removed red)
@@ -437,7 +437,7 @@ If NO-EXPORT-FZF-OPTS is non-nil, `FZF_DEFAULT_OPTS' won't be
     ("mdQuote" fg-shadow-subtle)
     ("mdQuoteBorder" border)
     ("mdHr" border)
-    ("mdListBullet" fg-accent)
+    ("mdListBullet" fg-shadow-subtle)
 
     ("toolDiffAdded" fg-green)
     ("toolDiffRemoved" fg-red)
