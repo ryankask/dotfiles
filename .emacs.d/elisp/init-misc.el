@@ -399,10 +399,6 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
   :mode "\\.mmd\\'"
   :ensure (:host github :repo "JonathanHope/mermaid-ts-mode" :files ("mermaid-ts-mode.el")))
 
-(use-package nix-mode
-  :ensure t
-  :defer t)
-
 ;; Adapted from https://github.com/karthink/project-x/blob/master/project-x.el
 
 (defcustom my-project-local-identifier (list ".project" "pyproject.toml")
