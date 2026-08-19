@@ -42,83 +42,23 @@
 
 (use-package casual
   :ensure t
-  :defer t)
-
-(use-package casual-bookmarks
-  :after bookmark
-  :bind (nil
-         :map bookmark-bmenu-mode-map
-         ("s-h" . casual-bookmarks-tmenu)))
-
-(use-package casual-calc
-  :after calc
-  :bind (nil
-         :map calc-mode-map
-         ("s-h" . casual-calc-tmenu)
-         :map calc-alg-map
-         ("s-h" . casual-calc-tmenu)))
-
-(use-package casual-calendar
-  :after calendar
-  :bind (nil
-         :map calendar-mode-map
-         ("s-h" . casual-calendar-tmenu)))
-
-(use-package casual-csv
-  :after csv-mode
-  :bind (nil
-         :map csv-mode-map
-         ("s-h" . casual-csv-tmenu)))
-
-(use-package casual-dired
-  :after dired
-  :bind (nil
-         :map dired-mode-map
-         ("s-h" . casual-dired-tmenu)
-         ("s" . casual-dired-sort-by-tmenu)
-         ("/" . casual-dired-search-replace-tmenu)))
-
-(use-package casual-ibuffer
-  :after ibuffer
-  :bind (nil
-         :map ibuffer-mode-map
-         ("s-h" . casual-ibuffer-tmenu)
-         ("F" . casual-ibuffer-filter-tmenu)
-         ("s" . casual-ibuffer-sortby-tmenu)))
-
-(use-package casual-image
-  :after image
-  :bind (nil
-         :map image-mode-map
-         ("s-h" . casual-image-tmenu)))
-
-(use-package casual-info
-  :after info
-  :bind (nil
-         :map Info-mode-map
-         ("s-h" . casual-info-tmenu)))
-
-(use-package casual-isearch
-  :after isearch
-  :bind (nil
-         :map isearch-mode-map
-         ("s-h" . casual-isearch-tmenu)))
-
-(use-package casual-org
-  :after org
-  :bind (nil
-         :map org-mode-map
-         ("s-h" . casual-org-tmenu)
-         :map org-table-fedit-map
-         ("s-h" . casual-org-table-fedit-tmenu)))
-
-(use-package casual-re-builder
-  :after re-builder
-  :bind (nil
-         :map reb-mode-map
-         ("s-h" . casual-re-builder-tmenu)
-         :map reb-lisp-mode-map
-         ("s-h" . casual-re-builder-tmenu)))
+  :custom
+  (casual-keybinding-primary "s-h")
+  (casual-init-hook '(casual-bookmarks-init
+                      casual-calc-init
+                      casual-calendar-init
+                      casual-compile-init
+                      casual-csv-init
+                      casual-dired-init
+                      casual-help-init
+                      casual-ibuffer-init
+                      casual-image-init
+                      casual-info-init
+                      casual-isearch-init
+                      casual-org-init
+                      casual-re-builder-init))
+  :init
+  (casual-init))
 
 (use-package css-mode
   :defer t
