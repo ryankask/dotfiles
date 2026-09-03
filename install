@@ -24,7 +24,6 @@ fi
 
 files=(
   # Destination file: symlink target
-  ".claude/skills" "ai/skills"
   ".config/alacritty" ""
   ".config/direnv/direnvrc" ""
   ".config/emacs" ".emacs.d"
