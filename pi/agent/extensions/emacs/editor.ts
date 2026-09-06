@@ -5,14 +5,43 @@ const graphemeSegmenter = new Intl.Segmenter(undefined, {
   granularity: "grapheme",
 });
 
+interface PageableAutocompleteList {
+  selectedIndex: number;
+  maxVisible: number;
+  setSelectedIndex(index: number): void;
+}
+
 export class EmacsEditor extends CustomEditor {
   override handleInput(data: string): void {
+    if (this.pageAutocomplete(data)) return;
+
     if (matchesKey(data, "ctrl+t")) {
       this.transposeCharacters();
       return;
     }
 
     super.handleInput(data);
+  }
+
+  private pageAutocomplete(data: string): boolean {
+    if (!this.isShowingAutocomplete()) return false;
+
+    const list = (
+      this as unknown as { autocompleteList?: PageableAutocompleteList }
+    ).autocompleteList;
+    if (!list) return false;
+
+    if (this.keybindings.matches(data, "tui.select.pageUp")) {
+      list.setSelectedIndex(list.selectedIndex - list.maxVisible);
+      return true;
+    }
+
+    if (this.keybindings.matches(data, "tui.select.pageDown")) {
+      list.setSelectedIndex(list.selectedIndex + list.maxVisible);
+      return true;
+    }
+
+    return false;
   }
 
   transposeCharacters(): void {

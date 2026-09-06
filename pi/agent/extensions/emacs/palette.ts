@@ -18,6 +18,8 @@ import {
 } from "@earendil-works/pi-tui";
 import type { EmacsEditor } from "./editor";
 
+const PALETTE_PAGE_SIZE = 12;
+
 const ACTION_NAMES: Partial<Record<AppKeybinding, string>> = {
   "app.clear": "clear-editor",
   "app.suspend": "suspend",
@@ -67,6 +69,7 @@ function getPaletteEntries(
 
 class CommandPalette extends Container implements Focusable {
   private readonly entries: PaletteEntry[];
+  private visibleEntries: PaletteEntry[];
   private readonly input: Input;
   private readonly listContainer: Container;
   private list: SelectList;
@@ -95,6 +98,7 @@ class CommandPalette extends Container implements Focusable {
   ) {
     super();
     this.entries = entries;
+    this.visibleEntries = entries;
     this.keybindings = keybindings;
     this.requestRender = requestRender;
     this.select = select;
@@ -114,7 +118,7 @@ class CommandPalette extends Container implements Focusable {
       new Text(
         theme.fg(
           "dim",
-          `${keyHint("tui.select.up", "previous")}  ${keyHint("tui.select.down", "next")}  ${keyHint("tui.select.confirm", "run")}  ${keyHint("tui.select.cancel", "cancel")}`,
+          `${keyHint("tui.select.up", "previous")}  ${keyHint("tui.select.down", "next")}  ${keyHint("tui.select.pageUp", "page up")}  ${keyHint("tui.select.pageDown", "page down")}  ${keyHint("tui.select.confirm", "run")}  ${keyHint("tui.select.cancel", "cancel")}`,
         ),
         1,
         0,
@@ -136,7 +140,7 @@ class CommandPalette extends Container implements Focusable {
     }));
     const list = new SelectList(
       items,
-      Math.min(items.length, 12),
+      Math.min(items.length, PALETTE_PAGE_SIZE),
       getSelectListTheme(),
     );
     list.onSelect = (item) => {
@@ -153,14 +157,35 @@ class CommandPalette extends Container implements Focusable {
       query,
       (entry) => `${entry.name} ${entry.description}`,
     );
+    this.visibleEntries = matches;
     this.list = this.createList(matches);
     this.listContainer.clear();
     this.listContainer.addChild(this.list);
   }
 
+  private pageSelection(direction: -1 | 1): void {
+    const selected = this.list.getSelectedItem();
+    const currentIndex = selected
+      ? this.visibleEntries.findIndex((entry) => entry.name === selected.value)
+      : 0;
+    this.list.setSelectedIndex(currentIndex + direction * PALETTE_PAGE_SIZE);
+  }
+
   handleInput(data: string): void {
     if (this.keybindings.matches(data, "tui.select.cancel")) {
       this.cancel();
+      return;
+    }
+
+    if (this.keybindings.matches(data, "tui.select.pageUp")) {
+      this.pageSelection(-1);
+      this.requestRender();
+      return;
+    }
+
+    if (this.keybindings.matches(data, "tui.select.pageDown")) {
+      this.pageSelection(1);
+      this.requestRender();
       return;
     }
 
