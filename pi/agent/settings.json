@@ -1,5 +1,5 @@
 {
-  "lastChangelogVersion": "0.99.0",
+  "lastChangelogVersion": "0.99.1",
   "defaultProvider": "openai-codex",
   "defaultModel": "gpt-6.1-sol",
   "enabledModels": [
@@ -8,6 +8,7 @@
     "openai-codex/gpt-6-luna"
   ],
   "defaultThinkingLevel": "high",
+  "defaultTools": ["+codemode"],
   "theme": "modus-operandi",
   "packages": [
     "npm:pi-web-access"
