@@ -3,3 +3,6 @@
 __pycache__/
 *.py[codz]
 *$py.class
+
+# Machine-local kitty settings
+.config/kitty/local.d/
