@@ -1,5 +1,5 @@
 {
-  "lastChangelogVersion": "0.99.1",
+  "lastChangelogVersion": "1.0.4",
   "defaultProvider": "openai-codex",
   "defaultModel": "gpt-6.1-sol",
   "enabledModels": [
@@ -8,7 +8,9 @@
     "openai-codex/gpt-6-luna"
   ],
   "defaultThinkingLevel": "high",
-  "defaultTools": ["+codemode"],
+  "defaultTools": [
+    "+codemode"
+  ],
   "theme": "modus-operandi",
   "packages": [
     "npm:pi-web-access"
@@ -16,12 +18,6 @@
   "editorPaddingX": 1,
   "autocompleteMaxVisible": 7,
   "quietStartup": true,
-  "npmCommand": [
-    "mise",
-    "exec",
-    "node@24",
-    "--",
-    "npm"
-  ],
-  "hideThinkingBlock": true
+  "hideThinkingBlock": true,
+  "deviceId": "2d59ccad-b015-4ebd-a06c-b512a6a3adc9"
 }
