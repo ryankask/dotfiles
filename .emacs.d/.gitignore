@@ -6,6 +6,7 @@
 /backups
 /cloud
 /custom.el
+/elfeed
 /eln-cache
 /elpaca/*
 /eshell
