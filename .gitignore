@@ -6,3 +6,6 @@ __pycache__/
 
 # Machine-local kitty settings
 .config/kitty/local.d/
+
+# Machine-local mise configuration selection
+.miserc.local.toml
