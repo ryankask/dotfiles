@@ -3,24 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleIdentifier</key>
-	<string>org.sil.ukelele.keyboardlayout.gb-pl-colemak</string>
+	<string>com.ryankaskel.keyboardlayout.colemak</string>
 	<key>CFBundleName</key>
 	<string>GB-PL-Colemak</string>
 	<key>CFBundleVersion</key>
-	<string></string>
+	<string>2</string>
+	<key>CFBundlePackageType</key>
+	<string>BNDL</string>
 	<key>KLInfo_GB PL Colemak</key>
 	<dict>
 		<key>TISInputSourceID</key>
-		<string>org.sil.ukelele.keyboardlayout.gb-pl-colemak.gbplcolemak</string>
+		<string>com.ryankaskel.keyboardlayout.colemak.gbpl</string>
 		<key>TISIntendedLanguage</key>
 		<string>en</string>
-	</dict>
-	<key>KLInfo_GB PL Colemak Mod-DH</key>
-	<dict>
-		<key>TISInputSourceID</key>
-		<string>org.sil.ukelele.keyboardlayout.gb-pl-colemak.gbplcolemakmod-dh</string>
-		<key>TISIntendedLanguage</key>
-		<string>en</string>
+		<key>TISIconIsTemplate</key>
+		<true/>
 	</dict>
 </dict>
 </plist>

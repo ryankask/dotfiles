@@ -1,8 +1,10 @@
-[bootstrap.files."/Library/Keyboard Layouts/gb-pl-colemak.keylayout"]
-source = "./macos/keyboard/gb-pl-colemak.keylayout"
-owner = "root"
-group = "wheel"
-mode = "0644"
+# Install the custom bundle for this user; keep login screens on stock layouts.
+[tasks."keyboard-layout:install"]
+description = "Install the GB/PL Colemak bundle for this user"
+run = '"{{ config_root }}/macos/keyboard/install.sh"'
+
+[tasks.bootstrap]
+depends = ["keyboard-layout:install"]
 
 [bootstrap.files."~/Library/KeyBindings/DefaultKeyBinding.dict"]
 source = "./macos/DefaultKeyBinding.dict"
