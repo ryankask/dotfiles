@@ -70,6 +70,7 @@
 (use-package init-org)
 (use-package init-completion)
 (use-package init-lsp)
+(use-package init-rss)
 (use-package init-python)
 (use-package init-rust)
 (use-package init-c)
