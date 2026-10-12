@@ -219,6 +219,10 @@ if [[ -n "$KITTY_INSTALLATION_DIR" ]]; then
   unfunction kitty-integration
 fi
 
+if (( $+commands[op] )) && [[ -r "$HOME/.config/op/plugins.sh" ]]; then
+  source "$HOME/.config/op/plugins.sh"
+fi
+
 # Load local zshrc
 
 if [[ -s "$HOME/.zshrc.local" ]]; then
