@@ -51,6 +51,13 @@
     (elpaca-generate-autoloads "elpaca" repo)
     (let ((load-source-file-function nil)) (load "./elpaca-autoloads"))))
 (add-hook 'after-init-hook #'elpaca-process-queues)
+
+(defun my-reset-load-path-filter-cache ()
+  "Refresh library lookup after package changes."
+  (when (boundp 'load-path-filter--cache)
+    (setq load-path-filter--cache nil)))
+(add-hook 'elpaca-post-queue-hook #'my-reset-load-path-filter-cache)
+
 (elpaca `(,@elpaca-order))
 
 (elpaca elpaca-use-package

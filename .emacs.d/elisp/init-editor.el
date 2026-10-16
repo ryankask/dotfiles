@@ -111,9 +111,8 @@ Adapted from crux and doom"
      register-alist
      mark-ring global-mark-ring
      search-ring regexp-search-ring))
-  (savehist-mode)
   :init
-  (savehist-mode))
+  (savehist-mode 1))
 
 (defun my-recentf-save-list ()
   "Save the recentf file list but don't output a message."
@@ -217,7 +216,8 @@ Adapted from crux and doom"
   (text-mode-ispell-word-completion nil))
 
 (use-package visual-fill-column
-  :ensure t)
+  :ensure t
+  :defer t)
 
 (use-package isearch
   :bind (:map search-map
@@ -269,7 +269,7 @@ This allows abbrev_defs to be saved in a VCS without constantly changing."
 (use-package jinx
   :ensure t
   :after repeat
-  :hook (emacs-startup . global-jinx-mode)
+  :hook (elpaca-after-init . global-jinx-mode)
   :bind (nil
          ("C-;" . jinx-correct)
          ("M-$" . jinx-correct)
@@ -347,7 +347,7 @@ Position the cursor at its beginning, according to the current mode."
   (if electric-indent-inhibit
       ;; We can't use `indent-according-to-mode' in languages like Python,
       ;; as there are multiple possible indentations with different meanings.
-      (let* ((indent-end (progn (crux-move-to-mode-line-start) (point)))
+      (let* ((indent-end (progn (back-to-indentation) (point)))
              (indent-start (progn (move-beginning-of-line nil) (point)))
              (indent-chars (buffer-substring indent-start indent-end)))
         (forward-line -1)
@@ -392,7 +392,6 @@ Position the cursor at its beginning, according to the current mode."
   (remote-file-name-inhibit-cache 60)
   (remote-file-name-inhibit-locks t)
   (tramp-auto-save-directory my-tramp-autosave-directory)
-  (tramp-completion-reread-directory-timeout 60)
   (tramp-copy-size-limit (* 1024 1024))
   (tramp-default-method "ssh")
   (tramp-verbose 1)

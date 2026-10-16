@@ -117,7 +117,7 @@
   (consult-project-root-function
    (lambda ()
      (when-let* ((project (project-current)))
-       (car (project-roots project)))))
+       (project-root project))))
   (consult-fd-args '("fd" "--color=never" "--hidden" "--full-path"))
   :init
   (setq xref-show-xrefs-function #'consult-xref
@@ -175,7 +175,6 @@
 
 (use-package embark
   :ensure t
-  :hook (elpaca-after-init . (lambda () (require 'embark)))
   :bind (("C-." . embark-act)
          ("s-." . embark-dwim)
          :map embark-file-map
@@ -268,6 +267,7 @@ When the popup is hidden, re-enable the mode if it was previously
 
 (use-package cape
   :ensure t
+  :defer t
   :init
   (add-hook 'completion-at-point-functions #'cape-file)
   (add-hook 'completion-at-point-functions #'cape-dabbrev))

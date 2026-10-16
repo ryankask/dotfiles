@@ -28,10 +28,8 @@
   (when-let* ((word (word-at-point t)))
     (my-dict-app-lookup-word word)))
 
-(add-hook
- 'elpaca-after-init-hook
- (lambda ()
-   (bind-key "f" #'my-dict-app-lookup-word-at-point embark-identifier-map)))
+(with-eval-after-load 'embark
+  (bind-key "f" #'my-dict-app-lookup-word-at-point embark-identifier-map))
 
 ;; Rectangle app helpers
 

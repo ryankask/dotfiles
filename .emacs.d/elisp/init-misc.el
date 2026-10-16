@@ -42,23 +42,27 @@
 
 (use-package casual
   :ensure t
+  :defer t
   :custom
   (casual-keybinding-primary "s-h")
-  (casual-init-hook '(casual-bookmarks-init
-                      casual-calc-init
-                      casual-calendar-init
-                      casual-compile-init
-                      casual-csv-init
-                      casual-dired-init
-                      casual-help-init
-                      casual-ibuffer-init
-                      casual-image-init
-                      casual-info-init
-                      casual-isearch-init
-                      casual-org-init
-                      casual-re-builder-init))
   :init
-  (casual-init))
+  (pcase-dolist (`(,mode . ,package)
+                '((bookmark-bmenu-mode . casual-bookmarks)
+                  (calc-mode . casual-calc)
+                  (calendar-mode . casual-calendar)
+                  (compilation-mode . casual-compile)
+                  (csv-mode . casual-csv)
+                  (dired-mode . casual-dired)
+                  (help-mode . casual-help)
+                  (ibuffer-mode . casual-ibuffer)
+                  (image-mode . casual-image)
+                  (Info-mode . casual-info)
+                  (isearch-mode . casual-isearch)
+                  (org-mode . casual-org)
+                  (reb-mode . casual-re-builder)))
+    (let ((setup (intern (format "%s-setup" package))))
+      (autoload setup (symbol-name package))
+      (add-hook (intern (format "%s-hook" mode)) setup))))
 
 (use-package css-mode
   :defer t
@@ -167,12 +171,14 @@
 
 (use-package gcmh
   :ensure t
-  :hook (emacs-startup . gcmh-mode)
+  :demand t
   :custom
   (gcmh-idle-delay 'auto)
   (gcmh-auto-idle-delay-factor 10)
   (gcmh-high-cons-threshold (* 16 1024 1024))
-  (gcmh-verbose nil))
+  (gcmh-verbose nil)
+  :config
+  (gcmh-mode 1))
 
 ;; internal
 (use-package golink
