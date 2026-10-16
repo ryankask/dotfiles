@@ -69,36 +69,6 @@
   :custom
   (css-indent-offset 2))
 
-(defun my-copilot-post-command ()
-  "Clear the overlay"
-  (when (and this-command
-             (not (and (symbolp this-command)
-                       (or
-                        (s-starts-with-p "copilot-" (symbol-name this-command))
-                        (member this-command copilot-clear-overlay-ignore-commands)
-                        (copilot--self-insert this-command)))))
-    (copilot-clear-overlay)))
-
-(use-package copilot
-  :disabled t
-  :ensure (:host github :repo "zerolfx/copilot.el" :files ("dist" "*.el"))
-  :hook (prog-mode . copilot-mode)
-  :bind (nil
-         :map copilot-mode-map
-         ("C-<tab>" . copilot-complete)
-         ("C-c c" . copilot-complete)
-         ("C-c a" . copilot-panel-complete)
-         :map copilot-completion-map
-         ("C-g" . copilot-clear-overlay)
-         ("C-f" . copilot-accept-completion)
-         ("M-f" . copilot-accept-completion-by-word)
-         ("C-e" . copilot-accept-completion-by-line)
-         ("M-n" . copilot-next-completion)
-         ("M-p" . copilot-previous-completion))
-  :config
-  (advice-add #'copilot-complete :before #'corfu-quit)
-  (advice-add #'copilot--post-command :override #'my-copilot-post-command))
-
 (use-package csv-mode
   :ensure t
   :hook ((csv-mode . (lambda ()
