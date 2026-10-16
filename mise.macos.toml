@@ -3,8 +3,12 @@
 description = "Install the GB/PL Colemak bundle for this user"
 run = '"{{ config_root }}/macos/keyboard/install.sh"'
 
+[tasks."screenshots:prepare"]
+description = "Create the macOS screenshot directory"
+run = 'mkdir -p "$HOME/Pictures/Screenshots"'
+
 [tasks.bootstrap]
-depends = ["keyboard-layout:install"]
+depends = ["keyboard-layout:install", "screenshots:prepare"]
 
 [bootstrap.files."~/Library/KeyBindings/DefaultKeyBinding.dict"]
 source = "./macos/DefaultKeyBinding.dict"
