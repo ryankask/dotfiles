@@ -71,8 +71,7 @@
 
 (use-package csv-mode
   :ensure t
-  :hook ((csv-mode . (lambda ()
-                       (visual-line-mode -1)))
+  :hook ((csv-mode . (lambda () (visual-line-mode -1)))
          (csv-mode . csv-guess-set-separator)
          (csv-mode . csv-align-mode)))
 
