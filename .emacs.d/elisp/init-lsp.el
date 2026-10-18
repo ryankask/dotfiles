@@ -29,7 +29,13 @@
          ("q" . eglot-shutdown))
   :config
   (setf (alist-get 'styles (alist-get 'eglot completion-category-defaults))
-        '(orderless)))
+        '(orderless)
+        (alist-get 'typescript-mode eglot-server-programs
+                   nil nil (lambda (key mode)
+                             (and (listp key) (assq mode key))))
+        (eglot-alternatives
+         '(("typescript-language-server" "--stdio")
+           ("tsc" "--lsp" "--stdio")))))
 
 (use-package consult-eglot
   :ensure t
