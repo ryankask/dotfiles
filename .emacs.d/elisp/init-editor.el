@@ -433,8 +433,11 @@ Position the cursor at its beginning, according to the current mode."
   :config
   (setf (alist-get 'sqlfluff apheleia-formatters)
         '("sqlfluff" "format" "--stdin-filename" filepath "-"))
-  (setf (alist-get 'python-mode apheleia-mode-alist) '(ruff-isort ruff)
-        (alist-get 'sql-mode apheleia-mode-alist) '(sqlfluff)))
+  (setf
+   (alist-get 'js-ts-mode apheleia-mode-alist) 'oxfmt
+   (alist-get 'sql-mode apheleia-mode-alist) '(sqlfluff)
+   (alist-get 'tsx-ts-mode apheleia-mode-alist) 'oxfmt
+   (alist-get 'typescript-ts-mode apheleia-mode-alist) 'oxfmt))
 
 (defcustom my-format-default-function #'apheleia-format-buffer
   "Default format function."
