@@ -13,7 +13,8 @@
   ],
   "theme": "modus-operandi",
   "packages": [
-    "npm:pi-web-access"
+    "npm:pi-web-access",
+    "git:github.com/ryankask/pisbx"
   ],
   "editorPaddingX": 1,
   "autocompleteMaxVisible": 7,
