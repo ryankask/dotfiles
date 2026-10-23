@@ -5,7 +5,6 @@
     signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBZpom85x6RZxHC5uF8YXSQngWSqh+cotSc66XlJ7o9H
 
 [core]
-    pager = less -FRSX
     whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
 
 [init]
