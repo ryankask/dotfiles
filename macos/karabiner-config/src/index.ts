@@ -30,18 +30,13 @@ writeToProfile("Default", [
   rule("Caps lock → left control").manipulators([
     map("caps_lock", "optionalAny").to("left_control"),
   ]),
-  rule(
-    "left control → hyper; caps lock if alone; plain ctrl if fn is pressed",
-  ).manipulators([
+  rule("left control → hyper; caps lock if alone; plain ctrl if fn is pressed").manipulators([
     map({
       key_code: "left_control",
       modifiers: { optional: ["caps_lock"] },
     })
       .to(toKey("left_control", ["command", "option"], { lazy: true }))
-      .toIfOtherKeyPressed(
-        [{ key_code: "fn", modifiers: { optional: ["any"] } }],
-        "left_control",
-      )
+      .toIfOtherKeyPressed([{ key_code: "fn", modifiers: { optional: ["any"] } }], "left_control")
       .toIfAlone("caps_lock", undefined, { hold_down_milliseconds: 100 })
       .parameters({
         "basic.to_if_alone_timeout_milliseconds": 300,
@@ -54,14 +49,8 @@ writeToProfile("Default", [
     map("'", {
       optional: ["command", "option"],
     })
-      .to([
-        toSetVar("right-control", 1),
-        toKey("right_control", undefined, { lazy: true }),
-      ])
-      .toIfAlone([
-        toSetVar("right-control", 0),
-        toKey("'", undefined, { halt: true }),
-      ])
+      .to([toSetVar("right-control", 1), toKey("right_control", undefined, { lazy: true })])
+      .toIfAlone([toSetVar("right-control", 0), toKey("'", undefined, { halt: true })])
       .toDelayedAction(toSetVar("right-control", 2), [])
       .toAfterKeyUp(toSetVar("right-control", 0))
       .parameters({
@@ -72,10 +61,7 @@ writeToProfile("Default", [
       // Activate a prefix map so the below exclusions don't take
       // effect
       withMapper(["x", "c", "h", "o"])((k) =>
-        map(k, "right_control").to([
-          toSetVar("right-control", 2),
-          toKey(k, "right_control"),
-        ]),
+        map(k, "right_control").to([toSetVar("right-control", 2), toKey(k, "right_control")]),
       ),
       // Exclude letters that commonly appear with apostrophes if a
       // prefix map isn't activated
@@ -90,16 +76,10 @@ writeToProfile("Default", [
       ])((k) => map(k, "right_control").to([toKey("'"), toKey(k)])),
     ]),
   ]),
+
   rule("Emacs emulation").manipulators([
     withCondition(
-      ifApp([
-        Apps.CHROME,
-        Apps.SLACK,
-        Apps.NOTION,
-        Apps.ORION,
-        Apps.OUTLOOK,
-        Apps.SPOTIFY,
-      ]),
+      ifApp([Apps.CHROME, Apps.SLACK, Apps.NOTION, Apps.ORION, Apps.OUTLOOK, Apps.SPOTIFY]),
     )([
       map("m", "left_control").to("return_or_enter"),
       map("r", "control").to("up_arrow"),
@@ -127,19 +107,14 @@ function appLauncherLayer(): Rule {
       r: toApp("Spotify"),
       s: toApp("Orion"),
       v: toApp("Finder"),
-      tab: to$(
-        "open alfred://runtrigger/com.alfredapp.vitor.windowswitcher/list_windows",
-      ),
+      tab: to$("open alfred://runtrigger/com.alfredapp.vitor.windowswitcher/list_windows"),
     })
     .build();
 
   // ",." is the right duolayer trigger. Add "zx" as left duolayer trigger.
   let leftManipulator = structuredClone(rule.manipulators[0]);
 
-  if (
-    leftManipulator.from === undefined ||
-    !("simultaneous" in leftManipulator.from)
-  ) {
+  if (leftManipulator.from === undefined || !("simultaneous" in leftManipulator.from)) {
     throw new Error("from must be a simultaneous FromEvent");
   }
 
