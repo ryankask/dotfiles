@@ -90,20 +90,6 @@ writeToProfile("Default", [
       ])((k) => map(k, "right_control").to([toKey("'"), toKey(k)])),
     ]),
   ]),
-  rule("Emacs: tap shift to send C-g", ifApp(Apps.EMACS)).manipulators([
-    map("left_shift", "")
-      .to("left_shift")
-      .toIfAlone("t", "left_control")
-      .parameters({
-        "basic.to_if_alone_timeout_milliseconds": 180,
-      }),
-    map("right_shift", "")
-      .to("right_shift")
-      .toIfAlone("t", "right_control")
-      .parameters({
-        "basic.to_if_alone_timeout_milliseconds": 180,
-      }),
-  ]),
   rule("Emacs emulation").manipulators([
     withCondition(
       ifApp([
