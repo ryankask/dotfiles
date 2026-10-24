@@ -46,11 +46,5 @@
          :map my-eglot-mode-map
          ("k" . consult-eglot-symbols)))
 
-(use-package eglot-booster
-  :disabled t
-  :ensure (:host github :repo "jdtsmith/eglot-booster")
-  :after eglot
-  :init
-  (eglot-booster-mode))
 
 (provide 'init-lsp)
