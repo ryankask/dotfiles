@@ -434,10 +434,15 @@ Position the cursor at its beginning, according to the current mode."
   (setf (alist-get 'sqlfluff apheleia-formatters)
         '("sqlfluff" "format" "--stdin-filename" filepath "-"))
   (setf
+   (alist-get 'css-ts-mode apheleia-mode-alist) 'oxfmt
+   (alist-get 'graphql-mode apheleia-mode-alist) 'oxfmt
    (alist-get 'js-ts-mode apheleia-mode-alist) 'oxfmt
-   (alist-get 'sql-mode apheleia-mode-alist) '(sqlfluff)
+   (alist-get 'json-ts-mode apheleia-mode-alist) 'oxfmt
+   (alist-get 'sql-mode apheleia-mode-alist) 'sqlfluff
+   (alist-get 'toml-ts-mode apheleia-mode-alist) 'oxfmt
    (alist-get 'tsx-ts-mode apheleia-mode-alist) 'oxfmt
-   (alist-get 'typescript-ts-mode apheleia-mode-alist) 'oxfmt))
+   (alist-get 'typescript-ts-mode apheleia-mode-alist) 'oxfmt
+   (alist-get 'yaml-ts-mode apheleia-mode-alist) 'oxfmt))
 
 (defcustom my-format-default-function #'apheleia-format-buffer
   "Default format function."
