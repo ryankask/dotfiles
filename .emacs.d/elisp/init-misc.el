@@ -294,7 +294,6 @@ You can specify a single filename or a list of names."
 
 (defcustom my-project-local-commands
   (list
-   #'vterm-toggle
    #'ghostel-project
    #'ghostel-project-list-buffers)
   "List of commands that should use local identifiers as project
@@ -478,46 +477,6 @@ session."
   :after org
   :init
   (keymap-set org-mode-map "C-c C-r" verb-command-map))
-
-(use-package vterm
-  :disabled t
-  :ensure t
-  :hook (vterm-mode . my-vterm-mode-hook)
-  :custom
-  (vterm-always-compile-module t)
-  (vterm-kill-buffer-on-exit t)
-  (vterm-max-scrollback 5000)
-  (vterm-timer-delay 0.025)
-  (vterm-toggle-scope 'project)
-  :bind (nil
-         :map vterm-mode-map
-         ("C-k" . my-vterm-send-C-k)
-         ("C-o" . nil)
-         ("C-o C-t" . vterm-copy-mode)
-         ("C-o C-g" . vterm-send-C-g)
-         ("C-o C-u" . vterm-send-C-u)
-         ("C-o C-l" . vterm-clear-scrollback)
-         :map vterm-copy-mode-map
-         ("C-o C-t" . vterm-copy-mode))
-  :config
-  (add-to-list 'display-buffer-alist
-               '("\\*vterm\\*"
-                 (display-buffer-reuse-window display-buffer-below-selected)
-                 (window-min-height . 28)))
-
-  (defun my-vterm-mode-hook ()
-    (setq-local confirm-kill-processes nil))
-
-  (defun my-vterm-send-C-k ()
-    "Send `C-k' to libvterm."
-    (interactive)
-    (kill-ring-save (point) (vterm-end-of-line))
-    (vterm-send-key "k" nil nil t)))
-
-(use-package vterm-toggle
-  :disabled t
-  :ensure t
-  :bind ("C-o C-v" . vterm-toggle))
 
 (defun my-yaml-ts-mode-setup ()
   "Hook used for yaml-ts-mode"
