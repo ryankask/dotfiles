@@ -252,6 +252,9 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
 (use-package lua-ts-mode
   :defer t)
 
+(defun my-magit-mode-setup ()
+  (setq-local truncate-lines nil))
+
 (use-package magit
   :ensure t
   :bind (("s-m m" . magit-status)
@@ -259,7 +262,9 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
          ("s-m l" . magit-log)
          ("s-m f" . magit-log-buffer-file)
          ("s-m b" . magit-blame))
-  :hook (git-commit-setup . git-commit-turn-on-flyspell)
+  :hook
+  (git-commit-setup . git-commit-turn-on-flyspell)
+  (magit-mode . my-magit-mode-setup)
   :custom
   (magit-define-global-key-bindings nil)
   (magit-diff-refine-hunk t)
