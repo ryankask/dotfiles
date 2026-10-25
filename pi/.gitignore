@@ -8,6 +8,7 @@
 !/agent/settings.json
 !/agent/keybindings.json
 !/agent/models.json
+!/agent/web-search.json
 
 !/agent/extensions/
 !/agent/prompts/
