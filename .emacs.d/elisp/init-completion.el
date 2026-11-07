@@ -47,14 +47,47 @@
   (completion-category-defaults nil)
   (completion-category-overrides nil))
 
-(defun my-consult-mdfind-builder (input)
-  (pcase-let ((`(,arg . ,opts) (consult--command-split input)))
-    (cons (append (list "mdfind" "-name" arg) opts) nil)))
+(defvar my-consult-mdfind-history nil
+  "Input history for `my-consult-mdfind'.")
 
-(defun my-consult-mdfind (&optional initial)
-  (interactive)
+(defun my-consult-mdfind-builder (input &optional dir)
+  "Build a filename-only mdfind command from Consult INPUT.
+Restrict the search to DIR when non-nil, and suppress stderr."
+  (pcase-let ((`(,arg . ,opts) (consult--command-split input)))
+    (unless (string-blank-p arg)
+      ;; mdfind logs UserQueryParser diagnostics on stderr even on success.
+      ;; Pass arguments via "$@" so the shell never interprets user input.
+      (cons (append (list "sh" "-c" "exec mdfind \"$@\" 2>/dev/null"
+                          "mdfind")
+                    (when dir (list "-onlyin" (expand-file-name dir)))
+                    (list "-name" arg)
+                    opts)
+            nil))))
+
+(defun my-consult-mdfind (&optional dir initial)
+  "Find a file by name using mdfind, starting with INITIAL input.
+Search all indexed locations unless DIR is non-nil.  With a prefix
+argument, prompt for DIR.  Press M-. to preview the selected file."
+  (interactive
+   (list (when current-prefix-arg
+           (read-directory-name "Mdfind directory: " nil nil t))))
+  (when dir
+    (setq dir (expand-file-name dir)))
   (find-file
-   (consult--find "Mdfind: " #'my-consult-mdfind-builder initial)))
+   (consult--read
+    (consult--process-collection
+        (lambda (input) (my-consult-mdfind-builder input dir))
+      :highlight t)
+    :prompt (if dir
+                (format "Mdfind (%s): " (abbreviate-file-name dir))
+              "Mdfind: ")
+    :sort nil
+    :require-match t
+    :initial initial
+    :add-history (thing-at-point 'filename)
+    :category 'file
+    :state (consult--file-preview)
+    :history '(:input my-consult-mdfind-history))))
 
 (defvar my-consult-terminal-source
   (list :name "Terminal Buffer"
@@ -130,7 +163,7 @@
   (consult-customize
    consult-theme
    :preview-key '(:debounce 0.2 any)
-   consult-ripgrep consult-git-grep consult-grep
+   consult-ripgrep consult-git-grep consult-grep my-consult-mdfind
    consult-bookmark consult-recent-file consult-xref
    consult-source-recent-file consult-source-project-recent-file
    consult-source-bookmark
