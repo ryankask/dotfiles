@@ -174,7 +174,7 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
   (setopt ghostel-keymap-exceptions (append '("C-o") ghostel-keymap-exceptions))
   (add-to-list 'ghostel-eval-cmds '("magit-status-setup-buffer" magit-status-setup-buffer))
   (add-to-list 'display-buffer-alist
-               '("\\*.*-ghostel\\*"
+               '((derived-mode . ghostel-mode)
                  (display-buffer-reuse-window display-buffer-below-selected)
                  (window-min-height . 28))))
 
