@@ -160,7 +160,9 @@
          ("C-o C-t" . ghostel-copy-mode)
          ("C-c C-j" . nil)
          ("C-c C-o" . ghostel-semi-char-mode)
+         ("C-c M-i" . consult-imenu)
          :map ghostel-semi-char-mode-map
+         ("C-c M-h" . consult-ghostel-history)
          ("C-k" . my-ghostel-send-C-k-and-kill)
          ("C-s" . consult-line))
   :config
