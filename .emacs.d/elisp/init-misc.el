@@ -98,15 +98,13 @@
 (use-package disproject
   :ensure (:host github :repo "aurtzy/disproject")
   :after project
-  :bind (("s-p" . disproject-dispatch)
-         :map ctl-x-map
-         ("p" . disproject-dispatch))
+  :bind ("s-p" . disproject-dispatch)
   :custom
   (disproject-find-line-command #'consult-line-multi)
-  (disproject-switch-to-buffer-command #'consult-buffer)
+  (disproject-switch-to-buffer-command #'consult-project-buffer)
   (disproject-shell-command #'ghostel-project)
   :config
-  (transient-append-suffix 'disproject-dispatch '(2 0 5)
+  (transient-append-suffix 'disproject-dispatch 'disproject-shell
     '("S" "Shell list" ghostel-project-list-buffers))
   (transient-append-suffix 'disproject-dispatch '(2 -1)
     ["Extra"
@@ -306,8 +304,14 @@ use the current project."
   (project-vc-extra-root-markers (list ".project" "pyproject.toml"))
   :bind (nil
          :map project-prefix-map
+         ("s" . ghostel-project)
+         ("S" . ghostel-project-list-buffers)
          ("w" . my-copy-project-relative-path-as-kill))
   :config
+  (when (listp project-switch-commands)
+    (add-to-list 'project-switch-commands '(ghostel-project "Shell") t)
+    (add-to-list 'project-switch-commands '(ghostel-project-list-buffers "Shell list") t))
+
   (with-eval-after-load 'dired
     (bind-key "W" #'my-dired-copy-project-relative-path-as-kill
               dired-mode-map)))
