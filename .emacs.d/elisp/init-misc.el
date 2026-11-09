@@ -280,53 +280,6 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
   :mode "\\.mmd\\'"
   :ensure (:host github :repo "JonathanHope/mermaid-ts-mode" :files ("mermaid-ts-mode.el")))
 
-;; Adapted from https://github.com/karthink/project-x/blob/master/project-x.el
-
-(defcustom my-project-local-identifier (list ".project" "pyproject.toml")
-  "Filename(s) that identifies a directory as a project.
-You can specify a single filename or a list of names."
-  :type '(choice (string :tag "Single file")
-                 (repeat (string :tag "Filename")))
-  :safe (lambda (x)
-          (or (stringp x)
-              (and (listp x)
-                   (cl-every #'stringp x)))))
-
-(defcustom my-project-local-commands
-  (list
-   #'ghostel-project
-   #'ghostel-project-list-buffers)
-  "List of commands that should use local identifiers as project
-markers."
-  :type '(list function))
-
-(defun my-project--from-local-command ()
-  "Return non-nil if `this-command' should respect project local
- identifiers."
-  (and this-command
-       my-project-local-commands
-       (memq this-command my-project-local-commands)))
-
-(defun my-project--use-local ()
-  "Return non-nil if local project identifiers should be used to
-find projects."
-  (or
-   ;; Either eglot is searching for a project
-   (and (boundp 'eglot-lsp-context) eglot-lsp-context)
-   ;; Or the current command should respect local identifiers
-   (my-project--from-local-command)))
-
-(defun my-project-try-local (dir)
-  "Determine if DIR is a non-VC project.
-DIR must include a .project file to be considered a project."
-  (when-let* (((my-project--use-local))
-              (root (if (listp my-project-local-identifier)
-                        (seq-some (lambda (n)
-                                    (locate-dominating-file dir n))
-                                  my-project-local-identifier)
-                      (locate-dominating-file dir my-project-local-identifier))))
-    (cons 'local root)))
-
 (defun my-project-get-relative-path (path &optional project)
   "Return PATH relative to the root of PROJECT. If PROJECT is nil,
 use the current project."
@@ -355,12 +308,6 @@ use the current project."
          :map project-prefix-map
          ("w" . my-copy-project-relative-path-as-kill))
   :config
-  ;;  Temporarily disable the backend to see if it's still needed
-  ;; (add-hook 'project-find-functions 'my-project-try-local -10)
-  ;; (cl-defmethod project-root ((project (head local)))
-  ;;   "Return root directory of current PROJECT."
-  ;;   (cdr project))
-
   (with-eval-after-load 'dired
     (bind-key "W" #'my-dired-copy-project-relative-path-as-kill
               dired-mode-map)))

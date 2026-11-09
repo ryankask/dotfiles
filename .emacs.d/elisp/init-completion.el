@@ -134,10 +134,6 @@ argument, prompt for DIR.  Press M-. to preview the selected file."
          ("M-s" . consult-history)
          ("M-r" . consult-history))
   :custom
-  (consult-project-root-function
-   (lambda ()
-     (when-let* ((project (project-current)))
-       (project-root project))))
   (consult-fd-args '("fd" "--color=never" "--hidden" "--full-path"))
   :init
   (setq xref-show-xrefs-function #'consult-xref
