@@ -89,19 +89,6 @@ argument, prompt for DIR.  Press M-. to preview the selected file."
     :state (consult--file-preview)
     :history '(:input my-consult-mdfind-history))))
 
-(defvar my-consult-terminal-source
-  (list :name "Terminal Buffer"
-        :category 'buffer
-        :narrow ?t
-        :face 'consult-buffer
-        :history 'buffer-name-history
-        :state #'consult--buffer-state
-        :items (lambda ()
-                 (consult--buffer-query
-                  :as #'buffer-name
-                  :sort 'visibility
-                  :mode '(ghostel-mode term-mode)))))
-
 (use-package consult
   :ensure t
   :bind (("C-s" . consult-line)
@@ -167,8 +154,16 @@ argument, prompt for DIR.  Press M-. to preview the selected file."
    consult-bookmark consult-recent-file consult-xref
    consult-source-recent-file consult-source-project-recent-file
    consult-source-bookmark
-   :preview-key "M-.")
-  (add-to-list 'consult-buffer-sources 'my-consult-terminal-source 'append))
+   :preview-key "M-."))
+
+(use-package consult-ghostel
+  :ensure t
+  :after consult
+  :demand t
+  :config
+  (consult-customize consult-ghostel-source-hidden consult-ghostel-project-source-hidden
+    :narrow '(?t . "Ghostel"))
+  (consult-ghostel-mode 1))
 
 (use-package consult-dir
   :ensure t
