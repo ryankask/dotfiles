@@ -178,6 +178,9 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
                  (display-buffer-reuse-window display-buffer-below-selected)
                  (window-min-height . 28))))
 
+(use-package ghostel-org
+  :after org)
+
 (use-package helpful
   :ensure t
   :bind (("C-h f" . helpful-callable)
