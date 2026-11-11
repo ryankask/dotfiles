@@ -26,7 +26,9 @@ const Apps = {
   SPOTIFY: /^com.spotify.client$/,
 } as const;
 
-writeToProfile("Default", [
+// DRY_RUN=1 prints the generated JSON instead of writing the live
+// ~/.config/karabiner/karabiner.json.
+writeToProfile(process.env.DRY_RUN ? "--dry-run" : "Default", [
   rule("Caps lock → left control").manipulators([
     map("caps_lock", "optionalAny").to("left_control"),
   ]),

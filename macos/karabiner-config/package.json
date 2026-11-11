@@ -3,6 +3,7 @@
   "description": "karabiner config in karabiner.ts",
   "scripts": {
     "build": "tsx src/index.ts",
+    "preview": "DRY_RUN=1 tsx src/index.ts",
     "update": "npm update karabiner.ts"
   },
   "devDependencies": {
