@@ -1,118 +1,155 @@
-tap "1password/tap"
-tap "authzed/tap"
-tap "candid82/brew"
-tap "cloudflare/cloudflare"
-tap "homebrew/bundle"
-tap "homebrew/cask-fonts"
-tap "homebrew/services"
-tap "yqrashawn/goku"
-brew "xz"
-brew "little-cms2"
-brew "aspell"
+tap "anomalyco/tap", trusted: true
+tap "eugene1g/safehouse"
+tap "ryankask/emacs-plus", trusted: true
+# Text processing scripting language
+brew "awk"
+# Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
-brew "caddy"
+# Python character encoding detector
+brew "chardet"
+# Formatting tools for C, C++, Obj-C, Java, JavaScript, TypeScript
+brew "clang-format"
+# Cloudflare Tunnel client (formerly Argo Tunnel)
+brew "cloudflared"
+# Cross-platform make
 brew "cmake"
-brew "cmctl"
+# GNU File, Shell, and Text utilities
 brew "coreutils"
+# Get a file from an HTTP, HTTPS or FTP server
 brew "curl"
-brew "dasel"
+# Load/unload environment variables based on $PWD
 brew "direnv"
-brew "dnsmasq"
-brew "docker-credential-helper"
-brew "dog"
-brew "duckdb"
+# Spellchecker wrapping library
 brew "enchant"
-brew "expat"
+# Simple, fast and user-friendly alternative to find
 brew "fd"
+# Collection of GNU find, xargs, and locate
 brew "findutils"
+# Open-source, cross-platform JavaScript runtime environment
 brew "node"
+# Firebase command-line tools
 brew "firebase-cli"
-brew "flyctl"
-brew "fswatch"
+# Command-line fuzzy finder written in Go
 brew "fzf"
-brew "gawk"
+# GNU compiler collection
 brew "gcc"
-brew "gcc@11"
-brew "geos"
-brew "git"
+# GitHub command-line tool
+brew "gh"
+# Render markdown on the CLI
+brew "glow"
+# GNU implementation of the famous stream editor
 brew "gnu-sed"
-brew "pinentry"
+# GNU version of the tar archiving utility
+brew "gnu-tar"
+# GNU Privacy Guard (OpenPGP)
 brew "gnupg"
+# Open source programming language to build simple/reliable/efficient software
 brew "go"
-brew "harfbuzz"
-brew "hasura-cli"
-brew "imagemagick"
-brew "jansson"
-brew "jpeg"
+# GNU grep, egrep and fgrep
+brew "grep"
+# Client library for huggingface.co hub
+brew "hf"
+# Lightweight and flexible command-line JSON processor
 brew "jq"
+# Handy way to save and run project-specific commands
 brew "just"
-brew "libgccjit"
-brew "libiconv"
-brew "librsync"
-brew "libyaml"
-brew "mailutils"
+# OpenID Connect authentication plugin for kubectl
+brew "kubelogin"
+# Kubernetes command-line interface
+brew "kubernetes-cli"
+# Generic library support script
+brew "libtool"
+# Next-gen compiler infrastructure
+brew "llvm"
+# Utility for directing compilation
 brew "make"
-brew "protobuf"
+# Polyglot runtime manager (asdf rust clone)
+brew "mise"
+# Remote terminal application
 brew "mosh"
-brew "ncdu"
-brew "nmap"
-brew "openblas"
+# Free (GNU) replacement for the Pico text editor
+brew "nano"
+# Command-line collection runner for Postman
+brew "newman"
+# Swiss-army knife of markup format conversion
 brew "pandoc"
-brew "poetry"
-brew "postgresql@15", link: true
-brew "prettier"
-brew "proj"
+# Pinentry for GPG on Mac
+brew "pinentry-mac"
+# Package compiler and linker metadata toolkit
+brew "pkgconf"
+# Fast, disk space efficient package manager
+brew "pnpm"
+# PDF rendering library (based on the xpdf-3.0 code base)
+brew "poppler"
+# Object-relational database system
+brew "postgresql@18", link: true
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.14"
+# Generic machine emulator and virtualizer
+brew "qemu"
+# Tools for and transforming and inspecting PDF files
+brew "qpdf"
+# Ultra-fast CSV data-wrangling toolkit
+brew "qsv"
+# Rsync for cloud storage
 brew "rclone"
+# Persistent key-value database, with built-in net interface
 brew "redis"
+# Search tool like grep and The Silver Searcher
 brew "ripgrep"
+# Readline wrapper: adds readline support to tools that lack it
+brew "rlwrap"
+# Extremely fast Python linter, written in Rust
+brew "ruff"
+# Experimental Rust compiler front-end for IDEs
 brew "rust-analyzer"
-brew "shellcheck"
+# Cross-shell prompt for astronauts
 brew "starship"
-brew "terraform"
-brew "texinfo"
+# Services for Typst
+brew "tinymist"
+# Display directories as trees (with optional color/HTML output)
 brew "tree"
+# Incremental parsing library
 brew "tree-sitter"
-brew "typescript"
+# Extremely fast Python type checker, written in Rust
+brew "ty"
+# Language Server Protocol implementation for TypeScript wrapping tsserver
 brew "typescript-language-server"
+# Markup-based typesetting system
+brew "typst"
+# Extraction utility for .zip compressed archives
+brew "unzip"
+# Extremely fast Python package installer and resolver, written in Rust
 brew "uv"
-brew "wget"
+# Friendly and fast tool for sending HTTP requests
 brew "xh"
-brew "xsv"
-brew "yarn"
-brew "zlib"
+# Shell extension to navigate your filesystem faster
 brew "zoxide"
+# UNIX shell (command interpreter)
 brew "zsh"
-brew "authzed/tap/zed"
-brew "cloudflare/cloudflare/cloudflared", link: false
-brew "yqrashawn/goku/goku"
-cask "1password"
+# The AI coding agent built for the terminal.
+brew "anomalyco/tap/opencode"
+# macOS sandbox wrapper for coding agents
+brew "eugene1g/safehouse/agent-safehouse", trusted: true
+# GNU Emacs text editor
+brew "ryankask/emacs-plus/emacs-plus@32", trusted: true
+# Command-line interface for 1Password
 cask "1password-cli"
-cask "alfred"
-cask "font-iosevka"
-cask "font-iosevka-aile"
-cask "font-iosevka-etoile"
-cask "font-iosevka-slab"
-cask "font-sf-mono"
-cask "font-symbols-only-nerd-font"
-cask "insomnia"
+# Terminal-based AI coding assistant
+cask "claude-code@latest"
+cask "font-symbols-only-nerd-font", args: { fontdir: "~/Library/Fonts" }
+# Set of tools to manage resources and applications hosted on Google Cloud
+cask "gcloud-cli"
+# Keyboard customiser
 cask "karabiner-elements"
-cask "kitty", args: { appdir: "~/Applications" }
-cask "notion", args: { appdir: "~/Applications" }
-cask "notion-calendar", args: { appdir: "~/Applications" }
-cask "spotify"
-vscode "bierner.lit-html"
-vscode "bradymholt.pgformatter"
-vscode "charliermarsh.ruff"
-vscode "dbaeumer.vscode-eslint"
-vscode "esbenp.prettier-vscode"
-vscode "github.copilot"
-vscode "github.copilot-chat"
-vscode "golang.go"
-vscode "graphql.vscode-graphql"
-vscode "graphql.vscode-graphql-syntax"
-vscode "hashicorp.terraform"
-vscode "haskell.haskell"
-vscode "justusadam.language-haskell"
-vscode "ms-python.python"
-vscode "ms-python.vscode-pylance"
-vscode "tuttieee.emacs-mcx"
+# GPU-based terminal emulator
+cask "kitty"
+# Quick Look generator for Markdown files
+cask "qlmarkdown"
+cargo "cargo-outdated"
+cargo "kitty-copy-pager"
+cargo "sqlx-cli"
+uv "markitdown[all]"
+uv "pssh", source: "git+https://github.com/lilydjwg/pssh"
+uv "rassumfrassum", source: "git+https://github.com/joaotavora/rassumfrassum@master"
+uv "sqlfluff"
