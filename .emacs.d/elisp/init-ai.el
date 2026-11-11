@@ -85,7 +85,9 @@
     :system "You are an expert Rust programmer operating in emacs. Respond concisely.")
 
   (gptel-make-preset 'search
-    :pre (lambda () (gptel-mcp-connect '("kagi")))
+    ;; Start the server synchronously (and register its tools without
+    ;; activating them) so the tool exists when `:tools' is resolved.
+    :pre (lambda () (gptel-mcp-connect '("kagi") 'sync t))
     :tools '("kagi_search_fetch"))
 
   ;; Other
