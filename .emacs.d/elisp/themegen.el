@@ -340,7 +340,7 @@ If NO-EXPORT-FZF-OPTS is non-nil, `FZF_DEFAULT_OPTS' won't be
   "Modus, Ef, and Doric themes exported for Pi.")
 
 (defvar themegen-pi-schema-url
-  "https://raw.githubusercontent.com/earendil-works/pi/main/packages/coding-agent/src/modes/interactive/theme/theme-schema.json"
+  "https://pi.dev/schemas/theme.schema.json"
   "Schema URL written into generated Pi themes.")
 
 (defconst themegen-pi-modus-colors-alist
