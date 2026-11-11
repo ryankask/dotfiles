@@ -3,23 +3,5 @@
   "model": "openai/gpt-6.1-sol",
   "plugin": [
     "superpowers@git+https://github.com/obra/superpowers.git"
-  ],
-  "provider": {
-    "synthetic": {
-      "models": {
-        "syn:large:text": {
-          "name": "Large text"
-        },
-        "syn:small:text": {
-          "name": "Small text"
-        },
-        "syn:large:vision": {
-          "name": "Large vision"
-        },
-        "syn:small:vision": {
-          "name": "Small vision"
-        }
-      }
-    }
-  }
+  ]
 }
