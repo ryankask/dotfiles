@@ -20,7 +20,7 @@
     "customMessageText": "#000f0f",
     "customMessageLabel": "#2f6920",
     "toolPendingBg": "#d5e1d9",
-    "toolSuccessBg": "#b0e0d0",
+    "toolSuccessBg": "#a6e0d0",
     "toolErrorBg": "#e4c2c7",
     "toolTitle": "#000f0f",
     "toolOutput": "#565962",
@@ -58,6 +58,6 @@
   "export": {
     "pageBg": "#e8f0e9",
     "cardBg": "#c2ced0",
-    "infoBg": "#e3e0b0"
+    "infoBg": "#ded9a0"
   }
 }

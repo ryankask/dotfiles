@@ -8,7 +8,7 @@
     "borderMuted": "#afa497",
     "success": "#b9d08a",
     "error": "#eca27f",
-    "warning": "#c5ba80",
+    "warning": "#ceba80",
     "muted": "#afa497",
     "dim": "#afa497",
     "text": "#f5ceb0",
@@ -20,14 +20,14 @@
     "customMessageText": "#f5ceb0",
     "customMessageLabel": "#d6b577",
     "toolPendingBg": "#40332b",
-    "toolSuccessBg": "#2f401f",
-    "toolErrorBg": "#54241f",
+    "toolSuccessBg": "#40522f",
+    "toolErrorBg": "#67331f",
     "toolTitle": "#f5ceb0",
     "toolOutput": "#afa497",
     "mdHeading": "#d6b577",
-    "mdLink": "#9fbfe7",
+    "mdLink": "#a6b9e7",
     "mdLinkUrl": "#afa497",
-    "mdCode": "#a0c0d0",
+    "mdCode": "#a0c0c0",
     "mdCodeBlock": "#f5ceb0",
     "mdCodeBlockBorder": "#706061",
     "mdQuote": "#afa497",
@@ -48,16 +48,16 @@
     "syntaxPunctuation": "#f5ceb0",
     "thinkingOff": "#afa497",
     "thinkingMinimal": "#706061",
-    "thinkingLow": "#9fbfe7",
-    "thinkingMedium": "#a0c0d0",
+    "thinkingLow": "#a6b9e7",
+    "thinkingMedium": "#a0c0c0",
     "thinkingHigh": "#e9acbf",
     "thinkingXhigh": "#eca27f",
-    "thinkingMax": "#c5ba80",
-    "bashMode": "#c5ba80"
+    "thinkingMax": "#ceba80",
+    "bashMode": "#ceba80"
   },
   "export": {
     "pageBg": "#282420",
     "cardBg": "#4f4542",
-    "infoBg": "#504420"
+    "infoBg": "#574f30"
   }
 }

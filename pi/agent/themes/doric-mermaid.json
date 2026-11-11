@@ -20,8 +20,8 @@
     "customMessageText": "#dde0f8",
     "customMessageLabel": "#e8add2",
     "toolPendingBg": "#3c3e55",
-    "toolSuccessBg": "#304848",
-    "toolErrorBg": "#59323f",
+    "toolSuccessBg": "#215a46",
+    "toolErrorBg": "#693247",
     "toolTitle": "#dde0f8",
     "toolOutput": "#aea7c3",
     "mdHeading": "#e8add2",
@@ -58,6 +58,6 @@
   "export": {
     "pageBg": "#2a2f48",
     "cardBg": "#4c4f67",
-    "infoBg": "#50442f"
+    "infoBg": "#57442f"
   }
 }
