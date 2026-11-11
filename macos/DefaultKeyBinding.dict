@@ -22,8 +22,9 @@
     "^a"    = "moveToBeginningOfLine:";     /* C-a */
     "^e"    = "moveToEndOfLine:";           /* C-e */
     "~w"    = "copy:";                      /* M-w */
-    "^w"    = "cut:";                       /* C-w */
     "^y"    = "paste:";                     /* C-y */
     "^ "    = "setMark:";                   /* C-Spc */
-    "^w"    = "deleteToMark:";              /* C-w */
+    /* C-w: kill the region (mark to point, or the selection) to the
+       clipboard, so C-y brings it back as in Emacs. */
+    "^w"    = ("selectToMark:", "cut:");
 }
