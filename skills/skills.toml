@@ -1,0 +1,67 @@
+# Global agent skills, installed with the skills CLI (npx skills add -g).
+# Restore on a new machine: skills/manifest.py install
+# After you add or remove skills, regenerate: skills/manifest.py export
+# Export overwrites this file. To pin a GitHub source, write owner/repo@tag.
+
+agents = [
+  "amp",
+  "claude-code",
+  "cline",
+  "codex",
+  "cursor",
+  "droid",
+  "fx",
+  "gemini-cli",
+  "github-copilot",
+  "kilo",
+  "kimi-code-cli",
+  "opencode",
+  "pi",
+  "warp",
+  "zed",
+]
+
+[[sources]]
+source = "Dodaios/ste80-humanizer"
+skills = [
+  "ste80-humanizer",
+]
+
+[[sources]]
+source = "git@github.com:ryankask/skills.git"
+skills = [
+  "about-elsewhen",
+  "professional-me",
+]
+
+[[sources]]
+source = "mattpocock/skills"
+skills = [
+  "ask-matt",
+  "code-review",
+  "codebase-design",
+  "diagnosing-bugs",
+  "domain-modeling",
+  "grill-me",
+  "grill-with-docs",
+  "grilling",
+  "handoff",
+  "implement",
+  "implement-spec",
+  "improve-codebase-architecture",
+  "pr",
+  "prototype",
+  "research",
+  "retro",
+  "setup-matt-pocock-skills",
+  "tdd",
+  "teach",
+  "to-questionnaire",
+  "to-spec",
+  "to-tickets",
+  "triage",
+  "wait-what",
+  "wayfinder",
+  "wizard",
+  "writing-for-agents",
+]
