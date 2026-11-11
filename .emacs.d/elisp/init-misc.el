@@ -155,7 +155,7 @@
 
 (use-package ghostel
   :ensure t
-  :bind (("C-o C-v" . ghostel-project)
+  :bind (nil
          :map ghostel-mode-map
          ("C-o C-t" . ghostel-copy-mode)
          ("C-c C-j" . nil)

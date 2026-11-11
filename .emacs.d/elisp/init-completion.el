@@ -154,11 +154,11 @@ argument, prompt for DIR.  Press M-. to preview the selected file."
 
 (use-package consult-ghostel
   :ensure t
-  :after consult
-  :demand t
+  :bind (("C-o C-v" . consult-ghostel-project))
   :config
-  (consult-customize consult-ghostel-source-hidden consult-ghostel-project-source-hidden
-    :narrow '(?t . "Ghostel"))
+  (consult-customize
+   consult-ghostel-source-hidden consult-ghostel-project-source-hidden
+   :narrow '(?t . "Ghostel"))
   (consult-ghostel-mode 1))
 
 (use-package consult-dir
