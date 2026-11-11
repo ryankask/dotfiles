@@ -4,6 +4,8 @@
   "keybinds": {
     "command_list": "alt+x",
     "input_move_up": ["up", "ctrl+p"],
-    "input_move_down": ["down", "ctrl+n"]
+    "input_move_down": ["down", "ctrl+n"],
+    "history_previous": ["up", "ctrl+p"],
+    "history_next": ["down", "ctrl+n"]
   }
 }
