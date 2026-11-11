@@ -75,7 +75,8 @@ esac
 for reldest reltarget in "${(@kv)files}"; do
   dest="${DEST}/${reldest}"
 
-  if [[ -e $dest ]]; then
+  # -e is false for a broken symlink, which ln -s would then trip over.
+  if [[ -e $dest || -L $dest ]]; then
     echo "Skipping $dest: already exists."
     continue
   fi
