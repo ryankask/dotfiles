@@ -273,12 +273,6 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
   (magit-diff-refine-hunk t)
   (magit-tramp-pipe-stty-settings 'pty))
 
-(use-package markdown-mode
-  :ensure t
-  :hook (markdown-mode . my-fill-column-setup)
-  :custom
-  (markdown-command "pandoc"))
-
 (use-package mermaid-ts-mode
   :mode "\\.mmd\\'"
   :ensure (:host github :repo "JonathanHope/mermaid-ts-mode" :files ("mermaid-ts-mode.el")))
