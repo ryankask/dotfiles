@@ -45,6 +45,8 @@
   :defer t
   :custom
   (casual-keybinding-primary "s-h")
+  ;; Editing modes such as Org and CSV bind the secondary key instead.
+  (casual-keybinding-secondary "s-h")
   :init
   (pcase-dolist (`(,mode . ,package)
                 '((bookmark-bmenu-mode . casual-bookmarks)
