@@ -69,7 +69,6 @@ function getPaletteEntries(
 
 class CommandPalette extends Container implements Focusable {
   private readonly entries: PaletteEntry[];
-  private visibleEntries: PaletteEntry[];
   private readonly input: Input;
   private readonly listContainer: Container;
   private list: SelectList;
@@ -98,7 +97,6 @@ class CommandPalette extends Container implements Focusable {
   ) {
     super();
     this.entries = entries;
-    this.visibleEntries = entries;
     this.keybindings = keybindings;
     this.requestRender = requestRender;
     this.select = select;
@@ -157,18 +155,9 @@ class CommandPalette extends Container implements Focusable {
       query,
       (entry) => `${entry.name} ${entry.description}`,
     );
-    this.visibleEntries = matches;
     this.list = this.createList(matches);
     this.listContainer.clear();
     this.listContainer.addChild(this.list);
-  }
-
-  private pageSelection(direction: -1 | 1): void {
-    const selected = this.list.getSelectedItem();
-    const currentIndex = selected
-      ? this.visibleEntries.findIndex((entry) => entry.name === selected.value)
-      : 0;
-    this.list.setSelectedIndex(currentIndex + direction * PALETTE_PAGE_SIZE);
   }
 
   handleInput(data: string): void {
@@ -177,21 +166,11 @@ class CommandPalette extends Container implements Focusable {
       return;
     }
 
-    if (this.keybindings.matches(data, "tui.select.pageUp")) {
-      this.pageSelection(-1);
-      this.requestRender();
-      return;
-    }
-
-    if (this.keybindings.matches(data, "tui.select.pageDown")) {
-      this.pageSelection(1);
-      this.requestRender();
-      return;
-    }
-
     if (
       this.keybindings.matches(data, "tui.select.up") ||
       this.keybindings.matches(data, "tui.select.down") ||
+      this.keybindings.matches(data, "tui.select.pageUp") ||
+      this.keybindings.matches(data, "tui.select.pageDown") ||
       this.keybindings.matches(data, "tui.select.confirm")
     ) {
       this.list.handleInput(data);
