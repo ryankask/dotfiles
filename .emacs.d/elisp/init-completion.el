@@ -273,6 +273,8 @@ When the popup is hidden, re-enable the mode if it was previously
          ("C-h" . corfu-info-documentation)
          ("C-," . my-corfu-move-to-minibuffer))
   :hook ((elpaca-after-init . global-corfu-mode)
+         (elpaca-after-init . corfu-popupinfo-mode)
+         (elpaca-after-init . corfu-history-mode)
          (minibuffer-setup . my-corfu-enable-in-minibuffer)
          ;; (completion-in-region-mode . my-corfu--completion-in-region-mode-hook)
          )
@@ -284,6 +286,13 @@ When the popup is hidden, re-enable the mode if it was previously
   (tab-always-indent 'complete)
   :config
   (add-to-list 'corfu-continue-commands #'my-corfu-move-to-minibuffer))
+
+(use-package corfu-popupinfo
+  :after corfu
+  :bind (nil
+         :map corfu-popupinfo-map
+         ;; Keep M-t for the goto-map prefix while a popup is open.
+         ("M-t" . nil)))
 
 (use-package nerd-icons-corfu
   :ensure (:host github :repo "LuigiPiucco/nerd-icons-corfu")
