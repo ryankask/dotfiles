@@ -1,5 +1,6 @@
 *~
 *.elc
+/.cache
 /ac-comphist.dat
 /amx-items
 /autosave
