@@ -37,6 +37,8 @@
     :stream t
     :key 'gptel-api-key)
 
+  (gptel-make-openai-oauth "ChatGPT")
+
   (gptel-make-anthropic "Claude"
     :stream t
     :key 'gptel-api-key)
@@ -71,8 +73,8 @@
                 ~google/gemini-flash-latest
                 ~google/gemini-pro-latest)))
 
-  (setopt gptel-backend (alist-get "Claude" gptel--known-backends nil nil #'equal)
-          gptel-model 'claude-sonnet-5)
+  (setopt gptel-backend (alist-get "ChatGPT" gptel--known-backends nil nil #'equal)
+          gptel-model 'gpt-6.1-sol)
 
   ;; Presets
 
