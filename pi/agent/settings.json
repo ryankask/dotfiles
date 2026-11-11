@@ -20,5 +20,6 @@
   "autocompleteMaxVisible": 7,
   "quietStartup": true,
   "hideThinkingBlock": true,
+  "doubleEscapeAction": "none",
   "deviceId": "2d59ccad-b015-4ebd-a06c-b512a6a3adc9"
 }
