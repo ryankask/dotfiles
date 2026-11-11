@@ -18,8 +18,11 @@ fi
 # Editors
 #
 
-export EDITOR='emacs'
-export VISUAL='emacs'
+# Keep an editor the parent process set, such as the emacsclient command
+# that with-editor gives ghostel shells.  Git reads VISUAL before EDITOR,
+# so VISUAL follows EDITOR.
+export EDITOR="${EDITOR:-emacs}"
+export VISUAL="$EDITOR"
 export PAGER='less'
 
 #

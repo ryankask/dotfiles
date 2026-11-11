@@ -177,6 +177,9 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
 
   (setopt ghostel-keymap-exceptions (append '("C-o") ghostel-keymap-exceptions))
   (add-to-list 'ghostel-eval-cmds '("magit-status-setup-buffer" magit-status-setup-buffer))
+  ;; Make this Emacs the $EDITOR of ghostel shells, so `git commit' and
+  ;; friends open their file here instead of starting another Emacs.
+  (add-hook 'ghostel-pre-spawn-hook #'with-editor-export-editor)
   (add-to-list 'display-buffer-alist
                '((derived-mode . ghostel-mode)
                  (display-buffer-reuse-window display-buffer-below-selected)
@@ -260,6 +263,14 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
 (defun my-magit-mode-setup ()
   (setq-local truncate-lines nil))
 
+(defun my-git-commit-setup-client-buffer ()
+  "Set up a Git message buffer that emacsclient opened before Magit loaded.
+Once loaded, `git-commit' does this itself from `find-file-hook', but
+`git commit' in a ghostel shell can come first."
+  (unless (featurep 'git-commit)
+    (require 'git-commit)
+    (git-commit-setup-check-buffer)))
+
 (use-package magit
   :ensure t
   :bind (("s-m m" . magit-status)
@@ -269,6 +280,8 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
          ("s-m b" . magit-blame))
   :hook
   (magit-mode . my-magit-mode-setup)
+  :init
+  (add-hook 'server-visit-hook #'my-git-commit-setup-client-buffer)
   :custom
   (magit-define-global-key-bindings nil)
   (magit-diff-refine-hunk t)

@@ -83,7 +83,8 @@ alias sftp='noglob sftp'
 alias _='sudo'
 alias b='${(z)BROWSER}'
 alias diffu="diff --unified"
-alias e='${(z)VISUAL:-${(z)EDITOR}}'
+# (Q) strips the quoting with-editor puts in its emacsclient command.
+alias e='${(Q)${(z)${VISUAL:-$EDITOR}}}'
 alias mkdir="${aliases[mkdir]:-mkdir} -p"
 alias p='${(z)PAGER}'
 alias type='type -a'
