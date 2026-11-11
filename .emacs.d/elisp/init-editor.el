@@ -186,10 +186,8 @@ Adapted from crux and doom"
   :ensure t
   :after (nerd-icons dired)
   :hook
-  (dired-mode . nerd-icons-dired-mode)
-  :init
-  (with-eval-after-load 'dired-subtree
-    (advice-add 'dired-subtree-remove :around #'nerd-icons-dired--refresh-advice)))
+  ((dired-mode . nerd-icons-dired-mode)
+   (dired-subtree-after-insert . nerd-icons-dired--refresh)))
 
 ;; get rid of trailing whitespace
 (defcustom my-should-delete-trailing-whitespace t
