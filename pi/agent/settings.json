@@ -1,4 +1,5 @@
 {
+  "$schema": "https://pi.dev/schemas/settings.schema.json",
   "lastChangelogVersion": "1.4.0",
   "defaultProvider": "openai",
   "defaultModel": "gpt-6.1-sol",
