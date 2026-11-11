@@ -82,7 +82,7 @@ for reldest reltarget in "${(@kv)files}"; do
   fi
 
   destparent="${dest:a:h}"
-  target="${TARGET_PREFIX=}/${reltarget:-$reldest}"
+  target="${TARGET_PREFIX}/${reltarget:-$reldest}"
 
   if [[ $destparent != $DEST && ! -d $destparent ]]; then
     mkdir -p $destparent
