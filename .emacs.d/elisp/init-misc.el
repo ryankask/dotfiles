@@ -292,13 +292,6 @@ use the current project."
               (rel-path (my-project-get-relative-path path)))
     (kill-new rel-path)))
 
-(defun my-dired-copy-project-relative-path-as-kill ()
-  "Copy the project relative path of the current line of a dired
- buffer to the kill ring."
-  (interactive)
-  (when-let* ((path (dired-get-filename)))
-    (my-copy-project-relative-path-as-kill path)))
-
 (use-package project
   :custom
   (project-vc-extra-root-markers (list ".project" "pyproject.toml"))
@@ -310,11 +303,7 @@ use the current project."
   :config
   (when (listp project-switch-commands)
     (add-to-list 'project-switch-commands '(ghostel-project "Shell") t)
-    (add-to-list 'project-switch-commands '(ghostel-project-list-buffers "Shell list") t))
-
-  (with-eval-after-load 'dired
-    (bind-key "W" #'my-dired-copy-project-relative-path-as-kill
-              dired-mode-map)))
+    (add-to-list 'project-switch-commands '(ghostel-project-list-buffers "Shell list") t)))
 
 (use-package rainbow-delimiters
   :ensure t
