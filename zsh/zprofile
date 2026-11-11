@@ -44,23 +44,26 @@ if [[ $CPUTYPE == "arm64" ]]; then
 else
   export BREW_PREFIX="/usr/local"
 fi
-export ANDROID_HOME="/usr/local/Android/sdk"
+if [[ -d /usr/local/Android/sdk ]]; then
+  export ANDROID_HOME="/usr/local/Android/sdk"
+fi
 
 # Ensure path arrays do not contain duplicates.
 typeset -gU cdpath fpath mailpath path
 
-# Set the list of directories that Zsh searches for programs.
+# Set the list of directories that Zsh searches for programs.  (N-/) drops
+# a directory that doesn't exist on this machine.
 path=(
-  $HOME/.local/bin
-  $GOPATH/bin
-  $HOME/.cargo/bin
-  $HOME/.cabal/bin
-  $HOME/.ghcup/bin
-  /opt/local/google-cloud-sdk/bin
+  $HOME/.local/bin(N-/)
+  $GOPATH/bin(N-/)
+  $HOME/.cargo/bin(N-/)
+  $HOME/.cabal/bin(N-/)
+  $HOME/.ghcup/bin(N-/)
+  /opt/local/google-cloud-sdk/bin(N-/)
   ${WORK_DEVICE:+/opt/workbrew/bin}
-  $BREW_PREFIX/opt/coreutils/libexec/gnubin
-  $BREW_PREFIX/{bin,sbin}
-  /usr/local/{bin,sbin}
+  $BREW_PREFIX/opt/coreutils/libexec/gnubin(N-/)
+  $BREW_PREFIX/{bin,sbin}(N-/)
+  /usr/local/{bin,sbin}(N-/)
   $path
 )
 
