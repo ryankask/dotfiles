@@ -91,7 +91,7 @@
   :custom
   (denote-directory (expand-file-name "~/Sync/notes"))
   (denote-known-keywords '("home" "work" "tech"))
-  (denote-save-buffer-after-creation t)
+  (denote-save-buffers t)
   :config
   (denote-rename-buffer-mode 1))
 
