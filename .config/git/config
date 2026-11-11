@@ -35,7 +35,6 @@
     rbi = rebase -i
     lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
     last = cat-file commit HEAD
-    gui = gitk --all
 
 [color]
     ui = true
