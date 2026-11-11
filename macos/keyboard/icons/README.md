@@ -7,7 +7,7 @@ It uses SF Semibold at 10.5 pt, a 3-point corner radius, and the font's actual
 Rebuild on macOS with Swift and `iconutil`:
 
 ```sh
-./keyboard/icons/build.sh
+./macos/keyboard/icons/build.sh
 ```
 
 The renderer draws 16- and 32-pixel representations separately. It uses public
