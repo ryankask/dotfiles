@@ -40,12 +40,6 @@ AppleShowAllExtensions = true
 # Search the current folder by default.
 FXDefaultSearchScope = "SCcf"
 
-[bootstrap.macos.defaults."com.apple.dashboard"]
-"mcx-disabled" = true
-
-[bootstrap.macos.defaults."com.apple.dock"]
-"dashboard-in-overlay" = true
-
 [bootstrap.macos.defaults."com.apple.screencapture"]
 location = "/Users/ryan/Pictures/Screenshots"
 type = "png"
