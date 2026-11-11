@@ -19,12 +19,16 @@
 	  <string>/Users/ryan.k/.local/bin/syncthing</string>
 		<string>--no-browser</string>
 		<string>--no-restart</string>
+		<string>--log-file=/Users/ryan.k/.local/syncthing/syncthing.log</string>
+		<string>--log-max-size=10485760</string>
+		<string>--log-max-old-files=3</string>
 	</array>
 	<key>RunAtLoad</key>
 	<true/>
+	<!-- syncthing writes and rotates its own log file; stdout repeats it. -->
 	<key>StandardErrorPath</key>
-	<string>/Users/ryan.k/.local/syncthing/syncthing.log</string>
+	<string>/Users/ryan.k/.local/syncthing/stderr.log</string>
 	<key>StandardOutPath</key>
-	<string>/Users/ryan.k/.local/syncthing/syncthing.log</string>
+	<string>/dev/null</string>
 </dict>
 </plist>
