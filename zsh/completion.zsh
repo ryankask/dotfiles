@@ -14,14 +14,19 @@ fi
 # Add zsh-completions to $fpath.
 fpath=(${0:h}/external/zsh-completions/src $fpath)
 
-# Add completion for keg-only brewed curl on macOS when available.
+# Add Homebrew's completions, and those of keg-only curl, when available.
+# Homebrew's zsh searches site-functions itself, but Apple's /bin/zsh doesn't.
 if (( $+commands[brew] )); then
   brew_prefix=${BREW_PREFIX:-${HOMEBREW_REPOSITORY:-$commands[brew]:A:h:h}}
   # $HOMEBREW_PREFIX defaults to $HOMEBREW_REPOSITORY but is explicitly set to
   # /usr/local when $HOMEBREW_REPOSITORY is /usr/local/Homebrew.
   # https://github.com/Homebrew/brew/blob/2a850e02d8f2dedcad7164c2f4b95d340a7200bb/bin/brew#L66-L69
   [[ $brew_prefix == '/usr/local/Homebrew' ]] && brew_prefix=$brew_prefix:h
-  fpath=($brew_prefix/opt/curl/share/zsh/site-functions(/N) $fpath)
+  fpath=(
+    $brew_prefix/opt/curl/share/zsh/site-functions(/N)
+    $brew_prefix/share/zsh/site-functions(/N)
+    $fpath
+  )
   unset brew_prefix
 fi
 
