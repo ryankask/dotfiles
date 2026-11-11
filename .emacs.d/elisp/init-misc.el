@@ -393,7 +393,7 @@ session."
   (with-eval-after-load 'consult-imenu
     (setq consult-imenu-config
           (append consult-imenu-config
-                  '((typst-ts-mode :topLevel "Headings" :types
+                  '((typst-ts-mode :toplevel "Headings" :types
                                    ((?h "Headings" typst-ts-markup-header-face)
                                     (?f "Functions" font-lock-function-name-face)))))))
   (with-eval-after-load 'jinx
