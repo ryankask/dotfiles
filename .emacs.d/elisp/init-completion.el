@@ -155,11 +155,13 @@ argument, prompt for DIR.  Press M-. to preview the selected file."
 (use-package consult-ghostel
   :ensure t
   :bind (("C-o C-v" . consult-ghostel-project))
+  ;; Turn the mode on with the first terminal, however it is opened.  That
+  ;; is when it starts to matter, and it keeps ghostel out of startup.
+  :hook (ghostel-mode . consult-ghostel-mode)
   :config
   (consult-customize
    consult-ghostel-source-hidden consult-ghostel-project-source-hidden
-   :narrow '(?t . "Ghostel"))
-  (consult-ghostel-mode 1))
+   :narrow '(?t . "Ghostel")))
 
 (use-package consult-dir
   :ensure t
