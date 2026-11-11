@@ -324,7 +324,7 @@ use the current project."
   :defer t
   :hook (rst-mode . my-fill-column-setup))
 
-(use-package sh-mode
+(use-package sh-script
   :defer t
   :custom
   (sh-basic-offset 2)
