@@ -269,7 +269,7 @@
               {
                 "type": "basic",
                 "from": {
-                  "key_code": "o",
+                  "key_code": "semicolon",
                   "modifiers": {
                     "mandatory": [
                       "right_control"
@@ -284,7 +284,7 @@
                     }
                   },
                   {
-                    "key_code": "o",
+                    "key_code": "semicolon",
                     "modifiers": [
                       "right_control"
                     ]

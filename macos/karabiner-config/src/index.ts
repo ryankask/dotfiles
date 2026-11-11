@@ -61,8 +61,8 @@ writeToProfile(process.env.DRY_RUN ? "--dry-run" : "Default", [
       }),
     withCondition(ifVar("right-control", 1))([
       // Activate a prefix map so the below exclusions don't take
-      // effect
-      withMapper(["x", "c", "h", "o"])((k) =>
+      // effect.  Keys are physical: ";" types o under Colemak (C-o).
+      withMapper(["x", "c", "h", ";"])((k) =>
         map(k, "right_control").to([toSetVar("right-control", 2), toKey(k, "right_control")]),
       ),
       // Exclude letters that commonly appear with apostrophes if a
