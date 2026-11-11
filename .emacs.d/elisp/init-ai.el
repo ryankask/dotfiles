@@ -71,11 +71,6 @@
                 ~google/gemini-flash-latest
                 ~google/gemini-pro-latest)))
 
-  (gptel-make-ollama "Ollama"
-    :host "localhost:11434"
-    :stream t
-    :models '(gemma3n:latest gpt-oss:20b))
-
   (setopt gptel-backend (alist-get "Claude" gptel--known-backends nil nil #'equal)
           gptel-model 'claude-sonnet-5)
 
