@@ -153,7 +153,8 @@ fi
 
 # Emacs
 
-if [[ "$INSIDE_EMACS" = "ghostel" ]]; then
+# TRAMP appends ",tramp:VERSION", so compare only the first field.
+if [[ "${${INSIDE_EMACS-}%%,*}" = "ghostel" ]]; then
   ef() { ghostel_cmd find-file-other-window "$@"; }
   dow() { ghostel_cmd dired-other-window "$@"; }
   gst() { ghostel_cmd magit-status-setup-buffer "$(pwd)"; }
