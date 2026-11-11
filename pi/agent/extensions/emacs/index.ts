@@ -29,7 +29,11 @@ export default function emacs(pi: ExtensionAPI): void {
 
     ctx.ui.setEditorComponent((tui, theme, activeKeybindings) => {
       keybindings = activeKeybindings;
-      editor = new EmacsEditor(tui, theme, activeKeybindings);
+      // Custom editors keep pi's spinners on a separate row unless they
+      // opt in to showing them in the editor border, as pi's own editor does.
+      editor = new EmacsEditor(tui, theme, activeKeybindings, {
+        embedWorkingStatus: true,
+      });
       return editor;
     });
   });
