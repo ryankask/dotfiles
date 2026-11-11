@@ -5,6 +5,9 @@ const FROZEN_METHODS = [
   "setDefaultProvider",
   "setDefaultModelAndProvider",
   "setDefaultThinkingLevel",
+  // Saving a model in /model or /login appends it to enabledModels, and
+  // /scoped-models saves the list here too.
+  "setEnabledModels",
 ] as const;
 
 type SettingsManagerPrototype = Record<string, unknown>;
