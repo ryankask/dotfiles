@@ -509,7 +509,7 @@
                       "^notion\\.id$",
                       "^com\\.kagi\\.kagimacOS$",
                       "^com\\.microsoft\\.Outlook$",
-                      "^com.spotify.client$"
+                      "^com\\.spotify\\.client$"
                     ]
                   }
                 ]
@@ -538,7 +538,7 @@
                       "^notion\\.id$",
                       "^com\\.kagi\\.kagimacOS$",
                       "^com\\.microsoft\\.Outlook$",
-                      "^com.spotify.client$"
+                      "^com\\.spotify\\.client$"
                     ]
                   }
                 ]
@@ -567,7 +567,7 @@
                       "^notion\\.id$",
                       "^com\\.kagi\\.kagimacOS$",
                       "^com\\.microsoft\\.Outlook$",
-                      "^com.spotify.client$"
+                      "^com\\.spotify\\.client$"
                     ]
                   }
                 ]
@@ -596,7 +596,7 @@
                       "^notion\\.id$",
                       "^com\\.kagi\\.kagimacOS$",
                       "^com\\.microsoft\\.Outlook$",
-                      "^com.spotify.client$"
+                      "^com\\.spotify\\.client$"
                     ]
                   }
                 ]

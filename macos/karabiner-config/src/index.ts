@@ -18,12 +18,11 @@ const Apps = {
   EMACS: /^org\.gnu\.Emacs$/,
   KITTY: /^net\.kovidgoyal\.kitty$/,
   CHROME: /^com\.google\.Chrome$/,
-  VSCODE: /^com\.microsoft\.VSCode$/,
   SLACK: /^com\.tinyspeck\.slackmacgap$/,
   NOTION: /^notion\.id$/,
   ORION: /^com\.kagi\.kagimacOS$/,
   OUTLOOK: /^com\.microsoft\.Outlook$/,
-  SPOTIFY: /^com.spotify.client$/,
+  SPOTIFY: /^com\.spotify\.client$/,
 } as const;
 
 // DRY_RUN=1 prints the generated JSON instead of writing the live
