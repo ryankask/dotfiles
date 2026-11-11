@@ -266,7 +266,6 @@ Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
          ("s-m f" . magit-log-buffer-file)
          ("s-m b" . magit-blame))
   :hook
-  (git-commit-setup . git-commit-turn-on-flyspell)
   (magit-mode . my-magit-mode-setup)
   :custom
   (magit-define-global-key-bindings nil)
