@@ -28,7 +28,7 @@
          ("c" . eglot-show-workspace-configuration)
          ("q" . eglot-shutdown))
   :config
-  (setf (alist-get 'styles (alist-get 'eglot completion-category-defaults))
+  (setf (alist-get 'styles (alist-get 'eglot-capf completion-category-defaults))
         '(orderless)
         (alist-get 'typescript-mode eglot-server-programs
                    nil nil (lambda (key mode)
