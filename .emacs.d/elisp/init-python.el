@@ -90,7 +90,11 @@ isn't found."
   :config
   (pcase-dolist (`(,loc . ,key) '(("t" . "a")
                                   ("f" . "_") ("F" . "f") ("_" . "F")
-                                  ("d" . "T") ("D" . "t")))
+                                  ("d" . "T") ("D" . "t")
+                                  ;; Shown instead of the two above when
+                                  ;; tree-sitter is available.
+                                  (python-pytest-run-def-at-point-treesit . "t")
+                                  (python-pytest-run-class-at-point-treesit . "T")))
     (transient-suffix-put 'python-pytest-dispatch loc :key key))
   (advice-add #'python-pytest--project-root :before-until
               #'my-pytest-locate-custom-project-root)
