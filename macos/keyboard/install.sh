@@ -14,7 +14,10 @@ identifier='com.ryankaskel.keyboardlayout.colemak'
 files=('Contents/Info.plist' 'Contents/Resources/GB PL Colemak.keylayout' 'Contents/Resources/GB PL Colemak.icns')
 
 for file in "${files[@]}"; do
-  test -f "$source_bundle/$file"
+  if [[ ! -f "$source_bundle/$file" ]]; then
+    printf 'Missing bundle file: %s\n' "$source_bundle/$file" >&2
+    exit 1
+  fi
 done
 plutil -lint "$source_bundle/Contents/Info.plist"
 if [[ -e "$target" || -L "$target" ]]; then
