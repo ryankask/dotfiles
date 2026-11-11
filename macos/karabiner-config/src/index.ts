@@ -131,5 +131,16 @@ function appLauncherLayer(): Rule {
 
   rule.manipulators.splice(1, 0, leftManipulator);
 
+  // Any other key turns the launcher off and goes through as typed, so a
+  // stray ",." or "zx" can't open an app later.  This must come after the
+  // app and escape keys.
+  rule.manipulators.push(
+    ...map({ any: "key_code", modifiers: { optional: ["any"] } })
+      .condition(ifVar("launch-app", 1))
+      .to(toSetVar("launch-app", 0))
+      .toFromEvent()
+      .build(),
+  );
+
   return rule;
 }

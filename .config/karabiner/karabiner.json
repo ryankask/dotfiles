@@ -1034,6 +1034,35 @@
                     }
                   }
                 ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "any": "key_code",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "launch-app",
+                    "value": 1
+                  }
+                ],
+                "to": [
+                  {
+                    "set_variable": {
+                      "name": "launch-app",
+                      "value": 0
+                    }
+                  },
+                  {
+                    "from_event": true
+                  }
+                ]
               }
             ]
           }
