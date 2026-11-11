@@ -10,9 +10,6 @@ disabled = true
 [gcloud]
 disabled = true
 
-[hg_branch]
-disabled = true
-
 [java]
 disabled = true
 
