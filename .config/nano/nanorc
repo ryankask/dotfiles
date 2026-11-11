@@ -13,6 +13,9 @@ set tabstospaces
 set titlecolor #000,#ccc
 
 ## Keybindings
+# Copy the marked text (or the whole buffer) to the system clipboard over
+# OSC 52.  From nano's sample.nanorc; || needs nano 8.7 or later.
+bind M-* "{execute}|| printf "\033]52;c;%s\007" "$(base64 | tr -d '\n')" {enter}{undo}" main
 bind M-/ redo main
 bind M-< firstline main
 bind M-> lastline main
