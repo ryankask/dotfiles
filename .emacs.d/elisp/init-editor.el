@@ -114,11 +114,6 @@ Adapted from crux and doom"
   :init
   (savehist-mode 1))
 
-(defun my-recentf-save-list ()
-  "Save the recentf file list but don't output a message."
-  (let ((save-silently t))
-    (recentf-save-list)))
-
 (use-package recentf
   :hook ((elpaca-after-init . recentf-mode)
          (kill-emacs . recentf-cleanup))

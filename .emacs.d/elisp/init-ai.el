@@ -1,9 +1,5 @@
 ;;; -*- lexical-binding: t; -*-
 
-(defun my-gptel-context-remove-all ()
-  (interactive)
-  (gptel-context-remove-all))
-
 (use-package gptel
   :ensure t
   :bind (("C-#" . gptel)
