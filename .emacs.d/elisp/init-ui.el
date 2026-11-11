@@ -127,7 +127,6 @@
 (use-package modus-themes
   :ensure (:host github :repo "protesilaos/modus-themes" :depth 1)
   :custom
-  (modus-themes-custom-auto-reload nil)
   (modus-themes-bold-constructs nil)
   (modus-themes-italic-constructs t)
   :bind ("C-o w" . modus-themes-toggle)
