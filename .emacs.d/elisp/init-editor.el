@@ -212,6 +212,18 @@ Adapted from crux and doom"
   :ensure t
   :defer t)
 
+(defun my-md-preview-setup ()
+  (setq-local shr-max-width 88))
+
+(use-package md-preview
+  :commands md-preview-mode
+  :hook (md-preview-output-mode . my-md-preview-setup))
+
+(use-package markdown-ts-mode
+  :bind (nil
+         :map markdown-ts-mode-map
+         ("C-c C-e" . md-preview-mode)))
+
 (use-package isearch
   :bind (:map search-map
          ("s" . isearch-forward)
