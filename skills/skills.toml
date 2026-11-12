@@ -1,24 +1,12 @@
 # Global agent skills, installed with the skills CLI (npx skills add -g).
 # Restore on a new machine: skills/manifest.py install
 # After you add or remove skills, regenerate: skills/manifest.py export
-# Export overwrites this file. To pin a GitHub source, write owner/repo@tag.
+# Export refreshes the sources and preserves the agent list.
+# To pin a GitHub source, write owner/repo@tag.
 
 agents = [
-  "amp",
-  "claude-code",
-  "cline",
   "codex",
-  "cursor",
-  "droid",
-  "fx",
-  "gemini-cli",
-  "github-copilot",
-  "kilo",
-  "kimi-code-cli",
-  "opencode",
-  "pi",
-  "warp",
-  "zed",
+  "claude-code",
 ]
 
 [[sources]]

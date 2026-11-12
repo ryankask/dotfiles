@@ -29,12 +29,14 @@ from pathlib import Path
 
 MANIFEST = Path(__file__).resolve().with_name("skills.toml")
 SKILLS_CLI = ["npx", "--yes", "skills"]
+DEFAULT_AGENTS = ["codex", "claude-code"]
 
 HEADER = """\
 # Global agent skills, installed with the skills CLI (npx skills add -g).
 # Restore on a new machine: skills/manifest.py install
 # After you add or remove skills, regenerate: skills/manifest.py export
-# Export overwrites this file. To pin a GitHub source, write owner/repo@tag.
+# Export refreshes the sources and preserves the agent list.
+# To pin a GitHub source, write owner/repo@tag.
 """
 
 
@@ -65,7 +67,8 @@ def export() -> int:
                 print(f"warning: {name}: ref {ref!r} not kept for {source}", file=sys.stderr)
         groups[(source, entry.get("installMode") == "copy")].append(name)
 
-    parts = [HEADER, "\n", toml_list("agents", sorted(lock.get("lastSelectedAgents", [])))]
+    manifest = tomllib.loads(MANIFEST.read_text()) if MANIFEST.exists() else {}
+    parts = [HEADER, "\n", toml_list("agents", manifest.get("agents", DEFAULT_AGENTS))]
     for (source, copy), names in sorted(groups.items(), key=lambda g: g[0][0].lower()):
         parts.append(f"\n[[sources]]\nsource = {json.dumps(source, ensure_ascii=False)}\n")
         if copy:
@@ -81,11 +84,13 @@ def export() -> int:
 
 def install(dry_run: bool) -> int:
     manifest = tomllib.loads(MANIFEST.read_text())
-    agent_args = [arg for agent in manifest.get("agents", []) for arg in ("-a", agent)]
+    agents = manifest.get("agents", DEFAULT_AGENTS)
+    agent_args = ["-a", *agents] if agents else []
     failed = []
     for source in manifest["sources"]:
         cmd = [*SKILLS_CLI, "add", source["source"], "-g", "-y", *agent_args]
-        cmd += [arg for skill in source["skills"] for arg in ("--skill", skill)]
+        if skills := source["skills"]:
+            cmd.extend(["--skill", *skills])
         if source.get("copy"):
             cmd.append("--copy")
         print(f"$ {shlex.join(cmd)}", flush=True)
