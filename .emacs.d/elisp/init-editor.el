@@ -213,16 +213,20 @@ Adapted from crux and doom"
   :defer t)
 
 (defun my-md-preview-setup ()
-  (setq-local shr-max-width 88))
+  (setq-local shr-max-width 88
+              shr-table-horizontal-line ?-
+              ;; A string works too; the space pads cells on the left.
+              shr-table-vertical-line "| "
+              shr-table-corner ?+))
 
 (use-package md-preview
-  :commands md-preview-mode
+  :commands (md-preview md-preview-mode)
   :hook (md-preview-output-mode . my-md-preview-setup))
 
 (use-package markdown-ts-mode
   :bind (nil
          :map markdown-ts-mode-map
-         ("C-c C-e" . md-preview-mode)))
+         ("C-c C-e" . md-preview)))
 
 (use-package isearch
   :bind (:map search-map
