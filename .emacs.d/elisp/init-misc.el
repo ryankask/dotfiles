@@ -99,7 +99,6 @@
 
 (use-package disproject
   :ensure (:host github :repo "aurtzy/disproject")
-  :after project
   :bind ("s-p" . disproject-dispatch)
   :custom
   (disproject-find-line-command #'consult-line-multi)
