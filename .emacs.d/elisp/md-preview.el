@@ -27,11 +27,11 @@
 ;;
 ;; Nothing is written to disk: pandoc's output goes straight into eww.
 ;;
-;; `md-preview' shows the preview, shows it again if its window was
-;; closed, or closes it.  In the preview buffer, "g" re-renders from
-;; the source buffer, including unsaved changes, and eww's "q" buries
-;; the preview; it keeps rendering on save until `md-preview' shows it
-;; again.
+;; `md-preview' shows the preview and selects it, shows it again if
+;; its window was closed, or closes it.  In the preview buffer, "g"
+;; re-renders from the source buffer, including unsaved changes, and
+;; eww's "q" buries the preview; it keeps rendering on save until
+;; `md-preview' shows it again.
 
 ;;; Code:
 
@@ -50,11 +50,7 @@
   :type '(repeat string))
 
 (defcustom md-preview-display-action
-  '((display-buffer-reuse-window display-buffer-in-direction)
-    (direction . below)
-    ;; Without a height, `display-buffer-in-direction' fits the window
-    ;; to the preview, which is still empty when it is displayed.
-    (window-height . 0.5)
+  '((display-buffer-reuse-window display-buffer-below-selected)
     (inhibit-same-window . t))
   "The `display-buffer' action used to show the preview."
   :type 'sexp)
@@ -196,7 +192,8 @@ The preview is rendered by pandoc and re-renders on each save."
 ;;;###autoload
 (defun md-preview ()
   "Show a live eww preview of the current Markdown buffer, or close it.
-If the preview is on but its window was closed, show it again."
+If the preview is on but its window was closed, show it again.  After
+showing the preview, select its window."
   (interactive)
   (cond ((not md-preview-mode)
          (md-preview-mode 1))
@@ -207,7 +204,12 @@ If the preview is on but its window was closed, show it again."
          (display-buffer md-preview--buffer md-preview-display-action)
          (md-preview--render))
         (t
-         (md-preview-mode -1))))
+         (md-preview-mode -1)))
+  ;; Select the window here, not in `md-preview-mode': selecting it
+  ;; there would make the preview current while the mode is set up.
+  (when-let* ((window (and md-preview-mode
+                           (get-buffer-window md-preview--buffer))))
+    (select-window window)))
 
 (defun md-preview-refresh ()
   "Re-render the preview from the source buffer, including unsaved changes."
