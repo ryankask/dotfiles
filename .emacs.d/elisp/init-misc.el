@@ -150,9 +150,11 @@
 
 ;; internal
 (use-package golink
-  :bind (("C-o g" . golink-open)
-         :map embark-url-map
-         ("g" . golink-create)))
+  :commands golink-create
+  :bind ("C-o g" . golink-open)
+  :init
+  (with-eval-after-load 'embark
+    (bind-key "g" #'golink-create embark-url-map)))
 
 (use-package ghostel
   :ensure t
